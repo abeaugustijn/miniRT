@@ -6,12 +6,13 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/13 15:41:58 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/13 15:44:48 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	miniRT
-SRCS			=
+SRCS			=	gnl/get_next_line\
+					gnl/get_next_line_utils
 
 LIBFT_SRCS		=
 
@@ -21,7 +22,7 @@ OFILES			=	$(SRCS:%=src/%.o)
 LIBFT_CFILES	=	$(LIBFT_SRCS:%=libft/ft_%.c)
 LIBFT_OFILES	=	$(LIBFT_SRCS:%=libft/ft_%.o)
 
-INCLUDES		=	-I include -I libft
+INCLUDES		=	-I include -I libft -I gnl
 
 FLAGS			=	-Wall -Werror -Wextra
 
