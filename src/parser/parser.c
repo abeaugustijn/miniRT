@@ -6,16 +6,18 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 12:01:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/14 22:10:35 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <error.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <get_next_line.h>
 #include <stdlib.h>
+#include <liblist.h>
+#include <libft.h>
+#include "parse_functions.h"
 
 /*
 **	Function to check whether the filename has the '*.rt' format.
@@ -42,12 +44,36 @@ static bool	check_filename(char *filename)
 **
 **	@param {char *} line
 **	@param {t_mapinfo *} mapinfo - to store the data
+**	@param {t_list *} objects - a pointer to a linked list to store the objects in
 */
 
-/*static void	parse_line(char *line, t_mapinfo *mapinfo)*/
-/*{*/
-	
-/*}*/
+static void	parse_line(char *line, t_info *info)
+{
+	char	**words;
+
+	words = ft_split(line, ' ');
+	if (words == NULL)
+		print_error("Memory allocation failed\n");
+	if (ft_strcmp(words[0], "R") == 0)
+		parse_resolution(words, info);
+	else if (ft_strcmp(words[0], "A") == 0)
+		parse_ambient(words, info);
+	else if (ft_strcmp(words[0], "c") == 0)
+		parse_camera(words, info);
+	/*else if (ft_strcmp(words[0], "l") == 0)*/
+		/*parse_light(words, mapinfo);*/
+	/*else if (ft_strcmp(words[0], "sp") == 0)*/
+		/*parse_sphere(words, info);*/
+	/*else if (ft_strcmp(words[0], "pl") == 0)*/
+		/*parse_plane(words, info);*/
+	/*else if (ft_strcmp(words[0], "sq") == 0)*/
+		/*parse_square(words, info);*/
+	/*else if (ft_strcmp(words[0], "cy") == 0)*/
+		/*parse_cylinder(words, info);*/
+	/*else if (ft_strcmp(words[0], "tr") == 0)*/
+		/*parse_triangle(words, info);*/
+	free_string_arr(words);
+}
 
 /*
 **	Parse a *.rt file for use as input for miniRT.
@@ -55,22 +81,22 @@ static bool	check_filename(char *filename)
 **	@param {char *} filename
 **	@param {t_mapinfo *} - a pointer to the mapinfo struct to store the parsed
 **		data in.
+**	@param {t_list *} objects - a pointer to a linked list to store the objects in
 */
 
-void		parse_input(char *filename, t_mapinfo *mapinfo)
+void		parse_input(char *filename, t_info *info)
 {
 	int		fd;
 	char	*line;
 
-	(void)mapinfo;
 	if (check_filename(filename))
-		error("Invalid file extension\n");
+		print_error("Invalid file extension\n");
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		error("Opening file went wrong\n");
+		print_error("Opening file went wrong\n");
 	while (get_next_line(fd, &line))
 	{
-		/*parse_line(line, t_mapinfo *mapinfo);*/
+		parse_line(line, info);
 		free(line);
 	}
 	// TODO: Check mapinfo

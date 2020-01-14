@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/14 12:22:05 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/14 22:33:02 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,31 @@ SRCS			=	gnl/get_next_line\
 					liblist/lst_new_back\
 					error/error\
 					parser/parser\
+					parser/parse_resolution\
+					parser/parse_ambient\
+					parser/parse_camera\
 					libft/ft_putstr_fd\
-					libft/ft_strlen
+					libft/ft_strlen\
+					libft/ft_memset\
+					libft/ft_bzero\
+					libft/ft_split\
+					libft/ft_atoi\
+					libft/ft_strcmp\
+					libft/ft_isdigit\
+					helpers/free_string_arr\
+					helpers/arrlen\
+					helpers/isdigit_string\
+					helpers/parse_float\
+					helpers/parse_vec3f\
+					helpers/parse_color\
+					helpers/check_normalized\
+					main
 
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
 
-INCLUDES		=	-I include -I src/libft -I src/gnl
+INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist
+LIBS			=	-lm
 
 FLAGS			=	-Wall -Werror -Wextra
 
@@ -32,12 +50,12 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	@echo "Linking executable"
-	@gcc $(OFILES) $(FLAGS) -o $(NAME)
+	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g
 	@echo "Done"
 
 %.o: %.c
 	@echo "Compiling: $<"
-	@clang -o $@ -c $< $(FLAGS) $(INCLUDES) -g
+	@gcc -o $@ -c $< $(FLAGS) $(INCLUDES) $(LIBS) -g
 
 clean: _clean
 	@echo "Cleaning..."

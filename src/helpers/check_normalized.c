@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   check_normalized.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 19:47:08 by abe              ###   ########.fr       */
+/*   Created: 2020/01/14 22:26:02 by abe               #+#    #+#             */
+/*   Updated: 2020/01/14 22:40:35 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdlib.h>
+#include <miniRT.h>
 
-void	print_error(char *message)
+/*
+**	Function to check whether a vector is normalized.
+*/
+
+static bool	check_one(float val)
 {
-	ft_putstr_fd("Error\n", 1);
-	ft_putstr_fd(message, 1);
-	exit(1);
+	return (val >= -1 && val <= 1);
+}
+
+bool		check_normalized(t_vec3f vec)
+{
+	return (check_one(vec.x) &&
+			check_one(vec.y) &&
+			check_one(vec.z));
 }

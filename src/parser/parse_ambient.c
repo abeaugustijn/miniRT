@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   parse_ambient.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 19:47:08 by abe              ###   ########.fr       */
+/*   Created: 2020/01/14 21:47:37 by abe               #+#    #+#             */
+/*   Updated: 2020/01/14 22:08:05 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <miniRT.h>
+#include <liblist.h>
 #include <libft.h>
-#include <stdlib.h>
 
-void	print_error(char *message)
+void	parse_ambient(char **words, t_info *info)
 {
-	ft_putstr_fd("Error\n", 1);
-	ft_putstr_fd(message, 1);
-	exit(1);
+	if (arrlen(words) != 3)
+		print_error("Error while parsing ambient lighting\n");
+	info->mapinfo.ambient_ratio = parse_float(words[1]);
+	info->mapinfo.ambient_color = parse_color(words[2]);
 }

@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   isdigit_string.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 19:47:08 by abe              ###   ########.fr       */
+/*   Created: 2020/01/14 21:22:53 by abe               #+#    #+#             */
+/*   Updated: 2020/01/14 21:24:36 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdlib.h>
+#include <stdbool.h>
 
-void	print_error(char *message)
+/*
+**	Checks whther a string exist of only digits.
+**
+**	@param {char *} string
+**
+**	@return {bool}
+*/
+
+bool	isdigit_string(char *string)
 {
-	ft_putstr_fd("Error\n", 1);
-	ft_putstr_fd(message, 1);
-	exit(1);
+	while (*string)
+	{
+		if (!(*string >= '0' && *string <= '9'))
+			return (false);
+		string += sizeof(char);
+	}
+	return (true);
 }

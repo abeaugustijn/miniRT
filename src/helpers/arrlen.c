@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   arrlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 19:47:08 by abe              ###   ########.fr       */
+/*   Created: 2020/01/14 20:37:50 by abe               #+#    #+#             */
+/*   Updated: 2020/01/14 20:39:41 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdlib.h>
+#include <stddef.h>
 
-void	print_error(char *message)
+/*
+**	Count the amount of elements in a NULL-terminated string array.
+**
+**	@param {char **} array
+**
+**	@return {size_t}
+*/
+
+size_t	arrlen(char **array)
 {
-	ft_putstr_fd("Error\n", 1);
-	ft_putstr_fd(message, 1);
-	exit(1);
+	size_t	res;
+
+	res = 0;
+	while (array[res])
+		res++;
+	return (res);
 }
+
