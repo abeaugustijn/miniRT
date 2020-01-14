@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 11:09:52 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/14 12:01:19 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <get_next_line.h>
+#include <stdlib.h>
 
 /*
 **	Function to check whether the filename has the '*.rt' format.
@@ -43,10 +44,10 @@ static bool	check_filename(char *filename)
 **	@param {t_mapinfo *} mapinfo - to store the data
 */
 
-static void	parse_line(char *line, t_mapinfo *mapinfo)
-{
+/*static void	parse_line(char *line, t_mapinfo *mapinfo)*/
+/*{*/
 	
-}
+/*}*/
 
 /*
 **	Parse a *.rt file for use as input for miniRT.
@@ -61,6 +62,7 @@ void		parse_input(char *filename, t_mapinfo *mapinfo)
 	int		fd;
 	char	*line;
 
+	(void)mapinfo;
 	if (check_filename(filename))
 		error("Invalid file extension\n");
 	fd = open(filename, O_RDONLY);
@@ -68,7 +70,7 @@ void		parse_input(char *filename, t_mapinfo *mapinfo)
 		error("Opening file went wrong\n");
 	while (get_next_line(fd, &line))
 	{
-		parse_line(line, t_mapinfo *mapinfo);
+		/*parse_line(line, t_mapinfo *mapinfo);*/
 		free(line);
 	}
 	// TODO: Check mapinfo

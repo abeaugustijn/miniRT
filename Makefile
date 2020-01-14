@@ -6,31 +6,33 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/13 15:44:48 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/14 12:22:05 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	miniRT
 SRCS			=	gnl/get_next_line\
-					gnl/get_next_line_utils
-
-LIBFT_SRCS		=
+					gnl/get_next_line_utils\
+					liblist/lst_foreach\
+					liblist/lst_new\
+					liblist/lst_new_back\
+					error/error\
+					parser/parser\
+					libft/ft_putstr_fd\
+					libft/ft_strlen
 
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
 
-LIBFT_CFILES	=	$(LIBFT_SRCS:%=libft/ft_%.c)
-LIBFT_OFILES	=	$(LIBFT_SRCS:%=libft/ft_%.o)
-
-INCLUDES		=	-I include -I libft -I gnl
+INCLUDES		=	-I include -I src/libft -I src/gnl
 
 FLAGS			=	-Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OFILES) $(LIBFT_OFILES)
+$(NAME): $(OFILES)
 	@echo "Linking executable"
-	@gcc $(OFILES) $(LIBFT_OFILES) $(FLAGS) -o $(NAME)
+	@gcc $(OFILES) $(FLAGS) -o $(NAME)
 	@echo "Done"
 
 %.o: %.c
@@ -45,6 +47,6 @@ fclean: _clean
 	@rm -f $(NAME)
 
 _clean:
-	@rm -f $(OFILES) $(LIBFT_OFILES)
+	@rm -f $(OFILES)
 
 re: fclean all

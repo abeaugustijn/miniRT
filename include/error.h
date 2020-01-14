@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
+/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 11:58:32 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/14 12:00:10 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/01/14 12:00:36 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdlib.h>
+#ifndef ERROR_H
+# define ERROR_H
 
-void	error(char *message)
-{
-	ft_putstr_fd("Error\n", 1);
-	ft_putstr_fd(message, 1);
-	exit(1);
-}
+void	error(char *message);
+
+#endif
