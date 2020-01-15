@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/14 22:29:01 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/15 18:44:14 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,25 @@ typedef struct	s_camera {
 	uint8_t	fov;
 }				t_camera;
 
+typedef struct	s_light {
+	t_vec3f	location;
+	float	brightness;
+	t_color	color;
+}				t_light;
+
 /*
 **	Parsing
 */
 
 void			parse_input(char *filename, t_info *info);
+
+/*
+**	Errors
+*/
+
 void			print_error(char *message);
+void			print_error_free(char *message, void *to_free);
+void			print_error_free_list(char *message, t_list *to_free);
 
 /*
 **	Helpers

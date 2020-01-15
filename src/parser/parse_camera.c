@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 22:45:17 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/15 18:41:54 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,9 @@ void			parse_camera(char **words, t_info *info)
 	res->location = parse_vec3f(words[1]);
 	res->orientation = parse_vec3f(words[2]);
 	if (!check_normalized(res->orientation))
-		print_error(
-				"Error while parsing camera: orientation vector is not normalized\n");
+		print_error_free(
+				"Error while parsing camera: orientation vector is not normalized\n", res);
 	res->fov = check_fov(words[3]);
-	if (!info->cameras)
-		info->cameras = lst_new_back(NULL, res);
-	else
-		lst_new_back(info->cameras, res);
-	// TODO: malloc check (improve lst_new_back)
-	/*if (!lst_new_back(info->cameras, res))*/
-		/*print_error("Allocation failed in 'parse_camera'\n");*/
+	if (!lst_new_back(&(info->cameras), res))
+		print_error_free_list("Allocation failed in 'parse_camera'\n", info->cameras);
 }

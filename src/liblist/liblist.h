@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 21:08:19 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 09:57:49 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/15 18:26:42 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ struct					s_list
 };
 
 t_list	*lst_new(void *content);
-t_list	*lst_new_back(t_list *node, void *content);
+t_list	*lst_new_back(t_list **node, void *content);
 void	lst_new_front(t_list **node, void *content);
 void	lst_remove(t_list *node, void (*free_func)(void *));
 void	lst_reverse(t_list **node);

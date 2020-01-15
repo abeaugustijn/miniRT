@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 22:10:35 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/15 18:44:27 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static void	parse_line(char *line, t_info *info)
 		parse_ambient(words, info);
 	else if (ft_strcmp(words[0], "c") == 0)
 		parse_camera(words, info);
-	/*else if (ft_strcmp(words[0], "l") == 0)*/
-		/*parse_light(words, mapinfo);*/
+	else if (ft_strcmp(words[0], "l") == 0)
+		parse_light(words, info);
 	/*else if (ft_strcmp(words[0], "sp") == 0)*/
 		/*parse_sphere(words, info);*/
 	/*else if (ft_strcmp(words[0], "pl") == 0)*/
