@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/15 18:44:27 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/15 19:22:10 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,18 @@ static void	parse_line(char *line, t_info *info)
 		parse_camera(words, info);
 	else if (ft_strcmp(words[0], "l") == 0)
 		parse_light(words, info);
-	/*else if (ft_strcmp(words[0], "sp") == 0)*/
-		/*parse_sphere(words, info);*/
-	/*else if (ft_strcmp(words[0], "pl") == 0)*/
-		/*parse_plane(words, info);*/
-	/*else if (ft_strcmp(words[0], "sq") == 0)*/
-		/*parse_square(words, info);*/
-	/*else if (ft_strcmp(words[0], "cy") == 0)*/
-		/*parse_cylinder(words, info);*/
-	/*else if (ft_strcmp(words[0], "tr") == 0)*/
-		/*parse_triangle(words, info);*/
+	else if (ft_strcmp(words[0], "sp") == 0)
+		parse_sphere(words, info);
+	else if (ft_strcmp(words[0], "pl") == 0)
+		parse_plane(words, info);
+	else if (ft_strcmp(words[0], "sq") == 0)
+		parse_square(words, info);
+	else if (ft_strcmp(words[0], "cy") == 0)
+		parse_cylinder(words, info);
+	else if (ft_strcmp(words[0], "tr") == 0)
+		parse_triangle(words, info);
+	else
+		print_error("Invalid line\n");
 	free_string_arr(words);
 }
 

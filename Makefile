@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/15 18:44:43 by abe              ###   ########.fr        #
+#    Updated: 2020/01/15 19:18:04 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,11 @@ SRCS			=	gnl/get_next_line\
 					parser/parse_ambient\
 					parser/parse_camera\
 					parser/parse_light\
+					parser/parse_sphere\
+					parser/parse_plane\
+					parser/parse_square\
+					parser/parse_cylinder\
+					parser/parse_triangle\
 					libft/ft_putstr_fd\
 					libft/ft_strlen\
 					libft/ft_memset\

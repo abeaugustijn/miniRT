@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/15 18:44:14 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/15 19:02:01 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,34 +52,12 @@ typedef enum	e_object_type {
 typedef struct 	s_object {
 	t_object_type	type;
 	t_color			color;
-	void			*object_data;
 	t_vec3f			location;
+	float			size;
+	float			height;
+	t_vec3f			orientation;
+	t_vec3f			points[3];
 }				t_object;
-
-typedef struct	s_sphere {
-	float	diameter;
-}				t_sphere;
-
-typedef struct	s_plane {
-	t_vec3f	orientation;
-}				t_plane;
-
-typedef struct	s_square {
-	t_vec3f	orientation;
-	float	size;
-}				t_square;
-
-typedef struct	s_cylinder {
-	t_vec3f	orientation;
-	float	diameter;
-	float	height;
-}				t_cylinder;
-
-typedef struct	s_triangle {
-	t_vec3f	point1;
-	t_vec3f	point2;
-	t_vec3f	point3;
-}				t_triangle;
 
 typedef struct	s_info {
 	t_mapinfo	mapinfo;
