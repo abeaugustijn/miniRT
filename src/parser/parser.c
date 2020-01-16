@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/15 19:22:10 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/16 21:32:32 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	parse_line(char *line, t_info *info)
 	words = ft_split(line, ' ');
 	if (words == NULL)
 		print_error("Memory allocation failed\n");
+	if (!words[0])
+		return ;
 	if (ft_strcmp(words[0], "R") == 0)
 		parse_resolution(words, info);
 	else if (ft_strcmp(words[0], "A") == 0)
@@ -101,6 +103,7 @@ void		parse_input(char *filename, t_info *info)
 		parse_line(line, info);
 		free(line);
 	}
-	// TODO: Check mapinfo
+	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
+		print_error("Invalid file. R and A have to be present\n");
 	close(fd);
 }

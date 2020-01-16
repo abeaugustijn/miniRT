@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/15 19:02:01 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/16 21:31:34 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct	s_mapinfo {
 	t_vec3f	light_pos;
 	float	light_brightness;
 	t_color	light_color;
+	bool	did_resolution;
+	bool	did_ambient;
 }				t_mapinfo;
 
 typedef enum	e_object_type {
