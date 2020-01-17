@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/17 10:48:43 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/17 13:49:02 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <stdint.h>
 # include <liblist.h>
 # include <stdbool.h>
+
+# define WINDOW_TITLE "miniRT"
 
 typedef struct	s_vec3f {
 	float	x;
@@ -43,6 +45,11 @@ typedef struct	s_mapinfo {
 	bool	did_ambient;
 	bool	do_save;
 }				t_mapinfo;
+
+typedef struct	s_mlxinfo {
+	void	*mlx;
+	void	*mlx_win;
+}				t_mlxinfo;
 
 typedef enum	e_object_type {
 	SP,
@@ -106,5 +113,12 @@ float			parse_float(char *str);
 t_vec3f			parse_vec3f(char *str);
 t_color			parse_color(char *str);
 bool			check_normalized(t_vec3f vec);
+
+
+/*
+**	Structure functions
+*/
+
+bool			init_mlx(t_mlxinfo *mlx_info, t_info *info);
 
 #endif

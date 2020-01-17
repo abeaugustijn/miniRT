@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/17 11:59:16 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/17 13:42:26 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,38 +42,66 @@ SRCS			=	gnl/get_next_line\
 					helpers/parse_vec3f\
 					helpers/parse_color\
 					helpers/check_normalized\
-					main
+					main\
+					init_mlx
 
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
 
-INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist -I lib/mlx
+INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist
 
-#LIBS			=	-L./lib/mlx -lmlx
+#LIBS			=	-Llib/mlx -lmlx
 
-# OS detection for libs
+# OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 LIBS			+=	-lm
+INCLUDES		+=	-I lib/mlx/X11
+endif
+
+ifeq ($(UNAME_S),Darwin)
+INCLUDES		+=	-I lib/mlx
 endif
 
 FLAGS			=	-Wall -Werror -Wextra
 
 all: $(NAME)
 
+ifeq ($(UNAME_S),Linux)
+
 lib/mlx/libmlx.a:
 	@echo "Making mlx"
 	make -C lib/mlx
 
 $(NAME): lib/mlx/libmlx.a $(OFILES)
+	@echo $(UNAME_S)
 	@echo "Linking executable"
 	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g
 	@echo "Done"
 
+endif
+
+ifeq ($(UNAME_S),Darwin)
+
+lib/mlx/libmlx.dylib:
+	@echo "Making mlx"
+	make -C lib/mlx
+	
+$(NAME): lib/mlx/libmlx.dylib $(OFILES)
+	@echo $(UNAME_S)
+	@echo "Linking executable"
+	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g lib/mlx/libmlx.dylib
+	@echo "Copying dylib"
+	@cp lib/mlx/libmlx.dylib .
+	@echo "Done"
+
+endif
+
+
 %.o: %.c
 	@echo "Compiling: $<"
-	@gcc -o $@ -c $< $(FLAGS) $(INCLUDES) $(LIBS) -g
+	gcc -o $@ -c $< $(FLAGS) $(INCLUDES) $(LIBS) -g
 
 clean: _clean
 	@echo "Cleaning..."
@@ -84,5 +112,8 @@ fclean: _clean
 
 _clean:
 	@rm -f $(OFILES)
+
+test:
+	@echo $(UNAME_S)
 
 re: fclean all
