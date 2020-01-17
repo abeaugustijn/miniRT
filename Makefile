@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/17 10:54:33 by abe              ###   ########.fr        #
+#    Updated: 2020/01/17 11:59:16 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,15 @@ CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
 
 INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist -I lib/mlx
-LIBS			=	-lm -L./lib/mlx -lmlx
+
+#LIBS			=	-L./lib/mlx -lmlx
+
+# OS detection for libs
+UNAME_S			:=	$(shell uname -s)
+
+ifeq ($(UNAME_S),Linux)
+LIBS			+=	-lm
+endif
 
 FLAGS			=	-Wall -Werror -Wextra
 
