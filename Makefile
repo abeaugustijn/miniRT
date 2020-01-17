@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/17 13:42:26 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/17 15:34:34 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ SRCS			=	gnl/get_next_line\
 					liblist/lst_new\
 					liblist/lst_new_back\
 					error/error\
+					hooks/close\
+					hooks/frame\
 					parser/parser\
 					parser/parse_resolution\
 					parser/parse_ambient\
@@ -42,6 +44,8 @@ SRCS			=	gnl/get_next_line\
 					helpers/parse_vec3f\
 					helpers/parse_color\
 					helpers/check_normalized\
+					helpers/tocolor\
+					renderer/get_pixel\
 					main\
 					init_mlx
 
