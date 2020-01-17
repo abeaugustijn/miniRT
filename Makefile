@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/15 19:18:04 by abe              ###   ########.fr        #
+#    Updated: 2020/01/17 10:54:33 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,14 +47,18 @@ SRCS			=	gnl/get_next_line\
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
 
-INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist
-LIBS			=	-lm
+INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist -I lib/mlx
+LIBS			=	-lm -L./lib/mlx -lmlx
 
 FLAGS			=	-Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OFILES)
+lib/mlx/libmlx.a:
+	@echo "Making mlx"
+	make -C lib/mlx
+
+$(NAME): lib/mlx/libmlx.a $(OFILES)
 	@echo "Linking executable"
 	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g
 	@echo "Done"
