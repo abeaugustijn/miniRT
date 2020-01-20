@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/18 18:18:35 by abe              ###   ########.fr        #
+#    Updated: 2020/01/20 13:49:41 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,13 +59,12 @@ TEST_OFILES		=	$(TESTS:%=src/tests/%.o)
 
 INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist
 
-LIBS			=	-Llib/mlx -lmlx
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-LIBS			+=	-lm -lX11 -lXext
+LIBS			+=	-Llib/mlx -lmlx -lm -lX11 -lXext
 INCLUDES		+=	-I lib/mlx/X11
 endif
 
@@ -106,6 +105,11 @@ $(NAME): lib/mlx/libmlx.dylib $(OFILES) src/main.o
 	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g lib/mlx/libmlx.dylib src/main.o
 	@echo "Copying dylib"
 	@cp lib/mlx/libmlx.dylib .
+	@echo "Done"
+
+test: lib/mlx/libmlx.dylib $(OFILES) $(TEST_OFILES)
+	@echo "Linking executable"
+	@gcc $(OFILES) $(FLAGS) $(LIBS) -o test -g lib/mlx/libmlx.dylib $(TEST_OFILES)
 	@echo "Done"
 
 endif
