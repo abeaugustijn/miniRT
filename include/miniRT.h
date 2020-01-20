@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/18 18:04:17 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/20 16:51:38 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,25 @@ typedef struct	s_mapinfo {
 	bool		do_save;
 	bool		rendered;
 }				t_mapinfo;
+
+typedef struct	s_mat4f {
+	float	xX;
+	float	xY;
+	float	xZ;
+	float	xW;
+	float	yX;
+	float	yY;
+	float	yZ;
+	float	yW;
+	float	zX;
+	float	zY;
+	float	zZ;
+	float	zW;
+	float	wX;
+	float	wY;
+	float	wZ;
+	float	wW;
+}				t_mat4f;
 
 typedef enum	e_object_type {
 	SP,
@@ -131,6 +150,8 @@ int				to_color(t_color color);
 */
 
 t_vec3f			vec3f_normalize(t_vec3f vec);
+double			vec_len(t_vec3f vec)
+void			ray_calc_dir(t_ray *ray, t_vec3f cam);
 
 /*
 **	Structure functions
