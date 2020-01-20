@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:36:58 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/17 17:14:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:39:45 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,9 @@ t_color			get_pixel(t_vec2i pixel, t_info *info)
 	pixel_camspace.x = info->current_cam->location.x + pixel_fov.x;
 	pixel_camspace.y = info->current_cam->location.y + pixel_fov.y;
 	pixel_camspace.z = info->current_cam->location.z - 1;
-	res.r = 0;
-	res.g = 0;
-	res.b = 0;
+	(void)pixel_camspace;
+	res.r = 242;
+	res.g = 59;
+	res.b = 255;
 	return (res);
 }

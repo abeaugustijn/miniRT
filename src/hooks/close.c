@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:51:29 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/17 13:55:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/18 17:37:56 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int	hook_close(int keycode, t_mlxinfo *mlx_info)
 {
 	printf("%d\n", keycode);
-	mlx_destroy_window(mlx_info->mlx, mlx_info->mlx_win);
+	if (keycode < 100)
+		mlx_destroy_window(mlx_info->mlx, mlx_info->mlx_win);
 	return (0);
 }

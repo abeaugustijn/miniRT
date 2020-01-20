@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/17 15:34:34 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/18 18:18:35 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,22 +45,27 @@ SRCS			=	gnl/get_next_line\
 					helpers/parse_color\
 					helpers/check_normalized\
 					helpers/tocolor\
+					math/vec_normalize\
 					renderer/get_pixel\
-					main\
 					init_mlx
+
+TESTS			=	math
 
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
 
+TEST_CFILES		=	$(TESTS:%=src/tests/%.c)
+TEST_OFILES		=	$(TESTS:%=src/tests/%.o)
+
 INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist
 
-#LIBS			=	-Llib/mlx -lmlx
+LIBS			=	-Llib/mlx -lmlx
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-LIBS			+=	-lm
+LIBS			+=	-lm -lX11 -lXext
 INCLUDES		+=	-I lib/mlx/X11
 endif
 
@@ -78,10 +83,14 @@ lib/mlx/libmlx.a:
 	@echo "Making mlx"
 	make -C lib/mlx
 
-$(NAME): lib/mlx/libmlx.a $(OFILES)
-	@echo $(UNAME_S)
+$(NAME): lib/mlx/libmlx.a $(OFILES) src/main.o
 	@echo "Linking executable"
-	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g
+	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o
+	@echo "Done"
+
+test: lib/mlx/libmlx.a $(OFILES) $(TEST_OFILES)
+	@echo "Linking executable"
+	@gcc $(OFILES) $(FLAGS) $(LIBS) -o test -g $(TEST_OFILES)
 	@echo "Done"
 
 endif
@@ -92,10 +101,9 @@ lib/mlx/libmlx.dylib:
 	@echo "Making mlx"
 	make -C lib/mlx
 	
-$(NAME): lib/mlx/libmlx.dylib $(OFILES)
-	@echo $(UNAME_S)
+$(NAME): lib/mlx/libmlx.dylib $(OFILES) src/main.o
 	@echo "Linking executable"
-	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g lib/mlx/libmlx.dylib
+	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g lib/mlx/libmlx.dylib src/main.o
 	@echo "Copying dylib"
 	@cp lib/mlx/libmlx.dylib .
 	@echo "Done"
@@ -116,8 +124,5 @@ fclean: _clean
 
 _clean:
 	@rm -f $(OFILES)
-
-test:
-	@echo $(UNAME_S)
 
 re: fclean all

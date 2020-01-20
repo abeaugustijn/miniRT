@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/17 16:23:00 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/18 18:04:17 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,11 @@ t_color			parse_color(char *str);
 bool			check_normalized(t_vec3f vec);
 int				to_color(t_color color);
 
+/*
+**	Maths
+*/
+
+t_vec3f			vec3f_normalize(t_vec3f vec);
 
 /*
 **	Structure functions
