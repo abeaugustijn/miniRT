@@ -9,7 +9,6 @@ a.out*
 pft/
 test.c
 subject.pdf
-test.rt
 
 lib*
 miniRt
