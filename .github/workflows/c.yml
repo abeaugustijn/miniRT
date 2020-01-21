@@ -9,6 +9,10 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: clone mlx
+      run: git clone https://github.com/pbondoer/MinilibX ./lib/mlx
+    - name: clone libft
+      run: git clone https://github.com/abeaugustijn/libft ./src/libft
     - name: make
       run: make
     - name: make test
