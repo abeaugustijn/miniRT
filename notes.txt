@@ -1,0 +1,46 @@
+DISTANCE BETWEEN LINE AND POINT:
+	d(line, point) == d(L, c)
+	// L is a point on the line
+	// c is the point
+
+	* Decide L:
+	where d(L, c) is minimal
+	d(l(o) + x * l(d), c)
+	== d([ox, oy, oz] + x * [dx, dy, dz], [cx, cy, cz])
+	== d([ox + x * dx, oy + x * dy, oz + x * dz], [cx, cy, cz])
+	== sqrt((cx - (ox + x * dx)) ^ 2 +
+			(cy - (oy + x * dy)) ^ 2 +
+			(cz - (oz + x * dz)) ^ 2)
+	== sqrt((cx - ox - x * dx) ^ 2 +
+			(cy - oy - x * dy) ^ 2 +
+			(cz - oz - x * dz) ^ 2)
+	== sqrt(cx ^ 2 - cx * ox - cx * x * dx - ox * cx + ox ^ 2 + ox * x * dx -
+				x * dx * cx + x * dx * ox + x ^ 2 * dx ^ 2 +
+			cy ^ 2 - cy * oy - cy * x * dy - oy * cy + oy ^ 2 + oy * x * dy -
+				x * dy * cy + x * dy * oy + x ^ 2 * dy ^ 2 +
+			cz ^ 2 - cz * oz - cz * x * dz - oz * cz + oz ^ 2 + oz * x * dz -
+				x * dz * cz + x * dz * oz + x ^ 2 * dz ^ 2)
+	== sqrt((dx ^ 2 + dy ^ 2 + dz ^ 2) * x ^ 2 +
+				(-cx * dx - cy * dy - cz * dz
+				+ ox * dx + oy * dy + oz * dz
+				- cx * dx - cy * dy - cz * dz
+				+ dx * ox + dy * oy + dz * oz) * x +
+					- cx * ox - cy * oy - cz * oz
+					- cx * ox - cy * oy - cz * oz
+					+ ox ^ 2 + oy ^ 2 + oz ^ 2)
+	== sqrt((dx ^ 2 + dy ^ 2 + dz ^ 2) * x ^ 2 +
+				(- 2 * (cx * dx - cy * dy - cz * dz)
+				+ ox * dx + oy * dy + oz * dz
+				+ dx * ox + dy * oy + dz * oz) * x +
+					- 2 * (cx * ox - cy * oy - cz * oz)
+					+ ox ^ 2 + oy ^ 2 + oz ^ 2)
+
+	Now we need the derivitive of this function and solve it against 0, to get
+	the value of x where the distance between L and c is smallest.
+
+	'd(L, c) == (2 * (dx ^ 2 + dy ^ 2 + dz ^ 2) * x
+				-cx * dx - cy * dy - cz * dz
+				+ ox * dx + oy * dy + oz * dz
+				- cx * dx - cy * dy - cz * dz
+				+ dx * ox + dy * oy + dz * oz) / 
+				(2 * )
