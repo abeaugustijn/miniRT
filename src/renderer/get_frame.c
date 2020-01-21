@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 21:17:30 by abe               #+#    #+#             */
-/*   Updated: 2020/01/21 21:23:56 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/21 21:41:18 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ t_color	*get_frame(t_info *info)
 	uint16_t	i;
 	uint16_t	j;
 
-	i = 0;
 	res = (t_color *)malloc(info->mapinfo.res.x * info->mapinfo.res.y *
 			sizeof(t_color));
 	if (!res)
 		print_error("Allocation failed in 'get_frame'\n");
+	i = 0;
 	while (i < info->mapinfo.res.x)
 	{
 		j = 0;
@@ -32,7 +32,7 @@ t_color	*get_frame(t_info *info)
 		while (j < info->mapinfo.res.y)
 		{
 			pixel.y = j;
-			res[info->mapinfo.res.x * i + j] = get_pixel(pixel, info);
+			res[info->mapinfo.res.y * i + j] = get_pixel(pixel, info);
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 21:28:12 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/21 21:41:24 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	hook_frame(t_info *info)
 					info->mlx_info.mlx,
 					info->mlx_info.mlx_win,
 					i, j,
-					to_color(frame[info->mapinfo.res.x * i + j]));
+					to_color(frame[info->mapinfo.res.y * i + j]));
 			j++;
 		}
 		i++;
