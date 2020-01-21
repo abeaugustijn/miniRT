@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   vec_dist.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 13:51:29 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/20 15:24:26 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/20 16:35:28 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/01/20 16:41:44 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <mlx.h>
-#include <stdlib.h>
+#include <math.h>
 
-	#include <stdio.h>
-
-int	hook_close(int keycode, t_mlxinfo *mlx_info)
+double	vec_dist(t_vec3f vec1, t_vec3f vec2)
 {
-	printf("%d\n", keycode);
-	if (keycode > 100)
-		return (0);
-	mlx_destroy_window(mlx_info->mlx, mlx_info->mlx_win);
-	exit(0);
-	return (0);
+	return (sqrt(pow(vec2.x - vec1.x, 2) + 
+				pow(vec2.y - vec1.y, 2) +
+				pow(vec2.z - vec1.z, 2)));
 }

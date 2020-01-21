@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   obj_dist_sphere.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 13:51:29 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/20 15:24:26 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/01/20 16:47:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <mlx.h>
-#include <stdlib.h>
-
-	#include <stdio.h>
-
-int	hook_close(int keycode, t_mlxinfo *mlx_info)
+#include <math.h>
+ 
+static bool	does_intersect(t_object *sp, t_ray ray)
 {
-	printf("%d\n", keycode);
-	if (keycode > 100)
-		return (0);
-	mlx_destroy_window(mlx_info->mlx, mlx_info->mlx_win);
-	exit(0);
-	return (0);
+	double	determinant;
+
+	return (determinant >= 0);
 }
+
+double	obj_dist_sphere(t_object *sp, t_ray ray)
+{
+	double	dist_to_center;
+
+	if (!does_intersect(sp, ray))
+		return (INFINITY);
+	dist_to_center = vec
+}
+

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   get_camtoworld.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 13:51:29 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/20 15:24:26 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/20 14:49:39 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/01/20 15:18:53 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <mlx.h>
-#include <stdlib.h>
+#include <libft.h>
 
-	#include <stdio.h>
-
-int	hook_close(int keycode, t_mlxinfo *mlx_info)
+t_mat4f	get_camtoworld(t_info *info)
 {
-	printf("%d\n", keycode);
-	if (keycode > 100)
-		return (0);
-	mlx_destroy_window(mlx_info->mlx, mlx_info->mlx_win);
-	exit(0);
-	return (0);
+	t_mat4f	res;
+
+	ft_bzero(&res, sizeof(t_mat4f));
+	(void)info;
+	return (res);
 }

@@ -11,3 +11,7 @@ test.c
 subject.pdf
 test.rt
 
+lib*
+miniRt
+test
+

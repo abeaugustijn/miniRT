@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:23:08 by abe               #+#    #+#             */
-/*   Updated: 2020/01/17 15:33:27 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/20 14:30:51 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2 && argc != 3)
 		print_error("Invalid amount of arguments\n");
-	ft_bzero(&info, sizeof(info));
+	ft_bzero(&info, sizeof(t_info));
 	if (argc == 3)
 	{
 		if (ft_strcmp(argv[2], "--save"))
