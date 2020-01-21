@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/21 14:01:03 by abe              ###   ########.fr        #
+#    Updated: 2020/01/21 14:09:12 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,12 +68,13 @@ TEST_OFILES		=	$(TESTS:%=src/tests/%.o)
 
 INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist
 
+LIBS			=
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-LIBS			=	-Llib/mlx -lmlx -lm -lX11 -lXext
+LIBS			+=	-Llib/mlx -lmlx -lm -lX11 -lXext
 INCLUDES		+=	-I lib/mlx/X11
 endif
 
@@ -93,7 +94,7 @@ lib/mlx/libmlx.a:
 
 $(NAME): lib/mlx/libmlx.a $(OFILES) src/main.o
 	@echo "Linking executable"
-	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o
+	@gcc $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o lib/mlx/libmlx.a
 	@echo "Done"
 
 test: lib/mlx/libmlx.a $(OFILES) $(TEST_OFILES)
