@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 11:51:22 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/21 16:06:52 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdbool.h>
 
 # define WINDOW_TITLE "miniRT"
+# define MOVE_SPEED 0.1
 
 typedef struct	s_vec3f {
 	float	x;
@@ -168,8 +169,8 @@ bool			init_mlx(t_mlxinfo *mlx_info, t_info *info);
 **	Hooks
 */
 
-int				hook_close(int keycode, t_mlxinfo *mlx_info);
 int				hook_frame(t_info *info);
+int				hook_key(int keycode, t_info *info);
 
 /*
 **	Renderer

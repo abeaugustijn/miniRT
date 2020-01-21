@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:16:52 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/17 18:58:32 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/21 16:03:51 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	init_mlx(t_mlxinfo *mlx_info, t_info *info)
 			info->mapinfo.res.y, WINDOW_TITLE);
 	if (!mlx_info->mlx_win)
 		return (true);
-	mlx_key_hook(mlx_info->mlx_win, &hook_close, mlx_info);
+	mlx_key_hook(mlx_info->mlx_win, &hook_key, info);
 	mlx_loop_hook(mlx_info->mlx, &hook_frame, info);
 	return (false);
 }

@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/21 14:11:08 by abe              ###   ########.fr        #
+#    Updated: 2020/01/21 16:22:18 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SRCS			=	gnl/get_next_line\
 					liblist/lst_new\
 					liblist/lst_new_back\
 					error/error\
-					hooks/close\
 					hooks/frame\
+					hooks/key\
 					parser/parser\
 					parser/parse_resolution\
 					parser/parse_ambient\
@@ -82,7 +82,7 @@ ifeq ($(UNAME_S),Darwin)
 INCLUDES		+=	-I lib/mlx
 endif
 
-FLAGS			=	-Wall -Werror -Wextra -DNOLIST
+FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O3
 
 all: $(NAME)
 
