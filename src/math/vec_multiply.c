@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_dist_sphere.c                                  :+:      :+:    :+:   */
+/*   vec_multiply.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 11:56:02 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/21 11:44:35 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/01/21 11:45:43 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <math.h>
- 
-static bool	does_intersect(t_object *sp, t_ray ray)
+
+t_vec3f	vec_multiply(t_vec3f vec, double factor)
 {
-	double	ray_dist;
+	t_vec3f	res;
 
-	ray_dist = dist_line_point(ray, sp->location);
-	return (ray_dist < sp->size);
+	res.x = vec.x * factor;
+	res.y = vec.y * factor;
+	res.z = vec.z * factor;
+	return (res);
 }
-
-double		obj_dist_sphere(t_object *sp, t_ray ray)
-{
-	double	dist_to_center;
-
-	(void)dist_to_center;
-	if (!does_intersect(sp, ray))
-		return (INFINITY);
-	return (1);
-}
-

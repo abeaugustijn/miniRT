@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/20 16:51:38 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/21 11:51:22 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,12 @@ int				to_color(t_color color);
 */
 
 t_vec3f			vec3f_normalize(t_vec3f vec);
-double			vec_len(t_vec3f vec)
 void			ray_calc_dir(t_ray *ray, t_vec3f cam);
+double			vec_len(t_vec3f vec);
+double			vec_dist(t_vec3f vec1, t_vec3f vec2);
+t_vec3f			vec_add(t_vec3f vec1, t_vec3f vec2);
+t_vec3f			vec_multiply(t_vec3f vec, double factor);
+double			dist_line_point(t_ray ray, t_vec3f c);
 
 /*
 **	Structure functions
@@ -172,5 +176,8 @@ int				hook_frame(t_info *info);
 */
 
 t_color			get_pixel(t_vec2i pixel, t_info *info);
+double			obj_dist(t_object *obj, t_ray ray);
+double			obj_dist_sphere(t_object *sp, t_ray ray);
+t_color			ray_cast(t_info *info, t_ray ray);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/20 13:49:41 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/21 11:56:21 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,16 @@ SRCS			=	gnl/get_next_line\
 					helpers/check_normalized\
 					helpers/tocolor\
 					math/vec_normalize\
+					math/vec_add\
+					math/vec_len\
+					math/vec_dist\
+					math/vec_multiply\
+					math/ray_calc_dir\
+					math/dist_line_point\
 					renderer/get_pixel\
+					renderer/ray_cast\
+					renderer/obj_dist\
+					renderer/obj_dist_sphere\
 					init_mlx
 
 TESTS			=	math
