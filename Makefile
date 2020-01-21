@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/21 14:09:12 by abe              ###   ########.fr        #
+#    Updated: 2020/01/21 14:11:08 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ ifeq ($(UNAME_S),Linux)
 lib/mlx/libmlx.a:
 	@echo "Making mlx"
 	make -C lib/mlx
+	@cp lib/mlx/X11/libmlx.a lib/mlx/
 
 $(NAME): lib/mlx/libmlx.a $(OFILES) src/main.o
 	@echo "Linking executable"
