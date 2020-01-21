@@ -6,25 +6,29 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 16:51:52 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/21 23:26:08 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
- 
-static bool	does_intersect(t_object *sp, t_ray ray)
+
+double		obj_dist_sphere(t_object *sp, t_ray ray, t_color *color)
 {
+	t_vec3f	closest;
 	double	ray_dist;
+	double	radius;
+	double	y;
 
-	ray_dist = dist_line_point(ray, sp->location);
-	return (ray_dist < sp->size / 2);
-}
-
-double		obj_dist_sphere(t_object *sp, t_ray ray)
-{
-	if (!does_intersect(sp, ray))
+	if(point_line_closest(ray, sp->location, &closest))
 		return (INFINITY);
-	return (1);
+	ray_dist = vec_dist(closest, sp->location);
+	radius = sp->size / 2.0;
+	if (ray_dist > radius)
+		return (INFINITY);
+	y = sqrt(pow(radius, 2) - pow(ray_dist, 2));
+	// Only temporary:
+	*color = col_multiply(sp->color, y / radius);
+	return (vec_dist(closest, ray.origin) - y);
 }
 

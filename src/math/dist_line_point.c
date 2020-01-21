@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 11:26:13 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 11:38:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/21 22:10:40 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,12 @@
 **				+ ox ^ 2 + oy ^ 2 + oz ^ 2) != 0
 */
 
-double	dist_line_point(t_ray ray, t_vec3f c)
+bool	point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res)
 {
 	double	x;
 	t_vec3f	d;
 	t_vec3f	o;
 	double	to_check;
-	t_vec3f	L;
 
 	d = ray.direction;
 	o = ray.origin;
@@ -109,8 +108,8 @@ double	dist_line_point(t_ray ray, t_vec3f c)
 	x -= 2 * (o.x * d.x + o.y *d.y + o.z * d.z);
 	to_check = 2 * (pow(d.x, 2) + pow(d.y, 2) + pow(d.z, 2));
 	if (to_check == 0)
-		return (INFINITY);
+		return (true);
 	x /= to_check;
-	L = vec_add(o, vec_multiply(d, x));
-	return (vec_dist(L, c));
+	*res = vec_add(o, vec_multiply(d, x));
+	return (false);
 }

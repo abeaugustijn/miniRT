@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_dist.c                                         :+:      :+:    :+:   */
+/*   col_multiply.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:32:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 22:14:36 by abe              ###   ########.fr       */
+/*   Created: 2020/01/21 22:19:07 by abe               #+#    #+#             */
+/*   Updated: 2020/01/21 22:22:11 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
 
-double			obj_dist(t_object *obj, t_ray ray, t_color *color)
+t_color	col_multiply(t_color color, double factor)
 {
-	double	res;
+	t_color	res;
 
-	res = INFINITY;
-	if (obj->type == SP)
-		res = obj_dist_sphere(obj, ray, color);
+	res.r = fmin(color.r * factor, 255.0);
+	res.g = fmin(color.g * factor, 255.0);
+	res.b = fmin(color.b * factor, 255.0);
 	return (res);
 }
