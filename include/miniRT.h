@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 18:23:21 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/21 21:24:59 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,5 +180,6 @@ t_color			get_pixel(t_vec2i pixel, t_info *info);
 double			obj_dist(t_object *obj, t_ray ray);
 double			obj_dist_sphere(t_object *sp, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
+t_color			*get_frame(t_info *info);
 
 #endif

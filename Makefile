@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/21 18:16:33 by abe              ###   ########.fr        #
+#    Updated: 2020/01/21 21:28:00 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRCS			=	gnl/get_next_line\
 					renderer/ray_cast\
 					renderer/obj_dist\
 					renderer/obj_dist_sphere\
+					renderer/get_frame\
 					init_mlx
 
 TESTS			=	math

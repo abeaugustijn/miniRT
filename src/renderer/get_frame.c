@@ -1,44 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frame.c                                            :+:      :+:    :+:   */
+/*   get_frame.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/17 14:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 21:28:12 by abe              ###   ########.fr       */
+/*   Created: 2020/01/21 21:17:30 by abe               #+#    #+#             */
+/*   Updated: 2020/01/21 21:23:56 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <mlx.h>
 #include <stdlib.h>
 
-int	hook_frame(t_info *info)
+t_color	*get_frame(t_info *info)
 {
-	t_color		*frame;
+	t_color	*res;
+	t_vec2i	pixel;
 	uint16_t	i;
 	uint16_t	j;
 
-	if (info->mapinfo.rendered)
-		return (0);
-	info->mapinfo.rendered = true;
-	frame = get_frame(info);
 	i = 0;
+	res = (t_color *)malloc(info->mapinfo.res.x * info->mapinfo.res.y *
+			sizeof(t_color));
+	if (!res)
+		print_error("Allocation failed in 'get_frame'\n");
 	while (i < info->mapinfo.res.x)
 	{
 		j = 0;
+		pixel.x = i;
 		while (j < info->mapinfo.res.y)
 		{
-			mlx_pixel_put(
-					info->mlx_info.mlx,
-					info->mlx_info.mlx_win,
-					i, j,
-					to_color(frame[info->mapinfo.res.x * i + j]));
+			pixel.y = j;
+			res[info->mapinfo.res.x * i + j] = get_pixel(pixel, info);
 			j++;
 		}
 		i++;
 	}
-	free(frame);
-	return (0);
+	return (res);
 }
