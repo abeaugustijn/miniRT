@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/21 16:22:18 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/21 18:16:33 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,19 +70,20 @@ INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist
 
 LIBS			=
 
+FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O3
+
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 LIBS			+=	-Llib/mlx -lmlx -lm -lX11 -lXext
 INCLUDES		+=	-I lib/mlx/X11
+FLAGS			+=	-DLINUX
 endif
 
 ifeq ($(UNAME_S),Darwin)
 INCLUDES		+=	-I lib/mlx
 endif
-
-FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O3
 
 all: $(NAME)
 

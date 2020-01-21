@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 15:36:51 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/20 15:40:02 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/21 18:19:30 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	ray_calc_dir(t_ray *ray, t_vec3f cam)
 	res.x = ray->origin.x - cam.x;
 	res.y = ray->origin.y - cam.y;
 	res.z = ray->origin.z - cam.z;
-	ray->direction = (vec3f_normalize(res));
+	ray->direction = vec3f_normalize(res);
 }

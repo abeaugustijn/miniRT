@@ -6,37 +6,38 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 15:55:27 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 16:31:53 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/21 18:23:09 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <mlx.h>
 #include <stdlib.h>
+#include <keys.h>
 
 	#include <stdio.h>
 
 int	hook_key(int keycode, t_info *info)
 {
 	printf("keypress: %d\n", keycode);
-	if (keycode == 49 || keycode == 12)
+	if (keycode == KEY_SPACE || keycode == KEY_Q)
 	{
 		mlx_destroy_window(info->mlx_info.mlx, info->mlx_info.mlx_win);
 		exit(0);
 	}
 	info->mapinfo.rendered = false;
-	if (keycode == 4)
+	if (keycode == KEY_H)
 		info->current_cam->location.x -= MOVE_SPEED;
-	else if (keycode == 38)
+	else if (keycode == KEY_J)
 		info->current_cam->location.y -= MOVE_SPEED;
-	else if (keycode == 40)
+	else if (keycode == KEY_K)
 		info->current_cam->location.y += MOVE_SPEED;
-	else if (keycode == 37)
+	else if (keycode == KEY_L)
 		info->current_cam->location.x += MOVE_SPEED;
-	else if (keycode == 126)
-		info->current_cam->location.z += MOVE_SPEED * 10;
-	else if (keycode == 125)
-		info->current_cam->location.z -= MOVE_SPEED * 10;
+	else if (keycode == KEY_UP)
+		info->current_cam->location.z += MOVE_SPEED;
+	else if (keycode == KEY_DOWN)
+		info->current_cam->location.z -= MOVE_SPEED;
 	else
 		info->mapinfo.rendered = true;
 	return (0);
