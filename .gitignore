@@ -1,17 +1,7 @@
-coverage
-.vscode
 *.a
 *.o
-a.out*
-
 .ccls
-
-pft/
-test.c
 subject.pdf
-
 lib*
 miniRt
 test
-
-miniRT
