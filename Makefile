@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/24 10:07:03 by abe              ###   ########.fr        #
+#    Updated: 2020/01/24 12:01:43 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS			=	gnl/get_next_line\
 					helpers/free_string_arr\
 					helpers/arrlen\
 					helpers/isdigit_string\
-					helpers/parse_float\
+					helpers/parse_double\
 					helpers/parse_vec3f\
 					helpers/parse_color\
 					helpers/check_normalized\
@@ -55,6 +55,7 @@ SRCS			=	gnl/get_next_line\
 					math/col_multiply\
 					math/col_new\
 					math/col_mix\
+					math/col_mix_ambient\
 					renderer/get_pixel\
 					renderer/ray_cast\
 					renderer/obj_dist\
@@ -74,7 +75,7 @@ INCLUDES		=	-I include -I src/libft -I src/gnl -I src/liblist
 
 LIBS			=
 
-FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O3
+FLAGS			=	-Wall -Werror -Wextra -DNOLIST
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)

@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/17 15:30:55 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/24 11:59:34 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void		parse_input(char *filename, t_info *info)
 	}
 	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
 		print_error("Invalid file. R and A have to be present\n");
-	/*if (!info->cameras || !info->lights)*/
-		/*print_error("At least one camera and light should be defined\n");*/
+	if (!info->cameras || !info->lights)
+		print_error("At least one camera and light should be defined\n");
 	close(fd);
 }

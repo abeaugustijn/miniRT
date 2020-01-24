@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/24 10:06:36 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/24 11:57:44 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 # define MOVE_SPEED 1
 
 typedef struct	s_vec3f {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }				t_vec3f;
 
 typedef struct	s_vec2f {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }				t_vec2f;
 
 typedef struct	s_vec2i {
@@ -53,38 +53,13 @@ typedef struct	s_mlxinfo {
 
 typedef struct	s_mapinfo {
 	t_vec2i		res;
-	float		ambient_ratio;
+	double		ambient_ratio;
 	t_color		ambient_color;
-	t_vec3f		cam_pos;
-	t_vec3f		cam_orientation;
-	uint8_t		cam_fov;
-	t_vec3f		light_pos;
-	float		light_brightness;
-	t_color		light_color;
 	bool		did_resolution;
 	bool		did_ambient;
 	bool		do_save;
 	bool		rendered;
 }				t_mapinfo;
-
-typedef struct	s_mat4f {
-	float	xX;
-	float	xY;
-	float	xZ;
-	float	xW;
-	float	yX;
-	float	yY;
-	float	yZ;
-	float	yW;
-	float	zX;
-	float	zY;
-	float	zZ;
-	float	zW;
-	float	wX;
-	float	wY;
-	float	wZ;
-	float	wW;
-}				t_mat4f;
 
 typedef enum	e_object_type {
 	SP,
@@ -98,8 +73,8 @@ typedef struct 	s_object {
 	t_object_type	type;
 	t_color			color;
 	t_vec3f			location;
-	float			size;
-	float			height;
+	double			size;
+	double			height;
 	t_vec3f			orientation;
 	t_vec3f			points[3];
 }				t_object;
@@ -140,7 +115,7 @@ void			print_error_free_list(char *message, t_list *to_free);
 void			free_string_arr(char **array);
 size_t			arrlen(char **array);
 bool			isdigit_string(char *string);
-float			parse_float(char *str);
+float			parse_double(char *str);
 t_vec3f			parse_vec3f(char *str);
 t_color			parse_color(char *str);
 bool			check_normalized(t_vec3f vec);
@@ -165,6 +140,7 @@ bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 t_color			col_new(uint8_t r, uint8_t g, uint8_t b);
 t_color			col_multiply(t_color color, double factor);
 t_color			col_mix(t_color col1, t_color col2);
+t_color			col_mix_ambient(t_color col, t_color amb);
 
 /*
 **	Structure functions

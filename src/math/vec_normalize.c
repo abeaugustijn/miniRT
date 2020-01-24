@@ -6,13 +6,13 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 17:53:08 by abe               #+#    #+#             */
-/*   Updated: 2020/01/20 11:47:30 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/24 11:52:28 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-static float	get_max(t_vec3f vec)
+static double	get_max(t_vec3f vec)
 {
 	if (vec.x >= vec.y && vec.x >= vec.z)
 		return (vec.x);
@@ -21,7 +21,7 @@ static float	get_max(t_vec3f vec)
 	return (vec.z);
 }
 
-static float	get_min(t_vec3f vec)
+static double	get_min(t_vec3f vec)
 {
 	if (vec.x <= vec.y && vec.x <= vec.z)
 		return (vec.x);
@@ -32,8 +32,8 @@ static float	get_min(t_vec3f vec)
 
 t_vec3f	vec3f_normalize(t_vec3f vec)
 {
-	float	max;
-	float	min;
+	double	max;
+	double	min;
 	bool	is_min;
 	t_vec3f	res;
 

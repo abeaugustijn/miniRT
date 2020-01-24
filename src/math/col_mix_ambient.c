@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_ambient.c                                    :+:      :+:    :+:   */
+/*   col_mix_ambient.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/14 21:47:37 by abe               #+#    #+#             */
-/*   Updated: 2020/01/24 11:56:48 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/24 10:03:41 by abe               #+#    #+#             */
+/*   Updated: 2020/01/24 11:44:39 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <liblist.h>
-#include <libft.h>
 
-void	parse_ambient(char **words, t_info *info)
+t_color	col_mix_ambient(t_color col, t_color amb)
 {
-	if (arrlen(words) != 3)
-		print_error("Error while parsing ambient lighting\n");
-	if (info->mapinfo.did_ambient)
-		print_error("Invalid file. Ambient is specified multiple times.\n");
-	info->mapinfo.ambient_ratio = parse_double(words[1]);
-	info->mapinfo.ambient_color = parse_color(words[2]);
-	info->mapinfo.did_ambient = true;
+	return (col_new((double)col.r * amb.r / 255,
+				(double)col.g * amb.g / 255,
+				(double)col.b * amb.b / 255));
 }
