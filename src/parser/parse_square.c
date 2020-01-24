@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/01/24 11:57:25 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/15 22:39:43 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	parse_square(char **words, t_info *info)
 	res->orientation = parse_vec3f(words[2]);
 	if (!check_normalized(res->orientation))
 		print_error_free("Orientation vector for square is not normalized\n", res);
-	res->size = parse_double(words[3]);
+	res->size = parse_float(words[3]);
 	if (res->size < 0)
 		print_error_free("Invalid size for square\n", res);
 	res->color = parse_color(words[4]);

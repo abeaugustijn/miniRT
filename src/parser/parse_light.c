@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/01/24 11:57:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/15 18:41:35 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			parse_light(char **words, t_info *info)
 	if (!res)
 		print_error("Allocation failed in 'parse_light'\n");
 	res->location = parse_vec3f(words[1]);
-	res->brightness = parse_double(words[2]);
+	res->brightness = parse_float(words[2]);
 	if (res->brightness < 0 || res->brightness > 1)
 		print_error_free("Invalid brightness for light\n", res);
 	res->color = parse_color(words[3]);

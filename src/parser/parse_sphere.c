@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/01/24 11:57:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/15 22:39:19 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	parse_sphere(char **words, t_info *info)
 	ft_bzero(res, sizeof(t_object));
 	res->type = SP;
 	res->location = parse_vec3f(words[1]);
-	res->size = parse_double(words[2]);
+	res->size = parse_float(words[2]);
 	if (res->size < 0)
 		print_error_free("Invalid diameter for sphere\n", res);
 	res->color = parse_color(words[3]);

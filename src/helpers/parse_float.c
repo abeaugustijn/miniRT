@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_double.c                                     :+:      :+:    :+:   */
+/*   parse_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/24 11:56:23 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/24 11:56:24 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/14 21:30:06 by abe               #+#    #+#             */
+/*   Updated: 2020/01/15 18:49:39 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 #include <stdbool.h>
 
 /*
-**	Parse a string to a double.
+**	Parse a string to a float.
 */
 
-double	parse_double(char *str)
+float	parse_float(char *str)
 {
-	double	res;
+	float	res;
 	int		count;
 	bool	is_neg;
 
