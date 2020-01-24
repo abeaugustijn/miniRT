@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_dist.c                                         :+:      :+:    :+:   */
+/*   col_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:32:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/24 09:54:30 by abe              ###   ########.fr       */
+/*   Created: 2020/01/24 10:04:15 by abe               #+#    #+#             */
+/*   Updated: 2020/01/24 10:04:58 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <math.h>
 
-double			obj_dist(t_object *obj, t_ray ray, t_color *color, t_info *info)
+t_color	col_new(uint8_t r, uint8_t g, uint8_t b)
 {
-	double	res;
+	t_color	res;
 
-	res = INFINITY;
-	if (obj->type == SP)
-		res = obj_dist_sphere(obj, ray, color, info);
+	res.r = r;
+	res.g = g;
+	res.b = b;
 	return (res);
 }

@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_dist.c                                         :+:      :+:    :+:   */
+/*   col_mix.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:32:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/24 09:54:30 by abe              ###   ########.fr       */
+/*   Created: 2020/01/24 10:03:41 by abe               #+#    #+#             */
+/*   Updated: 2020/01/24 10:06:08 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <math.h>
 
-double			obj_dist(t_object *obj, t_ray ray, t_color *color, t_info *info)
+t_color	col_mix(t_color col1, t_color col2)
 {
-	double	res;
-
-	res = INFINITY;
-	if (obj->type == SP)
-		res = obj_dist_sphere(obj, ray, color, info);
-	return (res);
+	return (col_new(col1.r / 2 + col2.r / 2,
+				col1.g / 2 + col2.g / 2,
+				col1.b / 2 + col2.b / 2));
 }

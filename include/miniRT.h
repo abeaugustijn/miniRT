@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 22:21:16 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/24 10:06:36 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,14 @@ double			vec_dist(t_vec3f vec1, t_vec3f vec2);
 t_vec3f			vec_add(t_vec3f vec1, t_vec3f vec2);
 t_vec3f			vec_multiply(t_vec3f vec, double factor);
 bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
+
+/*
+**	Colors
+*/
+
+t_color			col_new(uint8_t r, uint8_t g, uint8_t b);
 t_color			col_multiply(t_color color, double factor);
+t_color			col_mix(t_color col1, t_color col2);
 
 /*
 **	Structure functions
@@ -178,8 +185,8 @@ int				hook_key(int keycode, t_info *info);
 */
 
 t_color			get_pixel(t_vec2i pixel, t_info *info);
-double			obj_dist(t_object *obj, t_ray ray, t_color *color);
-double			obj_dist_sphere(t_object *sp, t_ray ray, t_color *color);
+double			obj_dist(t_object *obj, t_ray ray, t_color *color, t_info *info);
+double			obj_dist_sphere(t_object *sp, t_ray ray, t_color *color, t_info *info);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			*get_frame(t_info *info);
 

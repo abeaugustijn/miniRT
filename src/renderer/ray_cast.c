@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 22:14:19 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/24 09:54:38 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_color	ray_cast(t_info *info, t_ray ray)
 	current = info->objects;
 	while (current)
 	{
-		dist = obj_dist((t_object *)current->content, ray, &to_ret);
+		dist = obj_dist((t_object *)current->content, ray, &to_ret, info);
 		if (dist < min_distance)
 		{
 			closest = (t_object *)current->content;

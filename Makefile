@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/21 22:21:52 by abe              ###   ########.fr        #
+#    Updated: 2020/01/24 10:07:03 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,8 @@ SRCS			=	gnl/get_next_line\
 					math/ray_calc_dir\
 					math/dist_line_point\
 					math/col_multiply\
+					math/col_new\
+					math/col_mix\
 					renderer/get_pixel\
 					renderer/ray_cast\
 					renderer/obj_dist\
