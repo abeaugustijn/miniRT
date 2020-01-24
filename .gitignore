@@ -1,7 +1,6 @@
 *.a
 *.o
-.ccls*
-.vscode
+.ccls
 subject.pdf
 lib*
 miniRT
