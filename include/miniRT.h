@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/24 11:57:44 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/24 13:55:22 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/01/24 13:55:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ typedef enum	e_object_type {
 	TR
 }				t_object_type;
 
-typedef struct 	s_object {
+typedef struct	s_object {
 	t_object_type	type;
 	t_color			color;
 	t_vec3f			location;
