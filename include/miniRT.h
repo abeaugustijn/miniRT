@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/24 10:06:36 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/24 16:20:58 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 t_color			col_new(uint8_t r, uint8_t g, uint8_t b);
 t_color			col_multiply(t_color color, double factor);
 t_color			col_mix(t_color col1, t_color col2);
+t_color			col_mix_ambient(t_color col, t_color amb);
 
 /*
 **	Structure functions

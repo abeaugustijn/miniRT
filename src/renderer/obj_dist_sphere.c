@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/24 10:03:31 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/24 16:21:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double		obj_dist_sphere(t_object *sp, t_ray ray, t_color *color,
 	/*y = sqrt(pow(radius, 2) - pow(ray_dist, 2));*/
 	// Only temporary:
 	/**color = col_multiply(sp->color, y / radius);*/
-	*color = col_multiply(col_mix(sp->color, info->mapinfo.ambient_color), info->mapinfo.ambient_ratio);
+	*color = col_multiply(col_mix_ambient(sp->color, info->mapinfo.ambient_color), info->mapinfo.ambient_ratio);
 	/*return (vec_dist(closest, ray.origin) - y);*/
 	return (vec_dist(closest, ray.origin));
 }
