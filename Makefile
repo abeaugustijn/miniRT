@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/27 15:58:44 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/27 18:36:04 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ ifeq ($(UNAME_S),Linux)
 LIBS			+=	-Llib/libmlx -lmlx -lm -lX11 -lXext
 INCLUDES		+=	-I lib/libmlx/X11
 FLAGS			+=	-DLINUX
+LIB_SRCS		+=	lib/libmlx/libmlx.a
 endif
 
 ifeq ($(UNAME_S),Darwin)
@@ -98,13 +99,12 @@ ifeq ($(UNAME_S),Linux)
 
 lib/libmlx/libmlx.a:
 	make -C lib/libmlx
-	cp -f lib/libmlx/X11/libmlx.dylib lib/libmlx/
 
-$(NAME): $(LIB_DIRS) $(OFILES) src/main.o
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o lib/libmlx/libmlx.a
+$(NAME): $(LIB_SRCS) $(OFILES) src/main.o
+	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o $(LIB_SRCS)
 
-test: $(LIB_DIRS) $(OFILES) $(TEST_OFILES)
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test -g $(TEST_OFILES)
+test: $(LIB_SRCS) $(OFILES) $(TEST_OFILES)
+	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test -g $(TEST_OFILES) $(LIB_SRCS)
 
 endif
 

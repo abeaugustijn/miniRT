@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/17 15:30:55 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:38:32 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ void		parse_input(char *filename, t_info *info)
 		print_error("Opening file went wrong\n");
 	while (get_next_line(fd, &line))
 	{
-		parse_line(line, info);
+		if (*line != '#')
+			parse_line(line, info);
 		free(line);
 	}
 	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
