@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/27 09:34:26 by abe              ###   ########.fr        #
+#    Updated: 2020/01/27 11:57:24 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,18 +63,9 @@ INCLUDES		=	-I include\
 					-I lib/libgnl\
 					-I lib/liblist
 
-LIB_SRCS		=	libft\
-					liblist\
-					libmlx\
-					libgnl
-
-LIB_DIRS		=	$(LIB_SRCS:%=lib/%)
-
-LIB_AFILES		=	$(LIB_SRCS:%=lib/%/%.a)
-
-LIBS			=	-L lib/libft -lft\
-					-L lib/liblist -llist\
-					-L lib/libgnl -lgnl
+LIB_SRCS		=	lib/libft/libft.a\
+					lib/liblist/liblist.a\
+					lib/libgnl/libgnl.a
 
 FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O3
 
@@ -88,7 +79,7 @@ FLAGS			+=	-DLINUX
 endif
 
 ifeq ($(UNAME_S),Darwin)
-INCLUDES		+=	-I lib/mlx
+INCLUDES		+=	-I lib/libmlx
 endif
 
 all: $(NAME)
@@ -98,20 +89,15 @@ all: $(NAME)
 
 ifeq ($(UNAME_S),Linux)
 
-lib/mlx/libmlx.a:
-	@echo "Making mlx"
+lib/libmlx/libmlx.a:
 	make -C lib/libmlx
-	cp -f lib/libmlx/X11/libmlx.a lib/libmlx/
+	cp -f lib/libmlx/X11/libmlx.dylib lib/libmlx/
 
 $(NAME): $(LIB_DIRS) $(OFILES) src/main.o
-	@echo "Linking executable"
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o lib/libmlx/libmlx.a
-	@echo "Done"
 
 test: $(LIB_DIRS) $(OFILES) $(TEST_OFILES)
-	@echo "Linking executable"
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test -g $(TEST_OFILES)
-	@echo "Done"
 
 endif
 
@@ -120,38 +106,29 @@ endif
 
 ifeq ($(UNAME_S),Darwin)
 
-lib/mlx/libmlx.dylib:
-	@echo "Making mlx"
-	make -C lib/mlx
-	
-$(NAME): lib/mlx/libmlx.dylib $(OFILES) src/main.o
-	@echo "Linking executable"
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g lib/mlx/libmlx.dylib src/main.o
-	@echo "Copying dylib"
-	cp lib/mlx/libmlx.dylib .
-	@echo "Done"
+lib/libmlx/libmlx.dylib:
+	make -C lib/libmlx
+	cp lib/libmlx/libmlx.dylib .
 
-test: lib/mlx/libmlx.dylib $(OFILES) $(TEST_OFILES)
-	@echo "Linking executable"
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test -g lib/mlx/libmlx.dylib $(TEST_OFILES)
-	@echo "Done"
+$(NAME): $(LIB_SRCS) $(OFILES) src/main.o lib/libmlx/libmlx.dylib
+	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) $(LIB_SRCS) -g src/main.o libmlx.dylib
+	cp lib/libmlx/libmlx.dylib .
+
+test: $(LIB_SRCS) $(OFILES) $(TEST_OFILES)
+	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test $(LIB_SRCS) -g  $(TEST_OFILES)
 
 endif
 
 
 %.o: %.c
-	@echo "Compiling: $<"
 	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES) $(LIBS) -g
 
-lib/%/%.a: lib/%
-	@echo "Making lib $@"
-	make -C $<
+%.a:
+	make -C $(@D)
 
 clean: _clean
-	@echo "Cleaning..."
 
 fclean: _clean
-	@echo "Cleaning..."
 	@rm -f $(NAME)
 
 _clean:
