@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/27 11:57:24 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/27 13:45:58 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ SRCS			=	error/error\
 					helpers/parse_color\
 					helpers/check_normalized\
 					helpers/tocolor\
+					helpers/rayres_inf\
+					helpers/rayres_new\
 					vec/vec_normalize\
 					vec/vec_add\
 					vec/vec_len\
@@ -129,9 +131,13 @@ endif
 clean: _clean
 
 fclean: _clean
-	@rm -f $(NAME)
+	make clean -C lib/libmlx
+	make fclean -C lib/liblist
+	make fclean -C lib/libft
+	make fclean -C lib/libgnl
+	rm -f $(NAME)
 
 _clean:
-	@rm -f $(OFILES)
+	rm -f $(OFILES)
 
 re: fclean all

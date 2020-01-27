@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/24 16:20:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/27 13:39:46 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ typedef struct	s_color {
 	uint8_t g;
 	uint8_t b;
 }				t_color;
+
+typedef struct	s_rayres {
+	double	dist;
+	t_color	color;
+}				t_rayres;
 
 typedef struct	s_mlxinfo {
 	void	*mlx;
@@ -145,6 +150,8 @@ t_vec3f			parse_vec3f(char *str);
 t_color			parse_color(char *str);
 bool			check_normalized(t_vec3f vec);
 int				to_color(t_color color);
+t_rayres		rayres_inf(void);
+t_rayres		rayres_new(double dist, t_color color);
 
 /*
 **	Maths
@@ -186,8 +193,8 @@ int				hook_key(int keycode, t_info *info);
 */
 
 t_color			get_pixel(t_vec2i pixel, t_info *info);
-double			obj_dist(t_object *obj, t_ray ray, t_color *color, t_info *info);
-double			obj_dist_sphere(t_object *sp, t_ray ray, t_color *color, t_info *info);
+t_rayres		obj_dist(t_object *obj, t_ray ray);
+t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			*get_frame(t_info *info);
 
