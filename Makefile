@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/27 13:45:58 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/01/27 15:58:44 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,15 @@ SRCS			=	error/error\
 					helpers/tocolor\
 					helpers/rayres_inf\
 					helpers/rayres_new\
+					vec/vec_new\
 					vec/vec_normalize\
+					vec/vec_angle\
 					vec/vec_add\
+					vec/vec_sub\
 					vec/vec_len\
 					vec/vec_dist\
 					vec/vec_multiply\
+					vec/vec_dotp\
 					math/ray_calc_dir\
 					math/dist_line_point\
 					col/col_multiply\
@@ -49,6 +53,7 @@ SRCS			=	error/error\
 					renderer/ray_cast\
 					renderer/obj_dist\
 					renderer/obj_dist_sphere\
+					renderer/obj_dist_plane\
 					renderer/get_frame\
 					init_mlx
 

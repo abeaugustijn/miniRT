@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_dist.c                                         :+:      :+:    :+:   */
+/*   vec_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:32:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 15:58:00 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/01/27 15:52:00 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/01/27 15:52:29 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <math.h>
 
-t_rayres	obj_dist(t_object *obj, t_ray ray)
+t_vec3f			vec_new(double x, double y, double z)
 {
-	if (obj->type == SP)
-		return (obj_dist_sphere(obj, ray));
-	if (obj->type == PL)
-		return (obj_dist_plane(obj, ray));
-	return (rayres_inf());
+	t_vec3f	res;
+
+	res.x = x;
+	res.y = y;
+	res.z = z;
+	return (res);
 }

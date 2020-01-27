@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 13:39:46 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/27 15:57:10 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,14 @@ t_rayres		rayres_new(double dist, t_color color);
 
 t_vec3f			vec3f_normalize(t_vec3f vec);
 void			ray_calc_dir(t_ray *ray, t_vec3f cam);
+t_vec3f			vec_new(double x, double y, double z);
 double			vec_len(t_vec3f vec);
 double			vec_dist(t_vec3f vec1, t_vec3f vec2);
 t_vec3f			vec_add(t_vec3f vec1, t_vec3f vec2);
+t_vec3f			vec_sub(t_vec3f vec1, t_vec3f vec2);
 t_vec3f			vec_multiply(t_vec3f vec, double factor);
+double			vec_dotp(t_vec3f vec1, t_vec3f vec2);
+double			vec_angle(t_vec3f vec1, t_vec3f vec2);
 bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 
 /*
@@ -195,6 +199,7 @@ int				hook_key(int keycode, t_info *info);
 t_color			get_pixel(t_vec2i pixel, t_info *info);
 t_rayres		obj_dist(t_object *obj, t_ray ray);
 t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
+t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			*get_frame(t_info *info);
 
