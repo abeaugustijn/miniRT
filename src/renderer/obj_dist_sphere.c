@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 14:09:51 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/27 16:59:59 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 t_rayres		obj_dist_sphere(t_object *sp, t_ray ray)
 {
 	t_vec3f		closest;
+	t_vec3f		p;
 	double		radius;
 	double		y;
 	double		center_dist;
@@ -27,6 +28,8 @@ t_rayres		obj_dist_sphere(t_object *sp, t_ray ray)
 	if (center_dist > radius)
 		return (rayres_inf());
 	y = sqrt(pow(radius, 2) - pow(center_dist, 2));
-	return (rayres_new(vec_dist(ray.origin, sp->location) - y, sp->color));
+	p = vec_add(ray.origin, sp->location);
+	p = vec_sub(p, vec_multiply(ray.direction, (y / radius)));
+	return (rayres_new(p, sp->color));
 }
 

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 11:26:13 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 22:10:40 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/27 17:10:50 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ bool	point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res)
 	if (to_check == 0)
 		return (true);
 	x /= to_check;
+	if (x < 0)
+		return (true);
 	*res = vec_add(o, vec_multiply(d, x));
 	return (false);
 }

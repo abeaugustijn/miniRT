@@ -6,17 +6,18 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:38:55 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 13:39:31 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:04:02 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-t_rayres	rayres_new(double dist, t_color color)
+t_rayres	rayres_new(t_vec3f p, t_color color)
 {
 	t_rayres	res;
 
-	res.dist = dist;
+	res.p = p;
 	res.color = color;
+	res.dist = 0;
 	return (res);
 }

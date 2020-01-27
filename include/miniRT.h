@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 15:57:10 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/27 17:05:15 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_color {
 
 typedef struct	s_rayres {
 	double	dist;
+	t_vec3f	p;
 	t_color	color;
 }				t_rayres;
 
@@ -151,7 +152,7 @@ t_color			parse_color(char *str);
 bool			check_normalized(t_vec3f vec);
 int				to_color(t_color color);
 t_rayres		rayres_inf(void);
-t_rayres		rayres_new(double dist, t_color color);
+t_rayres		rayres_new(t_vec3f p, t_color color);
 
 /*
 **	Maths
@@ -202,5 +203,6 @@ t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
 t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			*get_frame(t_info *info);
+bool			ifo_cam(t_vec3f p, t_camera *cam);
 
 #endif
