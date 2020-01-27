@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 17:09:37 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:58:31 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ static	t_rayres	ray_cast_object(t_info *info, t_ray ray)
 	while (current)
 	{
 		rayres = obj_dist((t_object *)current->content, ray);
-		if (!rayres.dist)
-			rayres.dist = vec_dist(rayres.p, ray.origin);
 		if (rayres.dist < min_distance)
 		{
 			closest = (t_object *)current->content;

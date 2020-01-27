@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 17:05:15 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/27 18:59:26 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ bool			check_normalized(t_vec3f vec);
 int				to_color(t_color color);
 t_rayres		rayres_inf(void);
 t_rayres		rayres_new(t_vec3f p, t_color color);
+t_rayres		rayres_new_dist(t_vec3f p, t_color color, double dist);
 
 /*
 **	Maths
