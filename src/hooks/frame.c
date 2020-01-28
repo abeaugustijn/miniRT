@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 17:20:26 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/28 20:15:54 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,20 @@ int			hook_frame(t_info *info)
 {
 	uint16_t	i;
 	uint16_t	j;
-	char		*addr;
 
 	if (info->mapinfo.rendered)
 		return (0);
 	info->mapinfo.rendered = true;
 	i = 0;
-	addr = info->mlx_info.img.addr;
 	while (i < info->mapinfo.res.x)
 	{
 		j = 0;
 		while (j < info->mapinfo.res.y)
 		{
-			*(unsigned int *)addr = to_color(get_pixel((t_vec2i){i, j}, info));
-			addr += info->mlx_info.img.bpp / 8;
-			/*pixel_put(*/
-					/*info->mlx_info.img,*/
-					/*i, j,*/
-					/*get_pixel((t_vec2i){i, j}, info));*/
+			pixel_put(
+					info->mlx_info.img,
+					i, j,
+					get_pixel((t_vec2i){i, j}, info));
 			j++;
 		}
 		i++;
