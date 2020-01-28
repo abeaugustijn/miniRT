@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:23:08 by abe               #+#    #+#             */
-/*   Updated: 2020/01/20 14:30:51 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:38:10 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char *argv[])
 			info.mapinfo.do_save = true;
 	}
 	parse_input(argv[1], &info);
-	if (init_mlx(&info.mlx_info, &info))
+	if (init_mlx(&info))
 		print_error("Error opening window\n");
 	info.current_cam = info.cameras->content;
 	mlx_loop(info.mlx_info.mlx);

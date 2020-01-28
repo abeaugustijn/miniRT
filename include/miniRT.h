@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 16:02:53 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:57:18 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,18 @@ typedef struct	s_rayres {
 	t_color	color;
 }				t_rayres;
 
+typedef struct	s_mlximg {
+	void		*ptr;
+	char		*addr;
+	int			bpp;
+	int			line_length;
+	int			endian;
+}				t_mlximg;
+
 typedef struct	s_mlxinfo {
-	void	*mlx;
-	void	*mlx_win;
+	void		*mlx;
+	void		*mlx_win;
+	t_mlximg	img;
 }				t_mlxinfo;
 
 typedef struct	s_mapinfo {
@@ -185,7 +194,7 @@ t_color			col_mix_ambient(t_color col, t_color amb);
 */
 
 void			parse_input(char *filename, t_info *info);
-bool			init_mlx(t_mlxinfo *mlx_info, t_info *info);
+bool			init_mlx(t_info *info);
 
 /*
 **	Hooks
