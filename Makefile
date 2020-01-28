@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/28 20:19:07 by abe              ###   ########.fr        #
+#    Updated: 2020/01/28 20:50:27 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ SRCS			=	error/error\
 					renderer/obj_dist\
 					renderer/obj_dist_sphere\
 					renderer/obj_dist_plane\
+					free/free_list\
+					free/free_info\
 					init_mlx
 
 TESTS			=	math

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 16:57:18 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/28 20:47:36 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,9 @@ typedef struct	s_info {
 **	Errors
 */
 
-void			print_error(char *message);
-void			print_error_free(char *message, void *to_free);
-void			print_error_free_list(char *message, t_list *to_free);
+void			print_error(char *message, t_info *info);
+void			print_error_free(char *message, t_info *info, void *to_free,
+					void (*free_func)(void *));
 
 /*
 **	Helpers
@@ -156,8 +156,8 @@ void			free_string_arr(char ***array);
 size_t			arrlen(char **array);
 bool			isdigit_string(char *string);
 float			parse_float(char *str);
-t_vec3f			parse_vec3f(char *str);
-t_color			parse_color(char *str);
+t_vec3f			parse_vec3f(char *str, t_info *info);
+t_color			parse_color(char *str, t_info *info);
 bool			check_normalized(t_vec3f vec);
 int				to_color(t_color color);
 t_rayres		rayres_inf(void);
@@ -214,5 +214,12 @@ t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			*get_frame(t_info *info);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
+
+/*
+**	Free functions
+*/
+
+void			free_list(t_list *to_free, void (*free_func)(void *));
+void			free_info(t_info *info);
 
 #endif

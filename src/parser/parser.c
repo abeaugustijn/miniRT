@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 16:12:26 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/28 20:45:01 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	parse_line(char *line, t_info *info)
 
 	words = ft_split(line, ' ');
 	if (words == NULL)
-		print_error("Memory allocation failed\n");
+		print_error("Memory allocation failed\n", info);
 	if (!words[0])
 		return ;
 	i = 0;
@@ -67,7 +67,7 @@ static void	parse_line(char *line, t_info *info)
 		}
 		i++;
 	}
-	print_error("Invalid line\n");
+	print_error("Invalid line\n", info);
 }
 
 /*
@@ -85,10 +85,10 @@ void		parse_input(char *filename, t_info *info)
 	char	*line;
 
 	if (check_filename(filename))
-		print_error("Invalid file extension\n");
+		print_error("Invalid file extension\n", info);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		print_error("Opening file went wrong\n");
+		print_error("Opening file went wrong\n", info);
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (*line != '#')
@@ -96,7 +96,7 @@ void		parse_input(char *filename, t_info *info)
 		free(line);
 	}
 	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
-		print_error("Invalid file. R and A have to be present\n");
+		print_error("Invalid file. R and A have to be present\n", info);
 	/*if (!info->cameras || !info->lights)*/
 		/*print_error("At least one camera and light should be defined\n");*/
 	close(fd);
