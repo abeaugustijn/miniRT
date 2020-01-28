@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 16:05:44 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/28 16:12:26 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void		parse_input(char *filename, t_info *info)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		print_error("Opening file went wrong\n");
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) == 1)
 	{
 		if (*line != '#')
 			parse_line(line, info);
