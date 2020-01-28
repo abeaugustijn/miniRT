@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:59:43 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 15:39:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/01/28 21:17:54 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_rayres		obj_dist_plane(t_object *pl, t_ray ray)
 		return (rayres_inf());
 	res.color = pl->color;
 	res.p = vec_add(ray.origin, vec_multiply(ray.direction, res.dist));
+	res.obj = pl;
 	return (res);
 }
 

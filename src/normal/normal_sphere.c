@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_calc_dir.c                                     :+:      :+:    :+:   */
+/*   normal_sphere.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 15:36:51 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 18:19:30 by abe              ###   ########.fr       */
+/*   Created: 2020/01/28 21:39:49 by abe               #+#    #+#             */
+/*   Updated: 2020/01/28 21:40:47 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-void	ray_calc_dir(t_ray *ray, t_vec3f cam)
+t_vec3f	normal_sphere(t_rayres rayres)
 {
 	t_vec3f	res;
 
-	res.x = ray->origin.x - cam.x;
-	res.y = ray->origin.y - cam.y;
-	res.z = ray->origin.z - cam.z;
-	ray->direction = vec3f_normalize(res);
+	res = vec_sub(rayres.p, rayres.obj->location);
+	return (vec3f_normalize(res));
 }

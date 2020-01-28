@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rayres_inf.c                                       :+:      :+:    :+:   */
+/*   normal.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/27 13:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 21:16:55 by abe              ###   ########.fr       */
+/*   Created: 2020/01/28 21:35:23 by abe               #+#    #+#             */
+/*   Updated: 2020/01/28 21:38:41 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
-#include <math.h>
+#ifndef NORMAL_H
+# define NORMAL_H
 
-t_rayres	rayres_inf(void)
-{
-	return (rayres_new_dist(NULL, vec_new(0, 0, 0), col_new(0, 0, 0), INFINITY));
-}
+# include <miniRT.h>
+
+t_vec3f	normal_sphere(t_rayres rayres);
+t_vec3f	normal_plane(t_rayres rayres);
+
+t_vec3f	(*g_normaljump[])(t_rayres) = {
+	&normal_sphere,
+	&normal_plane
+};
+
+#endif

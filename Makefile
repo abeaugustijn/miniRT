@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/28 20:50:27 by abe              ###   ########.fr        #
+#    Updated: 2020/01/28 21:53:54 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,11 +51,15 @@ SRCS			=	error/error\
 					col/col_mix_ambient\
 					renderer/get_pixel\
 					renderer/ray_cast\
+					renderer/ray_cast_light\
 					renderer/obj_dist\
 					renderer/obj_dist_sphere\
 					renderer/obj_dist_plane\
 					free/free_list\
 					free/free_info\
+					normal/normal\
+					normal/normal_sphere\
+					normal/normal_plane\
 					init_mlx
 
 TESTS			=	math
@@ -75,7 +79,7 @@ LIB_SRCS		=	lib/libft/libft.a\
 					lib/liblist/liblist.a\
 					lib/libgnl/libgnl.a
 
-FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O3
+FLAGS			=	-Wall -Werror -Wextra -DNOLIST
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)

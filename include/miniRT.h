@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 20:47:36 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/28 21:43:56 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,6 @@ typedef struct	s_color {
 	uint8_t g;
 	uint8_t b;
 }				t_color;
-
-typedef struct	s_rayres {
-	double	dist;
-	t_vec3f	p;
-	t_color	color;
-}				t_rayres;
 
 typedef struct	s_mlximg {
 	void		*ptr;
@@ -119,6 +113,13 @@ typedef struct 	s_object {
 	t_vec3f			points[3];
 }				t_object;
 
+typedef struct	s_rayres {
+	double		dist;
+	t_vec3f		p;
+	t_color		color;
+	t_object	*obj;
+}				t_rayres;
+
 typedef struct	s_camera {
 	t_vec3f	location;
 	t_vec3f	orientation;
@@ -130,6 +131,11 @@ typedef struct	s_light {
 	float	brightness;
 	t_color	color;
 }				t_light;
+
+typedef struct	s_lightres {
+	float	factor;
+	t_light	*light;
+}				t_lightres;
 
 typedef struct	s_info {
 	t_mapinfo	mapinfo;
@@ -161,8 +167,8 @@ t_color			parse_color(char *str, t_info *info);
 bool			check_normalized(t_vec3f vec);
 int				to_color(t_color color);
 t_rayres		rayres_inf(void);
-t_rayres		rayres_new(t_vec3f p, t_color color);
-t_rayres		rayres_new_dist(t_vec3f p, t_color color, double dist);
+t_rayres		rayres_new(t_object *obj, t_vec3f p, t_color color);
+t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, t_color color, double dist);
 
 /*
 **	Maths
@@ -212,8 +218,10 @@ t_rayres		obj_dist(t_object *obj, t_ray ray);
 t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
 t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
+t_lightres		ray_cast_light(t_info *info, t_rayres rayres);
 t_color			*get_frame(t_info *info);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
+t_vec3f			normal(t_rayres rayres);
 
 /*
 **	Free functions

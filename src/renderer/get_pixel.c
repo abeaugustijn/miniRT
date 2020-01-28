@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:36:58 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 21:13:19 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/28 22:09:53 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ t_color			get_pixel(t_vec2i pixel, t_info *info)
 	else
 		ray.origin.y *= info->mapinfo.res.y / (double)info->mapinfo.res.x;
 	ray.origin.z = info->current_cam->location.z - 1;
-	ray_calc_dir(&ray, info->current_cam->location);
+	ray.direction = vec3f_normalize(vec_sub(ray.origin, info->current_cam->location));
 	return (ray_cast(info, ray));
 }

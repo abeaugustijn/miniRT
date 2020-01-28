@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rayres_inf.c                                       :+:      :+:    :+:   */
+/*   normal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/27 13:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 21:16:55 by abe              ###   ########.fr       */
+/*   Created: 2020/01/28 21:33:58 by abe               #+#    #+#             */
+/*   Updated: 2020/01/28 21:39:34 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <math.h>
+#include "normal.h"
 
-t_rayres	rayres_inf(void)
+t_vec3f	normal(t_rayres rayres)
 {
-	return (rayres_new_dist(NULL, vec_new(0, 0, 0), col_new(0, 0, 0), INFINITY));
+	return (g_normaljump[rayres.obj->type](rayres));
 }

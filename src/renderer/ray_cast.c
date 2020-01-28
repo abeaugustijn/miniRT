@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 18:58:31 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/28 21:56:16 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,21 @@ static	t_rayres	ray_cast_object(t_info *info, t_ray ray)
 
 t_color	ray_cast(t_info *info, t_ray ray)
 {
-	t_rayres	obj;
+	t_rayres	rayres;
 	t_color		res;
+	t_lightres	lightres;
 
-	obj = ray_cast_object(info, ray);
-	if (obj.dist == INFINITY)
+	rayres = ray_cast_object(info, ray);
+	if (rayres.dist == INFINITY)
 		return (col_new(0, 0, 0));
-	res = col_mix_ambient(obj.color, info->mapinfo.ambient_color);
-	res = col_multiply(res, info->mapinfo.ambient_ratio);
+	lightres = ray_cast_light(info, rayres);
+	if (lightres.factor <= 0)
+	{
+		res = col_mix_ambient(rayres.color, info->mapinfo.ambient_color);
+		res = col_multiply(res, info->mapinfo.ambient_ratio);
+		return (res);
+	}
+	res = col_mix_ambient(rayres.obj->color, lightres.light->color);
+	res = col_multiply(res, lightres.factor * lightres.light->brightness);
 	return (res);
 }
