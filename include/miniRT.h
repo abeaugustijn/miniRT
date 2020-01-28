@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/27 18:59:26 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/28 16:02:53 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ void			print_error_free_list(char *message, t_list *to_free);
 **	Helpers
 */
 
-void			free_string_arr(char **array);
+void			free_string_arr(char ***array);
 size_t			arrlen(char **array);
 bool			isdigit_string(char *string);
 float			parse_float(char *str);
