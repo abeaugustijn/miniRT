@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 15:55:27 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/21 18:23:09 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/31 12:43:58 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	hook_key(int keycode, t_info *info)
 	else if (keycode == KEY_L)
 		info->current_cam->location.x += MOVE_SPEED;
 	else if (keycode == KEY_UP)
-		info->current_cam->location.z += MOVE_SPEED;
-	else if (keycode == KEY_DOWN)
 		info->current_cam->location.z -= MOVE_SPEED;
+	else if (keycode == KEY_DOWN)
+		info->current_cam->location.z += MOVE_SPEED;
 	else
 		info->mapinfo.rendered = true;
 	return (0);

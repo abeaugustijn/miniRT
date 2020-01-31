@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 21:43:56 by abe              ###   ########.fr       */
+/*   Updated: 2020/01/31 12:33:15 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ t_vec3f			vec_sub(t_vec3f vec1, t_vec3f vec2);
 t_vec3f			vec_multiply(t_vec3f vec, double factor);
 double			vec_dotp(t_vec3f vec1, t_vec3f vec2);
 double			vec_angle(t_vec3f vec1, t_vec3f vec2);
+t_vec3f			vec_from_to(t_vec3f from, t_vec3f to);
 bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 
 /*
@@ -193,7 +194,7 @@ bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 t_color			col_new(uint8_t r, uint8_t g, uint8_t b);
 t_color			col_multiply(t_color color, double factor);
 t_color			col_mix(t_color col1, t_color col2);
-t_color			col_mix_ambient(t_color col, t_color amb);
+t_color			col_mix_light(t_color col, t_color amb);
 
 /*
 **	Structure functions
@@ -218,7 +219,7 @@ t_rayres		obj_dist(t_object *obj, t_ray ray);
 t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
 t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
-t_lightres		ray_cast_light(t_info *info, t_rayres rayres);
+t_lightres		ray_cast_light(t_light *light, t_rayres rayres);
 t_color			*get_frame(t_info *info);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
 t_vec3f			normal(t_rayres rayres);

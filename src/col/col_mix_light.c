@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normal_sphere.c                                    :+:      :+:    :+:   */
+/*   col_mix_ambient.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 21:39:49 by abe               #+#    #+#             */
-/*   Updated: 2020/01/31 12:26:38 by abe              ###   ########.fr       */
+/*   Created: 2020/01/24 10:03:41 by abe               #+#    #+#             */
+/*   Updated: 2020/01/31 12:32:44 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-/*
-**	Gets the normal vector of a sphere, on a certain point where the ray hit
-**	the sphere.
-**
-**	@param {t_rayres} rayres
-**
-**	@return {t_vec3f} normal
-*/
-
-t_vec3f	normal_sphere(t_rayres rayres)
+t_color	col_mix_light(t_color col, t_color amb)
 {
-	return (vec_from_to(rayres.obj->location, rayres.p));
+	return (col_new((double)col.r * amb.r / 255,
+				(double)col.g * amb.g / 255,
+				(double)col.b * amb.b / 255));
 }

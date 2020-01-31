@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/28 22:22:03 by abe              ###   ########.fr        #
+#    Updated: 2020/01/31 12:33:51 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,12 @@ SRCS			=	error/error\
 					vec/vec_dist\
 					vec/vec_multiply\
 					vec/vec_dotp\
+					vec/vec_from_to\
 					math/dist_line_point\
 					col/col_multiply\
 					col/col_new\
 					col/col_mix\
-					col/col_mix_ambient\
+					col/col_mix_light\
 					renderer/get_pixel\
 					renderer/ray_cast\
 					renderer/ray_cast_light\
