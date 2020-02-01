@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 20:30:49 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/01 15:07:44 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	print_error(char *message, t_info *info)
 void	print_error_free(char *message, t_info *info, void *to_free,
 		void (*free_func)(void *))
 {
-	free(to_free);
 	free_func(to_free);
 	print_error(message, info);
 }

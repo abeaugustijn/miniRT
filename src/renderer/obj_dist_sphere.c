@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/31 13:41:34 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/01 14:47:35 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_rayres		obj_dist_sphere(t_object *sp, t_ray ray)
 	double y = vec_len(vec_sub(sp->location, p));
 	if (y > sp->size / 2)
 		return (rayres_inf());
-	/*double x = sqrt(pow(sp->size / 2, 2) - pow(y, 2));*/
+	double x = sqrt(pow(sp->size / 2, 2) - pow(y, 2));
 	return (rayres_new_dist(
-				sp, p, sp->color, t));
+				sp, vec_sub(p, vec_multiply(ray.direction, x)), sp->color, t - x));
 }
 
