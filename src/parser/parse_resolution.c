@@ -6,13 +6,21 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:36:49 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 20:45:16 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/03 14:40:48 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <liblist.h>
 #include <libft.h>
+
+/*
+**	Parse function for the resolution line.
+**
+**	@param {char **} words - array of strings, which are just the words of the
+**		line, splitted on spaces.
+**	@param {t_info *} info
+*/
 
 void	parse_resolution(char **words, t_info *info)
 {

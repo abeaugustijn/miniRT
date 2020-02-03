@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:04:59 by abe               #+#    #+#             */
-/*   Updated: 2020/01/20 14:06:51 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/03 14:25:09 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include <math.h>
 #include <assert.h>
 
-bool	compare(float a, float b)
+bool	compare(double a, double b)
 {
-	float	abs;
+	double	abs;
 
 	abs = a - b;
 	if (abs < 0)
@@ -52,7 +52,30 @@ void	test_vec_normalize()
 	assert(compare(vec.z, 1.0));
 }
 
+void	test_parse_double()
+{
+	double	res;
+
+	res = parse_double("1.123");
+	assert(compare(res, 1.123));
+	res = parse_double("1");
+	assert(compare(res, 1));
+	res = parse_double("0");
+	assert(compare(res, 0));
+	res = parse_double("100");
+	assert(compare(res, 100));
+	res = parse_double("0.0001");
+	assert(compare(res, 0.0001));
+	res = parse_double("-10");
+	assert(compare(res, -10));
+}
+
+	#include <stdio.h>
+
 int main()
 {
+	printf("test_vec_normalize()\n");
 	test_vec_normalize();
+	printf("test_parse_double()\n");
+	test_parse_double();
 }

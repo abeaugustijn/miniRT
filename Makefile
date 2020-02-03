@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/01/31 12:33:51 by abe              ###   ########.fr        #
+#    Updated: 2020/02/03 16:12:09 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,9 @@ SRCS			=	error/error\
 					parser/parse_square\
 					parser/parse_cylinder\
 					parser/parse_triangle\
-					helpers/free_string_arr\
 					helpers/arrlen\
 					helpers/isdigit_string\
-					helpers/parse_float\
+					helpers/parse_double\
 					helpers/parse_vec3f\
 					helpers/parse_color\
 					helpers/check_normalized\
@@ -57,6 +56,7 @@ SRCS			=	error/error\
 					renderer/obj_dist_plane\
 					free/free_list\
 					free/free_info\
+					free/free_string_arr\
 					normal/normal\
 					normal/normal_sphere\
 					normal/normal_plane\
@@ -127,7 +127,7 @@ $(NAME): $(LIB_SRCS) $(OFILES) src/main.o lib/libmlx/libmlx.dylib
 	cp lib/libmlx/libmlx.dylib .
 
 test: $(LIB_SRCS) $(OFILES) $(TEST_OFILES)
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test $(LIB_SRCS) -g  $(TEST_OFILES)
+	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test $(LIB_SRCS) -g  $(TEST_OFILES) libmlx.dylib
 
 endif
 

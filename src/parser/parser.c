@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 21:44:57 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/03 14:52:48 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static bool	check_filename(char *filename)
 }
 
 /*
-**	Parse a single line of the .rt file.
+**	Parse a single line of the .rt file. Uses a jumptable called 'g_parsejump'
+**		to decide which function to call for every specifier.
 **
 **	@param {char *} line
 **	@param {t_mapinfo *} mapinfo - to store the data
@@ -54,7 +55,7 @@ static void	parse_line(char *line, t_info *info)
 
 	words = ft_split(line, ' ');
 	if (words == NULL)
-		print_error("Memory allocation failed\n", info);
+		print_error("Memory allocation failed in parse_line\n", info);
 	if (!words[0])
 		return ;
 	i = 0;

@@ -6,12 +6,18 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 21:16:55 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/03 16:13:34 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
+
+/*
+**	Get an instance of the rayres struct, whith a distance of INFINITY.
+**
+**	@return {t_rayres}
+*/
 
 t_rayres	rayres_inf(void)
 {

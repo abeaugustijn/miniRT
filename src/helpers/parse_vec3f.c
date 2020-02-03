@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:36:36 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 20:47:45 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/03 14:24:49 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 #include <stdbool.h>
 
 /*
-**	Parse a string with three floats, delimited by ',' chars into a vector.
+**	Parse a string with three doubles, delimited by ',' chars into a vector.
+**
+**	@param {char *} str
+**	@param {t_info *} info - a pointer to the info struct for printing errors
+**
+**	@return {t_vec3f} - either returns the vector or exists while printing an
+**		error.
 */
 
 t_vec3f	parse_vec3f(char *str, t_info *info)
@@ -26,7 +32,7 @@ t_vec3f	parse_vec3f(char *str, t_info *info)
 	if (!words)
 		print_error("Allocation failed in 'parse_vec3f'\n", info);
 	if (arrlen(words) != 3)
-		print_error("Invalid amount of values in float vector\n", info);
-	return (vec_new(parse_float(words[0]), parse_float(words[1]),
-				parse_float(words[2])));
+		print_error("Invalid amount of values in vector\n", info);
+	return (vec_new(parse_double(words[0]), parse_double(words[1]),
+				parse_double(words[2])));
 }

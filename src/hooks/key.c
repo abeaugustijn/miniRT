@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 15:55:27 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/31 12:43:58 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/03 16:16:39 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,16 @@
 #include <keys.h>
 
 	#include <stdio.h>
+
+/*
+**	The hook function executed on every keypress.
+**
+**	TODO: used for debugging atm
+**
+**	@param {t_info *} info
+**
+**	@return {int} (not used}
+*/
 
 int	hook_key(int keycode, t_info *info)
 {

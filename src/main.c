@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:23:08 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 20:38:51 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/03 14:28:40 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <libft.h>
 #include <liblist.h>
 #include <mlx.h>
+#include <stdlib.h>
 
 int	main(int argc, char *argv[])
 {

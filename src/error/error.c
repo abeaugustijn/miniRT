@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/02/01 15:07:44 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/03 16:10:01 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,14 @@
 #include <stdlib.h>
 #include <liblist.h>
 
+/*
+**	Print out an error, free all information in the info struct and exit the
+**	process with exit code 1.
+**
+**	@param {char *} message
+**	@param {t_info *} info
+*/
+
 void	print_error(char *message, t_info *info)
 {
 	ft_putstr_fd("Error\n", 1);
@@ -22,6 +30,16 @@ void	print_error(char *message, t_info *info)
 	free_info(info);
 	exit(1);
 }
+
+/*
+**	Print out an error, free the given pointer using the free function, free
+**	all information in the info struct and exit the process with exit code 1.
+**
+**	@param {char *} message
+**	@param {t_info *} info
+**	@param {void *} to_free
+**	@param {void *(void *)} free_func
+*/
 
 void	print_error_free(char *message, t_info *info, void *to_free,
 		void (*free_func)(void *))

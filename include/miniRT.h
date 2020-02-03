@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/01 15:02:06 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/03 14:25:57 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 # define MOVE_SPEED 1
 
 typedef struct	s_vec3f {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 }				t_vec3f;
 
 typedef struct	s_vec2f {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }				t_vec2f;
 
 typedef struct	s_vec2i {
@@ -62,38 +62,19 @@ typedef struct	s_mlxinfo {
 
 typedef struct	s_mapinfo {
 	t_vec2i		res;
-	float		ambient_ratio;
+	double		ambient_ratio;
 	t_color		ambient_color;
 	t_vec3f		cam_pos;
 	t_vec3f		cam_orientation;
 	uint8_t		cam_fov;
 	t_vec3f		light_pos;
-	float		light_brightness;
+	double		light_brightness;
 	t_color		light_color;
 	bool		did_resolution;
 	bool		did_ambient;
 	bool		do_save;
 	bool		rendered;
 }				t_mapinfo;
-
-typedef struct	s_mat4f {
-	float	xX;
-	float	xY;
-	float	xZ;
-	float	xW;
-	float	yX;
-	float	yY;
-	float	yZ;
-	float	yW;
-	float	zX;
-	float	zY;
-	float	zZ;
-	float	zW;
-	float	wX;
-	float	wY;
-	float	wZ;
-	float	wW;
-}				t_mat4f;
 
 typedef enum	e_object_type {
 	SP,
@@ -107,8 +88,8 @@ typedef struct 	s_object {
 	t_object_type	type;
 	t_color			color;
 	t_vec3f			location;
-	float			size;
-	float			height;
+	double			size;
+	double			height;
 	t_vec3f			orientation;
 	t_vec3f			points[3];
 }				t_object;
@@ -128,12 +109,12 @@ typedef struct	s_camera {
 
 typedef struct	s_light {
 	t_vec3f	location;
-	float	brightness;
+	double	brightness;
 	t_color	color;
 }				t_light;
 
 typedef struct	s_lightres {
-	float	factor;
+	double	factor;
 	t_light	*light;
 }				t_lightres;
 
@@ -161,7 +142,7 @@ void			print_error_free(char *message, t_info *info, void *to_free,
 void			free_string_arr(char ***array);
 size_t			arrlen(char **array);
 bool			isdigit_string(char *string);
-float			parse_float(char *str);
+double			parse_double(char *str);
 t_vec3f			parse_vec3f(char *str, t_info *info);
 t_color			parse_color(char *str, t_info *info);
 bool			check_normalized(t_vec3f vec);

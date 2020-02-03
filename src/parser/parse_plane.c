@@ -6,13 +6,21 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 20:48:59 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/03 14:46:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <stdlib.h>
 #include <libft.h>
+
+/*
+**	Parse function for planes.
+**
+**	@param {char **} words - array of strings, which are just the words of the
+**		line, splitted on spaces.
+**	@param {t_info *} info
+*/
 
 void	parse_plane(char **words, t_info *info)
 {

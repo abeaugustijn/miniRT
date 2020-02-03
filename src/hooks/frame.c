@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/01/28 20:15:54 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/03 16:15:37 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ static void pixel_put(t_mlximg img, uint16_t x, uint16_t y, t_color color)
 	dst = img.addr + (y * img.line_length + x * (img.bpp / 8));
 	*(unsigned int *)dst = to_color(color);
 }
+
+/*
+**	The hook function which executes on every frame. This calls 'get_pixel' for
+**	every pixel on the screen, except for when the 'rendered' flag in the info
+**	struct is set to true.
+**
+**	@param {t_info *} info
+**
+**	@return {int} (not used)
+*/
 
 int			hook_frame(t_info *info)
 {

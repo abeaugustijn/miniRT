@@ -8,7 +8,7 @@ A   0.8     255,255,255
 
 #	Camera
 #	loc		dir		fov
-c 	0,0,0 	0,0,-1 	70
+c   0,0,0   0,0,-1  70
 
 #	Light
 #	loc		bright	color
