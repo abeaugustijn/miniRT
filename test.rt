@@ -1,6 +1,6 @@
 #	Resolution
 #	res.x	res.y
-R   1920    1080
+R   1000    800
 
 #	Ambient
 #	ratio	color
@@ -24,4 +24,4 @@ sp   0,0,10     5       0,130,130
 
 #	Planes
 #	loc			dir			col
-#pl  0,0,10    0,0,1.0     0,130,130
+pl  0,0,15    0,0,1.0     0,60,60
