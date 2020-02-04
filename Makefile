@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/03 16:12:09 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/04 11:46:24 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS			=	error/error\
 					helpers/tocolor\
 					helpers/rayres_inf\
 					helpers/rayres_new\
+					helpers/float_compare\
 					vec/vec_new\
 					vec/vec_normalize\
 					vec/vec_angle\
