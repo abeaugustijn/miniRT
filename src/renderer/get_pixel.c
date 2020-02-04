@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:36:58 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/03 16:03:24 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 14:33:52 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_color			get_pixel(t_vec2i pixel, t_info *info)
 	cam_loc = info->current_cam->location;
 	ray.origin.x = (2 * ((pixel.x + 0.5) / info->mapinfo.res.x) - 1)  * fov_factor;
 	ray.origin.y = (1 - (2 *((pixel.y + 0.5) / info->mapinfo.res.y))) * fov_factor;
-	ray.origin.z = 1;
+	ray.origin.z = -1;
 	// TODO: Do rotation on ray.origin according to camera orientation
 	ray.origin = vec_add(ray.origin, cam_loc);
 	if (info->mapinfo.res.x > info->mapinfo.res.y)

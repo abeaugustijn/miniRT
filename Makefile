@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/04 11:46:24 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/04 14:29:51 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ LIB_SRCS		=	lib/libft/libft.a\
 					lib/liblist/liblist.a\
 					lib/libgnl/libgnl.a
 
-FLAGS			=	-Wall -Werror -Wextra -DNOLIST
+FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O0
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)

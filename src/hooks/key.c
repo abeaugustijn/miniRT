@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 15:55:27 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/03 16:16:39 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 13:06:43 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include <mlx.h>
 #include <stdlib.h>
 #include <keys.h>
-
-	#include <stdio.h>
 
 /*
 **	The hook function executed on every keypress.
@@ -29,7 +27,6 @@
 
 int	hook_key(int keycode, t_info *info)
 {
-	printf("keypress: %d\n", keycode);
 	if (keycode == KEY_SPACE || keycode == KEY_Q)
 	{
 		mlx_destroy_window(info->mlx_info.mlx, info->mlx_info.mlx_win);
