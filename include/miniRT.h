@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 16:27:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 
 # define WINDOW_TITLE "miniRT"
-# define MOVE_SPEED 1
+# define MOVE_SPEED 0.1
 
 typedef struct	s_vec3f {
 	double	x;
