@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/02/03 14:51:07 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ void	parse_cylinder(char **words, t_info *info)
 	ft_bzero(res, sizeof(t_object));
 	res->type = CY;
 	res->location = parse_vec3f(words[1], info);
-	res->orientation = parse_vec3f(words[2], info);
-	if (!check_normalized(res->orientation))
-		print_error_free("Orientation vector for cylinder is not normalized\n", info, res, &free);
+	res->orientation = vec_normalize(parse_vec3f(words[2], info));
 	res->size = parse_double(words[3]);
 	if (res->size < 0)
 		print_error_free("Invalid diameter for cylinder\n", info, res, &free);

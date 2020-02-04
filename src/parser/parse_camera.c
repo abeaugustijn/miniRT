@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/02/03 14:44:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ static uint8_t	check_fov(char *str, t_info *info)
 **	Parse function for cameras. This will also check whether the orientation
 **		vector of the camera is normalized.
 **
-**	TODO: decide if we want to normalize orientation if it is not normalized
-**		as input.
-**
 **	@param {char **} words - array of strings, which are just the words of the
 **		line, splitted on spaces.
 **	@param {t_info *} info
@@ -57,10 +54,7 @@ void			parse_camera(char **words, t_info *info)
 	if (!res)
 		print_error("Allocation failed in 'parse_camera'\n", info);
 	res->location = parse_vec3f(words[1], info);
-	res->orientation = parse_vec3f(words[2], info);
-	if (!check_normalized(res->orientation))
-		print_error_free(
-				"Error while parsing camera: orientation vector is not normalized\n", info, res, &free);
+	res->orientation = vec_normalize(parse_vec3f(words[2], info));
 	res->fov = check_fov(words[3], info);
 	if (!lst_new_back(&(info->cameras), res))
 		print_error("Allocation failed in 'parse_camera'\n", info);

@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 17:53:08 by abe               #+#    #+#             */
-/*   Updated: 2020/02/04 14:49:54 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 **	@return {t_vec3f}
 */
 
-t_vec3f	vec3f_normalize(t_vec3f vec)
+t_vec3f	vec_normalize(t_vec3f vec)
 {
 	double	len;
 

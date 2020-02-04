@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:04:59 by abe               #+#    #+#             */
-/*   Updated: 2020/02/04 11:46:33 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	test_vec_normalize()
 	vec.x = -1;
 	vec.y = 20;
 	vec.z = 30;
-	vec = vec3f_normalize(vec);
+	vec = vec_normalize(vec);
 	assert(float_compare(vec.x, -1.0 / 30));
 	assert(float_compare(vec.y, 20.0 / 30));
 	assert(float_compare(vec.z, 1.0));
@@ -28,7 +28,7 @@ void	test_vec_normalize()
 	vec.x = 10;
 	vec.y = 10;
 	vec.z = 10;
-	vec = vec3f_normalize(vec);
+	vec = vec_normalize(vec);
 	assert(float_compare(vec.x, 1.0));
 	assert(float_compare(vec.y, 1.0));
 	assert(float_compare(vec.z, 1.0));
@@ -36,7 +36,7 @@ void	test_vec_normalize()
 	vec.x = 10;
 	vec.y = 20;
 	vec.z = 30;
-	vec = vec3f_normalize(vec);
+	vec = vec_normalize(vec);
 	assert(float_compare(vec.x, 1.0 / 3));
 	assert(float_compare(vec.y, 2.0 / 3));
 	assert(float_compare(vec.z, 1.0));

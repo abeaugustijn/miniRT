@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 11:45:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ bool			float_compare(double a, double b);
 **	Maths
 */
 
-t_vec3f			vec3f_normalize(t_vec3f vec);
+t_vec3f			vec_normalize(t_vec3f vec);
 void			ray_calc_dir(t_ray *ray, t_vec3f cam);
 t_vec3f			vec_new(double x, double y, double z);
 double			vec_len(t_vec3f vec);

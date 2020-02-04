@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/02/03 14:46:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void	parse_plane(char **words, t_info *info)
 	ft_bzero(res, sizeof(t_object));
 	res->type = PL;
 	res->location = parse_vec3f(words[1], info);
-	res->orientation = parse_vec3f(words[2], info);
-	if (!check_normalized(res->orientation))
-		print_error_free("Orientation vector for plane is not normalized\n", info, res, &free);
+	res->orientation = vec_normalize(parse_vec3f(words[2], info));
 	res->color = parse_color(words[3], info);
 	if (!lst_new_back(&(info->objects), res))
 		print_error("Allocation failed in 'parse_plane'\n", info);
