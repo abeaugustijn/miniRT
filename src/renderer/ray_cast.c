@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 16:21:46 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/04 17:12:01 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ t_color	ray_cast(t_info *info, t_ray ray)
 	rayres = ray_cast_object(info, ray);
 	if (rayres.dist == INFINITY)
 		return (col_new(0, 0, 0));
-	lightres = ray_cast_light(info->lights->content, rayres);
+	lightres = ray_cast_all_lights(info->lights, rayres);
+	/*lightres = ray_cast_light(info->lights->content, rayres);*/
 	if (lightres.factor < info->mapinfo.ambient_ratio)
 	{
 		res = col_mix_light(rayres.color, info->mapinfo.ambient_color);

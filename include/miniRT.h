@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 16:27:50 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/04 17:19:10 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 
 # define WINDOW_TITLE "miniRT"
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 1
 
 typedef struct	s_vec3f {
 	double	x;
@@ -201,7 +201,7 @@ t_rayres		obj_dist(t_object *obj, t_ray ray);
 t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
 t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
-t_lightres		ray_cast_light(t_light *light, t_rayres rayres);
+t_lightres		ray_cast_all_lights(t_list *lights, t_rayres rayres);
 t_color			*get_frame(t_info *info);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
 t_vec3f			normal(t_rayres rayres);

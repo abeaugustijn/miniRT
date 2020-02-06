@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 15:26:18 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/04 16:35:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_rayres		obj_dist_sphere(t_object *sp, t_ray ray)
 	if (t < 0)
 		return (rayres_inf());
 	p = vec_add(ray.origin, vec_multiply(ray.direction, t));
-
 	y = vec_len(vec_sub(sp->location, p));
 	if (y > sp->size / 2)
 		return (rayres_inf());
