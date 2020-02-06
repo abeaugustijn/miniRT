@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 17:19:10 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/06 20:25:24 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ t_rayres		rayres_inf(void);
 t_rayres		rayres_new(t_object *obj, t_vec3f p, t_color color);
 t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, t_color color, double dist);
 bool			float_compare(double a, double b);
+uint32_t		min(uint32_t a, uint32_t b);
+uint32_t		max(uint32_t a, uint32_t b);
 
 /*
 **	Maths
@@ -201,7 +203,7 @@ t_rayres		obj_dist(t_object *obj, t_ray ray);
 t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
 t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
-t_lightres		ray_cast_all_lights(t_list *lights, t_rayres rayres);
+t_color			ray_cast_all_lights(t_info *info, t_rayres rayres);
 t_color			*get_frame(t_info *info);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
 t_vec3f			normal(t_rayres rayres);

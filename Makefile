@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/04 14:29:51 by abe              ###   ########.fr        #
+#    Updated: 2020/02/06 20:25:35 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,8 @@ SRCS			=	error/error\
 					helpers/rayres_inf\
 					helpers/rayres_new\
 					helpers/float_compare\
+					helpers/min\
+					helpers/max\
 					vec/vec_new\
 					vec/vec_normalize\
 					vec/vec_angle\
