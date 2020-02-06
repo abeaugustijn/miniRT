@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/06 20:25:24 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/06 21:31:28 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ int				to_color(t_color color);
 t_rayres		rayres_inf(void);
 t_rayres		rayres_new(t_object *obj, t_vec3f p, t_color color);
 t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, t_color color, double dist);
+t_ray			ray_new(t_vec3f origin, t_vec3f direction);
 bool			float_compare(double a, double b);
 uint32_t		min(uint32_t a, uint32_t b);
 uint32_t		max(uint32_t a, uint32_t b);

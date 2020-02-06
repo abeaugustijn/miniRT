@@ -6,12 +6,26 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/06 20:47:21 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/06 21:36:56 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
+
+static bool		light_obstructed(t_info *info, t_ray ray)
+{
+	t_list	*objects;
+
+	objects = info->objects;
+	while (objects)
+	{
+		if (obj_dist((t_object *)objects->content, ray).dist < INFINITY)
+			return (true);
+		objects = objects->next;
+	}
+	return (false);
+}
 
 static t_color	light_add(t_color col, t_color to_add)
 {
@@ -20,12 +34,14 @@ static t_color	light_add(t_color col, t_color to_add)
 				max(col.b, to_add.b)));
 }
 
-static t_color	ray_cast_light(t_light *light, t_rayres rayres)
+static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres)
 {
 	t_vec3f		norm;
 	t_vec3f 	lightray_dir;
 	double		factor;
 
+	if (light_obstructed(info, ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
+		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
 	norm = normal(rayres);
 	factor = vec_dotp(lightray_dir, norm);
@@ -45,7 +61,7 @@ t_color				ray_cast_all_lights(t_info *info, t_rayres rayres)
 	lights = info->lights;
 	while (lights)
 	{
-		res = light_add(res, ray_cast_light((t_light *)lights->content, rayres));
+		res = light_add(res, ray_cast_light(info, (t_light *)lights->content, rayres));
 		lights = lights->next;
 	}
 	return (res);
