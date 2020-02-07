@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/07 14:28:46 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/07 17:35:39 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,15 +59,18 @@ SRCS			=	error/error\
 					renderer/obj_dist\
 					renderer/obj_dist_sphere\
 					renderer/obj_dist_plane\
+					renderer/obj_dist_cylinder\
 					free/free_list\
 					free/free_info\
 					free/free_string_arr\
 					normal/normal\
 					normal/normal_sphere\
 					normal/normal_plane\
+					normal/normal_cylinder\
 					intersect/intersect\
 					intersect/intersect_sphere\
 					intersect/intersect_plane\
+					intersect/intersect_cylinder\
 					init_mlx
 
 TESTS			=	math

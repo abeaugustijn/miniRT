@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/07 14:30:04 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/07 17:29:33 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ t_color			get_pixel(t_vec2i pixel, t_info *info);
 t_rayres		obj_dist(t_object *obj, t_ray ray);
 t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
 t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
+t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			ray_cast_all_lights(t_info *info, t_rayres rayres);
 t_color			*get_frame(t_info *info);
