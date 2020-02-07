@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/06 21:31:53 by abe              ###   ########.fr        #
+#    Updated: 2020/02/07 11:59:43 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,9 @@ SRCS			=	error/error\
 					normal/normal\
 					normal/normal_sphere\
 					normal/normal_plane\
+					intersect/intersect\
+					intersect/intersect_sphere\
+					intersect/intersect_plane\
 					init_mlx
 
 TESTS			=	math
