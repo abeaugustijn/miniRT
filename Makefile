@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/07 11:59:43 by abe              ###   ########.fr        #
+#    Updated: 2020/02/07 14:28:46 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS			=	error/error\
 					col/col_new\
 					col/col_mix\
 					col/col_mix_light\
+					col/col_add_light\
 					renderer/get_pixel\
 					renderer/ray_cast\
 					renderer/ray_cast_light\

@@ -6,12 +6,26 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/07 13:23:06 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/07 14:30:19 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
+
+/*
+**	This checks whether a certain lightray on a surface is obstructed by
+**	an object. In this case there will be a shadow on the surface because none
+**	of the light will 'hit' the surface.
+**
+**	@param {t_info *} info
+**	@param {t_object *} curr_obj - the object on which the light shines. This
+**		object should not be taken into account when checking for intersection
+**		with the lightray.
+**	@param {t_ray} ray - the lightray
+**
+**	@return {bool} - true if obstructed
+*/
 
 static bool		light_obstructed(t_info *info, t_object *curr_obj, t_ray ray)
 {
@@ -28,12 +42,17 @@ static bool		light_obstructed(t_info *info, t_object *curr_obj, t_ray ray)
 	return (false);
 }
 
-static t_color	light_add(t_color col, t_color to_add)
-{
-	return (col_new(max(col.r, to_add.r),
-				max(col.g, to_add.g),
-				max(col.b, to_add.b)));
-}
+/*
+**	This calculates the amount of light a surface will reflect if only a
+**	single light was shining on it. It returns the resulting color of the
+**	light on the surface.
+**
+**	@param {t_info *} info
+**	@param {t_light *} light
+**	@param {t_rayres} rayres
+**
+**	@return {t_color}
+*/
 
 static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres)
 {
@@ -53,6 +72,17 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres)
 	return (col_multiply(col_mix_light(light->color, rayres.obj->color), factor));
 }
 
+/*
+**	Generate the color of a surface according to the lights which shine onto
+**	it. This will take into account ambient lighting, colored lights and
+**	shadows.
+**
+**	@param {t_info *} info
+**	@praam {t_rayres} rayres - the info about the surface and the ray
+**
+**	@return {t_color} - the resulting color of the surface
+*/
+
 t_color				ray_cast_all_lights(t_info *info, t_rayres rayres)
 {
 	t_color		res;
@@ -62,7 +92,7 @@ t_color				ray_cast_all_lights(t_info *info, t_rayres rayres)
 	lights = info->lights;
 	while (lights)
 	{
-		res = light_add(res, ray_cast_light(info, (t_light *)lights->content, rayres));
+		res = col_add_light(res, ray_cast_light(info, (t_light *)lights->content, rayres));
 		lights = lights->next;
 	}
 	return (res);
