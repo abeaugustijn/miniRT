@@ -6,21 +6,22 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/06 21:36:56 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/07 13:23:06 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
 
-static bool		light_obstructed(t_info *info, t_ray ray)
+static bool		light_obstructed(t_info *info, t_object *curr_obj, t_ray ray)
 {
 	t_list	*objects;
 
 	objects = info->objects;
 	while (objects)
 	{
-		if (obj_dist((t_object *)objects->content, ray).dist < INFINITY)
+		if (objects->content != curr_obj &&
+				intersect((t_object *)objects->content, ray))
 			return (true);
 		objects = objects->next;
 	}
@@ -40,7 +41,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres)
 	t_vec3f 	lightray_dir;
 	double		factor;
 
-	if (light_obstructed(info, ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
+	if (light_obstructed(info, rayres.obj, ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
 	norm = normal(rayres);
