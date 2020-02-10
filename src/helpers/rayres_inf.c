@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 13:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/03 16:13:34 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/10 12:23:52 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	@return {t_rayres}
 */
 
-t_rayres	rayres_inf(void)
+inline t_rayres	rayres_inf(void)
 {
 	return (rayres_new_dist(NULL, vec_new(0, 0, 0), col_new(0, 0, 0), INFINITY));
 }
