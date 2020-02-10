@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/07 17:35:39 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/10 15:59:52 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRCS			=	error/error\
 					vec/vec_multiply\
 					vec/vec_dotp\
 					vec/vec_from_to\
+					vec/vec_multiplyvec\
 					math/dist_line_point\
 					col/col_multiply\
 					col/col_new\
@@ -60,6 +61,7 @@ SRCS			=	error/error\
 					renderer/obj_dist_sphere\
 					renderer/obj_dist_plane\
 					renderer/obj_dist_cylinder\
+					renderer/obj_dist_triangle\
 					free/free_list\
 					free/free_info\
 					free/free_string_arr\
@@ -67,10 +69,12 @@ SRCS			=	error/error\
 					normal/normal_sphere\
 					normal/normal_plane\
 					normal/normal_cylinder\
+					normal/normal_triangle\
 					intersect/intersect\
 					intersect/intersect_sphere\
 					intersect/intersect_plane\
 					intersect/intersect_cylinder\
+					intersect/intersect_triangle\
 					init_mlx
 
 TESTS			=	math

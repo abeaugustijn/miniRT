@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normal.h                                           :+:      :+:    :+:   */
+/*   intersect_triangle.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 21:35:23 by abe               #+#    #+#             */
-/*   Updated: 2020/02/10 14:58:22 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
+/*   Updated: 2020/02/10 15:58:30 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NORMAL_H
-# define NORMAL_H
+#include <miniRT.h>
 
-# include <miniRT.h>
+/*
+**	Calculate whether a given ray intersects with a triangle.
+**
+**	@param {t_object *} cy (cylinder)
+**	@param {t_ray} ray
+**
+**	@return {bool} - true if intersect
+*/
 
-t_vec3f	normal_sphere(t_rayres rayres);
-t_vec3f	normal_plane(t_rayres rayres);
-t_vec3f	normal_cylinder(t_rayres rayres);
-t_vec3f	normal_triangle(t_rayres rayres);
-
-t_vec3f	(*g_normaljump[])(t_rayres) = {
-	&normal_sphere,
-	&normal_plane,
-	NULL,	//TODO SQ
-	&normal_cylinder,
-	&normal_triangle
-};
-
-#endif
+bool	intersect_triangle(t_object *sp, t_ray ray)
+{
+	(void)sp;
+	(void)ray;
+	return (false); //TODO
+}
