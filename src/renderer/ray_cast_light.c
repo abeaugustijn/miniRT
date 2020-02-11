@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 13:27:43 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/11 15:54:55 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static bool		light_obstructed(t_info *info, t_object *curr_obj, t_ray ray)
 	while (objects)
 	{
 		if (objects->content != curr_obj &&
-				intersect((t_object *)objects->content, ray))
+				intersect((t_object *)objects->content, ray, info))
 			return (true);
 		objects = objects->next;
 	}

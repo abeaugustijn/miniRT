@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/02/03 16:10:01 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 15:42:17 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	print_error(char *message, t_info *info)
 {
 	ft_putstr_fd("Error\n", 1);
 	ft_putstr_fd(message, 1);
-	free_info(info);
+	if (info)
+		free_info(info);
 	exit(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/11 14:49:10 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/11 15:53:54 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,9 @@ double			vec_dotp(t_vec3f vec1, t_vec3f vec2);
 double			vec_angle(t_vec3f vec1, t_vec3f vec2);
 t_vec3f			vec_from_to(t_vec3f from, t_vec3f to);
 t_vec3f			vec_crossp(t_vec3f a, t_vec3f b);
+t_vec3f			vec_rot_x(t_vec3f vec, double rad);
+t_vec3f			vec_rot_y(t_vec3f vec, double rad);
+t_vec3f			vec_rot_z(t_vec3f vec, double rad);
 bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 
 /*
@@ -214,7 +217,7 @@ t_color			ray_cast_all_lights(t_info *info, t_rayres rayres, t_ray ray);
 t_color			*get_frame(t_info *info);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
 t_vec3f			normal(t_rayres rayres);
-bool			intersect(t_object *obj, t_ray ray);
+bool			intersect(t_object *obj, t_ray ray, t_info *info);
 
 /*
 **	Free functions
@@ -228,5 +231,7 @@ void			free_info(t_info *info);
 */
 
 void			find_children(t_object *ob, t_object **to_store, t_info *info);
+void			children_square(t_object *sq, t_info *info);
+void			children_square_update(t_object *sq, t_info *info);
 
 #endif

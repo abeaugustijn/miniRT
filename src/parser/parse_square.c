@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 15:41:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	parse_square(char **words, t_info *info)
 	res->color = parse_color(words[4], info);
 	if (!lst_new_back(&(info->objects), res))
 		print_error("Allocation failed in 'parse_square'\n", info);
+	children_square(res, info);
 }

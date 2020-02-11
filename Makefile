@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/11 14:49:39 by abe              ###   ########.fr        #
+#    Updated: 2020/02/11 15:48:36 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCS			=	error/error\
 					vec/vec_dotp\
 					vec/vec_from_to\
 					vec/vec_crossp\
+					vec/vec_rot\
 					math/dist_line_point\
 					col/col_multiply\
 					col/col_new\
@@ -77,6 +78,7 @@ SRCS			=	error/error\
 					intersect/intersect_plane\
 					intersect/intersect_cylinder\
 					intersect/intersect_triangle\
+					intersect/intersect_square\
 					children/find_children\
 					children/children_square\
 					init_mlx

@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 12:15:53 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 15:53:05 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@
 **
 **	@param {t_object *} tr (triangle)
 **	@param {t_ray} ray
+**	@param {t_info *} info
 **
 **	@return {bool} - true if intersect
 */
 
-bool	intersect_triangle(t_object *tr, t_ray ray)
+bool	intersect_triangle(t_object *tr, t_ray ray, t_info *info)
 {
 	t_rayres	pl_res;
 	t_vec3f		tr_normal;
 	t_object	pl;
 
+	(void) info;
 	ft_bzero(&pl, sizeof(t_object));
 	pl.type = PL;
 	pl.location = tr->points[0];
