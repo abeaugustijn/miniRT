@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 12:01:21 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 13:27:43 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_r
 		return (col_new(0, 0, 0));
 	factor *= light->brightness;
 	factor /= 4 * M_PI * pow(vec_dist(light->location, rayres.p), 2);
-	return (col_multiply(col_mix_light(light->color, rayres.obj->color), factor));
+	return (col_multiply(col_mix_light(light->color, rayres.obj->color), fmin(factor, 1)));
 }
 
 /*
