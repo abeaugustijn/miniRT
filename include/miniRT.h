@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/10 16:15:18 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:53:29 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdbool.h>
 
 # define WINDOW_TITLE "miniRT"
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 1
 
 typedef struct	s_vec3f {
 	double	x;
@@ -170,7 +170,7 @@ t_vec3f			vec_multiply(t_vec3f vec, double factor);
 double			vec_dotp(t_vec3f vec1, t_vec3f vec2);
 double			vec_angle(t_vec3f vec1, t_vec3f vec2);
 t_vec3f			vec_from_to(t_vec3f from, t_vec3f to);
-t_vec3f			vec_multiplyvec(t_vec3f a, t_vec3f b);
+t_vec3f			vec_crossp(t_vec3f a, t_vec3f b);
 bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 
 /*
@@ -203,10 +203,6 @@ int				hook_key(int keycode, t_info *info);
 
 t_color			get_pixel(t_vec2i pixel, t_info *info);
 t_rayres		obj_dist(t_object *obj, t_ray ray);
-t_rayres		obj_dist_sphere(t_object *sp, t_ray ray);
-t_rayres		obj_dist_plane(t_object *pl, t_ray ray);
-t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray);
-t_rayres		obj_dist_triangle(t_object *tr, t_ray ray);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			ray_cast_all_lights(t_info *info, t_rayres rayres);
 t_color			*get_frame(t_info *info);

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 15:42:08 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/10 16:07:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 10:55:51 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static bool		obj_dist_triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p
 	c[0] = vec_sub(p, tr->points[0]);
 	c[0] = vec_sub(p, tr->points[1]);
 	c[0] = vec_sub(p, tr->points[2]);
-	return (vec_dotp(tr_normal, vec_multiplyvec(edges[0], c[0])) > 0 &&
-				vec_dotp(tr_normal, vec_multiplyvec(edges[1], c[1])) > 0 &&
-				vec_dotp(tr_normal, vec_multiplyvec(edges[2], c[2])) > 0);
+	return (vec_dotp(tr_normal, vec_crossp(edges[0], c[0])) > 0 &&
+				vec_dotp(tr_normal, vec_crossp(edges[1], c[1])) > 0 &&
+				vec_dotp(tr_normal, vec_crossp(edges[2], c[2])) > 0);
 }
 
 t_rayres		obj_dist_triangle(t_object *tr, t_ray ray)
@@ -37,10 +37,11 @@ t_rayres		obj_dist_triangle(t_object *tr, t_ray ray)
 	t_object	pl;
 
 	ft_bzero(&pl, sizeof(t_object));
+	pl.type = PL;
 	pl.location = tr->points[0];
 	tr_normal = normal(rayres_new(tr, vec_new(0, 0, 0), col_new(0, 0, 0)));
 	pl.orientation = tr_normal;
-	pl_res = obj_dist_plane(&pl, ray);
+	pl_res = obj_dist(&pl, ray);
 	if (pl_res.dist >= INFINITY)
 		return (rayres_inf());
 	if (!obj_dist_triangle_inside(tr, tr_normal, pl_res.p))

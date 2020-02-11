@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/10 15:59:52 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/11 10:54:20 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,11 +57,11 @@ SRCS			=	error/error\
 					renderer/get_pixel\
 					renderer/ray_cast\
 					renderer/ray_cast_light\
-					renderer/obj_dist\
-					renderer/obj_dist_sphere\
-					renderer/obj_dist_plane\
-					renderer/obj_dist_cylinder\
-					renderer/obj_dist_triangle\
+					obj_dist/obj_dist\
+					obj_dist/obj_dist_sphere\
+					obj_dist/obj_dist_plane\
+					obj_dist/obj_dist_cylinder\
+					obj_dist/obj_dist_triangle\
 					free/free_list\
 					free/free_info\
 					free/free_string_arr\
