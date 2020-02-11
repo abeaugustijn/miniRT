@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/07 14:30:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 11:06:11 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ t_color				ray_cast_all_lights(t_info *info, t_rayres rayres)
 	t_list		*lights;
 
 	res = col_multiply(info->mapinfo.ambient_color, info->mapinfo.ambient_ratio);
+	res = col_mix_light(rayres.obj->color, res);
 	lights = info->lights;
 	while (lights)
 	{
