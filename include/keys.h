@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 17:00:33 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 20:31:38 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 #  define KEY_L 108
 #  define KEY_UP 65362
 #  define KEY_DOWN 65364
+#  define KEY_LEFT 65361
+#  define KEY_RIGHT 65363
 # else
 #  define KEY_SPACE 49
 #  define KEY_Q 12
