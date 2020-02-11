@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/11 15:53:54 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 16:43:19 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,7 @@ t_color			*get_frame(t_info *info);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
 t_vec3f			normal(t_rayres rayres);
 bool			intersect(t_object *obj, t_ray ray, t_info *info);
+t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 
 /*
 **	Free functions

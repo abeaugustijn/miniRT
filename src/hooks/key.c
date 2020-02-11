@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 15:55:27 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 13:06:43 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/11 17:16:34 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <mlx.h>
 #include <stdlib.h>
 #include <keys.h>
+#include <math.h>
 
 /*
 **	The hook function executed on every keypress.
@@ -25,8 +26,14 @@
 **	@return {int} (not used}
 */
 
+#include <stdio.h>
+
 int	hook_key(int keycode, t_info *info)
 {
+	t_camera *cam;
+
+	cam = info->current_cam;
+	printf("%d\n", keycode);
 	if (keycode == KEY_SPACE || keycode == KEY_Q)
 	{
 		mlx_destroy_window(info->mlx_info.mlx, info->mlx_info.mlx_win);
@@ -34,17 +41,21 @@ int	hook_key(int keycode, t_info *info)
 	}
 	info->mapinfo.rendered = false;
 	if (keycode == KEY_H)
-		info->current_cam->location.x -= MOVE_SPEED;
+		cam->location.x -= MOVE_SPEED;
 	else if (keycode == KEY_J)
-		info->current_cam->location.y -= MOVE_SPEED;
+		cam->location.y -= MOVE_SPEED;
 	else if (keycode == KEY_K)
-		info->current_cam->location.y += MOVE_SPEED;
+		cam->location.y += MOVE_SPEED;
 	else if (keycode == KEY_L)
-		info->current_cam->location.x += MOVE_SPEED;
+		cam->location.x += MOVE_SPEED;
 	else if (keycode == KEY_UP)
-		info->current_cam->location.z -= MOVE_SPEED;
+		cam->location = vec_sub(cam->location, vec_multiply(cam->orientation, MOVE_SPEED));
 	else if (keycode == KEY_DOWN)
-		info->current_cam->location.z += MOVE_SPEED;
+		cam->location = vec_add(cam->location, vec_multiply(cam->orientation, MOVE_SPEED));
+	else if (keycode == KEY_LEFT)
+		cam->orientation = vec_normalize(vec_rot_y(cam->orientation, -MOVE_SPEED / 10.0 * M_PI));
+	else if (keycode == KEY_RIGHT)
+		cam->orientation = vec_normalize(vec_rot_y(cam->orientation, MOVE_SPEED / 10.0 * M_PI));
 	else
 		info->mapinfo.rendered = true;
 	return (0);
