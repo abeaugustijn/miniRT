@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 15:55:27 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/11 17:16:34 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 20:50:03 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	hook_key(int keycode, t_info *info)
 	}
 	info->mapinfo.rendered = false;
 	if (keycode == KEY_H)
-		cam->location.x -= MOVE_SPEED;
+		cam->location = vec_add(cam->location, vec_multiply(vec_rot_y(cam->orientation, M_PI / 2), -MOVE_SPEED));
 	else if (keycode == KEY_J)
-		cam->location.y -= MOVE_SPEED;
+		cam->location = vec_add(cam->location, vec_multiply(vec_rot_x(cam->orientation, M_PI / 2), -MOVE_SPEED));
 	else if (keycode == KEY_K)
-		cam->location.y += MOVE_SPEED;
+		cam->location = vec_add(cam->location, vec_multiply(vec_rot_x(cam->orientation, M_PI / 2), MOVE_SPEED));
 	else if (keycode == KEY_L)
-		cam->location.x += MOVE_SPEED;
+		cam->location = vec_add(cam->location, vec_multiply(vec_rot_y(cam->orientation, M_PI / 2), MOVE_SPEED));
 	else if (keycode == KEY_UP)
 		cam->location = vec_sub(cam->location, vec_multiply(cam->orientation, MOVE_SPEED));
 	else if (keycode == KEY_DOWN)
