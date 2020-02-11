@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/11 12:05:23 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 12:14:13 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ t_ray			ray_new(t_vec3f origin, t_vec3f direction);
 bool			float_compare(double a, double b);
 uint32_t		min(uint32_t a, uint32_t b);
 uint32_t		max(uint32_t a, uint32_t b);
+bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
 
 /*
 **	Maths

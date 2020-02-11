@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/07 17:36:08 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 12:10:57 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 **	@return {bool} - true if intersect
 */
 
-bool	intersect_cylinder(t_object *sp, t_ray ray)
+bool	intersect_cylinder(t_object *cy, t_ray ray)
 {
-	(void)sp;
+	(void)cy;
 	(void)ray;
 	return (false); //TODO
 }
