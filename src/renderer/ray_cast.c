@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/11 11:55:26 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 13:31:13 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <math.h>
 #include <libft.h>
 
-static	t_rayres	ray_cast_object(t_info *info, t_ray ray)
+static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 {
 	t_list		*current;
 	t_object	*closest;
@@ -41,7 +41,7 @@ static	t_rayres	ray_cast_object(t_info *info, t_ray ray)
 	return (rayres_closest);
 }
 
-t_color	ray_cast(t_info *info, t_ray ray)
+t_color			ray_cast(t_info *info, t_ray ray)
 {
 	t_rayres	rayres;
 

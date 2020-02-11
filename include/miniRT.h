@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/11 12:14:13 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 14:49:10 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ typedef enum	e_object_type {
 	TR
 }				t_object_type;
 
-typedef struct 	s_object {
+typedef struct	s_object	t_object;
+
+struct 			s_object {
 	t_object_type	type;
 	t_color			color;
 	t_vec3f			location;
@@ -92,7 +94,8 @@ typedef struct 	s_object {
 	double			height;
 	t_vec3f			orientation;
 	t_vec3f			points[3];
-}				t_object;
+	t_object		*parent;
+};
 
 typedef struct	s_rayres {
 	double		dist;
@@ -155,6 +158,8 @@ bool			float_compare(double a, double b);
 uint32_t		min(uint32_t a, uint32_t b);
 uint32_t		max(uint32_t a, uint32_t b);
 bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
+t_object		*empty_object(t_info *info);
+t_object		*empty_object_type(t_info *info, t_object_type type);
 
 /*
 **	Maths
@@ -217,5 +222,11 @@ bool			intersect(t_object *obj, t_ray ray);
 
 void			free_list(t_list *to_free, void (*free_func)(void *));
 void			free_info(t_info *info);
+
+/*
+**	Children
+*/
+
+void			find_children(t_object *ob, t_object **to_store, t_info *info);
 
 #endif

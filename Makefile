@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/11 12:16:07 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/11 14:49:39 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS			=	error/error\
 					helpers/min\
 					helpers/max\
 					helpers/triangle_inside\
+					helpers/empty_object\
 					vec/vec_new\
 					vec/vec_normalize\
 					vec/vec_angle\
@@ -76,6 +77,8 @@ SRCS			=	error/error\
 					intersect/intersect_plane\
 					intersect/intersect_cylinder\
 					intersect/intersect_triangle\
+					children/find_children\
+					children/children_square\
 					init_mlx
 
 TESTS			=	math
