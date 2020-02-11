@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:04:59 by abe               #+#    #+#             */
-/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 11:00:45 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,24 @@ void	test_parse_double()
 	assert(float_compare(res, -10));
 }
 
+void	test_crossp()
+{
+	t_vec3f	res;
+
+	res = vec_crossp(vec_new(2, 3, 4), vec_new(5, 6, 7));
+	assert(float_compare(res.x, -3));
+	assert(float_compare(res.y, 6));
+	assert(float_compare(res.z, -3));
+}
+
 	#include <stdio.h>
 
 int main()
 {
-	printf("test_vec_normalize()\n");
-	test_vec_normalize();
+	/*printf("test_vec_normalize()\n");*/
+	/*test_vec_normalize();*/
 	printf("test_parse_double()\n");
 	test_parse_double();
+	printf("test_crossp()\n");
+	test_crossp();
 }
