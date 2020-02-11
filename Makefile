@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/11 10:54:20 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/11 11:12:48 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRCS			=	error/error\
 					vec/vec_multiply\
 					vec/vec_dotp\
 					vec/vec_from_to\
-					vec/vec_multiplyvec\
+					vec/vec_crossp\
 					math/dist_line_point\
 					col/col_multiply\
 					col/col_new\
