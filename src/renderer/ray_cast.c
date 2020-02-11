@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/06 21:14:46 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/11 11:55:26 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ t_color	ray_cast(t_info *info, t_ray ray)
 	rayres = ray_cast_object(info, ray);
 	if (rayres.dist == INFINITY)
 		return (col_new(0, 0, 0));
-	return (ray_cast_all_lights(info, rayres));
+	return (ray_cast_all_lights(info, rayres, ray));
 }

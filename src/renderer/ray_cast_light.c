@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 11:06:11 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/11 12:01:21 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static bool		light_obstructed(t_info *info, t_object *curr_obj, t_ray ray)
 **	@return {t_color}
 */
 
-static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres)
+static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_ray ray)
 {
 	t_vec3f		norm;
 	t_vec3f 	lightray_dir;
@@ -64,6 +64,11 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres)
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
 	norm = normal(rayres);
+	if (rayres.obj->type == TR && vec_angle(norm, ray.direction) < M_PI / 2)
+		// TODO: just an exception for now, need to figure out a better way to handle this.
+		// 			This case handles a triangle facing away from the camera, where the normal
+		// 			is facing the wrong way aswell.
+		norm = vec_multiply(norm, -1);
 	factor = vec_dotp(lightray_dir, norm);
 	if (factor < 0)
 		return (col_new(0, 0, 0));
@@ -83,7 +88,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres)
 **	@return {t_color} - the resulting color of the surface
 */
 
-t_color				ray_cast_all_lights(t_info *info, t_rayres rayres)
+t_color				ray_cast_all_lights(t_info *info, t_rayres rayres, t_ray ray)
 {
 	t_color		res;
 	t_list		*lights;
@@ -93,7 +98,7 @@ t_color				ray_cast_all_lights(t_info *info, t_rayres rayres)
 	lights = info->lights;
 	while (lights)
 	{
-		res = col_add_light(res, ray_cast_light(info, (t_light *)lights->content, rayres));
+		res = col_add_light(res, ray_cast_light(info, (t_light *)lights->content, rayres, ray));
 		lights = lights->next;
 	}
 	return (res);
