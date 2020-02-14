@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 15:59:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/14 14:59:41 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,21 @@
 static void	children_square_gen_points(t_object *sq, t_vec3f *points)
 {
 	t_vec3f	temp;
+	t_vec3f	next;
 	uint8_t	i;
 
 	temp = vec_multiply(vec_rot_x(sq->orientation, M_PI / 2), sq->size / 2);
-	points[0] = vec_add(temp, vec_rot_z(temp, M_PI / 2));
-	temp = vec_rot_z(temp, M_PI / 90);
-	points[1] = vec_add(temp, vec_rot_z(temp, M_PI / 2));
-	temp = vec_rot_z(temp, M_PI / 90);
-	points[2] = vec_add(temp, vec_rot_z(temp, M_PI / 2));
-	temp = vec_rot_z(temp, M_PI / 90);
-	points[3] = vec_add(temp, vec_rot_z(temp, M_PI / 2));
-	temp = vec_rot_z(temp, M_PI / 90);
+	next = vec_rot_z(temp, M_PI / 2);
+	points[0] = vec_add(temp, next);
+	temp = next;
+	next = vec_rot_z(temp, M_PI / 2);
+	points[1] = vec_add(temp, next);
+	temp = next;
+	next = vec_rot_z(temp, M_PI / 2);
+	points[2] = vec_add(temp, next);
+	temp = next;
+	next = vec_rot_z(temp, M_PI / 2);
+	points[3] = vec_add(temp, next);
 	i = 0;
 	while (i < 4)
 	{
@@ -62,9 +66,11 @@ void		children_square_update(t_object *sq, t_info *info)
 	children[0]->points[0] = points[0];
 	children[0]->points[1] = points[1];
 	children[0]->points[2] = points[2];
-	children[1]->points[0] = points[1];
+	children[1]->points[0] = points[0];
 	children[1]->points[1] = points[2];
 	children[1]->points[2] = points[3];
+	children[0]->color = sq->color;
+	children[1]->color = sq->color;
 }
 
 /*
