@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:39:49 by abe               #+#    #+#             */
-/*   Updated: 2020/01/31 12:26:38 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/17 13:58:43 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 **	@return {t_vec3f} normal
 */
 
-t_vec3f	normal_sphere(t_rayres rayres)
+t_vec3f	normal_sphere(t_rayres rayres, t_info *info)
 {
+	(void)info;
 	return (vec_from_to(rayres.obj->location, rayres.p));
 }

@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/11 16:44:07 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/17 14:00:48 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRCS			=	error/error\
 					normal/normal\
 					normal/normal_sphere\
 					normal/normal_plane\
+					normal/normal_square\
 					normal/normal_cylinder\
 					normal/normal_triangle\
 					intersect/intersect\

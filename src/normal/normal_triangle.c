@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:39:49 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 10:53:43 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/17 13:58:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 **	@return {t_vec3f} normal
 */
 
-t_vec3f	normal_triangle(t_rayres rayres)
+t_vec3f	normal_triangle(t_rayres rayres, t_info *info)
 {
 	t_vec3f	res;
 	t_vec3f	ca;
 	t_vec3f cb;
 
+	(void)info;
 	ca = vec_from_to(rayres.obj->points[2], rayres.obj->points[0]);
 	cb = vec_from_to(rayres.obj->points[2], rayres.obj->points[1]);
 	res = vec_crossp(ca, cb);

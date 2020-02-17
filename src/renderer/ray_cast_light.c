@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 15:54:55 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/17 16:37:09 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_r
 	if (light_obstructed(info, rayres.obj, ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
-	norm = normal(rayres);
+	norm = normal(rayres, info);
 	if (rayres.obj->type == TR && vec_angle(norm, ray.direction) < M_PI / 2)
 		// TODO: just an exception for now, need to figure out a better way to handle this.
 		// 			This case handles a triangle facing away from the camera, where the normal
@@ -83,7 +83,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_r
 **	shadows.
 **
 **	@param {t_info *} info
-**	@praam {t_rayres} rayres - the info about the surface and the ray
+**	@param {t_rayres} rayres - the info about the surface and the ray
 **
 **	@return {t_color} - the resulting color of the surface
 */

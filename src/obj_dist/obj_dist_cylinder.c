@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/10 12:30:59 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/17 16:33:00 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static t_vec3f	get_closest_cy(t_object *cy, t_ray ray, t_vec3f ray_to_cy)
 	return (vec_add(cy->location, vec_multiply(cy->orientation, t)));
 }
 
-t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray)
+t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 {
 	t_vec3f ray_to_cy;
 	t_vec3f	p_ray;
@@ -68,6 +68,7 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray)
 	double	dist;
 	double	t_ray;
 
+	(void)info;
 	if (float_compare(vec_dotp(ray.direction, ray.direction), 0) ||
 			float_compare(vec_dotp(cy->orientation, cy->orientation), 0) ||
 			float_compare(pow(vec_dotp(ray.direction, cy->orientation), 2),

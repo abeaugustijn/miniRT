@@ -6,20 +6,21 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 16:35:50 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/17 16:33:19 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
 
-t_rayres		obj_dist_sphere(t_object *sp, t_ray ray)
+t_rayres		obj_dist_sphere(t_object *sp, t_ray ray, t_info *info)
 {
 	double	t;
 	double	y;
 	double	x;
 	t_vec3f	p;
 
+	(void)info;
 	t = vec_dotp(vec_sub(sp->location, ray.origin), ray.direction);
 	if (t < 0)
 		return (rayres_inf());
