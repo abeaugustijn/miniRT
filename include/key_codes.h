@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/02/18 15:31:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/18 16:42:24 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # ifdef LINUX
 #  define KEY_SPACE 32
-#  define KEY_H 104
-#  define KEY_J 106
-#  define KEY_K 107
-#  define KEY_L 108
-#  define KEY_Q 113
+#  define KEY_A (int)'a'
+#  define KEY_D (int)'d'
+#  define KEY_H (int)'h'
+#  define KEY_J (int)'j'
+#  define KEY_K (int)'k'
+#  define KEY_L (int)'l'
+#  define KEY_Q (int)'q'
 #  define KEY_UP 65362
 #  define KEY_DOWN 65364
 #  define KEY_LEFT 65361
