@@ -6,14 +6,14 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/17 14:00:48 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/18 14:52:05 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	miniRT
 SRCS			=	error/error\
-					hooks/frame\
-					hooks/key\
+					hooks/hook_frame\
+					hooks/hook_key\
 					parser/parser\
 					parser/parse_resolution\
 					parser/parse_ambient\
@@ -83,6 +83,10 @@ SRCS			=	error/error\
 					intersect/intersect_square\
 					children/find_children\
 					children/children_square\
+					key/key_functions\
+					key/key_move_cam\
+					key/key_rot_cam\
+					key/key_exit\
 					init_mlx
 
 TESTS			=	math

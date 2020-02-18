@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 15:42:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/18 14:42:28 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,18 @@ void	print_error_free(char *message, t_info *info, void *to_free,
 {
 	free_func(to_free);
 	print_error(message, info);
+}
+
+
+/*
+**	Exit the program cleanly.
+**
+**	@param {t_info *} info
+*/
+
+void	exit_clean(t_info *info)
+{
+	if (info)
+		free_info(info);
+	exit(0);
 }

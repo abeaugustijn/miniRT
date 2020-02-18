@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/17 16:33:43 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/18 14:48:39 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct	s_info {
 void			print_error(char *message, t_info *info);
 void			print_error_free(char *message, t_info *info, void *to_free,
 					void (*free_func)(void *));
+void			exit_clean(t_info *info);
 
 /*
 **	Helpers
@@ -234,5 +235,8 @@ void			free_info(t_info *info);
 void			find_children(t_object *ob, t_object **to_store, t_info *info);
 void			children_square(t_object *sq, t_info *info);
 void			children_square_update(t_object *sq, t_info *info);
+
+void			key(int keycode, t_info *info);
+
 
 #endif
