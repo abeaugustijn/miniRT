@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/18 14:52:05 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/18 15:30:47 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ SRCS			=	error/error\
 					key/key_move_cam\
 					key/key_rot_cam\
 					key/key_exit\
+					key/key_cam_cycle\
 					init_mlx
 
 TESTS			=	math
