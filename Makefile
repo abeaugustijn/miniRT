@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/18 15:30:47 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/20 13:51:27 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,6 +132,7 @@ ifeq ($(UNAME_S),Linux)
 
 lib/libmlx/libmlx.a:
 	make -C lib/libmlx
+	cp lib/libmlx/X11/libmlx.a lib/libmlx
 
 $(NAME): $(LIB_SRCS) $(OFILES) src/main.o
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o $(LIB_SRCS)
