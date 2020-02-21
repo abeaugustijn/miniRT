@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/21 11:51:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 14:03:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # define WINDOW_TITLE "miniRT"
 # define MOVE_SPEED 1
+
+# define RESIZE_SPEED 1.2
 
 typedef struct	s_vec3f {
 	double	x;
@@ -224,6 +226,7 @@ t_vec3f			normal(t_rayres rayres, t_info *info);
 bool			intersect(t_object *obj, t_ray ray, t_info *info);
 t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 t_ray			generate_ray(t_vec2i pixel, t_info *info);
+void			resize(t_object *obj, bool increase, t_info *info);
 
 /*
 **	Free functions

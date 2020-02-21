@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:46 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/18 15:30:36 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 14:57:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	key_move_cam(int keycode, t_info *info);
 void	key_rot_cam(int keycode, t_info *info);
 void	key_exit(int keycode, t_info *info);
 void	key_cam_cycle(int keycode, t_info *info);
+void	key_resize(int keycode, t_info *info);
+void	key_resize_cylinder(int keycode, t_info *info);
 
 t_keyfunc	g_keyjump[] = {
 	{ KEY_H, &key_move_cam },
@@ -39,7 +41,11 @@ t_keyfunc	g_keyjump[] = {
 	{ KEY_Q, &key_exit },
 	{ KEY_A, &key_cam_cycle },
 	{ KEY_D, &key_cam_cycle },
-	{ 0, NULL }
+	{ KEY_PLUS, &key_resize },
+	{ KEY_MINUS, &key_resize },
+	{ KEY_PGUP, &key_resize_cylinder },
+	{ KEY_PGDN, &key_resize_cylinder },
+	{ 0, NULL },
 };
 
 #endif

@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/21 12:42:31 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/21 14:57:42 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,10 @@ SRCS			=	error/error\
 					intersect/intersect_cylinder\
 					intersect/intersect_triangle\
 					intersect/intersect_square\
+					resize/resize\
+					resize/resize_sphere\
+					resize/resize_square\
+					resize/resize_cylinder\
 					children/find_children\
 					children/children_square\
 					key/key_functions\
@@ -91,6 +95,8 @@ SRCS			=	error/error\
 					key/key_rot_cam\
 					key/key_exit\
 					key/key_cam_cycle\
+					key/key_resize\
+					key/key_resize_cylinder\
 					mouse/select_object\
 					init_mlx
 

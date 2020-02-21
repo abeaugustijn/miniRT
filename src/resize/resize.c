@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_mouse.c                                       :+:      :+:    :+:   */
+/*   resize.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/21 11:28:08 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/21 13:54:37 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/02/21 12:48:10 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/02/21 14:51:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <mouse_codes.h>
+#include "resize.h"
 
-int	hook_mouse(int button, int x, int y, t_info *info)
+void	resize(t_object *obj, bool increase, t_info *info)
 {
-	if (button != MOUSE_LEFT)
-		return (0);
-	select_object(pixel_new(x, y), info);
-	return (0);
+	if (g_resizejump[obj->type])
+		g_resizejump[obj->type](obj, increase, info);
 }

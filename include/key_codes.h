@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/02/18 16:42:24 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/21 14:55:59 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@
 #  define KEY_DOWN 125
 #  define KEY_LEFT 123
 #  define KEY_RIGHT 124
+#  define KEY_PLUS 24
+#  define KEY_MINUS 27
+#  define KEY_PGUP 116
+#  define KEY_PGDN 121
 # endif
 
 #endif
