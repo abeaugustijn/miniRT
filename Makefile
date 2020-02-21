@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/20 13:51:27 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/21 12:42:31 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME			=	miniRT
 SRCS			=	error/error\
 					hooks/hook_frame\
 					hooks/hook_key\
+					hooks/hook_mouse\
 					parser/parser\
 					parser/parse_resolution\
 					parser/parse_ambient\
@@ -39,6 +40,7 @@ SRCS			=	error/error\
 					helpers/max\
 					helpers/triangle_inside\
 					helpers/empty_object\
+					helpers/pixel_new\
 					vec/vec_new\
 					vec/vec_normalize\
 					vec/vec_angle\
@@ -57,6 +59,7 @@ SRCS			=	error/error\
 					col/col_mix\
 					col/col_mix_light\
 					col/col_add_light\
+					renderer/generate_ray\
 					renderer/get_pixel\
 					renderer/ray_cast\
 					renderer/ray_cast_light\
@@ -88,6 +91,7 @@ SRCS			=	error/error\
 					key/key_rot_cam\
 					key/key_exit\
 					key/key_cam_cycle\
+					mouse/select_object\
 					init_mlx
 
 TESTS			=	math
@@ -177,6 +181,6 @@ fclean: _clean
 	rm -f $(NAME)
 
 _clean:
-	rm -f $(OFILES)
+	rm -f $(OFILES) src/main.o
 
 re: fclean all

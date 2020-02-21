@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/18 14:48:39 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 11:51:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ typedef struct	s_info {
 	t_list		*lights;
 	t_mlxinfo	mlx_info;
 	t_camera	*current_cam;
+	t_object	*selected;
 }				t_info;
 
 /*
@@ -161,6 +162,7 @@ uint32_t		max(uint32_t a, uint32_t b);
 bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
 t_object		*empty_object(t_info *info);
 t_object		*empty_object_type(t_info *info, t_object_type type);
+t_vec2i			pixel_new(int x, int y);
 
 /*
 **	Maths
@@ -206,6 +208,7 @@ bool			init_mlx(t_info *info);
 
 int				hook_frame(t_info *info);
 int				hook_key(int keycode, t_info *info);
+int				hook_mouse(int button, int x, int y, t_info *info);
 
 /*
 **	Renderer
@@ -220,6 +223,7 @@ bool			ifo_cam(t_vec3f p, t_camera *cam);
 t_vec3f			normal(t_rayres rayres, t_info *info);
 bool			intersect(t_object *obj, t_ray ray, t_info *info);
 t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
+t_ray			generate_ray(t_vec2i pixel, t_info *info);
 
 /*
 **	Free functions
@@ -238,5 +242,10 @@ void			children_square_update(t_object *sq, t_info *info);
 
 void			key(int keycode, t_info *info);
 
+/*
+**	Mouse
+*/
+
+void			select_object(t_vec2i pixel, t_info *info);
 
 #endif
