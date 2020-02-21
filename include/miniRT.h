@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/21 14:03:23 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:26:53 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ typedef struct	s_ray {
 }				t_ray;
 
 typedef struct	s_color {
-	uint8_t r;
-	uint8_t g;
-	uint8_t b;
+	double r;
+	double g;
+	double b;
 }				t_color;
 
 typedef struct	s_mlximg {
@@ -191,7 +191,7 @@ bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 **	Colors
 */
 
-t_color			col_new(uint8_t r, uint8_t g, uint8_t b);
+t_color			col_new(float r, float g, float b);
 t_color			col_multiply(t_color color, double factor);
 t_color			col_mix(t_color col1, t_color col2);
 t_color			col_mix_light(t_color col, t_color amb);

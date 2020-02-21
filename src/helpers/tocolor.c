@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:03:14 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/03 16:14:13 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:28:47 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@
 
 int	to_color(t_color color)
 {
-	return (color.r << 16 | color.g << 8 | color.b);
+	return ((uint8_t)color.r << 16 | (uint8_t)color.g << 8 | (uint8_t)color.b);
 }

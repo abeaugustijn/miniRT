@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/17 16:33:00 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:29:29 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 	dist = vec_dist(p_ray, p_cy);
 	if (dist > cy->size / 2 || vec_dist(p_cy, cy->location) > cy->height / 2)
 		return (rayres_inf());
-	/*return (rayres_new_dist(cy, p_cy, cy->color, vec_dist(ray.origin, p_cy)));*/
 	return (rayres_new_dist(cy, p_cy, cy->color, 0));
 }
 

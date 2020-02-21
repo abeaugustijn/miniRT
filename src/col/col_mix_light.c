@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 10:03:41 by abe               #+#    #+#             */
-/*   Updated: 2020/02/03 16:06:06 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:26:21 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 t_color	col_mix_light(t_color col, t_color light)
 {
-	return (col_new((double)col.r * light.r / 255,
-				(double)col.g * light.g / 255,
-				(double)col.b * light.b / 255));
+	return (col_new(col.r * light.r / 255,
+				col.g * light.g / 255,
+				col.b * light.b / 255));
 }

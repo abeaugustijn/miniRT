@@ -6,13 +6,13 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 10:04:15 by abe               #+#    #+#             */
-/*   Updated: 2020/01/24 10:04:58 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/21 16:26:47 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-t_color	col_new(uint8_t r, uint8_t g, uint8_t b)
+t_color	col_new(float r, float g, float b)
 {
 	t_color	res;
 

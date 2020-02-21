@@ -6,11 +6,12 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:18:46 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/07 14:29:50 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 16:25:59 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
+#include <math.h>
 
 /*
 **	Add a color to an already existing surface color like natural light would.
@@ -25,8 +26,8 @@
 
 t_color	col_add_light(t_color a, t_color b)
 {
-	return (col_new(max(a.r, b.r),
-				max(a.g, b.g),
-				max(a.b, b.b)));
+	return (col_new(fmax(a.r, b.r),
+				fmax(a.g, b.g),
+				fmax(a.b, b.b)));
 }
 

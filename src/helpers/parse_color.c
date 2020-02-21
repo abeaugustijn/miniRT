@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:36:36 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 20:49:57 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/21 16:27:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #include <libft.h>
 #include <stdbool.h>
 
-static uint8_t	parse_color_part(char *part, t_info *info)
+static double	parse_color_part(char *part, t_info *info)
 {
-	int	res;
-	res = ft_atoi(part);
+	double	res;
+
+	res = parse_double(part);
 	if (res < 0 || res > 255)
 		print_error("Invalid color value\n", info);
-	return ((uint8_t)res);
+	return (res);
 }
 
 /*
