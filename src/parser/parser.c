@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 22:28:06 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/24 23:06:24 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,13 @@ static void	parse_line(char *line, t_info *info)
 
 	words = ft_split(line, ' ');
 	if (words == NULL)
-		print_error("Memory allocation failed in parse_line\n", info);
+		print_error_free_words("Memory allocation failed in parse_line\n",
+				info, words);
 	if (!words[0])
+	{
+		free_string_arr(words);
 		return ;
+	}
 	i = 0;
 	while (g_parsejump[i].identifier)
 	{
@@ -69,8 +73,7 @@ static void	parse_line(char *line, t_info *info)
 		}
 		i++;
 	}
-	free_string_arr(words);
-	print_error("Invalid line\n", info);
+	print_error_free_words("Invalid line\n", info, words);
 }
 
 /*
@@ -98,6 +101,7 @@ void		parse_input(char *filename, t_info *info)
 			parse_line(line, info);
 		free(line);
 	}
+	free(line);
 	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
 		print_error("Invalid file. R and A have to be present\n", info);
 	if (!info->cameras || !info->lights)

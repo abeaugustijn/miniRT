@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 22:26:43 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/24 22:34:52 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ typedef struct	s_info {
 void			print_error(char *message, t_info *info);
 void			print_error_free(char *message, t_info *info, void *to_free,
 					void (*free_func)(void *));
+void			print_error_free_words(char *message, t_info *info,
+		char **words);
 void			exit_clean(t_info *info);
 
 /*

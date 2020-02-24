@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/02/18 14:42:28 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 22:34:23 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,21 @@ void	print_error_free(char *message, t_info *info, void *to_free,
 	print_error(message, info);
 }
 
+/*
+**	Print out an error, free the given pointer array using the free function,
+**	free all information in the info struct and exit the process with exit
+**	code 1.
+**
+**	@param {char *} message
+**	@param {t_info *} info
+**	@param {void **} words
+*/
+
+void	print_error_free_words(char *message, t_info *info, char **words)
+{
+	free_string_arr(words);
+	print_error(message, info);
+}
 
 /*
 **	Exit the program cleanly.
