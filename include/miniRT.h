@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 13:16:07 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/24 15:31:29 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdbool.h>
 
 # define WINDOW_TITLE "miniRT"
+# define FILE_NAME "scene.bmp"
 # define MOVE_SPEED 1
 
 # define RESIZE_SPEED 1.2
@@ -204,6 +205,7 @@ t_color			col_add_light(t_color a, t_color b);
 
 void			parse_input(char *filename, t_info *info);
 bool			init_mlx(t_info *info);
+void			save_bmp(t_info *info);
 
 /*
 **	Hooks
