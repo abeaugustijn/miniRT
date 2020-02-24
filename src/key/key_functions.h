@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:46 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/21 14:57:23 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 20:27:18 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_keyfunc	g_keyjump[] = {
 	{ KEY_J, &key_move_cam },
 	{ KEY_K, &key_move_cam },
 	{ KEY_L, &key_move_cam },
-	{ KEY_UP, &key_rot_cam },
-	{ KEY_DOWN, &key_rot_cam },
+	{ KEY_UP, &key_move_cam },
+	{ KEY_DOWN, &key_move_cam },
 	{ KEY_LEFT, &key_rot_cam },
 	{ KEY_RIGHT, &key_rot_cam },
 	{ KEY_SPACE, &key_exit },
