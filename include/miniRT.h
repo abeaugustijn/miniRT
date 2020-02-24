@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/21 16:26:53 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 12:22:08 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ typedef enum	e_object_type {
 	PL,
 	SQ,
 	CY,
-	TR
+	TR,
+	DS,
 }				t_object_type;
 
 typedef struct	s_object	t_object;

@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:33:58 by abe               #+#    #+#             */
-/*   Updated: 2020/02/17 16:17:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 12:31:02 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_vec3f	(*g_normaljump[])(t_rayres, t_info *) = {
 	&normal_plane,
 	&normal_square,
 	&normal_cylinder,
-	&normal_triangle
+	&normal_triangle,
+	&normal_disk,
 };
 
 t_vec3f	normal(t_rayres rayres, t_info *info)

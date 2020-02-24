@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normal.h                                           :+:      :+:    :+:   */
+/*   normal_disk.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/28 21:35:23 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 12:30:32 by abe              ###   ########.fr       */
+/*   Created: 2020/01/28 21:40:56 by abe               #+#    #+#             */
+/*   Updated: 2020/02/24 12:31:29 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NORMAL_H
-# define NORMAL_H
+#include <miniRT.h>
 
-# include <miniRT.h>
+/*
+**	Get the normal vector for a disk. (spoiler alert: its just the orientation
+**	of the disk).
+**
+**	@param {t_rayres} rayres
+**
+**	@return {t_vec3f}
+*/
 
-t_vec3f	normal_sphere(t_rayres rayres, t_info *info);
-t_vec3f	normal_plane(t_rayres rayres, t_info *info);
-t_vec3f	normal_square(t_rayres rayres, t_info *info);
-t_vec3f	normal_cylinder(t_rayres rayres, t_info *info);
-t_vec3f	normal_triangle(t_rayres rayres, t_info *info);
-t_vec3f	normal_disk(t_rayres rayres, t_info *info);
-
-#endif
+t_vec3f	normal_disk(t_rayres rayres, t_info *info)
+{
+	(void)info;
+	return (rayres.obj->orientation);
+}

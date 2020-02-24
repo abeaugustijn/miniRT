@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:34:10 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 15:57:34 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 12:22:36 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			parse_plane(char **words, t_info *info);
 void			parse_square(char **words, t_info *info);
 void			parse_cylinder(char **words, t_info *info);
 void			parse_triangle(char **words, t_info *info);
+void			parse_disk(char **words, t_info *info);
 
 t_parsefunc		g_parsejump[] = {
 	{ "R", &parse_resolution },
@@ -41,7 +42,8 @@ t_parsefunc		g_parsejump[] = {
 	{ "sq", &parse_square },
 	{ "cy", &parse_cylinder },
 	{ "tr", &parse_triangle },
-	{ NULL, NULL }
+	{ "ds", &parse_disk },
+	{ NULL, NULL },
 };
 
 #endif

@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/21 14:57:42 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/24 12:36:39 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS			=	error/error\
 					parser/parse_square\
 					parser/parse_cylinder\
 					parser/parse_triangle\
+					parser/parse_disk\
 					helpers/arrlen\
 					helpers/isdigit_string\
 					helpers/parse_double\
@@ -69,6 +70,7 @@ SRCS			=	error/error\
 					obj_dist/obj_dist_plane\
 					obj_dist/obj_dist_cylinder\
 					obj_dist/obj_dist_triangle\
+					obj_dist/obj_dist_disk\
 					free/free_list\
 					free/free_info\
 					free/free_string_arr\
@@ -78,12 +80,14 @@ SRCS			=	error/error\
 					normal/normal_square\
 					normal/normal_cylinder\
 					normal/normal_triangle\
+					normal/normal_disk\
 					intersect/intersect\
 					intersect/intersect_sphere\
 					intersect/intersect_plane\
 					intersect/intersect_cylinder\
 					intersect/intersect_triangle\
 					intersect/intersect_square\
+					intersect/intersect_disk\
 					resize/resize\
 					resize/resize_sphere\
 					resize/resize_square\
