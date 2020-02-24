@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 13:16:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 /*
 **	Parse function for cylinders. Throws an error if orientation is not
 **		normalized.
-**
-**	TODO: decide if we want to normalize orientation if it is not normalized
-**		as input.
 **
 **	@param {char **} words - array of strings, which are just the words of the
 **		line, splitted on spaces.
@@ -48,4 +45,5 @@ void	parse_cylinder(char **words, t_info *info)
 	res->color = parse_color(words[5], info);
 	if (!lst_new_back(&(info->objects), res))
 		print_error("Allocation failed in 'parse_cylinder'\n", info);
+	children_cylinder(res, info);
 }

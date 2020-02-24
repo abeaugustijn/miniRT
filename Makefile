@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/24 12:36:39 by abe              ###   ########.fr        #
+#    Updated: 2020/02/24 13:15:38 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ SRCS			=	error/error\
 					resize/resize_cylinder\
 					children/find_children\
 					children/children_square\
+					children/children_cylinder\
 					key/key_functions\
 					key/key_move_cam\
 					key/key_rot_cam\

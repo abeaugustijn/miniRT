@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 12:22:08 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/24 13:16:07 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,6 +243,8 @@ void			free_info(t_info *info);
 void			find_children(t_object *ob, t_object **to_store, t_info *info);
 void			children_square(t_object *sq, t_info *info);
 void			children_square_update(t_object *sq, t_info *info);
+void			children_cylinder(t_object *cy, t_info *info);
+void			children_cylinder_update(t_object *cy, t_info *info);
 
 void			key(int keycode, t_info *info);
 

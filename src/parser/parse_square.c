@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 15:41:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 13:17:46 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 /*
 **	Parse function for squares. Throws an error if orientation is not
 **		normalized.
-**
-**	TODO: decide if we want to normalize orientation if it is not normalized
-**		as input.
 **
 **	@param {char **} words - array of strings, which are just the words of the
 **		line, splitted on spaces.
