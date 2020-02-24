@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/02/21 14:55:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/21 18:09:01 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 #  define KEY_DOWN 65364
 #  define KEY_LEFT 65361
 #  define KEY_RIGHT 65363
+#  define KEY_PLUS 61 
+#  define KEY_MINUS 45
+#  define KEY_PGUP 65366
+#  define KEY_PGDN 65365
 # else
 #  define KEY_SPACE 49
 #  define KEY_A 0
