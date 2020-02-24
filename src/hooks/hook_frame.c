@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   frame.c                                            :+:      :+:    :+:   */
+/*   hook_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/03 16:15:37 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 22:12:44 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ static void pixel_put(t_mlximg img, uint16_t x, uint16_t y, t_color color)
 
 int			hook_frame(t_info *info)
 {
+	t_color		*frame;
 	uint16_t	i;
 	uint16_t	j;
 
 	if (info->mapinfo.rendered)
 		return (0);
 	info->mapinfo.rendered = true;
+	frame = get_frame(info);
 	i = 0;
 	while (i < info->mapinfo.res.x)
 	{
@@ -49,11 +51,12 @@ int			hook_frame(t_info *info)
 			pixel_put(
 					info->mlx_info.img,
 					i, j,
-					get_pixel((t_vec2i){i, j}, info));
+					frame[i * info->mapinfo.res.y + j]);
 			j++;
 		}
 		i++;
 	}
+	free(frame);
 	mlx_put_image_to_window(info->mlx_info.mlx, info->mlx_info.mlx_win,
 			info->mlx_info.img.ptr, 0, 0);
 	return (0);

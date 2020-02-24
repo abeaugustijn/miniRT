@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/24 17:35:38 by abe              ###   ########.fr        #
+#    Updated: 2020/02/24 22:17:41 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,8 @@ SRCS			=	error/error\
 					key/key_resize_cylinder\
 					mouse/select_object\
 					init_mlx\
-					save_bmp
+					save_bmp\
+					get_frame\
 
 TESTS			=	math
 

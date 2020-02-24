@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:33:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 17:35:10 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/24 22:13:45 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,18 @@ static void bmp_wr_pixels(char *buf, t_info *info)
 	uint32_t	index;
 	uint32_t	x;
 	uint32_t	y;
+	t_color		*frame;
 	t_color		col;
 
 	index = 0x0E + 40;
+	frame = get_frame(info);
 	y = info->mapinfo.res.y;
 	while (y > 0)
 	{
 		x = 0;
 		while (x < info->mapinfo.res.x)
 		{
-			col = get_pixel((t_vec2i){x, y}, info);
+			col = frame[x * info->mapinfo.res.y + y];
 			buf[index + 0] = col.b;
 			buf[index + 1] = col.g;
 			buf[index + 2] = col.r;
@@ -95,6 +97,7 @@ static void bmp_wr_pixels(char *buf, t_info *info)
 		}
 		y--;
 	}
+	free(frame);
 }
 
 /*
