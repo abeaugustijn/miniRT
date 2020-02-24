@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 12:52:02 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/24 18:51:43 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static void		ray_cast_light_fix_normal(t_rayres rayres, t_ray ray, t_vec3f *norm
 **	@param {t_info *} info
 **	@param {t_light *} light
 **	@param {t_rayres} rayres
+**	@param {t_ray} ray
 **
 **	@return {t_color}
 */
@@ -78,7 +79,10 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_r
 	t_vec3f 	lightray_dir;
 	double		factor;
 
-	if (light_obstructed(info, rayres.obj, ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
+	if (float_compare(info->mapinfo.ambient_ratio, 1))
+		return (rayres.obj->color);
+	if (light_obstructed(info, rayres.obj,
+				ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
 	norm = normal(rayres, info);
@@ -98,6 +102,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_r
 **
 **	@param {t_info *} info
 **	@param {t_rayres} rayres - the info about the surface and the ray
+**	@param {t_ray} ray
 **
 **	@return {t_color} - the resulting color of the surface
 */

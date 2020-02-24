@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/14 14:59:41 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:50:48 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,22 @@
 
 static void	children_square_gen_points(t_object *sq, t_vec3f *points)
 {
-	t_vec3f	temp;
-	t_vec3f	next;
-	uint8_t	i;
+	t_vec3f	right;
+	t_vec3f	up;
+	t_vec3f	forward;
+	t_vec3f	base;
 
-	temp = vec_multiply(vec_rot_x(sq->orientation, M_PI / 2), sq->size / 2);
-	next = vec_rot_z(temp, M_PI / 2);
-	points[0] = vec_add(temp, next);
-	temp = next;
-	next = vec_rot_z(temp, M_PI / 2);
-	points[1] = vec_add(temp, next);
-	temp = next;
-	next = vec_rot_z(temp, M_PI / 2);
-	points[2] = vec_add(temp, next);
-	temp = next;
-	next = vec_rot_z(temp, M_PI / 2);
-	points[3] = vec_add(temp, next);
-	i = 0;
-	while (i < 4)
-	{
-		points[i] = vec_add(sq->location, points[i]);
-		i++;
-	}
+	forward = sq->orientation;
+	if (float_compare(fabs(sq->orientation.y), 1))
+		base = vec_new(1, 0, 0);
+	else
+		base = vec_new(0, 1, 0);
+	right = vec_multiply(vec_normalize(vec_crossp(base, forward)), sq->size);
+	up = vec_multiply(vec_normalize(vec_crossp(forward, right)), sq->size);
+	points[0] = vec_add(vec_add(sq->location, up), right);
+	points[1] = vec_add(vec_sub(sq->location, up), right);
+	points[2] = vec_sub(vec_sub(sq->location, up), right);
+	points[3] = vec_sub(vec_add(sq->location, up), right);
 }
 
 /*

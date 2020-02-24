@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:43:01 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/21 11:47:33 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 19:36:06 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ t_ray	generate_ray(t_vec2i pixel, t_info *info)
 
 	fov_factor = tan(info->current_cam->fov / 2 * (M_PI / 180));
 	cam_loc = info->current_cam->location;
-	ray.origin.x = (2 * ((pixel.x + 0.5) / info->mapinfo.res.x) - 1)  * fov_factor;
-	ray.origin.y = (1 - (2 *((pixel.y + 0.5) / info->mapinfo.res.y))) * fov_factor;
-	ray.origin.z = 1;
+	ray.origin = vec_new(
+		(2 * ((pixel.x + 0.5) / info->mapinfo.res.x) - 1)  * fov_factor,
+		(1 - (2 *((pixel.y + 0.5) / info->mapinfo.res.y))) * fov_factor,
+		1);
 	ray.origin = look_at(info->current_cam, ray.origin);
 	ray.origin = vec_add(ray.origin, cam_loc);
 	if (info->mapinfo.res.x > info->mapinfo.res.y)
