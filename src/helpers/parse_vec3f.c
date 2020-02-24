@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:36:36 by abe               #+#    #+#             */
-/*   Updated: 2020/02/03 14:24:49 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 22:27:34 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,16 @@
 
 t_vec3f	parse_vec3f(char *str, t_info *info)
 {
-	char	**words __attribute__ ((__cleanup__(free_string_arr)));
+	char	**words;
+	t_vec3f	res;
 
 	words = ft_split(str, ',');
 	if (!words)
 		print_error("Allocation failed in 'parse_vec3f'\n", info);
 	if (arrlen(words) != 3)
 		print_error("Invalid amount of values in vector\n", info);
-	return (vec_new(parse_double(words[0]), parse_double(words[1]),
-				parse_double(words[2])));
+	res = vec_new(parse_double(words[0]), parse_double(words[1]),
+				parse_double(words[2]));
+	free_string_arr(words);
+	return (res);
 }

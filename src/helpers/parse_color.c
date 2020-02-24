@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:36:36 by abe               #+#    #+#             */
-/*   Updated: 2020/02/21 16:27:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 22:26:47 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static double	parse_color_part(char *part, t_info *info)
 t_color	parse_color(char *str, t_info *info)
 {
 	t_color	res;
-	char	**words __attribute__ ((__cleanup__(free_string_arr)));
+	char	**words;
 
 	words = ft_split(str, ',');
 	if (!words)
@@ -41,5 +41,6 @@ t_color	parse_color(char *str, t_info *info)
 	res.r = parse_color_part(words[0], info);
 	res.g = parse_color_part(words[1], info);
 	res.b = parse_color_part(words[2], info);
+	free_string_arr(words);
 	return (res);
 }

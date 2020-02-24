@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/02/03 14:52:48 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 22:28:06 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static bool	check_filename(char *filename)
 
 static void	parse_line(char *line, t_info *info)
 {
-	char	**words __attribute__ ((__cleanup__(free_string_arr)));
+	char	**words;
 	uint8_t	i;
 
 	words = ft_split(line, ' ');
@@ -64,10 +64,12 @@ static void	parse_line(char *line, t_info *info)
 		if (!ft_strcmp(words[0], g_parsejump[i].identifier))
 		{
 			g_parsejump[i].func(words, info);
+			free_string_arr(words);
 			return ;
 		}
 		i++;
 	}
+	free_string_arr(words);
 	print_error("Invalid line\n", info);
 }
 

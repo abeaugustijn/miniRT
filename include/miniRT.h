@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 15:31:29 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/24 22:26:43 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void			exit_clean(t_info *info);
 **	Helpers
 */
 
-void			free_string_arr(char ***array);
+void			free_string_arr(char **array);
 size_t			arrlen(char **array);
 bool			isdigit_string(char *string);
 double			parse_double(char *str);

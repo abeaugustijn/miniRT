@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:18:57 by abe               #+#    #+#             */
-/*   Updated: 2020/01/28 16:05:35 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/24 22:26:35 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 /*
 **	Free a NULL-terminated array of strings.
 **
-**	@param {char ***} - pointer to the array
+**	@param {char **}
 */
 
-void	free_string_arr(char ***array)
+void	free_string_arr(char **array)
 {
 	uint8_t	i;
 
 	i = 0;
-	while ((*array)[i])
+	while (array[i])
 	{
-		free((*array)[i]);
+		free(array[i]);
 		i++;
 	}
-	free(*array);
+	free(array);
 }
