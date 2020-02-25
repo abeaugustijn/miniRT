@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:17:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void			parse_camera(char **words, t_info *info)
 	res->location = parse_vec3f(words[1], info);
 	res->orientation = vec_normalize(parse_vec3f(words[2], info));
 	res->fov = check_fov(words[3], info);
+	cam_update(res);
 	if (!lst_new_back(&(info->cameras), res))
 		print_error("Allocation failed in 'parse_camera'\n", info);
 }

@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/25 15:55:06 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/25 17:01:41 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ SRCS			=	error/error\
 					vec/vec_from_to\
 					vec/vec_crossp\
 					vec/vec_rot\
+					vec/vec_multiply_vec\
+					vec/vec_total\
 					math/dist_line_point\
 					col/col_multiply\
 					col/col_new\
@@ -104,6 +106,7 @@ SRCS			=	error/error\
 					key/key_resize_cylinder\
 					mouse/select_object\
 					get_frame/get_frame\
+					cam/cam_update\
 					init_mlx\
 					save_bmp\
 

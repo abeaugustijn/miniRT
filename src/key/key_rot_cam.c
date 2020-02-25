@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:37:30 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 20:26:31 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/25 16:14:05 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ void	key_rot_cam(int keycode, t_info *info)
 		CAM->orientation = vec_normalize(vec_rot_y(CAM->orientation, -MOVE_SPEED / 10.0 * M_PI));
 	else
 		info->mapinfo.rendered = true;
+	if (!info->mapinfo.rendered)
+		cam_update(CAM);
 }

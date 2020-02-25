@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/25 15:54:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/25 17:12:22 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,9 +109,16 @@ typedef struct	s_rayres {
 	t_object	*obj;
 }				t_rayres;
 
+typedef struct	s_dir_vecs {
+	t_vec3f	forward;
+	t_vec3f	right;
+	t_vec3f	up;
+}				t_dir_vecs;
+
 typedef struct	s_camera {
-	t_vec3f	location;
-	t_vec3f	orientation;
+	t_vec3f		location;
+	t_vec3f		orientation;
+	t_dir_vecs	dir_vecs;
 	uint8_t	fov;
 }				t_camera;
 
@@ -196,6 +203,8 @@ t_vec3f			vec_crossp(t_vec3f a, t_vec3f b);
 t_vec3f			vec_rot_x(t_vec3f vec, double rad);
 t_vec3f			vec_rot_y(t_vec3f vec, double rad);
 t_vec3f			vec_rot_z(t_vec3f vec, double rad);
+t_vec3f			vec_multiply_vec(t_vec3f a, t_vec3f b);
+double			vec_total(t_vec3f vec);
 bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
 
 /*
@@ -242,6 +251,7 @@ void			resize(t_object *obj, bool increase, t_info *info);
 t_color			*get_frame(t_info *info);
 void			*renderer_thread(void *param);
 t_thread_info	*thread_info_new(t_info *info, t_color *buf, uint32_t start);
+void			cam_update(t_camera *cam);
 
 /*
 **	Free functions
