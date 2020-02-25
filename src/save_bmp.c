@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:33:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 22:13:45 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/25 18:45:25 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
 **
 **	@param {t_info *} info
 **
-**	@return {uint32_t}
+**	@return {size_t}
 */
 
-static uint32_t	bmp_fsize(t_info *info)
+static size_t	bmp_fsize(t_info *info)
 {
 	size_t	res;
 
 	res = 14;
 	res += 40;
-	res += 3 * (info->mapinfo.res.x * info->mapinfo.res.y);
+	res += 3 * info->mapinfo.tot_pixels;
 	return (res);
 }
 
@@ -82,7 +82,7 @@ static void bmp_wr_pixels(char *buf, t_info *info)
 
 	index = 0x0E + 40;
 	frame = get_frame(info);
-	y = info->mapinfo.res.y;
+	y = info->mapinfo.res.y - 1;
 	while (y > 0)
 	{
 		x = 0;
@@ -110,7 +110,7 @@ static void bmp_wr_pixels(char *buf, t_info *info)
 void		save_bmp(t_info *info)
 {
 	int			fd;
-	uint32_t	fsize;
+	size_t	fsize;
 	char		*buf;
 
 	fd = open(FILE_NAME, O_WRONLY | O_CREAT, 0644);

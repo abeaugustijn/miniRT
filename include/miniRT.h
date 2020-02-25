@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/25 17:12:22 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/25 17:38:57 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void			print_error(char *message, t_info *info);
 void			print_error_free(char *message, t_info *info, void *to_free,
 					void (*free_func)(void *));
 void			print_error_free_words(char *message, t_info *info,
-		char **words);
+					char **words);
 void			exit_clean(t_info *info);
 
 /*
