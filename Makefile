@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/25 10:09:54 by abe              ###   ########.fr        #
+#    Updated: 2020/02/25 12:02:10 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -157,6 +157,14 @@ all: $(NAME)
 set_bonus:
 	$(eval FLAGS += -DBONUS)
 
+#Only clean the bonus files if the lastly linked executable was not bonus
+ifeq ($(LAST_BONUS),bonus)
+clean_bonus:
+else
+clean_bonus:
+	rm -f $(BONUS_RECOMP_O)
+endif
+
 .PHONY: set_bonus clean_bonus
 
 #LINUX
@@ -223,14 +231,6 @@ fclean: _clean
 
 _clean:
 	rm -f $(OFILES) $(BONUS_OFILES) src/main.o
-
-#Only clean the bonus files if the lastly linked executable was not bonus
-ifneq ($(LAST_BONUS),bonus)
-clean_bonus:
-	rm -f $(BONUS_RECOMP_O)
-else
-clean_bonus:
-endif
 
 
 re: fclean all
