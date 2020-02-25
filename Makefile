@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/25 12:02:10 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/25 15:55:06 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,14 +103,16 @@ SRCS			=	error/error\
 					key/key_resize\
 					key/key_resize_cylinder\
 					mouse/select_object\
+					get_frame/get_frame\
 					init_mlx\
 					save_bmp\
-					get_frame\
 
-BONUS_SRCS		=	\
+BONUS_SRCS		=	get_frame/renderer_thread\
+					get_frame/thread_info_new\
 
 #These are files that need to be recompiled when the bonus is made
 BONUS_RECOMP	=	main\
+					get_frame/get_frame\
 
 TESTS			=	math
 
@@ -171,12 +173,15 @@ endif
 
 ifeq ($(UNAME_S),Linux)
 
+FLAGS		+= -DNCORES=$(shell getconf _NPROCESSORS_ONLN)
+
 lib/libmlx/libmlx.a:
 	make -C lib/libmlx
 	cp lib/libmlx/X11/libmlx.a lib/libmlx
 
 $(NAME): $(LIB_SRCS) $(OFILES) src/main.o
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o $(LIB_SRCS)
+	@rm -f bonus
 
 bonus: set_bonus clean_bonus $(LIB_SRCS) $(OFILES) $(BONUS_OFILES) src/main.o
 	$(CC) $(OFILES) $(BONUS_OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o\
@@ -193,6 +198,8 @@ endif
 
 ifeq ($(UNAME_S),Darwin)
 
+FLAGS		+= -DNCORES=$(shell sysctl -n hw.ncpu)
+
 lib/libmlx/libmlx.dylib:
 	make -C lib/libmlx
 	cp lib/libmlx/libmlx.dylib .
@@ -200,6 +207,7 @@ lib/libmlx/libmlx.dylib:
 $(NAME): $(LIB_SRCS) $(OFILES) src/main.o lib/libmlx/libmlx.dylib
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) $(LIB_SRCS) -g src/main.o libmlx.dylib
 	cp lib/libmlx/libmlx.dylib .
+	@rm -f bonus
 
 bonus: set_bonus clean_bonus $(LIB_SRCS) $(OFILES) $(BONUS_OFILES) src/main.o lib/libmlx/libmlx.dylib
 	$(CC) $(OFILES) $(BONUS_OFILES) $(FLAGS) $(LIBS) -o $(NAME) $(LIB_SRCS)\

@@ -6,22 +6,29 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 22:13:56 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 22:17:26 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/25 15:54:41 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <stdlib.h>
+#ifdef BONUS
+# include <pthread.h>
+# include <unistd.h>
+#endif
 
 #define RES info->mapinfo.res
 
 /*
-**	Allocates a buffer a fills it with the pixels of the current frame.
+**	Allocates a buffer a fills it with the pixels of the current frame. Bonus
+**	one implements multithreading.
 **
 **	@param {t_info *} info
 **
 **	@return {t_color *}
 */
+
+#ifndef BONUS
 
 t_color	*get_frame(t_info * info)
 {
@@ -45,3 +52,37 @@ t_color	*get_frame(t_info * info)
 	}
 	return (res);
 }
+
+#else
+
+t_color	*get_frame(t_info *info)
+{
+	t_color			*buf;
+	pthread_t		threads[NCORES];
+	uint32_t		i;
+	t_thread_info	*tinfo[NCORES];
+
+	buf = malloc(sizeof(t_color) * RES.x * RES.y);
+	if (!buf)
+		print_error("Allocation failed in 'get_frame'\n", info);
+	i = 0;
+	while (i < NCORES)
+	{
+		tinfo[i] = thread_info_new(info, buf, i);
+		if (pthread_create(&threads[i], NULL, renderer_thread, tinfo[i]))
+			print_error_free("Failed to spawn thread in 'get_frame'\n",
+					info, buf, free);
+		i++;
+	}
+	i = 0;
+	while (i < NCORES)
+	{
+		if ((pthread_join(threads[i], NULL)))
+			print_error_free("pthread_join failed in 'get_frame'\n",
+					info, buf, free);
+		i++;
+	}
+	return (buf);
+}
+
+#endif

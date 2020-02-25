@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:36:49 by abe               #+#    #+#             */
-/*   Updated: 2020/02/03 14:40:48 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:19:08 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	parse_resolution(char **words, t_info *info)
 	info->mapinfo.res.y = ft_atoi(words[2]);
 	if (!info->mapinfo.res.x || !info->mapinfo.res.y)
 		print_error("Invalid resolution\n", info);
+	info->mapinfo.tot_pixels = info->mapinfo.res.x * info->mapinfo.res.y;
 	info->mapinfo.did_resolution = true;
 }

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 22:34:52 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/25 15:54:45 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct	s_mapinfo {
 	bool		did_ambient;
 	bool		do_save;
 	bool		rendered;
+	uint32_t	tot_pixels;
 }				t_mapinfo;
 
 typedef enum	e_object_type {
@@ -134,6 +135,12 @@ typedef struct	s_info {
 	t_camera	*current_cam;
 	t_object	*selected;
 }				t_info;
+
+typedef struct	s_thread_info {
+	t_info			*info;
+	uint32_t		start;
+	t_color			*buf;
+}				t_thread_info;
 
 /*
 **	Errors
@@ -225,13 +232,16 @@ t_color			get_pixel(t_vec2i pixel, t_info *info);
 t_rayres		obj_dist(t_object *obj, t_ray ray, t_info *info);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			ray_cast_all_lights(t_info *info, t_rayres rayres, t_ray ray);
-t_color			*get_frame(t_info *info);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
 t_vec3f			normal(t_rayres rayres, t_info *info);
 bool			intersect(t_object *obj, t_ray ray, t_info *info);
 t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 t_ray			generate_ray(t_vec2i pixel, t_info *info);
 void			resize(t_object *obj, bool increase, t_info *info);
+
+t_color			*get_frame(t_info *info);
+void			*renderer_thread(void *param);
+t_thread_info	*thread_info_new(t_info *info, t_color *buf, uint32_t start);
 
 /*
 **	Free functions
