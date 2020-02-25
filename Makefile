@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/24 22:17:41 by abe              ###   ########.fr        #
+#    Updated: 2020/02/25 10:09:54 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,10 +107,20 @@ SRCS			=	error/error\
 					save_bmp\
 					get_frame\
 
+BONUS_SRCS		=	\
+
+#These are files that need to be recompiled when the bonus is made
+BONUS_RECOMP	=	main\
+
 TESTS			=	math
 
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
+
+BONUS_CFILES	=	$(BONUS_SRCS:%=src/%.c)
+BONUS_OFILES	=	$(BONUS_SRCS:%=src/%.o)
+
+BONUS_RECOMP_O	=	$(BONUS_RECOMP:%=src/%.o)
 
 TEST_CFILES		=	$(TESTS:%=src/tests/%.c)
 TEST_OFILES		=	$(TESTS:%=src/tests/%.o)
@@ -128,6 +138,7 @@ FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O0
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)
+LAST_BONUS		:=	$(shell ls bonus 2> /dev/null)
 
 ifeq ($(UNAME_S),Linux)
 LIBS			+=	-Llib/libmlx -lmlx -lm -lX11 -lXext
@@ -142,6 +153,11 @@ endif
 
 all: $(NAME)
 
+#Used to add the 'BONUS' flag to compiling all sources
+set_bonus:
+	$(eval FLAGS += -DBONUS)
+
+.PHONY: set_bonus clean_bonus
 
 #LINUX
 
@@ -153,6 +169,11 @@ lib/libmlx/libmlx.a:
 
 $(NAME): $(LIB_SRCS) $(OFILES) src/main.o
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o $(LIB_SRCS)
+
+bonus: set_bonus clean_bonus $(LIB_SRCS) $(OFILES) $(BONUS_OFILES) src/main.o
+	$(CC) $(OFILES) $(BONUS_OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o\
+		$(LIB_SRCS)
+	@touch bonus
 
 test: $(LIB_SRCS) $(OFILES) $(TEST_OFILES)
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test -g $(TEST_OFILES) $(LIB_SRCS)
@@ -171,6 +192,12 @@ lib/libmlx/libmlx.dylib:
 $(NAME): $(LIB_SRCS) $(OFILES) src/main.o lib/libmlx/libmlx.dylib
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) $(LIB_SRCS) -g src/main.o libmlx.dylib
 	cp lib/libmlx/libmlx.dylib .
+
+bonus: set_bonus clean_bonus $(LIB_SRCS) $(OFILES) $(BONUS_OFILES) src/main.o lib/libmlx/libmlx.dylib
+	$(CC) $(OFILES) $(BONUS_OFILES) $(FLAGS) $(LIBS) -o $(NAME) $(LIB_SRCS)\
+		-g src/main.o libmlx.dylib
+	cp lib/libmlx/libmlx.dylib .
+	@touch bonus
 
 test: $(LIB_SRCS) $(OFILES) $(TEST_OFILES)
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test $(LIB_SRCS) -g  $(TEST_OFILES) libmlx.dylib
@@ -192,8 +219,18 @@ fclean: _clean
 	make fclean -C lib/libft
 	make fclean -C lib/libgnl
 	rm -f $(NAME)
+	rm -f bonus
 
 _clean:
-	rm -f $(OFILES) src/main.o
+	rm -f $(OFILES) $(BONUS_OFILES) src/main.o
+
+#Only clean the bonus files if the lastly linked executable was not bonus
+ifneq ($(LAST_BONUS),bonus)
+clean_bonus:
+	rm -f $(BONUS_RECOMP_O)
+else
+clean_bonus:
+endif
+
 
 re: fclean all
