@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/02/21 18:09:01 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/28 15:38:04 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 #  define KEY_MINUS 27
 #  define KEY_PGUP 116
 #  define KEY_PGDN 121
+#  define KEY_ESC 53
 # endif
 
 #endif
