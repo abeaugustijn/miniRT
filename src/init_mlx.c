@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 13:16:52 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 23:05:01 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/28 16:12:33 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ bool		init_mlx(t_info *info)
 		return (true);
 	if (init_mlx_img(info))
 		return (true);
+	mlx_hook(MLX.mlx_win, 17, 0L, (int(*)())exit_clean, info);
 	mlx_key_hook(MLX.mlx_win, &hook_key, info);
 	mlx_mouse_hook(MLX.mlx_win, &hook_mouse, info);
 	mlx_loop_hook(MLX.mlx, &hook_frame, info);
