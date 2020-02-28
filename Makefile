@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/25 17:01:41 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/02/25 20:16:42 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ SRCS			=	error/error\
 					renderer/ray_cast\
 					renderer/ray_cast_light\
 					renderer/look_at\
+					renderer/fix_normal\
 					obj_dist/obj_dist\
 					obj_dist/obj_dist_sphere\
 					obj_dist/obj_dist_plane\
@@ -146,7 +147,7 @@ UNAME_S			:=	$(shell uname -s)
 LAST_BONUS		:=	$(shell ls bonus 2> /dev/null)
 
 ifeq ($(UNAME_S),Linux)
-LIBS			+=	-Llib/libmlx -lmlx -lm -lX11 -lXext
+LIBS			+=	-Llib/libmlx -lmlx -lm -lX11 -lXext -lpthread
 INCLUDES		+=	-I lib/libmlx/X11
 FLAGS			+=	-DLINUX
 LIB_SRCS		+=	lib/libmlx/libmlx.a
