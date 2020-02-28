@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/28 11:50:47 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/28 15:18:47 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ bool	intersect_triangle(t_object *tr, t_ray ray, t_info *info)
 	pl.type = PL;
 	pl.location = tr->points[0];
 	tr_normal = normal(rayres_new(tr, vec_new(0, 0, 0), col_new(0, 0, 0)), info);
-	//fix_normal(TR, ray, &tr_normal);
 	if (float_compare(vec_dotp(tr_normal, ray.direction), 0))
 		return (false);
 	pl.orientation = tr_normal;

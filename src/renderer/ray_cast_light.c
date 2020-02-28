@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/25 20:18:19 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/28 13:27:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ static bool		light_obstructed(t_info *info, t_object *curr_obj, t_ray ray)
 **	@return {t_color}
 */
 
-static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_ray ray)
+static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres,
+					t_ray ray)
 {
 	t_vec3f		norm;
 	t_vec3f 	lightray_dir;
@@ -74,7 +75,8 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_r
 		return (col_new(0, 0, 0));
 	factor *= light->brightness;
 	factor /= 4 * M_PI * pow(vec_dist(light->location, rayres.p), 2);
-	return (col_multiply(col_mix_light(light->color, rayres.obj->color), fmin(factor, 1)));
+	return (col_multiply(col_mix_light(light->color, rayres.obj->color),
+				fmin(factor, 1)));
 }
 
 /*

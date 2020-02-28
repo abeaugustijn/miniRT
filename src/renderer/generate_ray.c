@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:43:01 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/25 17:16:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/28 15:17:31 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ t_ray	generate_ray(t_vec2i pixel, t_info *info)
 	else
 		ray.origin.y *= info->mapinfo.res.y / (double)info->mapinfo.res.x;
 	ray.direction = vec_from_to(cam_loc, ray.origin);
+	ray.origin = cam_loc;
 	return (ray);
 }
