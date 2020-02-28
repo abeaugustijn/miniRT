@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 18:51:43 by abe              ###   ########.fr       */
+/*   Updated: 2020/02/25 20:18:19 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,6 @@ static bool		light_obstructed(t_info *info, t_object *curr_obj, t_ray ray)
 }
 
 /*
-**	This fixes the normal vector for when the vector of 'flat' objects is
-**	calculated. This makes sure the normal always faces the camera.
-**
-**	@param {t_rayres} rayres
-**	@param {t_ray} ray
-**	@param {t_vec3f *} norm
-*/
-
-static void		ray_cast_light_fix_normal(t_rayres rayres, t_ray ray, t_vec3f *norm)
-{
-	if ((rayres.obj->type == TR ||
-			rayres.obj->type == PL ||
-			rayres.obj->type == DS)
-			&& vec_angle(*norm, ray.direction) < M_PI / 2)
-		*norm = vec_multiply(*norm, -1);
-}
-
-/*
 **	This calculates the amount of light a surface will reflect if only a
 **	single light was shining on it. It returns the resulting color of the
 **	light on the surface.
@@ -86,7 +68,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres, t_r
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
 	norm = normal(rayres, info);
-	ray_cast_light_fix_normal(rayres, ray, &norm);
+	fix_normal(rayres.obj->type, ray, &norm);
 	factor = vec_dotp(lightray_dir, norm);
 	if (factor < 0)
 		return (col_new(0, 0, 0));

@@ -1,6 +1,6 @@
 *.a
 *.o
-.ccls
+.ccls*
 subject.pdf
 lib*
 miniRT

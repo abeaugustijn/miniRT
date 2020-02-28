@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/25 17:38:57 by aaugusti         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   miniRT.h                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: aaugusti <marvin@42.fr>                      +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
+/*   Updated: 2020/02/28 11:56:01 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,7 @@ bool			intersect(t_object *obj, t_ray ray, t_info *info);
 t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 t_ray			generate_ray(t_vec2i pixel, t_info *info);
 void			resize(t_object *obj, bool increase, t_info *info);
+void			fix_normal(t_object_type obj_type, t_ray ray, t_vec3f *norm);
 
 t_color			*get_frame(t_info *info);
 void			*renderer_thread(void *param);
