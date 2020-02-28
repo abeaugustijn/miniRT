@@ -6,13 +6,33 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:36:49 by abe               #+#    #+#             */
-/*   Updated: 2020/02/25 15:19:08 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/02/28 15:35:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <liblist.h>
 #include <libft.h>
+#include <mlx.h>
+
+/*
+**	This is used to scale the resulotion down when it is too large for the
+**	physical display.
+**
+**	@param {t_info *} info
+*/
+
+static void	parse_resolution_check_res(t_info *info)
+{
+	int	x;
+	int	y;
+
+	mlx_get_screen_size(info->mlx_info.mlx, &x, &y);
+	if (info->mapinfo.res.x > x)
+		info->mapinfo.res.x = x;
+	if (info->mapinfo.res.y > y)
+		info->mapinfo.res.y = y;
+}
 
 /*
 **	Parse function for the resolution line.
@@ -36,4 +56,5 @@ void	parse_resolution(char **words, t_info *info)
 		print_error("Invalid resolution\n", info);
 	info->mapinfo.tot_pixels = info->mapinfo.res.x * info->mapinfo.res.y;
 	info->mapinfo.did_resolution = true;
+	parse_resolution_check_res(info);
 }
