@@ -6,12 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 16:39:34 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:14:23 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <liblist.h>
 #include <stdlib.h>
 #include <libft.h>
 
@@ -34,6 +33,6 @@ void			parse_light(char **words, t_info *info)
 	if (res.brightness < 0)
 		print_error("Invalid brightness for light\n", info);
 	res.color = parse_color(words[3], info);
-	if (vla_push(&info->parser_vlas.lights, &res, NULL))
+	if (vla_push(&info->lights, &res, NULL))
 		print_error("Allocation failed in 'parse_light'\n", info);
 }

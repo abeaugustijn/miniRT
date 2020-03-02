@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/02 16:10:29 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/02 22:24:27 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,14 +31,11 @@ SRCS			=	error/error\
 					helpers/parse_double\
 					helpers/parse_vec3f\
 					helpers/parse_color\
-					helpers/check_normalized\
 					helpers/tocolor\
 					helpers/rayres_inf\
 					helpers/rayres_new\
 					helpers/ray_new\
 					helpers/float_compare\
-					helpers/min\
-					helpers/max\
 					helpers/triangle_inside\
 					helpers/empty_object\
 					helpers/pixel_new\
@@ -54,9 +51,7 @@ SRCS			=	error/error\
 					vec/vec_from_to\
 					vec/vec_crossp\
 					vec/vec_rot\
-					vec/vec_multiply_vec\
-					vec/vec_total\
-					math/dist_line_point\
+					vec/vec_is_normal\
 					col/col_multiply\
 					col/col_new\
 					col/col_mix\
@@ -74,7 +69,6 @@ SRCS			=	error/error\
 					obj_dist/obj_dist_cylinder\
 					obj_dist/obj_dist_triangle\
 					obj_dist/obj_dist_disk\
-					free/free_list\
 					free/free_info\
 					free/free_string_arr\
 					normal/normal\

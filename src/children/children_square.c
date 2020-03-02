@@ -6,12 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 16:49:57 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:25:16 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <liblist.h>
 #include <math.h>
 
 /*
@@ -78,16 +77,16 @@ void		children_square_update(t_object *sq, t_info *info)
 
 void		children_square(t_object *sq, t_info *info)
 {
-	t_object	*added;
+	t_object	empty;
 	uint8_t	i;
 
+	empty = empty_object_type(TR);
+	empty.parent = sq;
 	i = 0;
 	while (i < 2)
 	{
-		if (vla_push(&info->parser_vlas.objects, empty_object_type(info, TR),
-					(void **)&added))
+		if (vla_push(&info->objects, &empty, NULL))
 			print_error("Allocation failed in 'children_square'", info);
-		added->parent = sq;
 		i++;
 	}
 	children_square_update(sq, info);

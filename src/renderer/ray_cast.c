@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/17 16:34:26 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 19:26:31 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,28 @@
 
 static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 {
-	t_list		*current;
+	t_object	*current;
 	t_object	*closest;
 	double		min_distance;
 	t_rayres	rayres;
 	t_rayres	rayres_closest;
+	size_t		i;
 
 	min_distance = INFINITY;
 	closest = NULL;
-	current = info->objects;
-	while (current)
+	i = 0;
+	while (!vla_get_addr(info->objects, i, (void **)&current))
 	{
-		if (((t_object *)current->content)->type == SQ)
-		{
-			current = current->next;
+		if (current->type == SQ)
 			continue;
-		}
-		rayres = obj_dist((t_object *)current->content, ray, info);
+		rayres = obj_dist(current, ray, info);
 		if (rayres.dist < min_distance)
 		{
-			closest = (t_object *)current->content;
+			closest = current;
 			min_distance = rayres.dist;
 			rayres_closest = rayres;
 		}
-		current = current->next;
+		i++;
 	}
 	if (!closest)
 		return (rayres_inf());

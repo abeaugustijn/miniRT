@@ -6,12 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 16:37:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:14:18 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <liblist.h>
 #include <stdlib.h>
 #include <libft.h>
 
@@ -54,6 +53,6 @@ void			parse_camera(char **words, t_info *info)
 	res.orientation = vec_normalize(parse_vec3f(words[2], info));
 	res.fov = check_fov(words[3], info);
 	cam_update(&res);
-	if(vla_push(&info->parser_vlas.cameras, &res, NULL))
+	if(vla_push(&info->cameras, &res, NULL))
 		print_error("Allocation failed in 'parse_camera'\n", info);
 }

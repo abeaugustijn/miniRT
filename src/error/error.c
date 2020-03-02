@@ -6,14 +6,13 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:30:12 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 22:34:23 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 22:21:43 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <libft.h>
 #include <stdlib.h>
-#include <liblist.h>
 
 /*
 **	Print out an error, free all information in the info struct and exit the
@@ -61,7 +60,7 @@ void	print_error_free(char *message, t_info *info, void *to_free,
 
 void	print_error_free_words(char *message, t_info *info, char **words)
 {
-	free_string_arr(words);
+	free_words(words);
 	print_error(message, info);
 }
 

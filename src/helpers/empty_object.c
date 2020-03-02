@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:27:55 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 14:34:40 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 19:35:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@
 **	@return {t_object *}
 */
 
-t_object	*empty_object(t_info *info)
+t_object	empty_object(void)
 {
-	t_object	*res;
+	t_object	res;
 
-	res = malloc(sizeof(t_object));
-	if (!res)
-		print_error("Allocation failed in 'empty_object'\n", info);
-	ft_bzero(res, sizeof(t_object));
+	ft_bzero(&res, sizeof(t_object));
 	return (res);
 }
 
@@ -41,14 +38,11 @@ t_object	*empty_object(t_info *info)
 **	@return {t_object *}
 */
 
-t_object	*empty_object_type(t_info *info, t_object_type type)
+t_object	empty_object_type(t_object_type type)
 {
-	t_object	*res;
+	t_object	res;
 
-	res = malloc(sizeof(t_object));
-	if (!res)
-		print_error("Allocation failed in 'empty_object'\n", info);
-	ft_bzero(res, sizeof(t_object));
-	res->type = type;
+	ft_bzero(&res, sizeof(t_object));
+	res.type = type;
 	return (res);
 }

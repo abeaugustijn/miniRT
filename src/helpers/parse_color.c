@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:36:36 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 22:26:47 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 22:21:52 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ t_color	parse_color(char *str, t_info *info)
 	res.r = parse_color_part(words[0], info);
 	res.g = parse_color_part(words[1], info);
 	res.b = parse_color_part(words[2], info);
-	free_string_arr(words);
+	free_words(words);
 	return (res);
 }

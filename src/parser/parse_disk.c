@@ -35,6 +35,6 @@ void	parse_disk(char **words, t_info *info)
 	res.orientation = vec_normalize(parse_vec3f(words[2], info));
 	res.size = parse_double(words[3]);
 	res.color = parse_color(words[4], info);
-	if (vla_push(&info->parser_vlas.objects, &res, NULL))
+	if (vla_push(&info->objects, &res, NULL))
 		print_error("Allocation failed in 'parse_disk'\n", info);
 }

@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:36:36 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 22:35:24 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 22:21:53 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ t_vec3f	parse_vec3f(char *str, t_info *info)
 				info, words);
 	res = vec_new(parse_double(words[0]), parse_double(words[1]),
 				parse_double(words[2]));
-	free_string_arr(words);
+	free_words(words);
 	return (res);
 }

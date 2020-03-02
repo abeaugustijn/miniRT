@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/02/28 13:27:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 21:53:37 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **	of the light will 'hit' the surface.
 **
 **	@param {t_info *} info
-**	@param {t_object *} curr_obj - the object on which the light shines. This
+**	@param {t_object *} reflect_obj - the object on which the light shines. This
 **		object should not be taken into account when checking for intersection
 **		with the lightray.
 **	@param {t_ray} ray - the lightray
@@ -27,17 +27,18 @@
 **	@return {bool} - true if obstructed
 */
 
-static bool		light_obstructed(t_info *info, t_object *curr_obj, t_ray ray)
+static bool		light_obstructed(t_info *info, t_object *reflect_obj, t_ray ray)
 {
-	t_list	*objects;
+	t_object	*current;
+	size_t		i;
 
-	objects = info->objects;
-	while (objects)
+	i = 0;
+	while (!vla_get_addr(info->objects, i, (void **)&current))
 	{
-		if (objects->content != curr_obj &&
-				intersect((t_object *)objects->content, ray, info))
+		if (current != reflect_obj &&
+				intersect(current, ray, info))
 			return (true);
-		objects = objects->next;
+		i++;
 	}
 	return (false);
 }
@@ -94,15 +95,16 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres,
 t_color				ray_cast_all_lights(t_info *info, t_rayres rayres, t_ray ray)
 {
 	t_color		res;
-	t_list		*lights;
+	t_light		*current;	
+	size_t		i;
 
 	res = col_multiply(info->mapinfo.ambient_color, info->mapinfo.ambient_ratio);
 	res = col_mix_light(rayres.obj->color, res);
-	lights = info->lights;
-	while (lights)
+	i = 0;
+	while (!vla_get_addr(info->lights, i, (void **)&current))
 	{
-		res = col_add_light(res, ray_cast_light(info, (t_light *)lights->content, rayres, ray));
-		lights = lights->next;
+		res = col_add_light(res, ray_cast_light(info, current, rayres, ray));
+		i++;
 	}
 	return (res);
 }

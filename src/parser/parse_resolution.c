@@ -6,12 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:36:49 by abe               #+#    #+#             */
-/*   Updated: 2020/02/28 15:35:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:15:39 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <liblist.h>
 #include <libft.h>
 #include <mlx.h>
 

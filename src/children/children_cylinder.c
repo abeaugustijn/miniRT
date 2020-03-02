@@ -6,12 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 16:46:01 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:12:55 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <liblist.h>
 #include <math.h>
 
 /*
@@ -27,7 +26,7 @@ void		children_cylinder_update(t_object *cy, t_info *info)
 	t_object	*children[2];
 
 	find_children(cy, children, info);
-	children[0]->orientation = cy->orientation;
+	children[0]->orientation = cy->orientation; // TODO: some of this only needs to be set once
 	children[1]->orientation = cy->orientation;
 	children[0]->size = cy->size;
 	children[1]->size = cy->size;
@@ -50,16 +49,16 @@ void		children_cylinder_update(t_object *cy, t_info *info)
 
 void		children_cylinder(t_object *cy, t_info *info)
 {
-	t_object	*added;
+	t_object	empty;
 	uint8_t	i;
 
+	empty = empty_object_type(DS);
+	empty.parent = cy;
 	i = 0;
 	while (i < 2)
 	{
-		if (vla_push(&info->parser_vlas.objects, empty_object_type(info, DS),
-					(void **)&added))
+		if (vla_push(&info->objects, &empty, NULL))
 			print_error("Allocation failed in 'children_cylinder'", info);
-		added->parent = cy;
 		i++;
 	}
 	children_cylinder_update(cy, info);

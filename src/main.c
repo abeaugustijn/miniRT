@@ -6,13 +6,12 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 19:23:08 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 14:32:49 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 22:14:01 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <libft.h>
-#include <liblist.h>
 #include <mlx.h>
 #include <stdlib.h>
 
@@ -31,11 +30,11 @@ int	main(int argc, char *argv[])
 			info.mapinfo.do_save = true;
 	}
 	parse_input(argv[1], &info);
-	info.current_cam = info.cameras->content;
+	vla_get_addr(info.cameras, 0, (void **)&info.current_cam);
 	if (info.mapinfo.do_save)
 	{
 		save_bmp(&info);
-		return (0);
+		exit_clean(&info);
 	}
 	if (init_mlx(&info))
 		print_error("Error opening window\n", &info);

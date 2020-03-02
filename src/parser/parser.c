@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 16:44:28 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:21:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <unistd.h>
 #include <get_next_line.h>
 #include <stdlib.h>
-#include <liblist.h>
 #include <libft.h>
 #include "parse_functions.h"
 
@@ -27,13 +26,10 @@
 
 static void	convert_vlas(t_info *info)
 {
-	if (vla_shrink(&info->parser_vlas.cameras) ||
-		vla_shrink(&info->parser_vlas.lights) ||
-		vla_shrink(&info->parser_vlas.objects))
+	if (vla_shrink(&info->cameras) ||
+		vla_shrink(&info->lights) ||
+		vla_shrink(&info->objects))
 		print_error("Allocation failed in 'convert_vlas'", info);
-	info->cameras = info->parser_vlas.cameras.vla;
-	info->lights = info->parser_vlas.lights.vla;
-	info->objects = info->parser_vlas.objects.vla;
 }
 
 /*
@@ -44,9 +40,9 @@ static void	convert_vlas(t_info *info)
 
 static void	init_vlas(t_info *info)
 {
-	if (vla_init(sizeof(t_camera), 20, &info->parser_vlas.cameras) ||
-			vla_init(sizeof(t_light), 20, &info->parser_vlas.lights) ||
-			vla_init(sizeof(t_object), 20,  &info->parser_vlas.objects))
+	if (vla_init(sizeof(t_camera), 20, &info->cameras) ||
+			vla_init(sizeof(t_light), 20, &info->lights) ||
+			vla_init(sizeof(t_object), 20,  &info->objects))
 		print_error("Allocation failed in 'init_vlas'", info);
 }
 
@@ -72,11 +68,10 @@ static bool	check_filename(char *filename)
 
 /*
 **	Parse a single line of the .rt file. Uses a jumptable called 'g_parsejump'
-**		to decide which function to call for every specifier.
+**	to decide which function to call for every specifier.
 **
 **	@param {char *} line
-**	@param {t_mapinfo *} mapinfo - to store the data
-**	@param {t_list *} objects - a pointer to a linked list to store the objects in
+**	@param {t_info *} info
 */
 
 static void	parse_line(char *line, t_info *info)
@@ -90,7 +85,7 @@ static void	parse_line(char *line, t_info *info)
 				info, words);
 	if (!words[0])
 	{
-		free_string_arr(words);
+		free_words(words);
 		return ;
 	}
 	i = 0;
@@ -99,7 +94,7 @@ static void	parse_line(char *line, t_info *info)
 		if (!ft_strcmp(words[0], g_parsejump[i].identifier))
 		{
 			g_parsejump[i].func(words, info);
-			free_string_arr(words);
+			free_words(words);
 			return ;
 		}
 		i++;
@@ -111,9 +106,7 @@ static void	parse_line(char *line, t_info *info)
 **	Parse a *.rt file for use as input for miniRT.
 **
 **	@param {char *} filename
-**	@param {t_mapinfo *} - a pointer to the mapinfo struct to store the parsed
-**		data in.
-**	@param {t_list *} objects - a pointer to a linked list to store the objects in
+**	@param {t_info *}
 */
 
 void		parse_input(char *filename, t_info *info)
@@ -137,7 +130,9 @@ void		parse_input(char *filename, t_info *info)
 	convert_vlas(info);
 	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
 		print_error("Invalid file. R and A have to be present\n", info);
-	if (!info->cameras || !info->lights)
-		print_error("At least one camera and light should be defined\n", info);
+	if (info->cameras.size == 0)
+		print_error("At least one camera should be defined\n", info);
+	if (info->lights.size == 0)
+		print_error("At least one light should be defined\n", info);
 	close(fd);
 }

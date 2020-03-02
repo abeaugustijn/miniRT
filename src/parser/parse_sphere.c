@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 16:40:52 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 18:23:15 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ void	parse_sphere(char **words, t_info *info)
 	if (res.size < 0)
 		print_error("Invalid diameter for sphere\n", info);
 	res.color = parse_color(words[3], info);
-	if (vla_push(&info->parser_vlas.objects, &res, NULL))
+	if (vla_push(&info->objects, &res, NULL))
 		print_error("Allocation failed in 'parse_sphere'\n", info);
 }

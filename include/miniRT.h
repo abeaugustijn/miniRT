@@ -6,14 +6,13 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/02 16:32:53 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:20:04 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 # include <stdint.h>
-# include <liblist.h>
 # include <libvla.h>
 # include <stdbool.h>
 
@@ -134,21 +133,15 @@ typedef struct	s_lightres {
 	t_light	*light;
 }				t_lightres;
 
-typedef struct	s_parser_vlas {
-	t_vla	objects;
-	t_vla	lights;
-	t_vla	cameras;
-}				t_parser_vlas;
-
 typedef struct	s_info {
 	t_mapinfo		mapinfo;
-	t_object		*objects;
-	t_camera		*cameras;
-	t_light			*lights;
+	t_vla			objects;
+	t_vla			cameras;
+	t_vla			lights;
 	t_mlxinfo		mlx_info;
 	t_camera		*current_cam;
+	size_t			current_cam_i;
 	t_object		*selected;
-	t_parser_vlas	parser_vlas;
 }				t_info;
 
 typedef struct	s_thread_info {
@@ -172,24 +165,20 @@ void			exit_clean(t_info *info);
 **	Helpers
 */
 
-void			free_string_arr(char **array);
+void			free_words(char **array);
 size_t			arrlen(char **array);
 bool			isdigit_string(char *string);
 double			parse_double(char *str);
 t_vec3f			parse_vec3f(char *str, t_info *info);
 t_color			parse_color(char *str, t_info *info);
-bool			check_normalized(t_vec3f vec);
 int				to_color(t_color color);
 t_rayres		rayres_inf(void);
 t_rayres		rayres_new(t_object *obj, t_vec3f p, t_color color);
 t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, t_color color, double dist);
 t_ray			ray_new(t_vec3f origin, t_vec3f direction);
 bool			float_compare(double a, double b);
-uint32_t		min(uint32_t a, uint32_t b);
-uint32_t		max(uint32_t a, uint32_t b);
-bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
-t_object		*empty_object(t_info *info);
-t_object		*empty_object_type(t_info *info, t_object_type type);
+t_object		empty_object(void);
+t_object		empty_object_type(t_object_type type);
 t_vec2i			pixel_new(int x, int y);
 
 /*
@@ -197,7 +186,6 @@ t_vec2i			pixel_new(int x, int y);
 */
 
 t_vec3f			vec_normalize(t_vec3f vec);
-void			ray_calc_dir(t_ray *ray, t_vec3f cam);
 t_vec3f			vec_new(double x, double y, double z);
 double			vec_len(t_vec3f vec);
 double			vec_dist(t_vec3f vec1, t_vec3f vec2);
@@ -211,9 +199,7 @@ t_vec3f			vec_crossp(t_vec3f a, t_vec3f b);
 t_vec3f			vec_rot_x(t_vec3f vec, double rad);
 t_vec3f			vec_rot_y(t_vec3f vec, double rad);
 t_vec3f			vec_rot_z(t_vec3f vec, double rad);
-t_vec3f			vec_multiply_vec(t_vec3f a, t_vec3f b);
-double			vec_total(t_vec3f vec);
-bool			point_line_closest(t_ray ray, t_vec3f c, t_vec3f *res);
+bool			vec_is_normal(t_vec3f vec);
 
 /*
 **	Colors
@@ -256,6 +242,7 @@ t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 t_ray			generate_ray(t_vec2i pixel, t_info *info);
 void			resize(t_object *obj, bool increase, t_info *info);
 void			fix_normal(t_object_type obj_type, t_ray ray, t_vec3f *norm);
+bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
 
 t_color			*get_frame(t_info *info);
 void			*renderer_thread(void *param);
@@ -266,7 +253,6 @@ void			cam_update(t_camera *cam);
 **	Free functions
 */
 
-void			free_list(t_list *to_free, void (*free_func)(void *));
 void			free_info(t_info *info);
 
 /*
@@ -279,12 +265,11 @@ void			children_square_update(t_object *sq, t_info *info);
 void			children_cylinder(t_object *cy, t_info *info);
 void			children_cylinder_update(t_object *cy, t_info *info);
 
-void			key(int keycode, t_info *info);
-
 /*
-**	Mouse
+**	I/O
 */
 
 void			select_object(t_vec2i pixel, t_info *info);
+void			key(int keycode, t_info *info);
 
 #endif

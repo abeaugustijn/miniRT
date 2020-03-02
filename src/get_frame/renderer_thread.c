@@ -6,12 +6,13 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 12:49:42 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/25 15:54:32 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:05:28 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <pthread.h>
+#include <stdlib.h>
 
 #define RES tinfo->info->mapinfo.res
 
@@ -39,5 +40,6 @@ void	*renderer_thread(void *param)
 			get_pixel((t_vec2i){i / RES.y, i % RES.y}, tinfo->info);
 		i += NCORES;
 	}
+	free(param);
 	pthread_exit(NULL);
 }
