@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 13:41:04 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 16:46:01 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ void		children_cylinder_update(t_object *cy, t_info *info)
 
 void		children_cylinder(t_object *cy, t_info *info)
 {
-	t_list	*added;
+	t_object	*added;
 	uint8_t	i;
 
 	i = 0;
 	while (i < 2)
 	{
-		added = lst_new_back(&(info->objects), empty_object_type(info, DS));
-		if (!added)
+		if (vla_push(&info->parser_vlas.objects, empty_object_type(info, DS),
+					(void **)&added))
 			print_error("Allocation failed in 'children_cylinder'", info);
-		((t_object *)added->content)->parent = cy;
+		added->parent = cy;
 		i++;
 	}
 	children_cylinder_update(cy, info);

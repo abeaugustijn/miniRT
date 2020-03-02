@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/02/25 20:16:42 by abe              ###   ########.fr        #
+#    Updated: 2020/03/02 16:10:29 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -134,11 +134,13 @@ TEST_OFILES		=	$(TESTS:%=src/tests/%.o)
 INCLUDES		=	-I include\
 					-I lib/libft\
 					-I lib/libgnl\
-					-I lib/liblist
+					-I lib/liblist\
+					-I lib/libvla\
 
 LIB_SRCS		=	lib/libft/libft.a\
 					lib/liblist/liblist.a\
-					lib/libgnl/libgnl.a
+					lib/libgnl/libgnl.a\
+					lib/libvla/libvla.a\
 
 FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O0
 
@@ -238,6 +240,7 @@ fclean: _clean
 	make fclean -C lib/liblist
 	make fclean -C lib/libft
 	make fclean -C lib/libgnl
+	make fclean -C lib/libvla
 	rm -f $(NAME)
 	rm -f bonus
 

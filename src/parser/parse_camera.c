@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/02/25 16:17:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 16:37:58 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,14 @@ static uint8_t	check_fov(char *str, t_info *info)
 
 void			parse_camera(char **words, t_info *info)
 {
-	t_camera	*res;
+	t_camera	res;
 
 	if (arrlen(words) != 4)
 		print_error("Error while parsing camera\n", info);
-	res = (t_camera *)malloc(sizeof(t_camera));
-	if (!res)
-		print_error("Allocation failed in 'parse_camera'\n", info);
-	res->location = parse_vec3f(words[1], info);
-	res->orientation = vec_normalize(parse_vec3f(words[2], info));
-	res->fov = check_fov(words[3], info);
-	cam_update(res);
-	if (!lst_new_back(&(info->cameras), res))
+	res.location = parse_vec3f(words[1], info);
+	res.orientation = vec_normalize(parse_vec3f(words[2], info));
+	res.fov = check_fov(words[3], info);
+	cam_update(&res);
+	if(vla_push(&info->parser_vlas.cameras, &res, NULL))
 		print_error("Allocation failed in 'parse_camera'\n", info);
 }

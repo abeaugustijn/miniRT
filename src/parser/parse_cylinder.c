@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 13:16:50 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 16:38:17 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,23 @@
 
 void	parse_cylinder(char **words, t_info *info)
 {
-	t_object	*res;
+	t_object	res;
+	t_object	*new_element;
 
 	if (arrlen(words) != 6)
 		print_error("Error while parsing cylinder\n", info);
-	res = (t_object *)malloc(sizeof(t_object));
-	if (!res)
+	ft_bzero(&res, sizeof(t_object));
+	res.type = CY;
+	res.location = parse_vec3f(words[1], info);
+	res.orientation = vec_normalize(parse_vec3f(words[2], info));
+	res.size = parse_double(words[3]);
+	if (res.size < 0)
+		print_error("Invalid diameter for cylinder\n", info);
+	res.height = parse_double(words[4]);
+	if (res.height < 0)
+		print_error("Invalid height for cylinder\n", info);
+	res.color = parse_color(words[5], info);
+	if (vla_push(&info->parser_vlas.objects, &res, (void **)&new_element))
 		print_error("Allocation failed in 'parse_cylinder'\n", info);
-	ft_bzero(res, sizeof(t_object));
-	res->type = CY;
-	res->location = parse_vec3f(words[1], info);
-	res->orientation = vec_normalize(parse_vec3f(words[2], info));
-	res->size = parse_double(words[3]);
-	if (res->size < 0)
-		print_error_free("Invalid diameter for cylinder\n", info, res, &free);
-	res->height = parse_double(words[4]);
-	if (res->height < 0)
-		print_error_free("Invalid height for cylinder\n", info, res, &free);
-	res->color = parse_color(words[5], info);
-	if (!lst_new_back(&(info->objects), res))
-		print_error("Allocation failed in 'parse_cylinder'\n", info);
-	children_cylinder(res, info);
+	children_cylinder(new_element, info);
 }

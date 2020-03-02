@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/02/24 23:06:24 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 16:44:28 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,37 @@
 #include <liblist.h>
 #include <libft.h>
 #include "parse_functions.h"
+
+/*
+**	Convert all VLAs to arrays.
+**
+**	@param {t_info *} info
+*/
+
+static void	convert_vlas(t_info *info)
+{
+	if (vla_shrink(&info->parser_vlas.cameras) ||
+		vla_shrink(&info->parser_vlas.lights) ||
+		vla_shrink(&info->parser_vlas.objects))
+		print_error("Allocation failed in 'convert_vlas'", info);
+	info->cameras = info->parser_vlas.cameras.vla;
+	info->lights = info->parser_vlas.lights.vla;
+	info->objects = info->parser_vlas.objects.vla;
+}
+
+/*
+**	Initialize all the VLAs for the parsing.
+**
+**	@param {t_info *} info
+*/
+
+static void	init_vlas(t_info *info)
+{
+	if (vla_init(sizeof(t_camera), 20, &info->parser_vlas.cameras) ||
+			vla_init(sizeof(t_light), 20, &info->parser_vlas.lights) ||
+			vla_init(sizeof(t_object), 20,  &info->parser_vlas.objects))
+		print_error("Allocation failed in 'init_vlas'", info);
+}
 
 /*
 **	Function to check whether the filename has the '*.rt' format.
@@ -95,6 +126,7 @@ void		parse_input(char *filename, t_info *info)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		print_error("Opening file went wrong\n", info);
+	init_vlas(info);
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (*line != '#')
@@ -102,6 +134,7 @@ void		parse_input(char *filename, t_info *info)
 		free(line);
 	}
 	free(line);
+	convert_vlas(info);
 	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
 		print_error("Invalid file. R and A have to be present\n", info);
 	if (!info->cameras || !info->lights)

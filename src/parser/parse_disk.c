@@ -25,19 +25,16 @@
 
 void	parse_disk(char **words, t_info *info)
 {
-	t_object	*res;
+	t_object	res;
 
 	if (arrlen(words) != 5)
 		print_error("Error while parsing plane\n", info);
-	res = (t_object *)malloc(sizeof(t_object));
-	if (!res)
-		print_error("Allocation failed in 'parse_disk'\n", info);
-	ft_bzero(res, sizeof(t_object));
-	res->type = DS;
-	res->location = parse_vec3f(words[1], info);
-	res->orientation = vec_normalize(parse_vec3f(words[2], info));
-	res->size = parse_double(words[3]);
-	res->color = parse_color(words[4], info);
-	if (!lst_new_back(&(info->objects), res))
+	ft_bzero(&res, sizeof(t_object));
+	res.type = DS;
+	res.location = parse_vec3f(words[1], info);
+	res.orientation = vec_normalize(parse_vec3f(words[2], info));
+	res.size = parse_double(words[3]);
+	res.color = parse_color(words[4], info);
+	if (vla_push(&info->parser_vlas.objects, &res, NULL))
 		print_error("Allocation failed in 'parse_disk'\n", info);
 }

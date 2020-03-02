@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/02/04 15:33:16 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 16:39:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,15 @@
 
 void	parse_plane(char **words, t_info *info)
 {
-	t_object	*res;
+	t_object	res;
 
 	if (arrlen(words) != 4)
 		print_error("Error while parsing plane\n", info);
-	res = (t_object *)malloc(sizeof(t_object));
-	if (!res)
-		print_error("Allocation failed in 'parse_plane'\n", info);
-	ft_bzero(res, sizeof(t_object));
-	res->type = PL;
-	res->location = parse_vec3f(words[1], info);
-	res->orientation = vec_normalize(parse_vec3f(words[2], info));
-	res->color = parse_color(words[3], info);
-	if (!lst_new_back(&(info->objects), res))
+	ft_bzero(&res, sizeof(t_object));
+	res.type = PL;
+	res.location = parse_vec3f(words[1], info);
+	res.orientation = vec_normalize(parse_vec3f(words[2], info));
+	res.color = parse_color(words[3], info);
+	if (vla_push(&info->parser_vlas.objects, &res, NULL))
 		print_error("Allocation failed in 'parse_plane'\n", info);
 }

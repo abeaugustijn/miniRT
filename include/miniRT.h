@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   miniRT.h                                           :+:    :+:            */
+/*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                     +:+                    */
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/02/28 11:56:01 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/03/02 16:32:53 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_H
 # include <stdint.h>
 # include <liblist.h>
+# include <libvla.h>
 # include <stdbool.h>
 
 # define WINDOW_TITLE "miniRT"
@@ -133,14 +134,21 @@ typedef struct	s_lightres {
 	t_light	*light;
 }				t_lightres;
 
+typedef struct	s_parser_vlas {
+	t_vla	objects;
+	t_vla	lights;
+	t_vla	cameras;
+}				t_parser_vlas;
+
 typedef struct	s_info {
-	t_mapinfo	mapinfo;
-	t_list		*objects;
-	t_list		*cameras;
-	t_list		*lights;
-	t_mlxinfo	mlx_info;
-	t_camera	*current_cam;
-	t_object	*selected;
+	t_mapinfo		mapinfo;
+	t_object		*objects;
+	t_camera		*cameras;
+	t_light			*lights;
+	t_mlxinfo		mlx_info;
+	t_camera		*current_cam;
+	t_object		*selected;
+	t_parser_vlas	parser_vlas;
 }				t_info;
 
 typedef struct	s_thread_info {
