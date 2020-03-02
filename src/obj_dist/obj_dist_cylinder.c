@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 13:37:25 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/02 10:33:46 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,8 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 	double	dist;
 	double	t_ray;
 
-	return (rayres_inf());
 	(void)info;
-	if (float_compare(vec_dotp(ray.direction, ray.direction), 0) ||
-			float_compare(vec_dotp(cy->orientation, cy->orientation), 0) ||
-			float_compare(pow(vec_dotp(ray.direction, cy->orientation), 2),
+	if (float_compare(pow(vec_dotp(ray.direction, cy->orientation), 2),
 				vec_dotp(ray.direction, ray.direction) * vec_dotp(cy->orientation, cy->orientation)))
 		return (rayres_inf());
 	ray_to_cy = vec_from_to(ray.origin, cy->location);

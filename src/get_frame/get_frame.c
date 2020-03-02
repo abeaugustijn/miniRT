@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 22:13:56 by abe               #+#    #+#             */
-/*   Updated: 2020/02/25 15:54:41 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/02 10:22:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #ifdef BONUS
 # include <pthread.h>
-# include <unistd.h>
 #endif
 
 #define RES info->mapinfo.res
