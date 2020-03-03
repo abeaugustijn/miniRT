@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/02 22:20:04 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/03 08:22:44 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ struct 			s_object {
 	double			height;
 	t_vec3f			orientation;
 	t_vec3f			points[3];
-	t_object		*parent;
+	bool			has_parent;
+	size_t			parent_i;
 };
 
 typedef struct	s_rayres {

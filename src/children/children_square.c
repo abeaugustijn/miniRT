@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 22:25:16 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/03 08:36:06 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,11 @@ void		children_square_update(t_object *sq, t_info *info)
 void		children_square(t_object *sq, t_info *info)
 {
 	t_object	empty;
-	uint8_t	i;
+	uint8_t		i;
 
 	empty = empty_object_type(TR);
-	empty.parent = sq;
+	empty.has_parent = true;
+	empty.parent_i = vla_get_index(info->objects, sq, NULL);
 	i = 0;
 	while (i < 2)
 	{

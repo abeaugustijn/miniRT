@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:42:56 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 18:43:02 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/03 08:36:48 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@
 void	find_children(t_object *ob, t_object **to_store, t_info *info)
 {
 	t_object	*current;
+	size_t		parent_i;
 	size_t		i;
 	size_t		array_i;	
 
 	i = 0;
 	array_i = 0;
+	parent_i = vla_get_index(info->objects, ob, NULL);
 	while (!vla_get_addr(info->objects, i, (void **)&current))
 	{
-		if (current->parent == ob)
+		if (current->has_parent && current->parent_i == parent_i)
 		{
 			to_store[array_i] = current;
 			array_i++;

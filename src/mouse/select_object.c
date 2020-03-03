@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:36:33 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/02 19:27:11 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/03 08:38:09 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ void	select_object(t_vec2i pixel, t_info *info)
 		{
 			closest_dist = rayres.dist;
 			closest = current;
-			if (closest->parent)
-				closest = closest->parent;
+			if (closest->has_parent)
+				vla_get_addr(info->objects, closest->parent_i,
+						(void **)&closest);
 		}
 		i++;
 	}
