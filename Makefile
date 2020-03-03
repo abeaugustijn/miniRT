@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/02 22:24:27 by abe              ###   ########.fr        #
+#    Updated: 2020/03/03 15:51:21 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,8 @@ SRCS			=	error/error\
 					vec/vec_crossp\
 					vec/vec_rot\
 					vec/vec_is_normal\
+					vec/vec_compare\
+					math/points_line_closest\
 					col/col_multiply\
 					col/col_new\
 					col/col_mix\
@@ -128,11 +130,9 @@ TEST_OFILES		=	$(TESTS:%=src/tests/%.o)
 INCLUDES		=	-I include\
 					-I lib/libft\
 					-I lib/libgnl\
-					-I lib/liblist\
 					-I lib/libvla\
 
 LIB_SRCS		=	lib/libft/libft.a\
-					lib/liblist/liblist.a\
 					lib/libgnl/libgnl.a\
 					lib/libvla/libvla.a\
 
@@ -231,7 +231,6 @@ clean: _clean
 
 fclean: _clean
 	make clean -C lib/libmlx
-	make fclean -C lib/liblist
 	make fclean -C lib/libft
 	make fclean -C lib/libgnl
 	make fclean -C lib/libvla

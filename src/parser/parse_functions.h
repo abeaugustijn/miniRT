@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:34:10 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 16:39:01 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/03 10:36:03 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #ifndef PARSE_FUNCTIONS_H
 # define PARSE_FUNCTIONS_H
 # include <miniRT.h>
-# include <liblist.h>
 
 typedef struct	s_parsefunc {
 	char	*identifier;

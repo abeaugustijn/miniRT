@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/18 18:04:59 by abe               #+#    #+#             */
-/*   Updated: 2020/02/11 11:00:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/03 15:22:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,24 @@ void	test_crossp()
 	assert(float_compare(res.z, -3));
 }
 
+void	test_points_line_closest()
+{
+	t_line 	a, b;
+	t_vec3f	closest[2];
+
+	a = ray_new(vec_new(0,0,0), vec_new(0,0,-1));
+	b = ray_new(vec_new(1,0,-1), vec_new(0,1,0));
+	points_line_closest(a, b, closest);
+	assert(vec_compare(closest[0], vec_new(0, 0, -1)));
+	assert(vec_compare(closest[1], vec_new(1, 0, -1)));
+	assert(float_compare(vec_dist(closest[0], closest[1]), 1));
+
+	a = ray_new(vec_new(-3,2,1), vec_normalize(vec_new(0,2,3)));
+	b = ray_new(vec_new(7,4,-2), vec_normalize(vec_new(-1,0,0)));
+	points_line_closest(a, b, closest);
+	assert(float_compare(vec_dist(closest[0], closest[1]), 3.32820117735));
+}
+
 	#include <stdio.h>
 
 int main()
@@ -80,4 +98,6 @@ int main()
 	test_parse_double();
 	printf("test_crossp()\n");
 	test_crossp();
+	printf("test_points_line_closest()\n");
+	test_points_line_closest();
 }

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/03 08:22:44 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/03 16:45:49 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@
 
 # define RESIZE_SPEED 1.2
 
+typedef struct	s_vec2f {
+	double	x;
+	double	y;
+}				t_vec2f;
+
 typedef struct	s_vec3f {
 	double	x;
 	double	y;
 	double	z;
 }				t_vec3f;
-
-typedef struct	s_vec2f {
-	double	x;
-	double	y;
-}				t_vec2f;
 
 typedef struct	s_vec2i {
 	uint16_t	x;
@@ -42,6 +42,8 @@ typedef struct	s_ray {
 	t_vec3f	origin;
 	t_vec3f direction;
 }				t_ray;
+
+typedef t_ray	t_line;
 
 typedef struct	s_color {
 	double r;
@@ -108,6 +110,7 @@ typedef struct	s_rayres {
 	t_vec3f		p;
 	t_color		color;
 	t_object	*obj;
+	t_vec3f		normal;
 }				t_rayres;
 
 typedef struct	s_dir_vecs {
@@ -175,7 +178,10 @@ t_color			parse_color(char *str, t_info *info);
 int				to_color(t_color color);
 t_rayres		rayres_inf(void);
 t_rayres		rayres_new(t_object *obj, t_vec3f p, t_color color);
-t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, t_color color, double dist);
+t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, t_color color,
+		double dist);
+t_rayres		rayres_new_normal(t_object *obj, t_vec3f p, t_color color,
+		double dist, t_vec3f normal);
 t_ray			ray_new(t_vec3f origin, t_vec3f direction);
 bool			float_compare(double a, double b);
 t_object		empty_object(void);
@@ -200,7 +206,11 @@ t_vec3f			vec_crossp(t_vec3f a, t_vec3f b);
 t_vec3f			vec_rot_x(t_vec3f vec, double rad);
 t_vec3f			vec_rot_y(t_vec3f vec, double rad);
 t_vec3f			vec_rot_z(t_vec3f vec, double rad);
+bool			vec_compare(t_vec3f a, t_vec3f b);
 bool			vec_is_normal(t_vec3f vec);
+
+void			points_line_closest(t_line line_a, t_line line_b,
+		double *results);
 
 /*
 **	Colors

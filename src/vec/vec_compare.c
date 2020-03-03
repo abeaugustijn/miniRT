@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   normal_cylinder.c                                  :+:      :+:    :+:   */
+/*   vec_compare.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 17:33:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/03 16:04:45 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/03 13:17:53 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/03 13:18:53 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 
-/*
-**	Get the normal vector for a plane.
-**
-**	@param {t_rayres} rayres
-**
-**	@return {t_vec3f}
-*/
-
-t_vec3f	normal_cylinder(t_rayres rayres, t_info *info)
+bool	vec_compare(t_vec3f a, t_vec3f b)
 {
-	(void)rayres;
-	(void)info;
-	return (rayres.normal);
+	return (float_compare(a.x, b.x) &&
+			float_compare(a.y, b.y) &&
+			float_compare(a.z, b.z));
 }
