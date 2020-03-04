@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/03 15:51:21 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/04 16:19:12 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS			=	error/error\
 					helpers/rayres_inf\
 					helpers/rayres_new\
 					helpers/ray_new\
+					helpers/ray_point\
 					helpers/float_compare\
 					helpers/triangle_inside\
 					helpers/empty_object\

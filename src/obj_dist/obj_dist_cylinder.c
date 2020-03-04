@@ -6,12 +6,37 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/03 16:19:02 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/04 17:24:44 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
+
+#define T_CY (closest[0])
+#define T_RAY (closest[1])
+#define P_CY (points[0])
+#define P_RAY (points[1])
+
+static double	find_x(t_object *cy, t_ray ray, double dist)
+{
+	double	dotp;
+	double	angle;
+	double	x_temp;
+	double	x;
+
+	dotp = vec_dotp(cy->orientation, ray.direction);
+	if (dotp < 0)
+		dotp *= -1.0;
+	angle = acos(dotp);
+	/*if (angle >= M_PI / 2)*/
+		/*angle -= M_PI / 2;*/
+	angle = M_PI / 2 - angle;
+	x_temp = cy->size / 2 / cos(angle);
+	x = sqrt(pow(cy->size / 2, 2) - pow(dist, 2)) / (cy->size / 2);
+	x *= x_temp;
+	return (x);
+}
 
 t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 {
@@ -22,18 +47,17 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 	t_vec3f		p;
 
 	(void)info;
-	if (float_compare(pow(vec_dotp(ray.direction, cy->orientation), 2),
-				vec_dotp(ray.direction, ray.direction) * vec_dotp(cy->orientation, cy->orientation)))
-		return (rayres_inf());
 	points_line_closest(ray_new(cy->location, cy->orientation), ray, closest);
-	if (closest[1] < 0)
+	if (T_RAY < 0)
 		return (rayres_inf());
-	points[0] = vec_add(cy->location, vec_multiply(cy->orientation, closest[0]));
-	points[1] = vec_add(ray.origin, vec_multiply(ray.direction, closest[1]));
-	dist = vec_dist(points[0], points[1]);
-	if (dist > cy->size / 2 || vec_dist(points[0], cy->location) > cy->height / 2)
+	P_CY = vec_add(cy->location, vec_multiply(cy->orientation, closest[0]));
+	P_RAY = ray_point(ray, T_RAY);
+	dist = vec_dist(P_CY, P_RAY);
+	if (dist > cy->size / 2 || vec_dist(P_CY, cy->location) > cy->height / 2)
 		return (rayres_inf());
-	x = sqrt(pow(cy->size / 2, 2) - pow(dist, 2));
-	p = vec_add(ray.origin, vec_multiply(ray.direction, closest[1] - x));
-	return (rayres_new_normal(cy, p, cy->color, closest[1] - x, vec_from_to(points[0], p)));
+	/*x = sqrt(pow(cy->size / 2, 2) - pow(dist, 2));*/
+	x = find_x(cy, ray, dist);
+	p = ray_point(ray, T_RAY - x);
+	return (rayres_new_normal(cy, p, cy->color, T_RAY - x,
+				vec_from_to(P_CY, p)));
 }
