@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 15:42:08 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/04 17:28:46 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/04 17:40:19 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_rayres		obj_dist_disk(t_object *ds, t_ray ray, t_info *info)
 	t_rayres	pl_res;
 	t_object	pl;
 
-	return (rayres_inf());
 	ft_bzero(&pl, sizeof(t_object));
 	pl.type = PL;
 	pl.location = ds->location;

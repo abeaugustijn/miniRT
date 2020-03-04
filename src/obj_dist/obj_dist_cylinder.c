@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/04 17:24:44 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/04 17:42:51 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define P_CY (points[0])
 #define P_RAY (points[1])
 
-static double	find_x(t_object *cy, t_ray ray, double dist)
+static double	find_x(t_object *cy, t_ray ray, double dist, double *delta)
 {
 	double	dotp;
 	double	angle;
@@ -35,6 +35,7 @@ static double	find_x(t_object *cy, t_ray ray, double dist)
 	x_temp = cy->size / 2 / cos(angle);
 	x = sqrt(pow(cy->size / 2, 2) - pow(dist, 2)) / (cy->size / 2);
 	x *= x_temp;
+	*delta = x * dotp;
 	return (x);
 }
 
@@ -43,6 +44,7 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 	double		dist;
 	double		closest[2];
 	double		x;
+	double		delta;
 	t_vec3f		points[2];
 	t_vec3f		p;
 
@@ -53,10 +55,9 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 	P_CY = vec_add(cy->location, vec_multiply(cy->orientation, closest[0]));
 	P_RAY = ray_point(ray, T_RAY);
 	dist = vec_dist(P_CY, P_RAY);
-	if (dist > cy->size / 2 || vec_dist(P_CY, cy->location) > cy->height / 2)
+	x = find_x(cy, ray, dist, &delta);
+	if (dist > cy->size / 2 || vec_dist(P_CY, cy->location) > cy->height / 2 + delta)
 		return (rayres_inf());
-	/*x = sqrt(pow(cy->size / 2, 2) - pow(dist, 2));*/
-	x = find_x(cy, ray, dist);
 	p = ray_point(ray, T_RAY - x);
 	return (rayres_new_normal(cy, p, cy->color, T_RAY - x,
 				vec_from_to(P_CY, p)));
