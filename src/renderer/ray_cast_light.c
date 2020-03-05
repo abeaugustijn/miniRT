@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/03/03 16:05:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/05 18:54:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 **	of the light will 'hit' the surface.
 **
 **	@param {t_info *} info
+**	@param {t_light *} light
 **	@param {t_object *} reflect_obj - the object on which the light shines. This
 **		object should not be taken into account when checking for intersection
 **		with the lightray.
@@ -27,16 +28,19 @@
 **	@return {bool} - true if obstructed
 */
 
-static bool		light_obstructed(t_info *info, t_object *reflect_obj, t_ray ray)
+static bool		light_obstructed(t_info *info, t_light *light,
+		t_object *reflect_obj, t_ray ray)
 {
 	t_object	*current;
+	double		dist;
 	size_t		i;
 
 	i = 0;
+	dist = vec_dist(ray.origin, light->location);
 	while (!vla_get_addr(info->objects, i, (void **)&current))
 	{
 		if (current != reflect_obj &&
-				intersect(current, ray, info))
+				intersect(current, ray, info) < dist)
 			return (true);
 		i++;
 	}
@@ -65,7 +69,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres,
 
 	if (float_compare(info->mapinfo.ambient_ratio, 1))
 		return (rayres.obj->color);
-	if (light_obstructed(info, rayres.obj,
+	if (light_obstructed(info, light, rayres.obj,
 				ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);

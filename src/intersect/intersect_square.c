@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:46:01 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/17 13:52:26 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/05 19:05:33 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 **	@param {t_ray} ray
 **	@param {t_info *} info
 **
-**	@return {bool} - true if intersect
+**	@return {double}
 */
 
-bool	intersect_square(t_object *sp, t_ray ray, t_info *info)
+double	intersect_square(t_object *sp, t_ray ray, t_info *info)
 {
 	(void)sp;
 	(void)ray;

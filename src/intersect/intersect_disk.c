@@ -22,23 +22,22 @@
 **	@param {t_ray} ray
 **	@param {t_info *} info
 **
-**	@return {bool} - true if intersect
+**	@return {double}
 */
 
-bool	intersect_disk(t_object *ds, t_ray ray, t_info *info)
+double	intersect_disk(t_object *ds, t_ray ray, t_info *info)
 {
 	t_rayres	pl_res;
 	t_object	pl;
 
-	(void) info;
 	ft_bzero(&pl, sizeof(t_object));
 	pl.type = PL;
 	pl.location = ds->location;
 	pl.orientation = ds->orientation;
 	pl_res = obj_dist(&pl, ray, info);
-	if (pl_res.dist >= INFINITY)
-		return (false);
+	if (pl_res.dist == INFINITY)
+		return (INFINITY);
 	if (vec_dist(pl_res.p, ds->location) > ds->size / 2)
-		return (false);
-	return (true);
+		return (INFINITY);
+	return (pl_res.dist);
 }
