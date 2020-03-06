@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/04 17:42:51 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 09:37:04 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,62 @@
 #define P_CY (points[0])
 #define P_RAY (points[1])
 
+/*
+**	Calculate the point on the cylinders axis which is closest to the hitpoint.
+**
+**	@param {t_object *cy}
+**	@param {t_vec3f} p - hitpoint
+**
+**	@return {t_vec3f}
+*/
+
+static t_vec3f	get_closest_p(t_object *cy, t_vec3f p)
+{
+	double	delta_s;
+
+	delta_s = vec_dotp(vec_sub(p, cy->location), cy->orientation) /
+		vec_dotp(cy->orientation, cy->orientation);
+	return(vec_add(cy->location, vec_multiply(cy->orientation, delta_s)));
+}
+
+/*
+**	Calculate the distance from P_RAY to the point where the ray actually
+**	hit the cylinder. Two factors will need to be calculated, x_angle and
+**	x_circle. Respectively, these represent the extra distance for the ray
+**	hitting the cylinder at an angle and the value accounting for the rounding
+**	of the cylinder. The delta value is also calculated in this function. This
+**	represents the 'extra height' the cylinder has because of a ray hitting
+**	it at an angle.
+**
+**	@param {t_object *} cy
+**	@param {t_ray} ray
+**	@param {double} dist - the distance from P_CY to P_RAY
+**	@param {double *} delta
+**
+**	@return {double} the length from P_CY to the hitpoint (in the direction of
+**		the ray)
+*/
+
 static double	find_x(t_object *cy, t_ray ray, double dist, double *delta)
 {
 	double	dotp;
 	double	angle;
-	double	x_temp;
-	double	x;
+	double	x_angle;
+	double	x_circle;
 
 	dotp = vec_dotp(cy->orientation, ray.direction);
 	if (dotp < 0)
 		dotp *= -1.0;
 	angle = acos(dotp);
-	/*if (angle >= M_PI / 2)*/
-		/*angle -= M_PI / 2;*/
 	angle = M_PI / 2 - angle;
-	x_temp = cy->size / 2 / cos(angle);
-	x = sqrt(pow(cy->size / 2, 2) - pow(dist, 2)) / (cy->size / 2);
-	x *= x_temp;
-	*delta = x * dotp;
-	return (x);
+	x_angle = cy->size / 2 / cos(angle);
+	x_circle = sqrt(pow(cy->size / 2, 2) - pow(dist, 2)) / (cy->size / 2);
+	x_circle *= x_angle;
+	*delta = x_circle * dotp;
+	return (x_circle);
 }
 
+//TODO: the 'inner' part of the cylinder
 t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 {
 	double		dist;
@@ -50,15 +85,16 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 
 	(void)info;
 	points_line_closest(ray_new(cy->location, cy->orientation), ray, closest);
-	if (T_RAY < 0)
-		return (rayres_inf());
 	P_CY = vec_add(cy->location, vec_multiply(cy->orientation, closest[0]));
 	P_RAY = ray_point(ray, T_RAY);
 	dist = vec_dist(P_CY, P_RAY);
 	x = find_x(cy, ray, dist, &delta);
-	if (dist > cy->size / 2 || vec_dist(P_CY, cy->location) > cy->height / 2 + delta)
+	if (dist > cy->size / 2 ||
+			vec_dist(P_CY, cy->location) > cy->height / 2 + delta)
+		return (rayres_inf());
+	if (x > T_RAY)
 		return (rayres_inf());
 	p = ray_point(ray, T_RAY - x);
 	return (rayres_new_normal(cy, p, cy->color, T_RAY - x,
-				vec_from_to(P_CY, p)));
+				vec_from_to(get_closest_p(cy, p), p)));
 }
