@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/06 10:02:34 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 11:37:49 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,5 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 	}
 	else
 		dist = T_RAY - x;
-	return (rayres_new_normal(cy, p, cy->color, dist,
-				vec_from_to(p_on_cy, p)));
+	return (rayres_new_normal(cy, p, dist,  vec_from_to(p_on_cy, p)));
 }

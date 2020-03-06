@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 15:42:08 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/04 17:40:19 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 11:35:02 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_rayres		obj_dist_disk(t_object *ds, t_ray ray, t_info *info)
 		return (rayres_inf());
 	if (vec_dist(pl_res.p, ds->location) > ds->size / 2)
 		return (rayres_inf());
-	return (rayres_new_dist(ds, pl_res.p, ds->color,
-				vec_dist(ray.origin, pl_res.p)));
+	return (rayres_new_dist(ds, pl_res.p, vec_dist(ray.origin, pl_res.p)));
 }
 

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/05 19:07:03 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 11:36:28 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ struct 			s_object {
 typedef struct	s_rayres {
 	double		dist;
 	t_vec3f		p;
-	t_color		color;
 	t_object	*obj;
 	t_vec3f		normal;
 }				t_rayres;
@@ -177,11 +176,10 @@ t_vec3f			parse_vec3f(char *str, t_info *info);
 t_color			parse_color(char *str, t_info *info);
 int				to_color(t_color color);
 t_rayres		rayres_inf(void);
-t_rayres		rayres_new(t_object *obj, t_vec3f p, t_color color);
-t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, t_color color,
-		double dist);
-t_rayres		rayres_new_normal(t_object *obj, t_vec3f p, t_color color,
-		double dist, t_vec3f normal);
+t_rayres		rayres_new(t_object *obj, t_vec3f p);
+t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, double dist);
+t_rayres		rayres_new_normal(t_object *obj, t_vec3f p,
+					double dist, t_vec3f normal);
 t_ray			ray_new(t_vec3f origin, t_vec3f direction);
 t_vec3f			ray_point(t_ray ray, double t);
 bool			float_compare(double a, double b);

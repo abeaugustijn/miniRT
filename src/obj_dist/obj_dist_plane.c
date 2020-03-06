@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 15:59:43 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/03 16:31:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 11:36:52 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ t_rayres		obj_dist_plane(t_object *pl, t_ray ray, t_info *info)
 	if (float_compare(vec_dotp(ray.direction, pl->orientation), 0))
 		return (rayres_inf());
 	return (rayres_new_dist(pl, vec_add(ray.origin,
-					vec_multiply(ray.direction, dist)), pl->color, dist));
+					vec_multiply(ray.direction, dist)), dist));
 }
 
