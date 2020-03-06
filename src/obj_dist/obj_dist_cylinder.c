@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:42:25 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/06 09:37:04 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 10:02:34 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static double	find_x(t_object *cy, t_ray ray, double dist, double *delta)
 	return (x_circle);
 }
 
-//TODO: the 'inner' part of the cylinder
 t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 {
 	double		dist;
@@ -82,6 +81,7 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 	double		delta;
 	t_vec3f		points[2];
 	t_vec3f		p;
+	t_vec3f		p_on_cy;
 
 	(void)info;
 	points_line_closest(ray_new(cy->location, cy->orientation), ray, closest);
@@ -95,6 +95,15 @@ t_rayres		obj_dist_cylinder(t_object *cy, t_ray ray, t_info *info)
 	if (x > T_RAY)
 		return (rayres_inf());
 	p = ray_point(ray, T_RAY - x);
-	return (rayres_new_normal(cy, p, cy->color, T_RAY - x,
-				vec_from_to(get_closest_p(cy, p), p)));
+	p_on_cy = get_closest_p(cy, p);
+	if (vec_len(vec_sub(cy->location, p_on_cy)) > cy->height / 2)
+	{
+		p = ray_point(ray, T_RAY + x);
+		p_on_cy = get_closest_p(cy, p);
+		dist = T_RAY + x;
+	}
+	else
+		dist = T_RAY - x;
+	return (rayres_new_normal(cy, p, cy->color, dist,
+				vec_from_to(p_on_cy, p)));
 }
