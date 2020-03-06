@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/04 16:19:12 by abe              ###   ########.fr        #
+#    Updated: 2020/03/06 11:18:10 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,10 +132,12 @@ INCLUDES		=	-I include\
 					-I lib/libft\
 					-I lib/libgnl\
 					-I lib/libvla\
+					-I lib/libftprintf\
 
 LIB_SRCS		=	lib/libft/libft.a\
 					lib/libgnl/libgnl.a\
 					lib/libvla/libvla.a\
+					lib/libftprintf/libftprintf.a\
 
 FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O0
 
@@ -235,6 +237,7 @@ fclean: _clean
 	make fclean -C lib/libft
 	make fclean -C lib/libgnl
 	make fclean -C lib/libvla
+	make fclean -C lib/libftprintf
 	rm -f $(NAME)
 	rm -f bonus
 
