@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/06 11:36:28 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 12:19:08 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define WINDOW_TITLE "miniRT"
 # define FILE_NAME "scene.bmp"
 # define MOVE_SPEED 1
+# define LIGHT_FACTOR (100)
 
 # define RESIZE_SPEED 1.2
 
