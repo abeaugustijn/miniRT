@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:37:30 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/06 15:08:07 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 16:36:32 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@
 
 void	key_rot_cam(int keycode, t_info *info)
 {
+	t_vec4f	quat;
+
 	info->mapinfo.rendered = false;
 	if (keycode == KEY_LEFT)
-		CAM->orientation = vec_normalize(vec_rot_y(CAM->orientation,
-					MOVE_SPEED / 10.0 * M_PI));
+		quat = quat_rot(CAM->orientation, CAM->dir_vecs.up,
+				MOVE_SPEED / 10.0 * M_PI);
 	else if (keycode == KEY_RIGHT)
-		CAM->orientation = vec_normalize(vec_rot_y(CAM->orientation,
-					-MOVE_SPEED / 10.0 * M_PI));
+		quat = quat_rot(CAM->orientation, CAM->dir_vecs.up,
+				-MOVE_SPEED / 10.0 * M_PI);
 	else
 		info->mapinfo.rendered = true;
-	if (!info->mapinfo.rendered)
-		cam_update(CAM);
+	if (info->mapinfo.rendered)
+		return ;
+	CAM->orientation = vec_multiply(quat_to_vec3(quat), 1);
+	cam_update(CAM);
 }

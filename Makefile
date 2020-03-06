@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/06 13:13:56 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/06 16:34:58 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,14 @@ SRCS			=	error/error\
 					get_frame/get_frame\
 					cam/cam_update\
 					init_mlx\
+					quat/quat_inverse\
+					quat/quat_len\
+					quat/quat_multiply\
+					quat/quat_new\
+					quat/quat_normalize\
+					quat/quat_rot\
+					quat/quat_rot_local\
+					quat/quat_to_vec3\
 					save_bmp\
 
 BONUS_SRCS		=	get_frame/renderer_thread\

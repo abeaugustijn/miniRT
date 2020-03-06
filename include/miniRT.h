@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/06 12:19:08 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 16:30:17 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ typedef struct	s_vec3f {
 	double	y;
 	double	z;
 }				t_vec3f;
+
+typedef struct	s_vec4f {
+	double	w;
+	double	x;
+	double	y;
+	double	z;
+}				t_vec4f;
 
 typedef struct	s_vec2i {
 	uint16_t	x;
@@ -211,6 +218,19 @@ bool			vec_is_normal(t_vec3f vec);
 
 void			points_line_closest(t_line line_a, t_line line_b,
 		double *results);
+
+/*
+**	Quaternians
+*/
+
+t_vec4f			quat_inverse(t_vec4f quat);
+double			quat_len(t_vec4f quat);
+t_vec4f			quat_multiply(t_vec4f a, t_vec4f b);
+t_vec4f			quat_new(double w, double x, double y, double z);
+t_vec4f			quat_normalize(t_vec4f quat);
+t_vec4f			quat_rot(t_vec3f orientation, t_vec3f rot_dir, double angle);
+t_vec4f			quat_rot_local(t_vec3f rot_dir, double angle);
+t_vec3f			quat_to_vec3(t_vec4f quat);
 
 /*
 **	Colors
