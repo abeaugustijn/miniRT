@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:46 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/28 15:38:26 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 13:13:45 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct	s_keyfunc {
 }				t_keyfunc;
 
 void	key_move_cam(int keycode, t_info *info);
+void	key_move_obj(int keycode, t_info *info);
 void	key_rot_cam(int keycode, t_info *info);
 void	key_exit(int keycode, t_info *info);
 void	key_cam_cycle(int keycode, t_info *info);
@@ -46,6 +47,12 @@ t_keyfunc	g_keyjump[] = {
 	{ KEY_MINUS, &key_resize },
 	{ KEY_PGUP, &key_resize_cylinder },
 	{ KEY_PGDN, &key_resize_cylinder },
+	{ KEY_OBJ_RIGHT, &key_move_obj },
+	{ KEY_OBJ_LEFT, &key_move_obj },
+	{ KEY_OBJ_UP, &key_move_obj },
+	{ KEY_OBJ_DOWN, &key_move_obj },
+	{ KEY_OBJ_FORWARD, &key_move_obj },
+	{ KEY_OBJ_BACK, &key_move_obj },
 	{ 0, NULL },
 };
 

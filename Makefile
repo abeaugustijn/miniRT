@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/06 11:18:10 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/06 13:13:56 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,7 @@ SRCS			=	error/error\
 					children/children_cylinder\
 					key/key_functions\
 					key/key_move_cam\
+					key/key_move_obj\
 					key/key_rot_cam\
 					key/key_exit\
 					key/key_cam_cycle\
