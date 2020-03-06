@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 22:13:56 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 22:05:16 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:03:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_color	*get_frame(t_info * info)
 
 	res = malloc(sizeof(t_color) * RES.x * RES.y);
 	if (!res)
-		print_error("Allocation failed in 'get_frame'\n", info);
+		print_error("Allocation failed in 'get_frame'", info);
 	x = 0;
 	while (x < RES.x)
 	{
@@ -63,13 +63,13 @@ t_color	*get_frame(t_info *info)
 
 	buf = malloc(sizeof(t_color) * RES.x * RES.y);
 	if (!buf)
-		print_error("Allocation failed in 'get_frame'\n", info);
+		print_error("Allocation failed in 'get_frame'", info);
 	i = 0;
 	while (i < NCORES)
 	{
 		tinfo[i] = thread_info_new(info, buf, i);
 		if (pthread_create(&threads[i], NULL, renderer_thread, tinfo[i]))
-			print_error_free("Failed to spawn thread in 'get_frame'\n",
+			print_error_free("Failed to spawn thread in 'get_frame'",
 					info, buf, free);
 		i++;
 	}
@@ -77,7 +77,7 @@ t_color	*get_frame(t_info *info)
 	while (i < NCORES)
 	{
 		if ((pthread_join(threads[i], NULL)))
-			print_error_free("pthread_join failed in 'get_frame'\n",
+			print_error_free("pthread_join failed in 'get_frame'",
 					info, buf, free);
 		i++;
 	}

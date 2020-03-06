@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:36:36 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 22:21:52 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:02:41 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static double	parse_color_part(char *part, t_info *info)
 
 	res = parse_double(part);
 	if (res < 0 || res > 255)
-		print_error("Invalid color value\n", info);
+		print_error("Invalid color value", info);
 	return (res);
 }
 
@@ -35,9 +35,9 @@ t_color	parse_color(char *str, t_info *info)
 
 	words = ft_split(str, ',');
 	if (!words)
-		print_error("Allocation failed in 'parse_color'\n", info);
+		print_error("Allocation failed in 'parse_color'", info);
 	if (arrlen(words) != 3)
-		print_error("Invalid amount of values in color vector\n", info);
+		print_error("Invalid amount of values in color vector", info);
 	res.r = parse_color_part(words[0], info);
 	res.g = parse_color_part(words[1], info);
 	res.b = parse_color_part(words[2], info);

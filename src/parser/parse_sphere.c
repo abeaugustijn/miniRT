@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 18:23:15 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:01:27 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	parse_sphere(char **words, t_info *info)
 	t_object	res;
 
 	if (arrlen(words) != 4)
-		print_error("Error while parsing sphere\n", info);
+		print_error("Error while parsing sphere", info);
 	ft_bzero(&res, sizeof(t_object));
 	res.type = SP;
 	res.location = parse_vec3f(words[1], info);
 	res.size = parse_double(words[2]);
 	if (res.size < 0)
-		print_error("Invalid diameter for sphere\n", info);
+		print_error("Invalid diameter for sphere", info);
 	res.color = parse_color(words[3], info);
 	if (vla_push(&info->objects, &res, NULL))
-		print_error("Allocation failed in 'parse_sphere'\n", info);
+		print_error("Allocation failed in 'parse_sphere'", info);
 }

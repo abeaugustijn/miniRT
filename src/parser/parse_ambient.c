@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:47:37 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 22:14:10 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:00:05 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 void	parse_ambient(char **words, t_info *info)
 {
 	if (arrlen(words) != 3)
-		print_error("Error while parsing ambient lighting\n", info);
+		print_error("Error while parsing ambient lighting", info);
 	if (info->mapinfo.did_ambient)
-		print_error("Invalid file. Ambient is specified multiple times.\n", info);
+		print_error("Invalid file. Ambient is specified multiple times.", info);
 	info->mapinfo.ambient_ratio = parse_double(words[1]);
 	info->mapinfo.ambient_color = parse_color(words[2], info);
 	info->mapinfo.did_ambient = true;

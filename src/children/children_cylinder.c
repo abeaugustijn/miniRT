@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/03 08:35:52 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:03:40 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		children_cylinder(t_object *cy, t_info *info)
 	while (i < 2)
 	{
 		if (vla_push(&info->objects, &empty, NULL))
-			print_error("Allocation failed in 'children_cylinder'\n", info);
+			print_error("Allocation failed in 'children_cylinder'", info);
 		i++;
 	}
 	children_cylinder_update(cy, info);

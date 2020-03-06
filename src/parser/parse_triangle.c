@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 18:23:06 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:01:48 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	parse_triangle(char **words, t_info *info)
 	t_object	res;
 
 	if (arrlen(words) != 5)
-		print_error("Error while parsing triangle\n", info);
+		print_error("Error while parsing triangle", info);
 	ft_bzero(&res, sizeof(t_object));
 	res.type = TR;
 	res.points[0] = parse_vec3f(words[1], info);
@@ -35,5 +35,5 @@ void	parse_triangle(char **words, t_info *info)
 	res.points[2] = parse_vec3f(words[3], info);
 	res.color = parse_color(words[4], info);
 	if (vla_push(&info->objects, &res, NULL))
-		print_error("Allocation failed in 'parse_triangle'\n", info);
+		print_error("Allocation failed in 'parse_triangle'", info);
 }

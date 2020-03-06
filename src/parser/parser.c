@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 22:21:50 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:02:28 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	parse_line(char *line, t_info *info)
 
 	words = ft_split(line, ' ');
 	if (words == NULL)
-		print_error_free_words("Memory allocation failed in parse_line\n",
+		print_error_free_words("Memory allocation failed in parse_line",
 				info, words);
 	if (!words[0])
 	{
@@ -99,7 +99,7 @@ static void	parse_line(char *line, t_info *info)
 		}
 		i++;
 	}
-	print_error_free_words("Invalid line\n", info, words);
+	print_error_free_words("Invalid line", info, words);
 }
 
 /*
@@ -129,10 +129,10 @@ void		parse_input(char *filename, t_info *info)
 	free(line);
 	convert_vlas(info);
 	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
-		print_error("Invalid file. R and A have to be present\n", info);
+		print_error("Invalid file. R and A have to be present", info);
 	if (info->cameras.size == 0)
-		print_error("At least one camera should be defined\n", info);
+		print_error("At least one camera should be defined", info);
 	if (info->lights.size == 0)
-		print_error("At least one light should be defined\n", info);
+		print_error("At least one light should be defined", info);
 	close(fd);
 }

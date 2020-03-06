@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/03/02 22:14:18 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 12:00:15 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static uint8_t	check_fov(char *str, t_info *info)
 
 	val = ft_atoi(str);
 	if (val < 0 || val > 180)
-		print_error("Error while parsing camera: invalid FOV\n", info);
+		print_error("Error while parsing camera: invalid FOV", info);
 	return ((uint8_t)val);
 }
 

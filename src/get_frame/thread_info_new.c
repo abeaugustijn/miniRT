@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 12:54:24 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/25 15:22:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 12:02:48 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_thread_info	*thread_info_new(t_info *info, t_color *buf, uint32_t start)
 
 	res = malloc(sizeof(t_thread_info));
 	if (!res)
-		print_error("Allocation failed in 'thread_info_new'\n", info);
+		print_error("Allocation failed in 'thread_info_new'", info);
 	res->info = info;
 	res->buf = buf;
 	res->start = start;
