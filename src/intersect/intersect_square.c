@@ -6,11 +6,12 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 15:46:01 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/05 19:05:33 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 08:52:29 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
+#include <math.h>
 
 /*
 **	Calculate whether a given ray intersects with a square. This is always
@@ -29,5 +30,5 @@ double	intersect_square(t_object *sp, t_ray ray, t_info *info)
 	(void)sp;
 	(void)ray;
 	(void)info;
-	return (false);
+	return (INFINITY);
 }
