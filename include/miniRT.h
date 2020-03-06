@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/06 16:30:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 17:44:36 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include <stdint.h>
 # include <libvla.h>
 # include <stdbool.h>
+
+# ifndef M_PI
+#  define M_PI 3.1415926535
+# endif
 
 # define WINDOW_TITLE "miniRT"
 # define FILE_NAME "scene.bmp"

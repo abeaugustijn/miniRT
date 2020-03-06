@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/03/06 15:08:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 17:39:08 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # ifdef LINUX
 #  define KEY_SPACE 32
 #  define KEY_A ((int)'a')
-#  define KEY_D ((int)'d'))
+#  define KEY_D ((int)'d')
 #  define KEY_H ((int)'h')
 #  define KEY_J ((int)'j')
 #  define KEY_K ((int)'k')
@@ -31,6 +31,17 @@
 #  define KEY_PGUP (65366)
 #  define KEY_PGDN (65365)
 #  define KEY_ESC (53)
+#  define KEY_NUM_1 (91)
+#  define KEY_NUM_2 (93)
+#  define KEY_NUM_3 (92)
+#  define KEY_NUM_4 (59)
+#  define KEY_NUM_5 (39)
+#  define KEY_NUM_6 (65293)
+#  define KEY_NUM_7 (46)
+#  define KEY_NUM_8 (47)
+#  define KEY_NUM_9 (65506)
+#  define KEY_NUM_PLUS (69)
+#  define KEY_NUM_MINUS (78)
 # else
 #  define KEY_SPACE (49)
 #  define KEY_A (0)
@@ -62,13 +73,11 @@
 #  define KEY_NUM_MINUS (78)
 # endif
 
-# ifndef LINUX
-#  define KEY_OBJ_RIGHT (KEY_NUM_6)
-#  define KEY_OBJ_LEFT (KEY_NUM_4)
-#  define KEY_OBJ_BACK (KEY_NUM_2)
-#  define KEY_OBJ_FORWARD (KEY_NUM_8)
-#  define KEY_OBJ_UP (KEY_NUM_PLUS)
-#  define KEY_OBJ_DOWN (KEY_NUM_MINUS)
-# endif
+# define KEY_OBJ_RIGHT (KEY_NUM_6)
+# define KEY_OBJ_LEFT (KEY_NUM_4)
+# define KEY_OBJ_BACK (KEY_NUM_2)
+# define KEY_OBJ_FORWARD (KEY_NUM_8)
+# define KEY_OBJ_UP (KEY_NUM_PLUS)
+# define KEY_OBJ_DOWN (KEY_NUM_MINUS)
 
 #endif
