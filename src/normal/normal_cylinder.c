@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 17:33:17 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/03 16:04:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/06 18:22:15 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ t_vec3f	normal_cylinder(t_rayres rayres, t_info *info)
 {
 	(void)rayres;
 	(void)info;
-	return (rayres.normal);
+	return (info->renderinfo.normal);
 }

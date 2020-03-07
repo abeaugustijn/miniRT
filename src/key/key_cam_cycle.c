@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:01:15 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/02 22:13:47 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 17:57:01 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void			key_cam_cycle(int keycode, t_info *info)
 
 	if (info->cameras.size == 1)
 		return ;
-	new_i = info->current_cam_i + (keycode == KEY_D ? 1 : -1);
+	new_i = info->current_cam_i + (keycode == KEY_E ? 1 : -1);
 	if (new_i == (int)info->cameras.size)
 		new_i = 0;
 	if (new_i < 0)

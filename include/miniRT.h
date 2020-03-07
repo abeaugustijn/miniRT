@@ -6,26 +6,25 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/06 17:44:36 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/07 16:31:05 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
-# include <stdint.h>
 # include <libvla.h>
 # include <stdbool.h>
+# include <stdint.h>
 
 # ifndef M_PI
-#  define M_PI 3.1415926535
+#  define M_PI 3.141592653589793238
 # endif
-
 # define WINDOW_TITLE "miniRT"
 # define FILE_NAME "scene.bmp"
-# define MOVE_SPEED 1
-# define LIGHT_FACTOR (100)
-
-# define RESIZE_SPEED 1.2
+# define MOVE_SPEED (1.0)
+# define LIGHT_FACTOR (100.0)
+# define RESIZE_SPEED (1.2)
+# define EPSILON (0.000001)
 
 typedef struct	s_vec2f {
 	double	x;
@@ -148,8 +147,14 @@ typedef struct	s_lightres {
 	t_light	*light;
 }				t_lightres;
 
+typedef struct	s_renderinfo {
+	bool	has_normal;
+	t_vec3f	normal;
+}				t_renderinfo;
+
 typedef struct	s_info {
 	t_mapinfo		mapinfo;
+	t_renderinfo	renderinfo;
 	t_vla			objects;
 	t_vla			cameras;
 	t_vla			lights;
@@ -276,7 +281,7 @@ double			intersect(t_object *obj, t_ray ray, t_info *info);
 t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 t_ray			generate_ray(t_vec2i pixel, t_info *info);
 void			resize(t_object *obj, bool increase, t_info *info);
-void			fix_normal(t_object_type obj_type, t_ray ray, t_vec3f *norm);
+void			fix_normal(t_vec3f ray_direction, t_vec3f *norm);
 bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
 
 t_color			*get_frame(t_info *info);
@@ -306,5 +311,11 @@ void			children_cylinder_update(t_object *cy, t_info *info);
 
 void			select_object(t_vec2i pixel, t_info *info);
 void			key(int keycode, t_info *info);
+
+/*
+**	Print
+*/
+
+void			print_vec3(char *name, t_vec3f vec);
 
 #endif

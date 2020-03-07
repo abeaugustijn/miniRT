@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:36:33 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/03 08:38:09 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/06 18:12:32 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	select_object(t_vec2i pixel, t_info *info)
 	t_ray		ray;
 	t_object	*closest;
 	t_object	*current;
-	t_rayres	rayres;
+	double		dist;
 	double		closest_dist;
 	size_t		i;
 
@@ -37,10 +37,10 @@ void	select_object(t_vec2i pixel, t_info *info)
 	i = 0;
 	while (!vla_get_addr(info->objects, i, (void **)&current))
 	{
-		rayres = obj_dist(current, ray, info);
-		if (rayres.dist < closest_dist)
+		dist = intersect(current, ray, info);
+		if (dist < closest_dist)
 		{
-			closest_dist = rayres.dist;
+			closest_dist = dist;
 			closest = current;
 			if (closest->has_parent)
 				vla_get_addr(info->objects, closest->parent_i,

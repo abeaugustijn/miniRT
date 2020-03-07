@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/05 19:01:14 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/07 15:32:50 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,5 @@ double	intersect_sphere(t_object *sp, t_ray ray, t_info *info)
 	if (y > sp->size / 2)
 		return (INFINITY);
 	x = sqrt(pow(sp->size / 2, 2) - pow(y, 2));
-	if (x > t)
-		return (INFINITY);
-	return (t - x);
+	return (fabs(t - x));
 }

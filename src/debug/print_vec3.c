@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   obj_dist.c                                         :+:      :+:    :+:   */
+/*   print_vec3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abe </var/spool/mail/abe>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/20 16:32:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/17 16:32:21 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/03/07 15:08:59 by abe               #+#    #+#             */
+/*   Updated: 2020/03/07 15:14:00 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include "obj_dist.h"
+#include <stdio.h>
 
-t_rayres	obj_dist(t_object *obj, t_ray ray, t_info *info)
+void	print_vec3(char *name, t_vec3f vec)
 {
-	if (obj->type == SQ) //TODO
-		return (rayres_inf());
-	return (g_objdistjump[obj->type](obj, ray, info));
+	printf("Vec3 %s: (%lf, %lf, %lf)\n", name, vec.x, vec.y, vec.z);
 }

@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 11:44:30 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/04 11:45:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/07 14:36:49 by abe              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ bool	float_compare(double a, double b)
 	abs = a - b;
 	if (abs < 0)
 		abs *= -1;
-	return (abs < 0.000001);
+	return (abs < EPSILON);
 }
 

@@ -27,17 +27,20 @@
 
 double	intersect_disk(t_object *ds, t_ray ray, t_info *info)
 {
-	t_rayres	pl_res;
+	double		t;
+	t_vec3f		p;
 	t_object	pl;
 
 	ft_bzero(&pl, sizeof(t_object));
 	pl.type = PL;
 	pl.location = ds->location;
 	pl.orientation = ds->orientation;
-	pl_res = obj_dist(&pl, ray, info);
-	if (pl_res.dist == INFINITY)
+	fix_normal(ray.direction, &pl.orientation);
+	t = intersect(&pl, ray, info);
+	if (t == INFINITY)
 		return (INFINITY);
-	if (vec_dist(pl_res.p, ds->location) > ds->size / 2)
+	p = ray_point(ray, t);
+	if (vec_dist(p, ds->location) > ds->size / 2)
 		return (INFINITY);
-	return (pl_res.dist);
+	return (t);
 }

@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/06 17:38:42 by abe              ###   ########.fr        #
+#    Updated: 2020/03/07 15:15:38 by abe              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS			=	error/error\
 					parser/parse_cylinder\
 					parser/parse_triangle\
 					parser/parse_disk\
+					debug/print_vec3\
 					helpers/arrlen\
 					helpers/isdigit_string\
 					helpers/parse_double\
@@ -66,12 +67,6 @@ SRCS			=	error/error\
 					renderer/ray_cast_light\
 					renderer/look_at\
 					renderer/fix_normal\
-					obj_dist/obj_dist\
-					obj_dist/obj_dist_sphere\
-					obj_dist/obj_dist_plane\
-					obj_dist/obj_dist_cylinder\
-					obj_dist/obj_dist_triangle\
-					obj_dist/obj_dist_disk\
 					free/free_info\
 					free/free_string_arr\
 					normal/normal\

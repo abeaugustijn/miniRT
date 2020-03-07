@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/03/05 18:54:50 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/07 16:26:51 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 */
 
 static bool		light_obstructed(t_info *info, t_light *light,
-		t_object *reflect_obj, t_ray ray)
+					t_object *reflect_obj, t_ray ray)
 {
 	t_object	*current;
 	double		dist;
@@ -39,10 +39,11 @@ static bool		light_obstructed(t_info *info, t_light *light,
 	dist = vec_dist(ray.origin, light->location);
 	while (!vla_get_addr(info->objects, i, (void **)&current))
 	{
-		if (current != reflect_obj &&
-				intersect(current, ray, info) < dist)
-			return (true);
 		i++;
+		if (current == reflect_obj)
+			continue;
+		if (intersect(current, ray, info) < dist)
+			return (true);
 	}
 	return (false);
 }
@@ -74,7 +75,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres,
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
 	norm = normal(rayres, info);
-	fix_normal(rayres.obj->type, ray, &norm);
+	(void)ray;
 	factor = vec_dotp(lightray_dir, norm);
 	if (factor < 0)
 		return (col_new(0, 0, 0));

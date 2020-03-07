@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/02 19:26:31 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/07 15:57:45 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 #include <math.h>
 #include <libft.h>
 
+	#include <assert.h>
+
 static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 {
 	t_object	*current;
 	t_object	*closest;
 	double		min_distance;
-	t_rayres	rayres;
-	t_rayres	rayres_closest;
+	double		dist;
 	size_t		i;
 
 	min_distance = INFINITY;
@@ -28,20 +29,20 @@ static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 	i = 0;
 	while (!vla_get_addr(info->objects, i, (void **)&current))
 	{
+		i++;
 		if (current->type == SQ)
 			continue;
-		rayres = obj_dist(current, ray, info);
-		if (rayres.dist < min_distance)
+		dist = intersect(current, ray, info);
+		if (dist < min_distance)
 		{
 			closest = current;
-			min_distance = rayres.dist;
-			rayres_closest = rayres;
+			min_distance = dist;
 		}
-		i++;
 	}
 	if (!closest)
 		return (rayres_inf());
-	return (rayres_closest);
+	assert(dist >= 0);
+	return (rayres_new_dist(closest, ray_point(ray, min_distance), min_distance));
 }
 
 t_color			ray_cast(t_info *info, t_ray ray)
