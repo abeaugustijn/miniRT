@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/09 12:00:14 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/09 15:50:21 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,30 @@ typedef struct	s_mapinfo {
 }				t_mapinfo;
 
 typedef enum	e_object_type {
-	SP,
-	PL,
-	SQ,
-	CY,
-	TR,
-	DS,
+	SP = 0,
+	PL = 1,
+	SQ = 2,
+	CY = 3,
+	TR = 4,
+	DS = 5,
 }				t_object_type;
 
+typedef enum	e_move_dir {
+	UP = 0,
+	DOWN = 1,
+	RIGHT = 2,
+	LEFT = 3,
+	FORWARD = 4,
+	BACK = 5,
+}				t_move_dir;
+
 typedef struct	s_object	t_object;
+
+typedef struct	s_dir_vecs {
+	t_vec3f	forward;
+	t_vec3f	right;
+	t_vec3f	up;
+}				t_dir_vecs;
 
 struct 			s_object {
 	t_object_type	type;
@@ -114,6 +129,7 @@ struct 			s_object {
 	t_vec3f			points[3];
 	bool			has_parent;
 	size_t			parent_i;
+	t_dir_vecs		dir_vecs;
 };
 
 typedef struct	s_rayres {
@@ -122,12 +138,6 @@ typedef struct	s_rayres {
 	t_object	*obj;
 	t_vec3f		normal;
 }				t_rayres;
-
-typedef struct	s_dir_vecs {
-	t_vec3f	forward;
-	t_vec3f	right;
-	t_vec3f	up;
-}				t_dir_vecs;
 
 typedef struct	s_camera {
 	t_vec3f		location;
@@ -273,22 +283,29 @@ int				hook_mouse(int button, int x, int y, t_info *info);
 */
 
 t_color			get_pixel(t_vec2i pixel, t_info *info);
-t_rayres		obj_dist(t_object *obj, t_ray ray, t_info *info);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			ray_cast_all_lights(t_info *info, t_rayres rayres, t_ray ray);
-bool			ifo_cam(t_vec3f p, t_camera *cam);
-t_vec3f			normal(t_rayres rayres, t_ray ray, t_info *info);
-double			intersect(t_object *obj, t_ray ray, t_info *info);
 t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 t_ray			generate_ray(t_vec2i pixel, t_info *info);
-void			resize(t_object *obj, bool increase, t_info *info);
+t_vec3f			move_get_dir(t_move_dir move_dir, t_dir_vecs dir_vecs);
 t_vec3f			fix_normal(t_vec3f ray_direction, t_vec3f normal);
+t_dir_vecs		fix_dir_vecs(t_vec3f cam_direction, t_dir_vecs dir_vecs);
+t_dir_vecs		get_dir_vecs(t_vec3f cam_dir);
 bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
 
 t_color			*get_frame(t_info *info);
 void			*renderer_thread(void *param);
 t_thread_info	*thread_info_new(t_info *info, t_color *buf, uint32_t start);
 void			cam_update(t_camera *cam);
+
+/*
+**	Object functions
+*/
+
+double			intersect(t_object *obj, t_ray ray, t_info *info);
+void			move(t_object *obj, t_move_dir move_dir, t_info *info);
+t_vec3f			normal(t_rayres rayres, t_ray ray, t_info *info);
+void			resize(t_object *obj, bool increase, t_info *info);
 
 /*
 **	Free functions

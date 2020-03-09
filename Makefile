@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/07 15:15:38 by abe              ###   ########.fr        #
+#    Updated: 2020/03/09 15:50:49 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,8 +67,18 @@ SRCS			=	error/error\
 					renderer/ray_cast_light\
 					renderer/look_at\
 					renderer/fix_normal\
+					renderer/fix_dir_vecs\
+					renderer/get_dir_vecs\
 					free/free_info\
 					free/free_string_arr\
+					move/move\
+					move/move_sphere\
+					move/move_plane\
+					move/move_square\
+					move/move_cylinder\
+					move/move_triangle\
+					move/move_disk\
+					move/move_get_cam_dir\
 					normal/normal\
 					normal/normal_sphere\
 					normal/normal_plane\

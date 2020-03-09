@@ -1,0 +1,25 @@
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_square.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/09 13:56:08 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/09 14:02:04 by aaugusti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <miniRT.h>
+
+void	move_triangle(t_object *tr, t_move_dir move_dir, t_info *info)
+{
+	t_vec3f	dir;
+
+	(void)info;
+	dir = move_get_dir(move_dir, tr->dir_vecs);
+	tr->points[0] = vec_add(tr->points[0], dir);
+	tr->points[1] = vec_add(tr->points[1], dir);
+	tr->points[2] = vec_add(tr->points[2], dir);
+}
