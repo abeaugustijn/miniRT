@@ -35,7 +35,6 @@ double	intersect_disk(t_object *ds, t_ray ray, t_info *info)
 	pl.type = PL;
 	pl.location = ds->location;
 	pl.orientation = ds->orientation;
-	fix_normal(ray.direction, &pl.orientation);
 	t = intersect(&pl, ray, info);
 	if (t == INFINITY)
 		return (INFINITY);

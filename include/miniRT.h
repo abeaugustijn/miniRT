@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/07 17:57:43 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/09 12:00:14 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ bool			float_compare(double a, double b);
 t_object		empty_object(void);
 t_object		empty_object_type(t_object_type type);
 t_vec2i			pixel_new(int x, int y);
+bool			is_other_side(t_vec3f normal, t_vec3f ray_direction);
 
 /*
 **	Maths
@@ -276,12 +277,12 @@ t_rayres		obj_dist(t_object *obj, t_ray ray, t_info *info);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			ray_cast_all_lights(t_info *info, t_rayres rayres, t_ray ray);
 bool			ifo_cam(t_vec3f p, t_camera *cam);
-t_vec3f			normal(t_rayres rayres, t_info *info);
+t_vec3f			normal(t_rayres rayres, t_ray ray, t_info *info);
 double			intersect(t_object *obj, t_ray ray, t_info *info);
 t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 t_ray			generate_ray(t_vec2i pixel, t_info *info);
 void			resize(t_object *obj, bool increase, t_info *info);
-void			fix_normal(t_vec3f ray_direction, t_vec3f *norm);
+t_vec3f			fix_normal(t_vec3f ray_direction, t_vec3f normal);
 bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
 
 t_color			*get_frame(t_info *info);

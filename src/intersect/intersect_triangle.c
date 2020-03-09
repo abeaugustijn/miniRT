@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/07 17:01:57 by aaugusti         ###   ########.fr       */
+/*   Created: 2020/02/07 11:49:01 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/09 13:06:40 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,16 @@
 double	intersect_triangle(t_object *tr, t_ray ray, t_info *info)
 {
 	double		t;
-	t_object	pl;
+	t_vec3f		norm;
 
-	ft_bzero(&pl, sizeof(t_object));
-	pl.type = PL;
-	pl.location = tr->points[0];
-	pl.orientation = normal(rayres_new(tr, vec_new(0, 0, 0)), info);
-	fix_normal(ray.direction, &pl.orientation);
-	if (float_compare(vec_dotp(pl.orientation, ray.direction), 0))
-		return (INFINITY);
-	t = intersect(&pl, ray, info);
+	norm = normal(rayres_new(tr, vec_new(0, 0, 0)), ray, info);
+	t = intersect(&(t_object){
+			.type = PL,
+			.location = tr->points[0],
+			.orientation = norm},
+		ray, info);
 	if (t == INFINITY)
 		return (INFINITY);
-	return (triangle_inside(tr, pl.orientation, ray_point(ray, t))
+	return (triangle_inside(tr, norm, ray_point(ray, t))
 			? t : INFINITY);
 }

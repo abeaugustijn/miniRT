@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/03/07 16:26:51 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/09 12:04:46 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres,
 				ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
-	norm = normal(rayres, info);
-	(void)ray;
+	norm = normal(rayres, ray, info);
 	factor = vec_dotp(lightray_dir, norm);
 	if (factor < 0)
 		return (col_new(0, 0, 0));
