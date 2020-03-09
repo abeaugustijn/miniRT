@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/03/07 15:30:31 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/09 11:22:19 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 #  define KEY_J ((int)'j')
 #  define KEY_K ((int)'k')
 #  define KEY_L ((int)'l')
+#  define KEY_Q ((int)'q')
 #  define KEY_S ((int)'s')
 #  define KEY_W ((int)'w')
-#  define KEY_Q ((int)'q')
 #  define KEY_UP (65362)
 #  define KEY_DOWN (65364)
 #  define KEY_LEFT (65361)
@@ -49,11 +49,14 @@
 #  define KEY_SPACE (49)
 #  define KEY_A (0)
 #  define KEY_D (2)
+#  define KEY_E (13)
 #  define KEY_H (4)
 #  define KEY_J (38)
 #  define KEY_K (40)
 #  define KEY_L (37)
 #  define KEY_Q (12)
+#  define KEY_S (1)
+#  define KEY_W (13)
 #  define KEY_UP (126)
 #  define KEY_DOWN (125)
 #  define KEY_LEFT (123)
