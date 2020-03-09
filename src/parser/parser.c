@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/03/06 12:02:28 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/07 17:53:20 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@
 #include <stdlib.h>
 #include <libft.h>
 #include "parse_functions.h"
+
+/*
+**	Replace all the tabs in the line with spaces.
+**
+**	@param {char *} line
+*/
+
+static void	replace_tabs(char *line)
+{
+	while (*line)
+	{
+		if (*line == '\t')
+			*line = ' ';
+		line++;
+	}
+}
 
 /*
 **	Convert all VLAs to arrays.
@@ -79,6 +95,7 @@ static void	parse_line(char *line, t_info *info)
 	char	**words;
 	uint8_t	i;
 
+	replace_tabs(line);
 	words = ft_split(line, ' ');
 	if (words == NULL)
 		print_error_free_words("Memory allocation failed in parse_line",

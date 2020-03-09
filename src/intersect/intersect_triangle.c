@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/07 16:46:08 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/07 17:01:57 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ double	intersect_triangle(t_object *tr, t_ray ray, t_info *info)
 	if (float_compare(vec_dotp(pl.orientation, ray.direction), 0))
 		return (INFINITY);
 	t = intersect(&pl, ray, info);
+	if (t == INFINITY)
+		return (INFINITY);
 	return (triangle_inside(tr, pl.orientation, ray_point(ray, t))
 			? t : INFINITY);
 }
