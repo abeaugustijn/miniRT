@@ -25,17 +25,19 @@
 **	@return {double}
 */
 
-double	intersect_disk(t_object *ds, t_ray ray, t_info *info)
+double	intersect_disk(t_object *ds, t_ray ray, t_vec3f *normal, t_info *info)
 {
 	double		t;
 	t_vec3f		p;
 	t_object	pl;
 
+	(void)normal;
+	return (INFINITY);
 	ft_bzero(&pl, sizeof(t_object));
 	pl.type = PL;
 	pl.location = ds->location;
 	pl.orientation = ds->orientation;
-	t = intersect(&pl, ray, info);
+	t = intersect(&pl, ray, NULL, info);
 	if (t == INFINITY)
 		return (INFINITY);
 	p = ray_point(ray, t);

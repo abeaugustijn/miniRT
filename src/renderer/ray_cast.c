@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/10 14:01:28 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 14:31:20 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,12 @@ static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 	double		min_distance;
 	double		dist;
 	size_t		i;
+	t_vec3f		normal;
+	t_vec3f		normal_closest;
 
 	min_distance = INFINITY;
+	normal = vec_new(0, 0, 0);
+	normal_closest = vec_new(0, 0, 0);
 	closest = NULL;
 	i = 0;
 	while (!vla_get_addr(info->objects, i, (void **)&current))
@@ -32,9 +36,11 @@ static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 		i++;
 		if (current->type == SQ)
 			continue;
-		dist = intersect(current, ray, info);
+		dist = intersect(current, ray, &normal, info);
 		if (dist < min_distance)
 		{
+			if (vec_is_normal(normal))
+				normal_closest = normal;
 			closest = current;
 			min_distance = dist;
 		}
@@ -42,8 +48,8 @@ static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 	if (!closest)
 		return (rayres_inf());
 	assert(dist >= 0);
-	return (rayres_new_dist(closest, ray_point(ray, min_distance),
-				min_distance));
+	return (rayres_new(closest, ray_point(ray, min_distance),
+				min_distance, normal_closest));
 }
 
 t_color			ray_cast(t_info *info, t_ray ray)

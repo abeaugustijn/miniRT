@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/10 12:08:47 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 15:22:45 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ typedef struct	s_rayres {
 	double		dist;
 	t_vec3f		p;
 	t_object	*obj;
+	t_vec3f		normal;
 }				t_rayres;
 
 typedef struct	s_camera {
@@ -158,14 +159,8 @@ typedef struct	s_lightres {
 	t_light	*light;
 }				t_lightres;
 
-typedef struct	s_renderinfo {
-	bool	has_normal;
-	t_vec3f	normal;
-}				t_renderinfo;
-
 typedef struct	s_info {
 	t_mapinfo		mapinfo;
-	t_renderinfo	renderinfo;
 	t_vla			objects;
 	t_vla			cameras;
 	t_vla			lights;
@@ -204,8 +199,7 @@ t_vec3f			parse_vec3f(char *str, t_info *info);
 t_color			parse_color(char *str, t_info *info);
 int				to_color(t_color color);
 t_rayres		rayres_inf(void);
-t_rayres		rayres_new(t_object *obj, t_vec3f p);
-t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, double dist);
+t_rayres		rayres_new(t_object *obj, t_vec3f p, double dist, t_vec3f normal);
 t_ray			ray_new(t_vec3f origin, t_vec3f direction);
 t_vec3f			ray_point(t_ray ray, double t);
 bool			float_compare(double a, double b);
@@ -301,7 +295,8 @@ void			cam_update(t_camera *cam);
 **	Object functions
 */
 
-double			intersect(t_object *obj, t_ray ray, t_info *info);
+double			intersect(t_object *obj, t_ray ray, t_vec3f *normal,
+					t_info *info);
 void			move(t_object *obj, t_move_dir move_dir, t_info *info);
 t_vec3f			normal(t_rayres rayres, t_ray ray, t_info *info);
 void			resize(t_object *obj, bool increase, t_info *info);

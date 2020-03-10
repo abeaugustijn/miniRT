@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/06 18:21:27 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/10 16:36:42 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,16 @@ static double	find_x(t_object *cy, t_ray ray, double dist, double *delta)
 	return (x_circle);
 }
 
-double		intersect_cylinder(t_object *cy, t_ray ray, t_info *info)
+double		intersect_cylinder(t_object *cy, t_ray ray, t_vec3f *normal,
+				t_info *info)
 {
-	double		dist;
 	double		closest[2];
-	double		x;
+	double		dist;
 	double		delta;
-	t_vec3f		points[2];
 	t_vec3f		p;
 	t_vec3f		p_on_cy;
+	t_vec3f		points[2];
+	double		x;
 
 	(void)info;
 	points_line_closest(ray_new(cy->location, cy->orientation), ray, closest);
@@ -89,22 +90,15 @@ double		intersect_cylinder(t_object *cy, t_ray ray, t_info *info)
 	P_RAY = ray_point(ray, T_RAY);
 	dist = vec_dist(P_CY, P_RAY);
 	x = find_x(cy, ray, dist, &delta);
+	if (T_RAY < -x)
+		return (INFINITY);
 	if (dist > cy->size / 2 ||
 			vec_dist(P_CY, cy->location) > cy->height / 2 + delta)
 		return (INFINITY);
-	if (x > T_RAY)
-		return (INFINITY);
-	p = ray_point(ray, T_RAY - x);
+	dist = ((x > T_RAY) ? x : -x) + T_RAY;
+	p = ray_point(ray, dist);
 	p_on_cy = get_closest_p(cy, p);
-	if (vec_len(vec_sub(cy->location, p_on_cy)) > cy->height / 2)
-	{
-		p = ray_point(ray, T_RAY + x);
-		p_on_cy = get_closest_p(cy, p);
-		dist = T_RAY + x;
-	}
-	else
-		dist = T_RAY - x;
-	info->renderinfo.has_normal = true;
-	info->renderinfo.normal = vec_from_to(p_on_cy, p);
+	if (normal)
+		*normal = vec_from_to(p_on_cy, p);
 	return (dist);
 }

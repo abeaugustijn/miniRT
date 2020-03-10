@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:53:42 by abe               #+#    #+#             */
-/*   Updated: 2020/03/09 12:06:31 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 14:35:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@
 **	@return {double}
 */
 
-double	intersect_plane(t_object *pl, t_ray ray, t_info *info)
+double	intersect_plane(t_object *pl, t_ray ray, t_vec3f *normal, t_info *info)
 {
 	double	t;
 
+	(void)normal;
 	(void)info;
 	t = vec_dotp(vec_sub(pl->location, ray.origin), pl->orientation) /
 		vec_dotp(ray.direction, pl->orientation);

@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 13:56:38 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 14:35:18 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		swap(double *a, double *b)
 **	@return {double}
 */
 
-double			intersect_sphere(t_object *sp, t_ray ray, t_info *info)
+double			intersect_sphere(t_object *sp, t_ray ray, t_vec3f *normal, t_info *info)
 {
 	t_vec3f	orig_to_sp;
 	double	tca;
@@ -41,6 +41,7 @@ double			intersect_sphere(t_object *sp, t_ray ray, t_info *info)
 	double	d2;
 	double	t[2];
 
+	(void)normal;
 	(void)info;
 	orig_to_sp = vec_sub(sp->location, ray.origin);
 	tca = vec_dotp(orig_to_sp, ray.direction);

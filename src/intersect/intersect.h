@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:55:17 by abe               #+#    #+#             */
-/*   Updated: 2020/03/09 13:34:30 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 14:33:13 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,20 @@
 # define INTERSECT_H
 # include <miniRT.h>
 
-double	intersect_plane(t_object *pl, t_ray ray, t_info *info);
-double	intersect_sphere(t_object *sp, t_ray ray, t_info *info);
-double	intersect_square(t_object *sp, t_ray ray, t_info *info);
-double	intersect_cylinder(t_object *cy, t_ray ray, t_info *info);
-double	intersect_triangle(t_object *tr, t_ray ray, t_info *info);
-double	intersect_disk(t_object *ds, t_ray ray, t_info *info);
+double	intersect_plane(t_object *pl, t_ray ray, t_vec3f *normal,
+		t_info *info);
+double	intersect_sphere(t_object *sp, t_ray ray, t_vec3f *normal,
+		t_info *info);
+double	intersect_square(t_object *sp, t_ray ray, t_vec3f *normal,
+		t_info *info);
+double	intersect_cylinder(t_object *cy, t_ray ray, t_vec3f *normal,
+		t_info *info);
+double	intersect_triangle(t_object *tr, t_ray ray, t_vec3f *normal,
+		t_info *info);
+double	intersect_disk(t_object *ds, t_ray ray, t_vec3f *normal,
+		t_info *info);
 
-double	(*g_intersectjump[])(t_object *, t_ray, t_info *) = {
+double	(*g_intersectjump[])(t_object *, t_ray, t_vec3f *, t_info *) = {
 	intersect_sphere,
 	intersect_plane,
 	intersect_square,

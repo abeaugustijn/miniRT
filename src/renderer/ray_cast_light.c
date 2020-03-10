@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/03/09 12:04:46 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 16:23:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static bool		light_obstructed(t_info *info, t_light *light,
 		i++;
 		if (current == reflect_obj)
 			continue;
-		if (intersect(current, ray, info) < dist)
+		if (intersect(current, ray, NULL, info) < dist)
 			return (true);
 	}
 	return (false);
@@ -74,7 +74,9 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres,
 				ray_new(rayres.p, vec_from_to(rayres.p, light->location))))
 		return (col_new(0, 0, 0));
 	lightray_dir = vec_from_to(rayres.p, light->location);
-	norm = normal(rayres, ray, info);
+	norm = vec_is_normal(rayres.normal) ?
+		fix_normal(ray.direction, rayres.normal) :
+		normal(rayres, ray, info);
 	factor = vec_dotp(lightray_dir, norm);
 	if (factor < 0)
 		return (col_new(0, 0, 0));

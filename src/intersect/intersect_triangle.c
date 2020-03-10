@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/09 13:06:40 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 14:36:31 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,20 @@
 **	@return {double}
 */
 
-double	intersect_triangle(t_object *tr, t_ray ray, t_info *info)
+double	intersect_triangle(t_object *tr, t_ray ray, t_vec3f *normal_ptr,
+		t_info *info)
 {
 	double		t;
 	t_vec3f		norm;
 
-	norm = normal(rayres_new(tr, vec_new(0, 0, 0)), ray, info);
+	(void)normal_ptr;
+	norm = normal(rayres_new(tr, vec_new(0, 0, 0), 0, vec_new(0, 0, 0)),
+			ray, info);
 	t = intersect(&(t_object){
 			.type = PL,
 			.location = tr->points[0],
 			.orientation = norm},
-		ray, info);
+		ray, NULL, info);
 	if (t == INFINITY)
 		return (INFINITY);
 	return (triangle_inside(tr, norm, ray_point(ray, t))
