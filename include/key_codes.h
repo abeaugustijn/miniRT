@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 09:28:57 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 11:43:36 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@
 #  define KEY_OBJ_UP (KEY_NUM_3)
 #  define KEY_OBJ_DOWN (KEY_NUM_9)
 # else
-#  define KEY_OBJ_UP (KEY_NUM_MINUS)
-#  define KEY_OBJ_DOWN (KEY_NUM_PLUS)
+#  define KEY_OBJ_UP (KEY_NUM_PLUS)
+#  define KEY_OBJ_DOWN (KEY_NUM_MINUS)
 # endif
 
 #endif
