@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/03/07 17:53:20 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 16:43:00 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,11 +139,14 @@ void		parse_input(char *filename, t_info *info)
 	init_vlas(info);
 	while (get_next_line(fd, &line) == 1)
 	{
+		info->current_line = line;
 		if (*line != '#')
 			parse_line(line, info);
 		free(line);
+		info->current_line = NULL;
 	}
 	free(line);
+	info->current_line = NULL;
 	convert_vlas(info);
 	if (!info->mapinfo.did_ambient || !info->mapinfo.did_resolution)
 		print_error("Invalid file. R and A have to be present", info);

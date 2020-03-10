@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/10 15:22:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 16:42:25 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ typedef struct	s_info {
 	t_camera		*current_cam;
 	size_t			current_cam_i;
 	t_object		*selected;
+	char			*current_line;
 }				t_info;
 
 typedef struct	s_thread_info {
