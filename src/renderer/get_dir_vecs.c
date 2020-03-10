@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 15:25:40 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/10 10:14:08 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 11:58:11 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ t_dir_vecs	get_dir_vecs(t_vec3f cam_dir)
 	res.forward = get_axis(cam_dir);
 	if (vec_angle(res.forward, cam_dir) < M_PI_2)
 		res.forward = vec_multiply(res.forward, -1);
-	if (float_compare(res.forward.y, 1))
+	if (float_compare(fabs(res.forward.y), 1))
 	{
-		res.right = vec_new(1, 0, 0);
-		res.up = vec_new(0, 0, -1);
+		res.right = vec_new((res.forward.y > 0) ? 1 : -1, 0, 0);
+		res.up = vec_new(0, 0, (res.forward.y > 0) ? -1 : 1);
 	}
 	else
 	{
