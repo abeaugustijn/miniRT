@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 16:36:42 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 17:15:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ static double	find_x(t_object *cy, t_ray ray, double dist, double *delta)
 	return (x_circle);
 }
 
+static void	fix_look_in(t_object *cy, double *dist, t_vec3f *p,
+		t_vec3f *p_on_cy, t_ray ray)
+{
+	if (vec_dist(cy->location, *p_on_cy) <= cy->height / 2)
+		return ;
+	*dist *= -1;
+	*p = ray_point(ray, *dist);
+	*p_on_cy = get_closest_p(cy, *p);
+}
+
 double		intersect_cylinder(t_object *cy, t_ray ray, t_vec3f *normal,
 				t_info *info)
 {
@@ -90,14 +100,14 @@ double		intersect_cylinder(t_object *cy, t_ray ray, t_vec3f *normal,
 	P_RAY = ray_point(ray, T_RAY);
 	dist = vec_dist(P_CY, P_RAY);
 	x = find_x(cy, ray, dist, &delta);
-	if (T_RAY < -x)
-		return (INFINITY);
-	if (dist > cy->size / 2 ||
-			vec_dist(P_CY, cy->location) > cy->height / 2 + delta)
+	if (T_RAY < -x ||
+			dist > cy->size / 2 ||
+			fabs(T_CY) > cy->height / 2 + delta)
 		return (INFINITY);
 	dist = ((x > T_RAY) ? x : -x) + T_RAY;
 	p = ray_point(ray, dist);
 	p_on_cy = get_closest_p(cy, p);
+	fix_look_in(cy, &dist, &p, &p_on_cy, ray);
 	if (normal)
 		*normal = vec_from_to(p_on_cy, p);
 	return (dist);

@@ -32,7 +32,6 @@ double	intersect_disk(t_object *ds, t_ray ray, t_vec3f *normal, t_info *info)
 	t_object	pl;
 
 	(void)normal;
-	return (INFINITY);
 	ft_bzero(&pl, sizeof(t_object));
 	pl.type = PL;
 	pl.location = ds->location;
