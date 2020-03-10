@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/07 15:57:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 14:01:28 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 	if (!closest)
 		return (rayres_inf());
 	assert(dist >= 0);
-	return (rayres_new_dist(closest, ray_point(ray, min_distance), min_distance));
+	return (rayres_new_dist(closest, ray_point(ray, min_distance),
+				min_distance));
 }
 
 t_color			ray_cast(t_info *info, t_ray ray)

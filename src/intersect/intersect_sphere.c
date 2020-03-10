@@ -6,12 +6,22 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/07 15:32:50 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/10 13:56:38 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include <math.h>
+#include <libft.h>
+
+static void		swap(double *a, double *b)
+{
+	double	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
 
 /*
 **	Calculate whether a given ray intersects with a sphere.
@@ -23,21 +33,30 @@
 **	@return {double}
 */
 
-double	intersect_sphere(t_object *sp, t_ray ray, t_info *info)
+double			intersect_sphere(t_object *sp, t_ray ray, t_info *info)
 {
-	double	t;
-	double	x;
-	double	y;
-	t_vec3f	p;
+	t_vec3f	orig_to_sp;
+	double	tca;
+	double	thc;
+	double	d2;
+	double	t[2];
 
 	(void)info;
-	t = vec_dotp(vec_sub(sp->location, ray.origin), ray.direction);
-	if (t < 0)
+	orig_to_sp = vec_sub(sp->location, ray.origin);
+	tca = vec_dotp(orig_to_sp, ray.direction);
+	d2 = vec_dotp(orig_to_sp, orig_to_sp) - pow(tca, 2);
+	if (d2 > sp->size / 2)
 		return (INFINITY);
-	p = vec_add(ray.origin, vec_multiply(ray.direction, t));
-	y = vec_len(vec_sub(sp->location, p));
-	if (y > sp->size / 2)
-		return (INFINITY);
-	x = sqrt(pow(sp->size / 2, 2) - pow(y, 2));
-	return (fabs(t - x));
+	thc = sqrt(sp->size / 2 - d2);
+	t[0] = tca - thc;
+	t[1] = tca + thc;
+	if (t[0] > t[1])
+		swap(&t[0], &t[1]);
+	if (t[0] < 0)
+	{
+		t[0] = t[1];
+		if (t[0] < 0)
+			return (INFINITY);
+	}
+	return (t[0]);
 }

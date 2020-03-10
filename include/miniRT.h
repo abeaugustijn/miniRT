@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/10 09:21:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 12:08:47 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,13 @@ typedef enum	e_move_dir {
 	BACK = 5,
 }				t_move_dir;
 
-typedef struct	s_object	t_object;
-
 typedef struct	s_dir_vecs {
 	t_vec3f	forward;
 	t_vec3f	right;
 	t_vec3f	up;
 }				t_dir_vecs;
+
+typedef struct	s_object	t_object;
 
 struct 			s_object {
 	t_object_type	type;
@@ -138,7 +138,6 @@ typedef struct	s_rayres {
 	double		dist;
 	t_vec3f		p;
 	t_object	*obj;
-	t_vec3f		normal;
 }				t_rayres;
 
 typedef struct	s_camera {
@@ -207,8 +206,6 @@ int				to_color(t_color color);
 t_rayres		rayres_inf(void);
 t_rayres		rayres_new(t_object *obj, t_vec3f p);
 t_rayres		rayres_new_dist(t_object *obj, t_vec3f p, double dist);
-t_rayres		rayres_new_normal(t_object *obj, t_vec3f p,
-					double dist, t_vec3f normal);
 t_ray			ray_new(t_vec3f origin, t_vec3f direction);
 t_vec3f			ray_point(t_ray ray, double t);
 bool			float_compare(double a, double b);
