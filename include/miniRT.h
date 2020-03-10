@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/09 15:50:21 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 09:21:58 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include <stdint.h>
 
 # ifndef M_PI
-#  define M_PI 3.141592653589793238
+#  define M_PI (3.141592653589793238)
+# endif
+# ifndef M_PI_2
+#  define M_PI_2 (M_PI / 2)
 # endif
 # define WINDOW_TITLE "miniRT"
 # define FILE_NAME "scene.bmp"
@@ -129,7 +132,6 @@ struct 			s_object {
 	t_vec3f			points[3];
 	bool			has_parent;
 	size_t			parent_i;
-	t_dir_vecs		dir_vecs;
 };
 
 typedef struct	s_rayres {

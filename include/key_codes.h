@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/03/09 11:22:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 09:28:57 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 #  define KEY_RIGHT (65363)
 #  define KEY_PLUS (61)
 #  define KEY_MINUS (45)
-#  define KEY_PGUP (65366)
-#  define KEY_PGDN (65365)
+#  define KEY_PGUP (65365)
+#  define KEY_PGDN (65366)
 #  define KEY_ESC (65307)
 #  define KEY_NUM_1 (46)
 #  define KEY_NUM_2 (47)
@@ -84,11 +84,11 @@
 # define KEY_OBJ_BACK (KEY_NUM_2)
 # define KEY_OBJ_FORWARD (KEY_NUM_8)
 # ifdef LINUX
-#  define KEY_OBJ_UP (KEY_NUM_9)
-#  define KEY_OBJ_DOWN (KEY_NUM_3)
+#  define KEY_OBJ_UP (KEY_NUM_3)
+#  define KEY_OBJ_DOWN (KEY_NUM_9)
 # else
-#  define KEY_OBJ_UP (KEY_NUM_PLUS)
-#  define KEY_OBJ_DOWN (KEY_NUM_MINUS)
+#  define KEY_OBJ_UP (KEY_NUM_MINUS)
+#  define KEY_OBJ_DOWN (KEY_NUM_PLUS)
 # endif
 
 #endif
