@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 17:15:23 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 20:52:24 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static t_vec3f	get_closest_p(t_object *cy, t_vec3f p)
 
 static double	find_x(t_object *cy, t_ray ray, double dist, double *delta)
 {
-	double	dotp;
 	double	angle;
+	double	dotp;
 	double	x_angle;
 	double	x_circle;
 
@@ -73,18 +73,23 @@ static double	find_x(t_object *cy, t_ray ray, double dist, double *delta)
 	return (x_circle);
 }
 
-static void	fix_look_in(t_object *cy, double *dist, t_vec3f *p,
-		t_vec3f *p_on_cy, t_ray ray)
+static bool		look_in(t_object *cy, double *dist, t_vec3f *p,
+		t_vec3f *p_on_cy, t_ray ray, double *closest)
 {
-	if (vec_dist(cy->location, *p_on_cy) <= cy->height / 2)
-		return ;
+	if (vec_dist(cy->location, *p_on_cy) < cy->height / 2)
+		return(false);
 	*dist *= -1;
-	*p = ray_point(ray, *dist);
+	*p = ray_point(ray, *dist + T_RAY);
 	*p_on_cy = get_closest_p(cy, *p);
+	if (vec_dist(cy->location, *p_on_cy) > cy->height / 2)
+		return(true);
+	return (false);
 }
 
-double		intersect_cylinder(t_object *cy, t_ray ray, t_vec3f *normal,
-				t_info *info)
+	#include <assert.h>
+
+double			intersect_cylinder(t_object *cy, t_ray ray, t_vec3f *normal,
+					t_info *info)
 {
 	double		closest[2];
 	double		dist;
@@ -104,11 +109,14 @@ double		intersect_cylinder(t_object *cy, t_ray ray, t_vec3f *normal,
 			dist > cy->size / 2 ||
 			fabs(T_CY) > cy->height / 2 + delta)
 		return (INFINITY);
-	dist = ((x > T_RAY) ? x : -x) + T_RAY;
-	p = ray_point(ray, dist);
+	dist = (x > T_RAY) ? x : -x;
+	p = ray_point(ray, dist + T_RAY);
 	p_on_cy = get_closest_p(cy, p);
-	fix_look_in(cy, &dist, &p, &p_on_cy, ray);
+	if (look_in(cy, &dist, &p, &p_on_cy, ray, closest))
+		return (INFINITY);
 	if (normal)
 		*normal = vec_from_to(p_on_cy, p);
-	return (dist);
+	assert(vec_dist(p_on_cy, cy->location) <= cy->height / 2);
+	assert(vec_dist(p, cy->location) <= sqrt(pow(cy->height / 2, 2) + pow(cy->size / 2, 2)));
+	return (dist + T_RAY);
 }

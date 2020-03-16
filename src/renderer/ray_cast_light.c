@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 16:23:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/10 20:24:47 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static bool		light_obstructed(t_info *info, t_light *light,
 		i++;
 		if (current == reflect_obj)
 			continue;
-		if (intersect(current, ray, NULL, info) < dist)
+		if (intersect(current, ray, NULL, info) < dist - EPSILON)
 			return (true);
 	}
 	return (false);
