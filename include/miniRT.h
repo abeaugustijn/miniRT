@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/10 16:42:25 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 20:44:01 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,8 @@ t_color			*get_frame(t_info *info);
 void			*renderer_thread(void *param);
 t_thread_info	*thread_info_new(t_info *info, t_color *buf, uint32_t start);
 void			cam_update(t_camera *cam);
+void			move_obj(int keycode, t_info *info);
+void			move_cam(int keycode, t_info *info);
 
 /*
 **	Object functions
@@ -298,7 +300,6 @@ void			cam_update(t_camera *cam);
 
 double			intersect(t_object *obj, t_ray ray, t_vec3f *normal,
 					t_info *info);
-void			move(t_object *obj, t_move_dir move_dir, t_info *info);
 t_vec3f			normal(t_rayres rayres, t_ray ray, t_info *info);
 void			resize(t_object *obj, bool increase, t_info *info);
 

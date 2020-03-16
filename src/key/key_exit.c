@@ -6,12 +6,11 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:40:45 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 23:00:44 by abe              ###   ########.fr       */
+/*   Updated: 2020/03/16 20:47:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
-#include <mlx.h>
 
 void	key_exit(int keycode, t_info *info)
 {

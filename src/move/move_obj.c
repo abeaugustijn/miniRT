@@ -1,27 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   move_obj.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:28:46 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/09 14:33:30 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 21:45:09 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <key_codes.h>
 #include <miniRT.h>
 #include "move.h"
+
+static t_move_dir	get_move_dir(int keycode)
+{
+	if (keycode == KEY_MOVE_UP)
+		return (UP);
+	if (keycode == KEY_MOVE_DOWN)
+		return (DOWN);
+	if (keycode == KEY_MOVE_RIGHT)
+		return (RIGHT);
+	if (keycode == KEY_MOVE_LEFT)
+		return (LEFT);
+	if (keycode == KEY_MOVE_FORWARD)
+		return (FORWARD);
+	if (keycode == KEY_MOVE_BACK)
+		return (BACK);
+	return (42);
+}
 
 /*
 **	Move an object in the space.
 **
-**	@param {t_object *} obj
-**	@param {t_move_dir} move_dir
+**	@param {int} keycode
 **	@param {t_info *} info
 */
 
-void	move(t_object *obj, t_move_dir move_dir, t_info *info)
+void			move_obj(int keycode, t_info *info)
 {
-	g_movejmp[obj->type](obj, move_dir, info);
+	g_movejmp[info->selected->type](info->selected,
+			get_move_dir(keycode), info);
+	info->mapinfo.rendered = false;
 }

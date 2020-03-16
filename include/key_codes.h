@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 11:43:36 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 21:44:45 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,33 @@
 #  define KEY_PGUP (65365)
 #  define KEY_PGDN (65366)
 #  define KEY_ESC (65307)
-#  define KEY_NUM_1 (46)
-#  define KEY_NUM_2 (47)
-#  define KEY_NUM_3 (65506)
-#  define KEY_NUM_4 (59)
-#  define KEY_NUM_5 (39)
-#  define KEY_NUM_6 (65293)
-#  define KEY_NUM_7 (91)
-#  define KEY_NUM_8 (93)
-#  define KEY_NUM_9 (92)
-#  define KEY_NUM_PLUS (69)
-#  define KEY_NUM_MINUS (78)
+#  ifdef NONUMPAD
+#   define KEY_NUM_1 (46)
+#   define KEY_NUM_2 (47)
+#   define KEY_NUM_3 (65506)
+#   define KEY_NUM_4 (59)
+#   define KEY_NUM_5 (39)
+#   define KEY_NUM_6 (65293)
+#   define KEY_NUM_7 (91)
+#   define KEY_NUM_8 (93)
+#   define KEY_NUM_9 (92)
+#   define KEY_NUM_PLUS (69)
+#   define KEY_NUM_MINUS (78)
+#  else
+#   define KEY_NUM_1 (65436)
+#   define KEY_NUM_2 (65433)
+#   define KEY_NUM_3 (65435)
+#   define KEY_NUM_4 (65430)
+#   define KEY_NUM_5 (65437)
+#   define KEY_NUM_6 (65432)
+#   define KEY_NUM_7 (65429)
+#   define KEY_NUM_8 (65431)
+#   define KEY_NUM_9 (65434)
+#   define KEY_NUM_0 (65438)
+#   define KEY_NUM_DOT (65439)
+#   define KEY_NUM_PLUS (65451)
+#   define KEY_NUM_MINUS (65453)
+#  endif
 # else
 #  define KEY_SPACE (49)
 #  define KEY_A (0)
@@ -79,16 +95,27 @@
 #  define KEY_NUM_MINUS (78)
 # endif
 
-# define KEY_OBJ_RIGHT (KEY_NUM_6)
-# define KEY_OBJ_LEFT (KEY_NUM_4)
-# define KEY_OBJ_BACK (KEY_NUM_2)
-# define KEY_OBJ_FORWARD (KEY_NUM_8)
+# define KEY_MOVE_RIGHT (KEY_NUM_6)
+# define KEY_MOVE_LEFT (KEY_NUM_4)
+# define KEY_MOVE_BACK (KEY_NUM_2)
+# define KEY_MOVE_FORWARD (KEY_NUM_8)
+# define KEY_ROT_X_PLUS (KEY_NUM_9)
+# define KEY_ROT_X_MINUS (KEY_NUM_7)
+# define KEY_ROT_Y_PLUS (KEY_NUM_3)
+# define KEY_ROT_Y_MINUS (KEY_NUM_1)
+# define KEY_ROT_Z_PLUS (KEY_NUM_DOT)
+# define KEY_ROT_Z_MINUS (KEY_NUM_0)
 # ifdef LINUX
-#  define KEY_OBJ_UP (KEY_NUM_3)
-#  define KEY_OBJ_DOWN (KEY_NUM_9)
+#  ifdef NONUMPAD
+#   define KEY_MOVE_UP (KEY_NUM_3)
+#   define KEY_MOVE_DOWN (KEY_NUM_9)
+#  else
+#   define KEY_MOVE_UP (KEY_NUM_MINUS)
+#   define KEY_MOVE_DOWN (KEY_NUM_PLUS)
+#  endif
 # else
-#  define KEY_OBJ_UP (KEY_NUM_PLUS)
-#  define KEY_OBJ_DOWN (KEY_NUM_MINUS)
+#  define KEY_MOVE_UP (KEY_NUM_PLUS)
+#  define KEY_MOVE_DOWN (KEY_NUM_MINUS)
 # endif
 
 #endif

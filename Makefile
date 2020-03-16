@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/09 15:50:49 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/16 21:43:15 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,8 @@ SRCS			=	error/error\
 					renderer/get_dir_vecs\
 					free/free_info\
 					free/free_string_arr\
-					move/move\
+					move/move_obj\
+					move/move_cam\
 					move/move_sphere\
 					move/move_plane\
 					move/move_square\
@@ -101,8 +102,7 @@ SRCS			=	error/error\
 					children/children_square\
 					children/children_cylinder\
 					key/key_functions\
-					key/key_move_cam\
-					key/key_move_obj\
+					key/key_move\
 					key/key_rot_cam\
 					key/key_exit\
 					key/key_cam_cycle\
