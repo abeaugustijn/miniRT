@@ -6,7 +6,7 @@
 /*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 20:42:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 21:46:39 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 22:01:26 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,17 @@
 
 void			move_cam(int keycode, t_info *info)
 {
-	info->mapinfo.rendered = false;
-	if (keycode == KEY_MOVE_FORWARD)
-		info->current_cam->location = vec_add(info->current_cam->location,
-				vec_multiply(info->current_cam->orientation, MOVE_SPEED));
-	else if (keycode == KEY_MOVE_BACK)
-		info->current_cam->location = vec_add(info->current_cam->location,
-				vec_multiply(info->current_cam->orientation, -MOVE_SPEED));
-	else if (keycode == KEY_MOVE_RIGHT)
-		info->current_cam->location = vec_add(info->current_cam->location,
-				vec_multiply(info->current_cam->dir_vecs.right, MOVE_SPEED));
-	else if (keycode == KEY_MOVE_LEFT)
-		info->current_cam->location = vec_add(info->current_cam->location,
-				vec_multiply(info->current_cam->dir_vecs.right, -MOVE_SPEED));
-	else if (keycode == KEY_MOVE_UP)
-		info->current_cam->location = vec_add(info->current_cam->location,
-				vec_multiply(info->current_cam->dir_vecs.up, MOVE_SPEED));
-	else if (keycode == KEY_MOVE_DOWN)
-		info->current_cam->location = vec_add(info->current_cam->location,
-				vec_multiply(info->current_cam->dir_vecs.up, -MOVE_SPEED));
+	int		factor;
+	t_vec3f	direction;
+
+	factor = ((keycode == KEY_MOVE_BACK || keycode == KEY_MOVE_RIGHT ||
+			keycode == KEY_MOVE_UP) ? 1 : -1) * MOVE_SPEED;
+	if (keycode == KEY_MOVE_FORWARD || keycode == KEY_MOVE_BACK)
+		direction = info->current_cam->dir_vecs.forward;
 	else
-		info->mapinfo.rendered = true;
+		direction = (keycode == KEY_MOVE_RIGHT || keycode == KEY_MOVE_LEFT) ?
+			info->current_cam->dir_vecs.right : info->current_cam->dir_vecs.up;
+	info->current_cam->location = vec_add(info->current_cam->location,
+				vec_multiply(direction, factor));
+	info->mapinfo.rendered = false;
 }
