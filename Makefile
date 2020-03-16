@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/16 21:43:15 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/16 22:58:35 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,12 +98,19 @@ SRCS			=	error/error\
 					resize/resize_sphere\
 					resize/resize_square\
 					resize/resize_cylinder\
+					rotate/rotate_cam\
+					rotate/rotate_obj\
+					rotate/rotate_cylinder\
+					rotate/rotate_disk\
+					rotate/rotate_plane\
+					rotate/rotate_square\
+					rotate/rotate_get_dir\
 					children/find_children\
 					children/children_square\
 					children/children_cylinder\
 					key/key_functions\
 					key/key_move\
-					key/key_rot_cam\
+					key/key_rotate\
 					key/key_exit\
 					key/key_cam_cycle\
 					key/key_resize\
@@ -176,13 +183,8 @@ all: $(NAME)
 set_bonus:
 	$(eval FLAGS += -DBONUS)
 
-#Only clean the bonus files if the lastly linked executable was not bonus
-ifeq ($(LAST_BONUS),bonus)
-clean_bonus:
-else
 clean_bonus:
 	rm -f $(BONUS_RECOMP_O)
-endif
 
 .PHONY: set_bonus clean_bonus
 
@@ -196,7 +198,7 @@ lib/libmlx/libmlx.a:
 	make -C lib/libmlx
 	cp lib/libmlx/X11/libmlx.a lib/libmlx
 
-$(NAME): $(LIB_SRCS) $(OFILES) src/main.o
+$(NAME): clean_bonus $(LIB_SRCS) $(OFILES) src/main.o
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o $(LIB_SRCS)
 	@rm -f bonus
 
@@ -221,7 +223,7 @@ lib/libmlx/libmlx.dylib:
 	make -C lib/libmlx
 	cp lib/libmlx/libmlx.dylib .
 
-$(NAME): $(LIB_SRCS) $(OFILES) src/main.o lib/libmlx/libmlx.dylib
+$(NAME): clean_bonus $(LIB_SRCS) $(OFILES) src/main.o lib/libmlx/libmlx.dylib
 	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) $(LIB_SRCS) -g src/main.o libmlx.dylib
 	cp lib/libmlx/libmlx.dylib .
 	@rm -f bonus
