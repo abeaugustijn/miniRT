@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:33:58 by abe               #+#    #+#             */
-/*   Updated: 2020/03/09 11:50:49 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 22:14:33 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 */
 
 t_vec3f	(*g_normaljump[])(t_rayres, t_ray, t_info *) = {
-	&normal_sphere,
-	&normal_plane,
-	&normal_square,
-	&normal_cylinder,
-	&normal_triangle,
-	&normal_disk,
+	[SP] = &normal_sphere,
+	[PL] = &normal_plane,
+	[SQ] = &normal_square,
+	[CY] = &normal_cylinder,
+	[TR] = &normal_triangle,
+	[DS] = &normal_disk,
 };
 
 t_vec3f	normal(t_rayres rayres, t_ray ray, t_info *info)

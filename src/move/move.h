@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:31:09 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/09 14:33:38 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 22:13:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	move_triangle(t_object *tr, t_move_dir move_dir, t_info *info);
 void	move_disk(t_object *ds, t_move_dir move_dir, t_info *info);
 
 void	(*g_movejmp[])(t_object *, t_move_dir, t_info *) = {
-	&move_sphere,
-	&move_plane,
-	&move_square,
-	&move_cylinder,
-	&move_triangle,
-	&move_disk,
+	[SP] = &move_sphere,
+	[PL] = &move_plane,
+	[SQ] = &move_square,
+	[CY] = &move_cylinder,
+	[TR] = &move_triangle,
+	[DS] = &move_disk,
 };
 
 #endif
