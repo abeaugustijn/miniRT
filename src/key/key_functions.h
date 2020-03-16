@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:46 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 21:44:22 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 22:52:55 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,13 @@ typedef struct	s_keyfunc {
 }				t_keyfunc;
 
 void	key_move(int keycode, t_info *info);
-void	key_rot_cam(int keycode, t_info *info);
+void	key_rotate(int keycode, t_info *info);
 void	key_exit(int keycode, t_info *info);
 void	key_cam_cycle(int keycode, t_info *info);
 void	key_resize(int keycode, t_info *info);
 void	key_resize_cylinder(int keycode, t_info *info);
 
 t_keyfunc	g_keyjump[] = {
-	{ KEY_W, &key_rot_cam },
-	{ KEY_S, &key_rot_cam },
-	{ KEY_LEFT, &key_rot_cam },
-	{ KEY_RIGHT, &key_rot_cam },
 	{ KEY_SPACE, &key_exit },
 	{ KEY_ESC, &key_exit },
 	{ KEY_Q, &key_cam_cycle },
@@ -47,6 +43,12 @@ t_keyfunc	g_keyjump[] = {
 	{ KEY_MOVE_DOWN, &key_move },
 	{ KEY_MOVE_FORWARD, &key_move },
 	{ KEY_MOVE_BACK, &key_move },
+	{ KEY_ROT_UP_PLUS, &key_rotate },
+	{ KEY_ROT_UP_MINUS, &key_rotate },
+	{ KEY_ROT_RIGHT_PLUS, &key_rotate },
+	{ KEY_ROT_RIGHT_MINUS, &key_rotate },
+	{ KEY_ROT_FORWARD_PLUS, &key_rotate },
+	{ KEY_ROT_FORWARD_MINUS, &key_rotate },
 	{ 0, NULL },
 };
 

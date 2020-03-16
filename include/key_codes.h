@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/03/16 21:44:45 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 22:24:59 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,12 @@
 # define KEY_MOVE_LEFT (KEY_NUM_4)
 # define KEY_MOVE_BACK (KEY_NUM_2)
 # define KEY_MOVE_FORWARD (KEY_NUM_8)
-# define KEY_ROT_X_PLUS (KEY_NUM_9)
-# define KEY_ROT_X_MINUS (KEY_NUM_7)
-# define KEY_ROT_Y_PLUS (KEY_NUM_3)
-# define KEY_ROT_Y_MINUS (KEY_NUM_1)
-# define KEY_ROT_Z_PLUS (KEY_NUM_DOT)
-# define KEY_ROT_Z_MINUS (KEY_NUM_0)
+# define KEY_ROT_UP_PLUS (KEY_NUM_9)
+# define KEY_ROT_UP_MINUS (KEY_NUM_7)
+# define KEY_ROT_RIGHT_PLUS (KEY_NUM_3)
+# define KEY_ROT_RIGHT_MINUS (KEY_NUM_1)
+# define KEY_ROT_FORWARD_PLUS (KEY_NUM_DOT)
+# define KEY_ROT_FORWARD_MINUS (KEY_NUM_0)
 # ifdef LINUX
 #  ifdef NONUMPAD
 #   define KEY_MOVE_UP (KEY_NUM_3)

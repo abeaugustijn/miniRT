@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:55:17 by abe               #+#    #+#             */
-/*   Updated: 2020/03/16 22:13:52 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 22:53:43 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ double	(*g_intersectjump[])(t_object *, t_ray, t_vec3f *, t_info *) = {
 	[PL] = &intersect_plane,
 	[SQ] = &intersect_square,
 	[CY] = &intersect_cylinder,
-	[TY] = &intersect_triangle,
+	[TR] = &intersect_triangle,
 	[DS] = &intersect_disk,
 };
 
