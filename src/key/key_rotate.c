@@ -6,7 +6,7 @@
 /*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:40:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 22:40:37 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 23:03:30 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,5 @@
 
 void	key_rotate(int keycode, t_info *info)
 {
-	if (info->selected)
-		rotate_obj(keycode, info);
-	else
-		rotate_cam(keycode, info);
+	(info->selected ? rotate_obj : rotate_cam)(keycode, info);
 }

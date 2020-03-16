@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:35:28 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 20:45:05 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/16 23:04:01 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,5 @@
 
 void	key_move(int keycode, t_info *info)
 {
-	if (info->selected)
-		move_obj(keycode, info);
-	else
-		move_cam(keycode, info);
+	(info->selected ? move_obj : move_cam)(keycode, info);
 }
