@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 10:44:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 19:06:20 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,9 @@ static void	children_square_gen_points(t_object *sq, t_vec3f *points)
 {
 	t_vec3f	right;
 	t_vec3f	up;
-	t_vec3f	forward;
-	t_vec3f	base;
 
-	forward = sq->dir_vecs.forward;
-	if (float_compare(fabs(sq->dir_vecs.forward.y), 1))
-		base = vec_new(1, 0, 0);
-	else
-		base = vec_new(0, 1, 0);
-	right = vec_multiply(vec_normalize(vec_crossp(base, forward)), sq->size / 2);
-	up = vec_multiply(vec_normalize(vec_crossp(forward, right)), sq->size / 2);
+	up = vec_multiply(sq->dir_vecs.up, sq->size);
+	right = vec_multiply(sq->dir_vecs.right, sq->size);
 	points[0] = vec_add(vec_add(sq->location, up), right);
 	points[1] = vec_add(vec_sub(sq->location, up), right);
 	points[2] = vec_sub(vec_sub(sq->location, up), right);

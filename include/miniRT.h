@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/17 10:44:33 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 11:42:27 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,8 @@ bool			vec_is_normal(t_vec3f vec);
 
 void			points_line_closest(t_line line_a, t_line line_b,
 		double *results);
+void			rotate_relative(t_vec3f *forward, t_vec3f direction,
+		double factor);
 
 /*
 **	Quaternians

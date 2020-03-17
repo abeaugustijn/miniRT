@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/17 10:46:34 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/17 11:42:52 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCS			=	cam/cam_update\
 					key/key_resize_cylinder\
 					key/key_rotate\
 					math/points_line_closest\
+					math/rotate_relative\
 					mouse/select_object\
 					move/move_cam\
 					move/move_cylinder\

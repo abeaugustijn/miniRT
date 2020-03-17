@@ -6,20 +6,12 @@
 /*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 10:16:34 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/17 10:46:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 11:34:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <miniRT.h>
 #include "update.h"
-
-/*
-**	Update an object to account for new position or rotation in space. This
-**	update properties like the direction vectors and children.
-**
-**	@param {t_object *} obj
-**	@param {t_info *} info
-*/
 
 void	(*g_updatejmp[])(t_object *, t_info *) = {
 	[SP] = NULL,
@@ -29,6 +21,14 @@ void	(*g_updatejmp[])(t_object *, t_info *) = {
 	[TR] = NULL,
 	[DS] = &update_disk,
 };
+
+/*
+**	Update an object to account for new position or rotation in space. This
+**	update properties like the direction vectors and children.
+**
+**	@param {t_object *} obj
+**	@param {t_info *} info
+*/
 
 void	update(t_object *obj, t_info *info)
 {
