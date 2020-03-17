@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 09:59:48 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 10:44:54 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 void	parse_cylinder(char **words, t_info *info)
 {
 	t_object	res;
-	t_object	*new_element;
+	t_object	*cy;
 
 	if (arrlen(words) != 6)
 		print_error("Error while parsing cylinder", info);
@@ -41,7 +41,8 @@ void	parse_cylinder(char **words, t_info *info)
 	if (res.height < 0)
 		print_error("Invalid height for cylinder", info);
 	res.color = parse_color(words[5], info);
-	if (vla_push(&info->objects, &res, (void **)&new_element))
+	if (vla_push(&info->objects, &res, (void **)&cy))
 		print_error("Allocation failed in 'parse_cylinder'", info);
-	children_cylinder(new_element, info);
+	children_cylinder_gen(cy, info);
+	update(cy, info);
 }

@@ -6,119 +6,86 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/16 22:58:35 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/17 10:46:34 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	miniRT
-SRCS			=	error/error\
+SRCS			=	cam/cam_update\
+					children/children_cylinder\
+					children/children_square\
+					children/find_children\
+					col/col_add_light\
+					col/col_mix\
+					col/col_mix_light\
+					col/col_multiply\
+					col/col_new\
+					debug/print_vec3\
+					error/error\
+					free/free_info\
+					free/free_string_arr\
+					get_frame/get_frame\
+					helpers/arrlen\
+					helpers/empty_object\
+					helpers/float_compare\
+					helpers/isdigit_string\
+					helpers/parse_color\
+					helpers/parse_double\
+					helpers/parse_vec3f\
+					helpers/pixel_new\
+					helpers/ray_new\
+					helpers/ray_point\
+					helpers/rayres_inf\
+					helpers/rayres_new\
+					helpers/tocolor\
+					helpers/triangle_inside\
 					hooks/hook_frame\
 					hooks/hook_key\
 					hooks/hook_mouse\
-					parser/parser\
-					parser/parse_resolution\
-					parser/parse_ambient\
-					parser/parse_camera\
-					parser/parse_light\
-					parser/parse_sphere\
-					parser/parse_plane\
-					parser/parse_square\
-					parser/parse_cylinder\
-					parser/parse_triangle\
-					parser/parse_disk\
-					debug/print_vec3\
-					helpers/arrlen\
-					helpers/isdigit_string\
-					helpers/parse_double\
-					helpers/parse_vec3f\
-					helpers/parse_color\
-					helpers/tocolor\
-					helpers/rayres_inf\
-					helpers/rayres_new\
-					helpers/ray_new\
-					helpers/ray_point\
-					helpers/float_compare\
-					helpers/triangle_inside\
-					helpers/empty_object\
-					helpers/pixel_new\
-					vec/vec_new\
-					vec/vec_normalize\
-					vec/vec_angle\
-					vec/vec_add\
-					vec/vec_sub\
-					vec/vec_len\
-					vec/vec_dist\
-					vec/vec_multiply\
-					vec/vec_dotp\
-					vec/vec_from_to\
-					vec/vec_crossp\
-					vec/vec_rot\
-					vec/vec_is_normal\
-					vec/vec_compare\
-					math/points_line_closest\
-					col/col_multiply\
-					col/col_new\
-					col/col_mix\
-					col/col_mix_light\
-					col/col_add_light\
-					renderer/generate_ray\
-					renderer/get_pixel\
-					renderer/ray_cast\
-					renderer/ray_cast_light\
-					renderer/look_at\
-					renderer/fix_normal\
-					renderer/fix_dir_vecs\
-					renderer/get_dir_vecs\
-					free/free_info\
-					free/free_string_arr\
-					move/move_obj\
-					move/move_cam\
-					move/move_sphere\
-					move/move_plane\
-					move/move_square\
-					move/move_cylinder\
-					move/move_triangle\
-					move/move_disk\
-					move/move_get_cam_dir\
-					normal/normal\
-					normal/normal_sphere\
-					normal/normal_plane\
-					normal/normal_square\
-					normal/normal_cylinder\
-					normal/normal_triangle\
-					normal/normal_disk\
+					init_mlx\
 					intersect/intersect\
-					intersect/intersect_sphere\
-					intersect/intersect_plane\
 					intersect/intersect_cylinder\
-					intersect/intersect_triangle\
-					intersect/intersect_square\
 					intersect/intersect_disk\
-					resize/resize\
-					resize/resize_sphere\
-					resize/resize_square\
-					resize/resize_cylinder\
-					rotate/rotate_cam\
-					rotate/rotate_obj\
-					rotate/rotate_cylinder\
-					rotate/rotate_disk\
-					rotate/rotate_plane\
-					rotate/rotate_square\
-					rotate/rotate_get_dir\
-					children/find_children\
-					children/children_square\
-					children/children_cylinder\
+					intersect/intersect_plane\
+					intersect/intersect_sphere\
+					intersect/intersect_square\
+					intersect/intersect_triangle\
+					key/key_cam_cycle\
+					key/key_exit\
 					key/key_functions\
 					key/key_move\
-					key/key_rotate\
-					key/key_exit\
-					key/key_cam_cycle\
 					key/key_resize\
 					key/key_resize_cylinder\
+					key/key_rotate\
+					math/points_line_closest\
 					mouse/select_object\
-					get_frame/get_frame\
-					cam/cam_update\
-					init_mlx\
+					move/move_cam\
+					move/move_cylinder\
+					move/move_disk\
+					move/move_get_cam_dir\
+					move/move_obj\
+					move/move_plane\
+					move/move_sphere\
+					move/move_square\
+					move/move_triangle\
+					normal/normal\
+					normal/normal_cylinder\
+					normal/normal_disk\
+					normal/normal_plane\
+					normal/normal_sphere\
+					normal/normal_square\
+					normal/normal_triangle\
+					parser/parse_ambient\
+					parser/parse_camera\
+					parser/parse_cylinder\
+					parser/parse_disk\
+					parser/parse_light\
+					parser/parse_plane\
+					parser/parse_resolution\
+					parser/parse_sphere\
+					parser/parse_square\
+					parser/parse_triangle\
+					parser/parser\
 					quat/quat_inverse\
 					quat/quat_len\
 					quat/quat_multiply\
@@ -127,7 +94,46 @@ SRCS			=	error/error\
 					quat/quat_rot\
 					quat/quat_rot_local\
 					quat/quat_to_vec3\
+					renderer/fix_dir_vecs\
+					renderer/fix_normal\
+					renderer/generate_ray\
+					renderer/get_dir_vecs\
+					renderer/get_pixel\
+					renderer/look_at\
+					renderer/ray_cast\
+					renderer/ray_cast_light\
+					resize/resize\
+					resize/resize_cylinder\
+					resize/resize_sphere\
+					resize/resize_square\
+					rotate/rotate_cam\
+					rotate/rotate_cylinder\
+					rotate/rotate_disk\
+					rotate/rotate_get_dir\
+					rotate/rotate_obj\
+					rotate/rotate_plane\
+					rotate/rotate_square\
 					save_bmp\
+					update/update\
+					update/update_cylinder\
+					update/update_dir_vecs\
+					update/update_disk\
+					update/update_plane\
+					update/update_square\
+					vec/vec_add\
+					vec/vec_angle\
+					vec/vec_compare\
+					vec/vec_crossp\
+					vec/vec_dist\
+					vec/vec_dotp\
+					vec/vec_from_to\
+					vec/vec_is_normal\
+					vec/vec_len\
+					vec/vec_multiply\
+					vec/vec_new\
+					vec/vec_normalize\
+					vec/vec_rot\
+					vec/vec_sub\
 
 BONUS_SRCS		=	get_frame/renderer_thread\
 					get_frame/thread_info_new\

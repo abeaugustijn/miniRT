@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 10:06:15 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 10:44:21 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		children_cylinder_update(t_object *cy, t_info *info)
 **	@param {t_info *} info - used in the print_error function
 */
 
-void		children_cylinder(t_object *cy, t_info *info)
+void		children_cylinder_gen(t_object *cy, t_info *info)
 {
 	t_object	empty;
 	uint8_t		i;
@@ -62,5 +62,4 @@ void		children_cylinder(t_object *cy, t_info *info)
 			print_error("Allocation failed in 'children_cylinder'", info);
 		i++;
 	}
-	children_cylinder_update(cy, info);
 }

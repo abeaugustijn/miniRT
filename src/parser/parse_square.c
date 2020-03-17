@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 10:00:10 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 10:44:48 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 void	parse_square(char **words, t_info *info)
 {
 	t_object	res;
-	t_object	*new_element;
+	t_object	*sq;
 
 	if (arrlen(words) != 5)
 		print_error("Error while parsing square", info);
@@ -38,7 +38,8 @@ void	parse_square(char **words, t_info *info)
 	if (res.size < 0)
 		print_error("Invalid size for square", info);
 	res.color = parse_color(words[4], info);
-	if (vla_push(&info->objects, &res, (void **)&new_element))
+	if (vla_push(&info->objects, &res, (void **)&sq))
 		print_error("Allocation failed in 'parse_square'", info);
-	children_square(new_element, info);
+	children_square_gen(sq, info);
+	update(sq, info);
 }

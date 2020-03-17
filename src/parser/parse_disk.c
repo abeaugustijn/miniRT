@@ -26,6 +26,7 @@
 void	parse_disk(char **words, t_info *info)
 {
 	t_object	res;
+	t_object	*ds;
 
 	if (arrlen(words) != 5)
 		print_error("Error while parsing plane", info);
@@ -35,6 +36,7 @@ void	parse_disk(char **words, t_info *info)
 	res.dir_vecs.forward = vec_normalize(parse_vec3f(words[2], info));
 	res.size = parse_double(words[3]);
 	res.color = parse_color(words[4], info);
-	if (vla_push(&info->objects, &res, NULL))
+	if (vla_push(&info->objects, &res, (void **)&ds))
 		print_error("Allocation failed in 'parse_disk'", info);
+	update(ds, info);
 }
