@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 20:52:24 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 10:03:13 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static t_vec3f	get_closest_p(t_object *cy, t_vec3f p)
 {
 	double	delta_s;
 
-	delta_s = vec_dotp(vec_sub(p, cy->location), cy->orientation) /
-		vec_dotp(cy->orientation, cy->orientation);
-	return(vec_add(cy->location, vec_multiply(cy->orientation, delta_s)));
+	delta_s = vec_dotp(vec_sub(p, cy->location), cy->dir_vecs.forward) /
+		vec_dotp(cy->dir_vecs.forward, cy->dir_vecs.forward);
+	return(vec_add(cy->location, vec_multiply(cy->dir_vecs.forward, delta_s)));
 }
 
 /*
@@ -61,7 +61,7 @@ static double	find_x(t_object *cy, t_ray ray, double dist, double *delta)
 	double	x_angle;
 	double	x_circle;
 
-	dotp = vec_dotp(cy->orientation, ray.direction);
+	dotp = vec_dotp(cy->dir_vecs.forward, ray.direction);
 	if (dotp < 0)
 		dotp *= -1.0;
 	angle = acos(dotp);
@@ -100,8 +100,8 @@ double			intersect_cylinder(t_object *cy, t_ray ray, t_vec3f *normal,
 	double		x;
 
 	(void)info;
-	points_line_closest(ray_new(cy->location, cy->orientation), ray, closest);
-	P_CY = vec_add(cy->location, vec_multiply(cy->orientation, closest[0]));
+	points_line_closest(ray_new(cy->location, cy->dir_vecs.forward), ray, closest);
+	P_CY = vec_add(cy->location, vec_multiply(cy->dir_vecs.forward, closest[0]));
 	P_RAY = ray_point(ray, T_RAY);
 	dist = vec_dist(P_CY, P_RAY);
 	x = find_x(cy, ray, dist, &delta);

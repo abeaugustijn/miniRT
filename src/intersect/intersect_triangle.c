@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/10 14:36:31 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 10:03:36 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ double	intersect_triangle(t_object *tr, t_ray ray, t_vec3f *normal_ptr,
 	t = intersect(&(t_object){
 			.type = PL,
 			.location = tr->points[0],
-			.orientation = norm},
+			.dir_vecs.forward = norm},
 		ray, NULL, info);
 	if (t == INFINITY)
 		return (INFINITY);

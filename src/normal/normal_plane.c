@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:40:56 by abe               #+#    #+#             */
-/*   Updated: 2020/03/09 12:59:52 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 10:01:01 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@
 t_vec3f	normal_plane(t_rayres rayres, t_ray ray, t_info *info)
 {
 	(void)info;
-	return (fix_normal(ray.direction, rayres.obj->orientation));
+	return (fix_normal(ray.direction, rayres.obj->dir_vecs.forward));
 }

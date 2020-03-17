@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/06 12:00:33 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 09:59:48 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	parse_cylinder(char **words, t_info *info)
 	ft_bzero(&res, sizeof(t_object));
 	res.type = CY;
 	res.location = parse_vec3f(words[1], info);
-	res.orientation = vec_normalize(parse_vec3f(words[2], info));
+	res.dir_vecs.forward = vec_normalize(parse_vec3f(words[2], info));
 	res.size = parse_double(words[3]);
 	if (res.size < 0)
 		print_error("Invalid diameter for cylinder", info);

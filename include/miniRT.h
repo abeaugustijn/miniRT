@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/16 22:40:56 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/17 09:56:21 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ struct 			s_object {
 	t_vec3f			location;
 	double			size;
 	double			height;
-	t_vec3f			orientation;
+	t_dir_vecs		dir_vecs;
 	t_vec3f			points[3];
 	bool			has_parent;
 	size_t			parent_i;
