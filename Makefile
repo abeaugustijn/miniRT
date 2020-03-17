@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/17 11:42:52 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/17 19:11:02 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,8 +108,6 @@ SRCS			=	cam/cam_update\
 					resize/resize_sphere\
 					resize/resize_square\
 					rotate/rotate_cam\
-					rotate/rotate_cylinder\
-					rotate/rotate_disk\
 					rotate/rotate_get_dir\
 					rotate/rotate_obj\
 					rotate/rotate_plane\
