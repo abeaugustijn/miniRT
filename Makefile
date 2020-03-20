@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/20 12:05:13 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/20 12:10:51 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,7 +158,14 @@ LIB_SRCS		=	lib/libft/libft.a\
 					lib/libvec/libvec.a\
 					lib/libvla/libvla.a\
 
-FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O0 --std=c11
+FLAGS			=	-Wall -Werror -Wextra -DNOLIST --std=c11
+
+# Ability to compile with maximum optimization
+ifeq ($(FAST),1)
+FLAGS			+= -Ofast
+else
+FLAGS			+= -O0
+endif
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)
