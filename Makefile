@@ -6,11 +6,15 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/17 19:11:02 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/20 11:19:50 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	miniRT
+
+all: $(NAME)
+
+# All source of the application
 SRCS			=	cam/cam_update\
 					children/children_cylinder\
 					children/children_square\
@@ -57,6 +61,7 @@ SRCS			=	cam/cam_update\
 					key/key_resize\
 					key/key_resize_cylinder\
 					key/key_rotate\
+					main\
 					math/points_line_closest\
 					math/rotate_relative\
 					mouse/select_object\
@@ -134,14 +139,14 @@ SRCS			=	cam/cam_update\
 					vec/vec_rot\
 					vec/vec_sub\
 
+# Sources which are just needed for the bonus part
 BONUS_SRCS		=	get_frame/renderer_thread\
 					get_frame/thread_info_new\
 
-#These are files that need to be recompiled when the bonus is made
+# These are files that need to be recompiled when the bonus is made
 BONUS_RECOMP	=	main\
 					get_frame/get_frame\
 
-TESTS			=	math
 
 CFILES			=	$(SRCS:%=src/%.c)
 OFILES			=	$(SRCS:%=src/%.o)
@@ -151,15 +156,15 @@ BONUS_OFILES	=	$(BONUS_SRCS:%=src/%.o)
 
 BONUS_RECOMP_O	=	$(BONUS_RECOMP:%=src/%.o)
 
-TEST_CFILES		=	$(TESTS:%=src/tests/%.c)
-TEST_OFILES		=	$(TESTS:%=src/tests/%.o)
 
+# Paths to the headeres which are needed
 INCLUDES		=	-I include\
 					-I lib/libft\
 					-I lib/libgnl\
 					-I lib/libvla\
 					-I lib/libftprintf\
 
+# The location of al libraries
 LIB_SRCS		=	lib/libft/libft.a\
 					lib/libgnl/libgnl.a\
 					lib/libvla/libvla.a\
@@ -169,91 +174,99 @@ FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O0 --std=c11
 
 # OS detection for libs and headers
 UNAME_S			:=	$(shell uname -s)
-LAST_BONUS		:=	$(shell ls bonus 2> /dev/null)
 
 ifeq ($(UNAME_S),Linux)
 LIBS			+=	-Llib/libmlx -lmlx -lm -lX11 -lXext -lpthread
 INCLUDES		+=	-I lib/libmlx/X11
 FLAGS			+=	-DLINUX
 LIB_SRCS		+=	lib/libmlx/libmlx.a
-endif
+endif #Linux
 
 ifeq ($(UNAME_S),Darwin)
 INCLUDES		+=	-I lib/libmlx
-endif
+LIB_SRCS		+= 	lib/libmlx/libmlx.dylib
+DYLIB			+= libmlx.dylib
+endif #Darwin
 
-all: $(NAME)
 
-#Used to add the 'BONUS' flag to compiling all sources
-set_bonus:
-	$(eval FLAGS += -DBONUS)
+TARGETS			=	$(OFILES) $(LIB_SRCS)
+
+ifeq ($(BONUS),1)
+TARGETS			+=	$(BONUS_OFILES)
+FLAGS			+=	-DBONUS
+endif #Bonus
+
+# This means that the build before this one was indeed bonus, so we need to
+# recompile the bonus-specific files and remove the bonus file.
+ifeq ($(shell ls bonus 2> /dev/null),bonus)
+TARGETS_EXTRA	= clean_bonus
+endif #Last was bonus
+
+# Another case in which we need to recompile the bonus files. This is true when
+# we build the bonus, but the previous build was not bonus.
+ifeq ($(BONUS),1)
+ifneq ($(shell ls bonus 2> /dev/null),bonus)
+TARGETS_EXTRA	= clean_bonus
+endif #Last was bonus
+endif #Bonus 
 
 clean_bonus:
 	rm -f $(BONUS_RECOMP_O)
+	rm -f bonus
 
-.PHONY: set_bonus clean_bonus
 
-#LINUX
-
-ifeq ($(UNAME_S),Linux)
-
-FLAGS		+= -DNCORES=$(shell getconf _NPROCESSORS_ONLN)
-
+# Two rules concerning the compilation of the MiniLibX. They differ on MacOS
+# and Linux.
+ifeq ($(UNAME_S), Linux)
 lib/libmlx/libmlx.a:
 	make -C lib/libmlx
-	cp lib/libmlx/X11/libmlx.a lib/libmlx
+	cp lib/libmlx/X11/libmlx.a lib/libmlx/libmlx.a
+endif #Linux
 
-$(NAME): clean_bonus $(LIB_SRCS) $(OFILES) src/main.o
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o $(LIB_SRCS)
-	@rm -f bonus
-
-bonus: set_bonus clean_bonus $(LIB_SRCS) $(OFILES) $(BONUS_OFILES) src/main.o
-	$(CC) $(OFILES) $(BONUS_OFILES) $(FLAGS) $(LIBS) -o $(NAME) -g src/main.o\
-		$(LIB_SRCS)
-	@touch bonus
-
-test: $(LIB_SRCS) $(OFILES) $(TEST_OFILES)
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test -g $(TEST_OFILES) $(LIB_SRCS)
-
-endif
-
-
-# MACOS
-
-ifeq ($(UNAME_S),Darwin)
-
-FLAGS		+= -DNCORES=$(shell sysctl -n hw.ncpu)
-
+ifeq ($(UNAME_S), Darwin)
 lib/libmlx/libmlx.dylib:
 	make -C lib/libmlx
 	cp lib/libmlx/libmlx.dylib .
+endif #Darwin
 
-$(NAME): clean_bonus $(LIB_SRCS) $(OFILES) src/main.o lib/libmlx/libmlx.dylib
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o $(NAME) $(LIB_SRCS) -g src/main.o libmlx.dylib
-	cp lib/libmlx/libmlx.dylib .
-	@rm -f bonus
 
-bonus: set_bonus clean_bonus $(LIB_SRCS) $(OFILES) $(BONUS_OFILES) src/main.o lib/libmlx/libmlx.dylib
-	$(CC) $(OFILES) $(BONUS_OFILES) $(FLAGS) $(LIBS) -o $(NAME) $(LIB_SRCS)\
-		-g src/main.o libmlx.dylib
-	cp lib/libmlx/libmlx.dylib .
+# This compile flag needs to be set when we compile with bonus, so the code
+# knows how many cores are in the system.
+ifeq ($(BONUS), 1)
+ifeq ($(UNAME_S), Linux)
+FLAGS			+=	-DNCORES=$(shell getconf _NPROCESSORS_ONLN)
+endif #Linux
+ifeq ($(UNAME_S), Darwin)
+FLAGS			+=	-DNCORES=$(shell sysctl -n hw.ncpu)
+endif #Darwin
+endif #Bonus
+
+
+$(NAME): $(TARGETS_EXTRA) $(TARGETS)
+	$(CC) $(TARGETS) $(DYLIB) $(FLAGS) $(LIBS) -o $(NAME) -g
+
+# Rule for compiling the bonus part of the program. We just remove the existing
+# executable and recompile the normal program with the BONUS env. variable set
+# to 1.
+bonus:
+	rm -f $(NAME)
+	@BONUS=1 make $(NAME)
 	@touch bonus
 
-test: $(LIB_SRCS) $(OFILES) $(TEST_OFILES)
-	$(CC) $(OFILES) $(FLAGS) $(LIBS) -o test $(LIB_SRCS) -g  $(TEST_OFILES) libmlx.dylib
 
-endif
-
-
+# Generic rule for compiling any C-file into an object file
 %.o: %.c
 	$(CC) -o $@ -c $< $(FLAGS) $(INCLUDES) $(LIBS) -g
 
+# Generic rule for compiling libraries
 %.a:
 	make -C $(@D)
 
-clean: _clean
+# Rules for cleaning files
+clean:
+	rm -f $(OFILES) $(BONUS_OFILES) src/main.o
 
-fclean: _clean
+fclean: clean
 	make clean -C lib/libmlx
 	make fclean -C lib/libft
 	make fclean -C lib/libgnl
@@ -261,9 +274,5 @@ fclean: _clean
 	make fclean -C lib/libftprintf
 	rm -f $(NAME)
 	rm -f bonus
-
-_clean:
-	rm -f $(OFILES) $(BONUS_OFILES) src/main.o
-
 
 re: fclean all
