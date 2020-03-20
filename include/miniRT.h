@@ -6,12 +6,14 @@
 /*   By: aaugusti <marvin@42.fr>                      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/17 11:42:27 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 12:03:27 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+# include <libvec.h>
 # include <libvla.h>
 # include <stdbool.h>
 # include <stdint.h>
@@ -33,12 +35,6 @@ typedef struct	s_vec2f {
 	double	x;
 	double	y;
 }				t_vec2f;
-
-typedef struct	s_vec3f {
-	double	x;
-	double	y;
-	double	z;
-}				t_vec3f;
 
 typedef struct	s_vec4f {
 	double	w;
@@ -212,23 +208,6 @@ bool			is_other_side(t_vec3f normal, t_vec3f ray_direction);
 /*
 **	Maths
 */
-
-t_vec3f			vec_normalize(t_vec3f vec);
-t_vec3f			vec_new(double x, double y, double z);
-double			vec_len(t_vec3f vec);
-double			vec_dist(t_vec3f vec1, t_vec3f vec2);
-t_vec3f			vec_add(t_vec3f vec1, t_vec3f vec2);
-t_vec3f			vec_sub(t_vec3f vec1, t_vec3f vec2);
-t_vec3f			vec_multiply(t_vec3f vec, double factor);
-double			vec_dotp(t_vec3f vec1, t_vec3f vec2);
-double			vec_angle(t_vec3f vec1, t_vec3f vec2);
-t_vec3f			vec_from_to(t_vec3f from, t_vec3f to);
-t_vec3f			vec_crossp(t_vec3f a, t_vec3f b);
-t_vec3f			vec_rot_x(t_vec3f vec, double rad);
-t_vec3f			vec_rot_y(t_vec3f vec, double rad);
-t_vec3f			vec_rot_z(t_vec3f vec, double rad);
-bool			vec_compare(t_vec3f a, t_vec3f b);
-bool			vec_is_normal(t_vec3f vec);
 
 void			points_line_closest(t_line line_a, t_line line_b,
 		double *results);

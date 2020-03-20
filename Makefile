@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/20 11:24:31 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/20 12:05:13 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,20 +123,6 @@ SRCS			=	cam/cam_update\
 					update/update_disk\
 					update/update_plane\
 					update/update_square\
-					vec/vec_add\
-					vec/vec_angle\
-					vec/vec_compare\
-					vec/vec_crossp\
-					vec/vec_dist\
-					vec/vec_dotp\
-					vec/vec_from_to\
-					vec/vec_is_normal\
-					vec/vec_len\
-					vec/vec_multiply\
-					vec/vec_new\
-					vec/vec_normalize\
-					vec/vec_rot\
-					vec/vec_sub\
 
 # Sources which are just needed for the bonus part
 BONUS_SRCS		=	get_frame/renderer_thread\
@@ -160,15 +146,17 @@ BONUS_RECOMP_O	=	$(BONUS_RECOMP:%=src/%.o)
 # Paths to the headeres which are needed
 INCLUDES		=	-I include\
 					-I lib/libft\
-					-I lib/libgnl\
-					-I lib/libvla\
 					-I lib/libftprintf\
+					-I lib/libgnl\
+					-I lib/libvec\
+					-I lib/libvla\
 
 # The location of al libraries
 LIB_SRCS		=	lib/libft/libft.a\
-					lib/libgnl/libgnl.a\
-					lib/libvla/libvla.a\
 					lib/libftprintf/libftprintf.a\
+					lib/libgnl/libgnl.a\
+					lib/libvec/libvec.a\
+					lib/libvla/libvla.a\
 
 FLAGS			=	-Wall -Werror -Wextra -DNOLIST -O0 --std=c11
 
@@ -264,14 +252,20 @@ bonus:
 
 # Rules for cleaning files
 clean:
+	make clean -C lib/libft
+	make clean -C lib/libftprintf
+	make clean -C lib/libgnl
+	make clean -C lib/libvec
+	make clean -C lib/libvla
 	rm -f $(OFILES) $(BONUS_OFILES) src/main.o
 
 fclean: clean
 	make clean -C lib/libmlx
 	make fclean -C lib/libft
-	make fclean -C lib/libgnl
-	make fclean -C lib/libvla
 	make fclean -C lib/libftprintf
+	make fclean -C lib/libgnl
+	make fclean -C lib/libvec
+	make fclean -C lib/libvla
 	rm -f $(NAME)
 	rm -f bonus
 

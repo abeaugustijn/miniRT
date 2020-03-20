@@ -13,3 +13,6 @@
 [submodule "lib/libmlx"]
 	path = lib/libmlx
 	url = https://github.com/abeaugustijn/MinilibX
+[submodule "lib/libvec"]
+	path = lib/libvec
+	url = https://github.com/abeaugustijn/libvec
