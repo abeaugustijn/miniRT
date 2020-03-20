@@ -6,13 +6,14 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/06 12:01:48 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 13:55:51 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser.h"
+#include <libft.h>
 #include <miniRT.h>
 #include <stdlib.h>
-#include <libft.h>
 
 /*
 **	Parse function for triangles.
@@ -26,7 +27,7 @@ void	parse_triangle(char **words, t_info *info)
 {
 	t_object	res;
 
-	if (arrlen(words) != 5)
+	if (parse_arrlen(words) != 5)
 		print_error("Error while parsing triangle", info);
 	ft_bzero(&res, sizeof(t_object));
 	res.type = TR;

@@ -6,13 +6,14 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 10:44:54 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 13:53:15 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser.h"
+#include <libft.h>
 #include <miniRT.h>
 #include <stdlib.h>
-#include <libft.h>
 
 /*
 **	Parse function for cylinders. Throws an error if orientation is not
@@ -28,7 +29,7 @@ void	parse_cylinder(char **words, t_info *info)
 	t_object	res;
 	t_object	*cy;
 
-	if (arrlen(words) != 6)
+	if (parse_arrlen(words) != 6)
 		print_error("Error while parsing cylinder", info);
 	ft_bzero(&res, sizeof(t_object));
 	res.type = CY;

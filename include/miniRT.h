@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
+/*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
-/*                                                     +:+                    */
-/*   By: aaugusti <marvin@42.fr>                      +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2020/01/13 15:45:44 by aaugusti       #+#    #+#                */
-/*   Updated: 2020/03/20 12:03:27 by aaugusti         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
+/*   Updated: 2020/03/20 14:02:54 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,22 @@
 # include <stdbool.h>
 # include <stdint.h>
 
-# ifndef M_PI
-#  define M_PI (3.141592653589793238)
+# ifdef LINUX
+#  ifndef M_PI
+#   define M_PI (3.141592653589793238)
+#  endif
+#  ifndef M_PI_2
+#   define M_PI_2 (M_PI / 2)
+#  endif
 # endif
-# ifndef M_PI_2
-#  define M_PI_2 (M_PI / 2)
-# endif
+
 # define WINDOW_TITLE "miniRT"
 # define FILE_NAME "scene.bmp"
+
 # define MOVE_SPEED (1.0)
 # define LIGHT_FACTOR (100.0)
 # define RESIZE_SPEED (1.2)
 # define EPSILON (0.000001)
-
-typedef struct	s_vec2f {
-	double	x;
-	double	y;
-}				t_vec2f;
 
 typedef struct	s_vec4f {
 	double	w;
@@ -62,34 +61,31 @@ typedef struct	s_color {
 }				t_color;
 
 typedef struct	s_mlximg {
-	void		*ptr;
 	char		*addr;
 	int			bpp;
-	int			line_length;
 	int			endian;
+	int			line_length;
+	void		*ptr;
 }				t_mlximg;
 
 typedef struct	s_mlxinfo {
+	t_mlximg	img;
 	void		*mlx;
 	void		*mlx_win;
-	t_mlximg	img;
 }				t_mlxinfo;
 
 typedef struct	s_mapinfo {
-	t_vec2i		res;
-	double		ambient_ratio;
-	t_color		ambient_color;
-	t_vec3f		cam_pos;
-	t_vec3f		cam_orientation;
-	uint8_t		cam_fov;
-	t_vec3f		light_pos;
-	double		light_brightness;
-	t_color		light_color;
-	bool		did_resolution;
 	bool		did_ambient;
+	bool		did_resolution;
 	bool		do_save;
 	bool		rendered;
+	double		ambient_ratio;
+	t_color		ambient_color;
+	t_vec2i		res;
+	t_vec3f		cam_orientation;
+	t_vec3f		cam_pos;
 	uint32_t	tot_pixels;
+	uint8_t		cam_fov;
 }				t_mapinfo;
 
 typedef enum	e_object_type {
@@ -119,130 +115,118 @@ typedef struct	s_dir_vecs {
 typedef struct	s_object	t_object;
 
 struct 			s_object {
-	t_object_type	type;
-	t_color			color;
-	t_vec3f			location;
-	double			size;
-	double			height;
-	t_dir_vecs		dir_vecs;
-	t_vec3f			points[3];
 	bool			has_parent;
+	double			height;
+	double			size;
 	size_t			parent_i;
+	t_color			color;
+	t_dir_vecs		dir_vecs;
+	t_object_type	type;
+	t_vec3f			location;
+	t_vec3f			points[3];
 };
 
 typedef struct	s_rayres {
 	double		dist;
-	t_vec3f		p;
 	t_object	*obj;
 	t_vec3f		normal;
+	t_vec3f		p;
 }				t_rayres;
 
 typedef struct	s_camera {
+	t_dir_vecs	dir_vecs;
 	t_vec3f		location;
 	t_vec3f		orientation;
-	t_dir_vecs	dir_vecs;
-	uint8_t	fov;
+	uint8_t		fov;
 }				t_camera;
 
 typedef struct	s_light {
-	t_vec3f	location;
 	double	brightness;
 	t_color	color;
+	t_vec3f	location;
 }				t_light;
 
-typedef struct	s_lightres {
-	double	factor;
-	t_light	*light;
-}				t_lightres;
-
 typedef struct	s_info {
+	char			*current_line;
+	size_t			current_cam_i;
+	t_camera		*current_cam;
 	t_mapinfo		mapinfo;
-	t_vla			objects;
+	t_mlxinfo		mlx_info;
+	t_object		*selected;
 	t_vla			cameras;
 	t_vla			lights;
-	t_mlxinfo		mlx_info;
-	t_camera		*current_cam;
-	size_t			current_cam_i;
-	t_object		*selected;
-	char			*current_line;
+	t_vla			objects;
 }				t_info;
 
 typedef struct	s_thread_info {
+	t_color			*buf;
 	t_info			*info;
 	uint32_t		start;
-	t_color			*buf;
 }				t_thread_info;
 
 /*
 **	Errors
 */
 
+void			exit_clean(t_info *info);
 void			print_error(char *message, t_info *info);
 void			print_error_free(char *message, t_info *info, void *to_free,
 					void (*free_func)(void *));
 void			print_error_free_words(char *message, t_info *info,
 					char **words);
-void			exit_clean(t_info *info);
 
 /*
 **	Helpers
 */
 
-void			free_words(char **array);
-size_t			arrlen(char **array);
-bool			isdigit_string(char *string);
-double			parse_double(char *str);
-t_vec3f			parse_vec3f(char *str, t_info *info);
-t_color			parse_color(char *str, t_info *info);
-int				to_color(t_color color);
-t_rayres		rayres_inf(void);
-t_rayres		rayres_new(t_object *obj, t_vec3f p, double dist, t_vec3f normal);
-t_ray			ray_new(t_vec3f origin, t_vec3f direction);
-t_vec3f			ray_point(t_ray ray, double t);
 bool			float_compare(double a, double b);
+int				to_color(t_color color);
 t_object		empty_object(void);
 t_object		empty_object_type(t_object_type type);
-t_vec2i			pixel_new(int x, int y);
-bool			is_other_side(t_vec3f normal, t_vec3f ray_direction);
+t_ray			ray_new(t_vec3f origin, t_vec3f direction);
+t_rayres		rayres_inf(void);
+t_rayres		rayres_new(t_object *obj, t_vec3f p, double dist, t_vec3f normal);
+t_vec3f			ray_point(t_ray ray, double t);
 
 /*
 **	Maths
 */
 
 void			points_line_closest(t_line line_a, t_line line_b,
-		double *results);
+					double *results);
 void			rotate_relative(t_vec3f *forward, t_vec3f direction,
-		double factor);
+					double factor);
+bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
 
 /*
 **	Quaternians
 */
 
-t_vec4f			quat_inverse(t_vec4f quat);
 double			quat_len(t_vec4f quat);
+t_vec3f			quat_to_vec3(t_vec4f quat);
+t_vec4f			quat_inverse(t_vec4f quat);
 t_vec4f			quat_multiply(t_vec4f a, t_vec4f b);
 t_vec4f			quat_new(double w, double x, double y, double z);
 t_vec4f			quat_normalize(t_vec4f quat);
 t_vec4f			quat_rot(t_vec3f orientation, t_vec3f rot_dir, double angle);
 t_vec4f			quat_rot_local(t_vec3f rot_dir, double angle);
-t_vec3f			quat_to_vec3(t_vec4f quat);
 
 /*
 **	Colors
 */
 
-t_color			col_new(float r, float g, float b);
-t_color			col_multiply(t_color color, double factor);
+t_color			col_add_light(t_color a, t_color b);
 t_color			col_mix(t_color col1, t_color col2);
 t_color			col_mix_light(t_color col, t_color amb);
-t_color			col_add_light(t_color a, t_color b);
+t_color			col_multiply(t_color color, double factor);
+t_color			col_new(float r, float g, float b);
 
 /*
 **	Structure functions
 */
 
-void			parse_input(char *filename, t_info *info);
 bool			init_mlx(t_info *info);
+void			parse_input(char *filename, t_info *info);
 void			save_bmp(t_info *info);
 
 /*
@@ -257,25 +241,28 @@ int				hook_mouse(int button, int x, int y, t_info *info);
 **	Renderer
 */
 
+t_color			*get_frame(t_info *info);
 t_color			get_pixel(t_vec2i pixel, t_info *info);
 t_color			ray_cast(t_info *info, t_ray ray);
 t_color			ray_cast_all_lights(t_info *info, t_rayres rayres, t_ray ray);
-t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
-t_ray			generate_ray(t_vec2i pixel, t_info *info);
-t_vec3f			move_get_dir(t_move_dir move_dir, t_dir_vecs dir_vecs);
-t_vec3f			fix_normal(t_vec3f ray_direction, t_vec3f normal);
 t_dir_vecs		fix_dir_vecs(t_vec3f cam_direction, t_dir_vecs dir_vecs);
 t_dir_vecs		get_dir_vecs(t_vec3f cam_dir);
-bool			triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p);
-
-t_color			*get_frame(t_info *info);
-void			*renderer_thread(void *param);
+t_ray			generate_ray(t_vec2i pixel, t_info *info);
 t_thread_info	*thread_info_new(t_info *info, t_color *buf, uint32_t start);
+t_vec3f			fix_normal(t_vec3f ray_direction, t_vec3f normal);
+t_vec3f			move_get_dir(t_move_dir move_dir, t_dir_vecs dir_vecs);
+void			*renderer_thread(void *param);
+
+/*
+**	Camera
+*/
+
+t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 void			cam_update(t_camera *cam);
-void			move_obj(int keycode, t_info *info);
 void			move_cam(int keycode, t_info *info);
-void			rotate_obj(int keycode, t_info *info);
+void			move_obj(int keycode, t_info *info);
 void			rotate_cam(int keycode, t_info *info);
+void			rotate_obj(int keycode, t_info *info);
 
 /*
 **	Object functions
@@ -293,28 +280,23 @@ void			update(t_object *obj, t_info *info);
 */
 
 void			free_info(t_info *info);
+void			free_words(char **array);
 
 /*
 **	Children
 */
 
-void			find_children(t_object *ob, t_object **to_store, t_info *info);
-void			children_square_gen(t_object *sq, t_info *info);
-void			children_square_update(t_object *sq, t_info *info);
 void			children_cylinder_gen(t_object *cy, t_info *info);
 void			children_cylinder_update(t_object *cy, t_info *info);
+void			children_square_gen(t_object *sq, t_info *info);
+void			children_square_update(t_object *sq, t_info *info);
+void			find_children(t_object *ob, t_object **to_store, t_info *info);
 
 /*
 **	I/O
 */
 
-void			select_object(t_vec2i pixel, t_info *info);
 void			key(int keycode, t_info *info);
-
-/*
-**	Print
-*/
-
-void			print_vec3(char *name, t_vec3f vec);
+void			select_object(t_vec2i pixel, t_info *info);
 
 #endif

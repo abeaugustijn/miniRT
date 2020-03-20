@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isdigit_string.c                                   :+:      :+:    :+:   */
+/*   parse_arrlen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/14 21:22:53 by abe               #+#    #+#             */
-/*   Updated: 2020/01/14 21:24:36 by abe              ###   ########.fr       */
+/*   Created: 2020/01/14 20:37:50 by abe               #+#    #+#             */
+/*   Updated: 2020/03/20 13:40:31 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
+#include <stddef.h>
 
 /*
-**	Checks whther a string exist of only digits.
+**	Count the amount of elements in a NULL-terminated string array.
 **
-**	@param {char *} string
+**	@param {char **} array
 **
-**	@return {bool}
+**	@return {size_t}
 */
 
-bool	isdigit_string(char *string)
+size_t	parse_arrlen(char **array)
 {
-	while (*string)
-	{
-		if (!(*string >= '0' && *string <= '9'))
-			return (false);
-		string += sizeof(char);
-	}
-	return (true);
+	size_t	res;
+
+	res = 0;
+	while (array[res])
+		res++;
+	return (res);
 }
+

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/20 12:10:51 by aaugusti         ###   ########.fr        #
+#    Created: 2020/03/20 14:03:39 by aaugusti          #+#    #+#              #
+#    Updated: 2020/03/20 14:07:30 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,25 +24,17 @@ SRCS			=	cam/cam_update\
 					col/col_mix_light\
 					col/col_multiply\
 					col/col_new\
-					debug/print_vec3\
 					error/error\
 					free/free_info\
-					free/free_string_arr\
+					free/free_words\
 					get_frame/get_frame\
-					helpers/arrlen\
 					helpers/empty_object\
 					helpers/float_compare\
-					helpers/isdigit_string\
-					helpers/parse_color\
-					helpers/parse_double\
-					helpers/parse_vec3f\
-					helpers/pixel_new\
 					helpers/ray_new\
 					helpers/ray_point\
 					helpers/rayres_inf\
 					helpers/rayres_new\
 					helpers/tocolor\
-					helpers/triangle_inside\
 					hooks/hook_frame\
 					hooks/hook_key\
 					hooks/hook_mouse\
@@ -64,6 +56,7 @@ SRCS			=	cam/cam_update\
 					main\
 					math/points_line_closest\
 					math/rotate_relative\
+					math/triangle_inside\
 					mouse/select_object\
 					move/move_cam\
 					move/move_cylinder\
@@ -81,16 +74,8 @@ SRCS			=	cam/cam_update\
 					normal/normal_sphere\
 					normal/normal_square\
 					normal/normal_triangle\
-					parser/parse_ambient\
-					parser/parse_camera\
-					parser/parse_cylinder\
-					parser/parse_light\
-					parser/parse_plane\
-					parser/parse_resolution\
-					parser/parse_sphere\
-					parser/parse_square\
-					parser/parse_triangle\
-					parser/parser\
+					parser/parse_convert_vlas\
+					parser/parse_init_vlas\
 					quat/quat_inverse\
 					quat/quat_len\
 					quat/quat_multiply\
@@ -123,6 +108,22 @@ SRCS			=	cam/cam_update\
 					update/update_disk\
 					update/update_plane\
 					update/update_square\
+					parser/parse_ambient\
+					parser/parse_arrlen\
+					parser/parse_camera\
+					parser/parse_check_filename\
+					parser/parse_color\
+					parser/parse_cylinder\
+					parser/parse_disk\
+					parser/parse_double\
+					parser/parse_light\
+					parser/parse_plane\
+					parser/parse_resolution\
+					parser/parse_sphere\
+					parser/parse_square\
+					parser/parse_triangle\
+					parser/parse_vec3f\
+					parser/parser\
 
 # Sources which are just needed for the bonus part
 BONUS_SRCS		=	get_frame/renderer_thread\

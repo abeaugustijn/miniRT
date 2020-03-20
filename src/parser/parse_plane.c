@@ -6,13 +6,14 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 18:55:00 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 10:43:23 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 13:54:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser.h"
+#include <libft.h>
 #include <miniRT.h>
 #include <stdlib.h>
-#include <libft.h>
 
 /*
 **	Parse function for planes.
@@ -27,7 +28,7 @@ void	parse_plane(char **words, t_info *info)
 	t_object	res;
 	t_object	*pl;
 
-	if (arrlen(words) != 4)
+	if (parse_arrlen(words) != 4)
 		print_error("Error while parsing plane", info);
 	ft_bzero(&res, sizeof(t_object));
 	res.type = PL;

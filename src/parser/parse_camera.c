@@ -6,13 +6,14 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 22:10:48 by abe               #+#    #+#             */
-/*   Updated: 2020/03/06 12:00:15 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 13:52:27 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser.h"
+#include <libft.h>
 #include <miniRT.h>
 #include <stdlib.h>
-#include <libft.h>
 
 /*
 **	Parse and check the fov value of the camera. Throws an error and exists if
@@ -47,7 +48,7 @@ void			parse_camera(char **words, t_info *info)
 {
 	t_camera	res;
 
-	if (arrlen(words) != 4)
+	if (parse_arrlen(words) != 4)
 		print_error("Error while parsing camera\n", info);
 	res.location = parse_vec3f(words[1], info);
 	res.orientation = vec_normalize(parse_vec3f(words[2], info));

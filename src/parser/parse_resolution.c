@@ -6,13 +6,33 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:36:49 by abe               #+#    #+#             */
-/*   Updated: 2020/03/06 11:59:55 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 13:55:15 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include "parser.h"
 #include <libft.h>
+#include <miniRT.h>
 #include <mlx.h>
+
+/*
+**	Checks whther a string exist of only digits.
+**
+**	@param {char *} string
+**
+**	@return {bool}
+*/
+
+static bool	isdigit_string(char *string)
+{
+	while (*string)
+	{
+		if (!(*string >= '0' && *string <= '9'))
+			return (false);
+		string += sizeof(char);
+	}
+	return (true);
+}
 
 /*
 **	This is used to scale the resulotion down when it is too large for the
@@ -43,7 +63,7 @@ static void	parse_resolution_check_res(t_info *info)
 
 void	parse_resolution(char **words, t_info *info)
 {
-	if (arrlen(words) != 3)
+	if (parse_arrlen(words) != 3)
 		print_error("Error while parsing resolution", info);
 	if (info->mapinfo.did_resolution)
 		print_error("Invalid file. Resolution is specified multiple times", info);

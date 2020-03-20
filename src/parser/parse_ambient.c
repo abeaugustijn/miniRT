@@ -6,12 +6,13 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:47:37 by abe               #+#    #+#             */
-/*   Updated: 2020/03/06 12:00:05 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 13:52:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include "parser.h"
 #include <libft.h>
+#include <miniRT.h>
 
 /*
 **	Parse function for the ambient lighting.
@@ -23,7 +24,7 @@
 
 void	parse_ambient(char **words, t_info *info)
 {
-	if (arrlen(words) != 3)
+	if (parse_arrlen(words) != 3)
 		print_error("Error while parsing ambient lighting", info);
 	if (info->mapinfo.did_ambient)
 		print_error("Invalid file. Ambient is specified multiple times.", info);

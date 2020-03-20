@@ -11,9 +11,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "parser.h"
+#include <libft.h>
 #include <miniRT.h>
 #include <stdlib.h>
-#include <libft.h>
 
 /*
 **	Parse function for disks.
@@ -28,7 +29,7 @@ void	parse_disk(char **words, t_info *info)
 	t_object	res;
 	t_object	*ds;
 
-	if (arrlen(words) != 5)
+	if (parse_arrlen(words) != 5)
 		print_error("Error while parsing plane", info);
 	ft_bzero(&res, sizeof(t_object));
 	res.type = DS;
