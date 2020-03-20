@@ -6,7 +6,7 @@
 #    By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/13 15:41:56 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/20 11:19:50 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/03/20 11:24:31 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,7 +84,6 @@ SRCS			=	cam/cam_update\
 					parser/parse_ambient\
 					parser/parse_camera\
 					parser/parse_cylinder\
-					parser/parse_disk\
 					parser/parse_light\
 					parser/parse_plane\
 					parser/parse_resolution\
@@ -142,10 +141,11 @@ SRCS			=	cam/cam_update\
 # Sources which are just needed for the bonus part
 BONUS_SRCS		=	get_frame/renderer_thread\
 					get_frame/thread_info_new\
+					parser/parse_disk\
 
 # These are files that need to be recompiled when the bonus is made
-BONUS_RECOMP	=	main\
-					get_frame/get_frame\
+BONUS_RECOMP	=	get_frame/get_frame\
+					parser/parser\
 
 
 CFILES			=	$(SRCS:%=src/%.c)

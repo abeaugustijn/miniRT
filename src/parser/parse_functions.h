@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:34:10 by abe               #+#    #+#             */
-/*   Updated: 2020/03/03 10:36:03 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 11:23:10 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ void			parse_cylinder(char **words, t_info *info);
 void			parse_triangle(char **words, t_info *info);
 void			parse_disk(char **words, t_info *info);
 
+# ifndef BONUS
+t_parsefunc		g_parsejump[] = {
+	{ "R", &parse_resolution },
+	{ "A", &parse_ambient },
+	{ "c", &parse_camera },
+	{ "l", &parse_light },
+	{ "sp", &parse_sphere },
+	{ "pl", &parse_plane },
+	{ "sq", &parse_square },
+	{ "cy", &parse_cylinder },
+	{ "tr", &parse_triangle },
+	{ NULL, NULL },
+};
+# else
 t_parsefunc		g_parsejump[] = {
 	{ "R", &parse_resolution },
 	{ "A", &parse_ambient },
@@ -44,5 +58,6 @@ t_parsefunc		g_parsejump[] = {
 	{ "ds", &parse_disk },
 	{ NULL, NULL },
 };
+# endif
 
 #endif

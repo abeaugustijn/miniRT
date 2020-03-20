@@ -6,17 +6,17 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 16:43:00 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/03/20 11:24:24 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <get_next_line.h>
-#include <stdlib.h>
-#include <libft.h>
 #include "parse_functions.h"
+#include <fcntl.h>
+#include <get_next_line.h>
+#include <libft.h>
+#include <miniRT.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 /*
 **	Replace all the tabs in the line with spaces.
