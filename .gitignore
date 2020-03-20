@@ -2,7 +2,6 @@
 *.o
 .ccls*
 subject.pdf
-lib*
 miniRT
 test
 *.bmp

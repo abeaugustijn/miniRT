@@ -1,0 +1,15 @@
+[submodule "lib/libftprintf"]
+	path = lib/libftprintf
+	url = https://github.com/abeaugustijn/ft_printf
+[submodule "lib/libft"]
+	path = lib/libft
+	url = https://github.com/abeaugustijn/libft
+[submodule "lib/libvla"]
+	path = lib/libvla
+	url = https://github.com/abeaugustijn/libvla
+[submodule "lib/libgnl"]
+	path = lib/libgnl
+	url = https://github.com/abeaugustijn/libgnl
+[submodule "lib/libmlx"]
+	path = lib/libmlx
+	url = https://github.com/abeaugustijn/MinilibX
