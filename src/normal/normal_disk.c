@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Get the normal vector for a disk. (spoiler alert: its just the orientation

@@ -6,11 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:42:56 by abe               #+#    #+#             */
-/*   Updated: 2020/03/03 08:36:48 by abe              ###   ########.fr       */
+/*   Updated: 2020/04/06 12:17:24 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Find the children of a certain object. An array pointer will be given to
@@ -28,7 +28,7 @@ void	find_children(t_object *ob, t_object **to_store, t_info *info)
 	t_object	*current;
 	size_t		parent_i;
 	size_t		i;
-	size_t		array_i;	
+	size_t		array_i;
 
 	i = 0;
 	array_i = 0;

@@ -6,17 +6,17 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 15:36:58 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/21 11:48:11 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 14:25:32 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 
 /*
 **	Get the color of a certain pixel on the screen. This function generates
 **	a ray for the given pixel and casts it by calling 'ray_cast' with the
-**	generated ray. 
+**	generated ray.
 **
 **	@param {t_vec2i} pixel - should be valid values, otherwise undefined be-
 **		haviour will occur.

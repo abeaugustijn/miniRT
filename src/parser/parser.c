@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 20:21:16 by abe               #+#    #+#             */
-/*   Updated: 2020/03/20 14:05:47 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 14:20:34 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <get_next_line.h>
 #include <libft.h>
-#include <miniRT.h>
+#include <minirt.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -22,7 +22,7 @@
 **	All of the parse functions with their identifiers.
 */
 
-# ifndef BONUS
+#ifndef BONUS
 
 t_parsefunc		g_parsejump[] = {
 	{ "R", parse_resolution },
@@ -37,7 +37,7 @@ t_parsefunc		g_parsejump[] = {
 	{ NULL, NULL },
 };
 
-# else
+#else
 
 t_parsefunc		g_parsejump[] = {
 	{ "R", parse_resolution },
@@ -53,7 +53,7 @@ t_parsefunc		g_parsejump[] = {
 	{ NULL, NULL },
 };
 
-# endif
+#endif
 
 /*
 **	Replace all the tabs in the line with spaces.

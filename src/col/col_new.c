@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 t_color	col_new(float r, float g, float b)
 {

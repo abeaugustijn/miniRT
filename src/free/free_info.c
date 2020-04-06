@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <stdlib.h>
 #include <mlx.h>
 

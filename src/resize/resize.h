@@ -6,14 +6,14 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 12:51:04 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 22:15:35 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 17:13:57 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RESIZE_H
 # define RESIZE_H
 
-# include <miniRT.h>
+# include <minirt.h>
 
 void	resize_sphere(t_object *sp, bool increase, t_info *info);
 void	resize_square(t_object *sq, bool increase, t_info *info);

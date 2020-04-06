@@ -6,11 +6,11 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 11:44:30 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/07 14:36:49 by abe              ###   ########.fr       */
+/*   Updated: 2020/04/06 12:24:18 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Compare two floats to each other. When the difference between the two is
@@ -31,4 +31,3 @@ bool	float_compare(double a, double b)
 		abs *= -1;
 	return (abs < EPSILON);
 }
-

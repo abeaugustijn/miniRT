@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Generate the color that a colored surface will reflect when a certain color

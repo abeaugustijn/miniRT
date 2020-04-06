@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 t_rayres	rayres_new(t_object *obj, t_vec3f p, double dist, t_vec3f normal)
 {

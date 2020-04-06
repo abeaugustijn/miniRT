@@ -6,14 +6,12 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 15:25:40 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/10 11:58:11 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 14:24:43 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include <miniRT.h>
-
-	#include <assert.h>
+#include <minirt.h>
 
 /*
 **	Gets the axis the camera is looking at.
@@ -23,7 +21,7 @@
 **	@return {t_vec3f} axis
 */
 
-static t_vec3f get_axis(t_vec3f cam_dir)
+static t_vec3f	get_axis(t_vec3f cam_dir)
 {
 	if (fabs(cam_dir.x) >= fabs(cam_dir.y) &&
 			fabs(cam_dir.x) >= fabs(cam_dir.z))
@@ -45,7 +43,7 @@ static t_vec3f get_axis(t_vec3f cam_dir)
 **	@return {t_dir_vecs}
 */
 
-t_dir_vecs	get_dir_vecs(t_vec3f cam_dir)
+t_dir_vecs		get_dir_vecs(t_vec3f cam_dir)
 {
 	t_dir_vecs	res;
 	t_vec3f		base;

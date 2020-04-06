@@ -6,13 +6,13 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 21:36:36 by abe               #+#    #+#             */
-/*   Updated: 2020/03/20 13:52:40 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 14:19:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <libft.h>
-#include <miniRT.h>
+#include <minirt.h>
 #include <stdbool.h>
 
 static double	parse_color_part(char *part, t_info *info)
@@ -29,7 +29,7 @@ static double	parse_color_part(char *part, t_info *info)
 **	Parse a string with three integers, delimited by ',' chars into a color.
 */
 
-t_color	parse_color(char *str, t_info *info)
+t_color			parse_color(char *str, t_info *info)
 {
 	t_color	res;
 	char	**words;

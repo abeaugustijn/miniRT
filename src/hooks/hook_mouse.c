@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <mouse_codes.h>
 
 int	hook_mouse(int button, int x, int y, t_info *info)

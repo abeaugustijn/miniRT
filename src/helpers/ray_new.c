@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 t_ray	ray_new(t_vec3f origin, t_vec3f direction)
 {

@@ -1,17 +1,16 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_square.c                                      :+:      :+:    :+:   */
+/*   move_triangle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:56:08 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/09 14:02:04 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 14:18:29 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 void	move_triangle(t_object *tr, t_move_dir move_dir, t_info *info)
 {

@@ -6,15 +6,13 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 12:49:42 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/02 22:05:28 by abe              ###   ########.fr       */
+/*   Updated: 2020/04/06 12:24:02 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <pthread.h>
 #include <stdlib.h>
-
-#define RES tinfo->info->mapinfo.res
 
 /*
 **	The thread function for rendering pixels. This function gets a t_thread_info
@@ -37,7 +35,8 @@ void	*renderer_thread(void *param)
 	while (i < tinfo->info->mapinfo.tot_pixels)
 	{
 		tinfo->buf[i] =
-			get_pixel((t_vec2i){i / RES.y, i % RES.y}, tinfo->info);
+			get_pixel((t_vec2i){i / tinfo->info->mapinfo.res.y,
+					i % tinfo->info->mapinfo.res.y}, tinfo->info);
 		i += NCORES;
 	}
 	free(param);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 t_vec4f	quat_rot(t_vec3f orientation, t_vec3f rot_dir, double angle)
 {

@@ -6,14 +6,14 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:35:23 by abe               #+#    #+#             */
-/*   Updated: 2020/03/09 11:53:15 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 17:13:48 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NORMAL_H
 # define NORMAL_H
 
-# include <miniRT.h>
+# include <minirt.h>
 
 t_vec3f	normal_sphere(t_rayres rayres, t_ray ray, t_info *info);
 t_vec3f	normal_plane(t_rayres rayres, t_ray ray, t_info *info);

@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/20 14:02:54 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 17:05:02 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,7 @@ typedef struct	s_dir_vecs {
 	t_vec3f	up;
 }				t_dir_vecs;
 
-typedef struct	s_object	t_object;
-
-struct 			s_object {
+typedef struct	s_object {
 	bool			has_parent;
 	double			height;
 	double			size;
@@ -124,7 +122,7 @@ struct 			s_object {
 	t_object_type	type;
 	t_vec3f			location;
 	t_vec3f			points[3];
-};
+}				t_object;
 
 typedef struct	s_rayres {
 	double		dist;
@@ -185,7 +183,8 @@ t_object		empty_object(void);
 t_object		empty_object_type(t_object_type type);
 t_ray			ray_new(t_vec3f origin, t_vec3f direction);
 t_rayres		rayres_inf(void);
-t_rayres		rayres_new(t_object *obj, t_vec3f p, double dist, t_vec3f normal);
+t_rayres		rayres_new(t_object *obj, t_vec3f p, double dist,
+					t_vec3f normal);
 t_vec3f			ray_point(t_ray ray, double t);
 
 /*

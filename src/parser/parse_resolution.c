@@ -6,13 +6,13 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/14 20:36:49 by abe               #+#    #+#             */
-/*   Updated: 2020/03/20 13:55:15 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 14:23:15 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <libft.h>
-#include <miniRT.h>
+#include <minirt.h>
 #include <mlx.h>
 
 /*
@@ -61,12 +61,13 @@ static void	parse_resolution_check_res(t_info *info)
 **	@param {t_info *} info
 */
 
-void	parse_resolution(char **words, t_info *info)
+void		parse_resolution(char **words, t_info *info)
 {
 	if (parse_arrlen(words) != 3)
 		print_error("Error while parsing resolution", info);
 	if (info->mapinfo.did_resolution)
-		print_error("Invalid file. Resolution is specified multiple times", info);
+		print_error("Invalid file. Resolution is specified multiple times",
+				info);
 	if (!isdigit_string(words[1]) || !isdigit_string(words[2]))
 		print_error("Invalid resolution values", info);
 	info->mapinfo.res.x = ft_atoi(words[1]);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Gets the normal vector of a sphere, on a certain point where the ray hit

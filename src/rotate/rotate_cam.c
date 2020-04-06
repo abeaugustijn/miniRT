@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_cam.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:26:19 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 23:00:06 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:44:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include "rotate.h"
 
 void	rotate_cam(int keycode, t_info *info)

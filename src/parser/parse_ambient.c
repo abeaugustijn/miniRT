@@ -12,7 +12,7 @@
 
 #include "parser.h"
 #include <libft.h>
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Parse function for the ambient lighting.

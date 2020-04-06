@@ -6,11 +6,11 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 11:23:31 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/03 15:30:58 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 13:47:27 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 #include <libft.h>
 
@@ -37,7 +37,8 @@ static double	determinant(t_vec3f mat[3])
 **	@param {t_vec3f} totals
 */
 
-static void		set_mats(t_vec3f mats[3][3], t_vec3f to_solve[3], t_vec3f totals)
+static void		set_mats(t_vec3f mats[3][3], t_vec3f to_solve[3],
+		t_vec3f totals)
 {
 	size_t	i;
 	size_t	j;
@@ -75,7 +76,7 @@ static t_vec3f	points_line_closest_solve(t_vec3f to_solve[3], t_vec3f totals)
 	double	determinants[4];
 	t_vec3f	mats[3][3];
 	size_t	i;
-	
+
 	set_mats(mats, to_solve, totals);
 	determinants[0] = determinant(to_solve);
 	i = 0;
@@ -102,7 +103,8 @@ static t_vec3f	points_line_closest_solve(t_vec3f to_solve[3], t_vec3f totals)
 **	@param {double *} results - should have space for two elements
 */
 
-void		points_line_closest(t_line line_a, t_line line_b, double *results)
+void			points_line_closest(t_line line_a, t_line line_b,
+		double *results)
 {
 	t_vec3f	to_solve[3];
 	t_vec3f	origin_from_to;

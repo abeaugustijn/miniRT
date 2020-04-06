@@ -12,7 +12,7 @@
 
 #include "parser.h"
 #include <libft.h>
-#include <miniRT.h>
+#include <minirt.h>
 #include <stdlib.h>
 
 /*

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 inline t_vec4f	quat_new(double w, double x, double y, double z)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 
 void	resize_square(t_object *sq, bool increase, t_info *info)

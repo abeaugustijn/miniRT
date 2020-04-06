@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 void	move_disk(t_object *ds, t_move_dir move_dir, t_info *info)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <stdlib.h>
 
 t_thread_info	*thread_info_new(t_info *info, t_color *buf, uint32_t start)

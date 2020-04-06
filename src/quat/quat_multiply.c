@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 t_vec4f	quat_multiply(t_vec4f a, t_vec4f b)
 {

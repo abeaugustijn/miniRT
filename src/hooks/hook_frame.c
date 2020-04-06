@@ -6,15 +6,15 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/17 14:17:21 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/24 22:12:44 by abe              ###   ########.fr       */
+/*   Updated: 2020/04/06 12:25:13 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <mlx.h>
 #include <stdlib.h>
 
-static void pixel_put(t_mlximg img, uint16_t x, uint16_t y, t_color color)
+static void	pixel_put(t_mlximg img, uint16_t x, uint16_t y, t_color color)
 {
 	char	*dst;
 
@@ -49,8 +49,7 @@ int			hook_frame(t_info *info)
 		while (j < info->mapinfo.res.y)
 		{
 			pixel_put(
-					info->mlx_info.img,
-					i, j,
+					info->mlx_info.img, i, j,
 					frame[i * info->mapinfo.res.y + j]);
 			j++;
 		}

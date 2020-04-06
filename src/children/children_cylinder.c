@@ -6,11 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:25:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 10:44:21 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 12:17:07 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 
 /*
@@ -26,12 +26,12 @@ void		children_cylinder_update(t_object *cy, t_info *info)
 	t_object	*children[2];
 
 	find_children(cy, children, info);
-	children[0]->dir_vecs.forward = cy->dir_vecs.forward; // TODO: some of this only needs to be set once
+	children[0]->dir_vecs.forward = cy->dir_vecs.forward;
 	children[1]->dir_vecs.forward = cy->dir_vecs.forward;
 	children[0]->size = cy->size;
 	children[1]->size = cy->size;
 	children[0]->location = vec_add(cy->location,
-			vec_multiply(cy->dir_vecs.forward,cy->height / 2));
+			vec_multiply(cy->dir_vecs.forward, cy->height / 2));
 	children[1]->location = vec_sub(cy->location,
 			vec_multiply(cy->dir_vecs.forward, cy->height / 2));
 	children[0]->color = cy->color;

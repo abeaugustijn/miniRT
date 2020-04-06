@@ -13,7 +13,7 @@
 #ifndef UPDATE_H
 # define UPDATE_H
 
-# include <miniRT.h>
+# include <minirt.h>
 
 void	update_dir_vecs(t_dir_vecs *vecs);
 void	update_cylinder(t_object *cy, t_info *info);

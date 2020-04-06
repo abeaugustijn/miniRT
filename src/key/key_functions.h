@@ -6,14 +6,14 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 14:27:46 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 22:52:55 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 17:13:08 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEY_FUNCTIONS_H
 # define KEY_FUNCTIONS_H
 
-# include <miniRT.h>
+# include <minirt.h>
 # include <key_codes.h>
 
 typedef struct	s_keyfunc {

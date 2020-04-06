@@ -6,11 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:49:01 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 14:35:18 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 12:29:49 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 #include <libft.h>
 
@@ -33,7 +33,8 @@ static void		swap(double *a, double *b)
 **	@return {double}
 */
 
-double			intersect_sphere(t_object *sp, t_ray ray, t_vec3f *normal, t_info *info)
+double			intersect_sphere(t_object *sp, t_ray ray, t_vec3f *normal,
+		t_info *info)
 {
 	t_vec3f	orig_to_sp;
 	double	tca;

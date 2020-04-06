@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include "resize.h"
 
 void	resize(t_object *obj, bool increase, t_info *info)

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <key_codes.h>
 
 void			key_cam_cycle(int keycode, t_info *info)

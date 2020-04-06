@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <libvla.h>
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Convert all VLAs to arrays.

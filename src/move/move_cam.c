@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   move_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 20:42:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 22:01:26 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 14:17:29 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <key_codes.h>
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Move the current camera.

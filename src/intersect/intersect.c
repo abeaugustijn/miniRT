@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "intersect.h"
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Determines whether a ray intersects with a given object.

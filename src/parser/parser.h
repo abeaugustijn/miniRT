@@ -13,7 +13,7 @@
 
 #ifndef PARSER_H
 # define PARSER_H
-# include <miniRT.h>
+# include <minirt.h>
 
 /*
 **	Parse function per line

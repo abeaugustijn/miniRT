@@ -6,11 +6,11 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:43:01 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/06 17:48:57 by abe              ###   ########.fr       */
+/*   Updated: 2020/04/06 14:23:40 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 
 /*
@@ -31,8 +31,8 @@ t_ray	generate_ray(t_vec2i pixel, t_info *info)
 	fov_factor = tan(info->current_cam->fov / 2 * (M_PI / 180));
 	cam_loc = info->current_cam->location;
 	ray.origin = vec_new(
-		(2 * ((pixel.x + 0.5) / info->mapinfo.res.x) - 1)  * fov_factor,
-		(1 - (2 *((pixel.y + 0.5) / info->mapinfo.res.y))) * fov_factor,
+		(2 * ((pixel.x + 0.5) / info->mapinfo.res.x) - 1) * fov_factor,
+		(1 - (2 * ((pixel.y + 0.5) / info->mapinfo.res.y))) * fov_factor,
 		-1);
 	ray.origin = look_at(info->current_cam, ray.origin);
 	if (info->mapinfo.res.x > info->mapinfo.res.y)

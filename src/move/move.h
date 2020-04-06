@@ -6,14 +6,14 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 13:31:09 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 22:13:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 17:13:21 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MOVE_H
 # define MOVE_H
 
-# include <miniRT.h>
+# include <minirt.h>
 
 void	move_sphere(t_object *sp, t_move_dir move_dir, t_info *info);
 void	move_plane(t_object *pl, t_move_dir move_dir, t_info *info);

@@ -6,11 +6,11 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 14:18:46 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/02/21 16:25:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 12:17:34 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 
 /*
@@ -30,4 +30,3 @@ t_color	col_add_light(t_color a, t_color b)
 				fmax(a.g, b.g),
 				fmax(a.b, b.b)));
 }
-

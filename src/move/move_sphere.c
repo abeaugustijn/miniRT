@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 void	move_sphere(t_object *sp, t_move_dir move_dir, t_info *info)
 {

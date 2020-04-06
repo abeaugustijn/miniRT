@@ -6,11 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:24:52 by abe               #+#    #+#             */
-/*   Updated: 2020/03/10 20:24:47 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:44:25 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 
 /*
@@ -65,7 +65,7 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres,
 					t_ray ray)
 {
 	t_vec3f		norm;
-	t_vec3f 	lightray_dir;
+	t_vec3f		lightray_dir;
 	double		factor;
 
 	if (float_compare(info->mapinfo.ambient_ratio, 1))
@@ -98,13 +98,15 @@ static t_color	ray_cast_light(t_info *info, t_light *light, t_rayres rayres,
 **	@return {t_color} - the resulting color of the surface
 */
 
-t_color				ray_cast_all_lights(t_info *info, t_rayres rayres, t_ray ray)
+t_color			ray_cast_all_lights(t_info *info, t_rayres rayres,
+		t_ray ray)
 {
 	t_color		res;
-	t_light		*current;	
+	t_light		*current;
 	size_t		i;
 
-	res = col_multiply(info->mapinfo.ambient_color, info->mapinfo.ambient_ratio);
+	res = col_multiply(info->mapinfo.ambient_color,
+			info->mapinfo.ambient_ratio);
 	res = col_mix_light(rayres.obj->color, res);
 	i = 0;
 	while (!vla_get_addr(info->lights, i, (void **)&current))

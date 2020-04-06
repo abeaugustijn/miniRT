@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update_disk.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 10:18:24 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/17 10:36:31 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:51:04 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include "update.h"
 
 void	update_disk(t_object *ds, t_info *info)

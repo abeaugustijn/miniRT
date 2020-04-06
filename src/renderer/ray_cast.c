@@ -6,15 +6,13 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/10 17:56:38 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:42:16 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 #include <libft.h>
-
-	#include <assert.h>
 
 static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 {
@@ -37,20 +35,14 @@ static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 		if (current->type == SQ)
 			continue;
 		dist = intersect(current, ray, &normal, info);
-		if (dist < min_distance)
-		{
-			if (vec_is_normal(normal))
-				normal_closest = normal;
-			else
-				normal_closest = vec_new(0, 0, 0);
-			normal = vec_new(0, 0, 0);
-			closest = current;
-			min_distance = dist;
-		}
+		if (dist >= min_distance)
+			continue;
+		normal_closest = vec_is_normal(normal) ? normal : vec_new(0, 0, 0);
+		closest = current;
+		min_distance = dist;
 	}
 	if (!closest)
 		return (rayres_inf());
-	assert(dist >= 0);
 	return (rayres_new(closest, ray_point(ray, min_distance),
 				min_distance, normal_closest));
 }

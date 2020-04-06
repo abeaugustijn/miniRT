@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <key_codes.h>
 
 void	rotate_get_dir(int keycode, t_move_dir *axis, bool *increase)

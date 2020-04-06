@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include "update.h"
 
 void	update_cylinder(t_object *cy, t_info *info)

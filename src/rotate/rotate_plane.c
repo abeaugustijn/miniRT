@@ -6,11 +6,11 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 19:11:56 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/17 19:15:13 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:46:35 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 void	rotate_plane(t_object *pl, t_move_dir axis, bool increase,
 			t_info *info)
@@ -25,4 +25,3 @@ void	rotate_plane(t_object *pl, t_move_dir axis, bool increase,
 	rotate_relative(&pl->dir_vecs.forward, direction, factor);
 	update(pl, info);
 }
-

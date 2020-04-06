@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update_square.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 10:32:40 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/17 15:14:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:51:40 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include "update.h"
 
 void	update_square(t_object *sq, t_info *info)

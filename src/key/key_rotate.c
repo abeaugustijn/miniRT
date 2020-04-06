@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:40:07 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/16 23:03:30 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 12:30:24 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <key_codes.h>
 #include <math.h>
 

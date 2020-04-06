@@ -6,11 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/28 21:33:58 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 10:02:19 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 13:53:25 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include "normal.h"
 
 /*
@@ -32,9 +32,12 @@ t_vec3f	(*g_normaljump[])(t_rayres, t_ray, t_info *) = {
 	[DS] = &normal_disk,
 };
 
+	#include <assert.h>
+
 t_vec3f	normal(t_rayres rayres, t_ray ray, t_info *info)
 {
 	if (g_normaljump[rayres.obj->type])
 		return (g_normaljump[rayres.obj->type](rayres, ray, info));
+	assert(0);
 	return (vec_new(42, 42, 42));
 }

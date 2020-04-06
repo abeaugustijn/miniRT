@@ -6,13 +6,13 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:55:17 by abe               #+#    #+#             */
-/*   Updated: 2020/03/16 22:53:43 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 17:12:51 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERSECT_H
 # define INTERSECT_H
-# include <miniRT.h>
+# include <minirt.h>
 
 double	intersect_plane(t_object *pl, t_ray ray, t_vec3f *normal,
 		t_info *info);

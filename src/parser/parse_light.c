@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <libft.h>
-#include <miniRT.h>
+#include <minirt.h>
 #include "parser.h"
 #include <stdlib.h>
 

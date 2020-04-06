@@ -6,11 +6,11 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 12:12:43 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/09 13:12:16 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 13:50:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 /*
 **	Checks whether a given point falls inside of a triangle.
@@ -36,10 +36,9 @@ bool	triangle_inside(t_object *tr, t_vec3f tr_normal, t_vec3f p)
 	directions[2] = vec_sub(p, tr->points[2]);
 	normal_inverse = vec_multiply(tr_normal, -1);
 	return ((vec_dotp(tr_normal, vec_crossp(edges[0], directions[0])) >= 0 &&
-				vec_dotp(tr_normal, vec_crossp(edges[1], directions[1])) >= 0 &&
-				vec_dotp(tr_normal, vec_crossp(edges[2], directions[2])) >= 0) ||
-			(vec_dotp(normal_inverse, vec_crossp(edges[0], directions[0])) > 0 &&
-			vec_dotp(normal_inverse, vec_crossp(edges[1], directions[1])) > 0 &&
-			vec_dotp(normal_inverse, vec_crossp(edges[2], directions[2])) > 0));
+			vec_dotp(tr_normal, vec_crossp(edges[1], directions[1])) >= 0 &&
+			vec_dotp(tr_normal, vec_crossp(edges[2], directions[2])) >= 0) ||
+		(vec_dotp(normal_inverse, vec_crossp(edges[0], directions[0])) > 0 &&
+		vec_dotp(normal_inverse, vec_crossp(edges[1], directions[1])) > 0 &&
+		vec_dotp(normal_inverse, vec_crossp(edges[2], directions[2])) > 0));
 }
-

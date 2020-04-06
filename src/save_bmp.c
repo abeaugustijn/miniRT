@@ -6,11 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:33:01 by abe               #+#    #+#             */
-/*   Updated: 2020/02/25 18:45:25 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:49:12 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <libft.h>
@@ -42,7 +42,7 @@ static size_t	bmp_fsize(t_info *info)
 **	@param {size_t} fsize
 */
 
-static void	bmp_wr_header(char *buf, size_t fsize)
+static void		bmp_wr_header(char *buf, size_t fsize)
 {
 	*((uint16_t *)&buf[0x00]) = (uint16_t)0x4d42;
 	*((uint32_t *)&buf[0x02]) = (uint32_t)fsize;
@@ -56,7 +56,7 @@ static void	bmp_wr_header(char *buf, size_t fsize)
 **	@param {t_info *} info
 */
 
-static void	bmp_wr_info_header(char *buf, t_info *info)
+static void		bmp_wr_info_header(char *buf, t_info *info)
 {
 	*((uint32_t *)&buf[0x0E]) = (uint32_t)40;
 	*((uint32_t *)&buf[0x12]) = (uint32_t)info->mapinfo.res.x;
@@ -72,7 +72,7 @@ static void	bmp_wr_info_header(char *buf, t_info *info)
 **	@param {t_info *} info
 */
 
-static void bmp_wr_pixels(char *buf, t_info *info)
+static void		bmp_wr_pixels(char *buf, t_info *info)
 {
 	uint32_t	index;
 	uint32_t	x;
@@ -107,11 +107,11 @@ static void bmp_wr_pixels(char *buf, t_info *info)
 **	@param {t_info *} info
 */
 
-void		save_bmp(t_info *info)
+void			save_bmp(t_info *info)
 {
-	int			fd;
+	char	*buf;
+	int		fd;
 	size_t	fsize;
-	char		*buf;
 
 	fd = open(FILE_NAME, O_WRONLY | O_CREAT, 0644);
 	if (fd < 0)

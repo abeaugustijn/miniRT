@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/17 10:16:34 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/17 11:34:12 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:49:56 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include "update.h"
 
 void	(*g_updatejmp[])(t_object *, t_info *) = {

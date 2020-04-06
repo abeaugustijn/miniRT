@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 
 t_vec3f	move_get_dir(t_move_dir move_dir, t_dir_vecs dir_vecs)
 {

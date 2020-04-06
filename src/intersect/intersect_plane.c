@@ -6,11 +6,11 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 11:53:42 by abe               #+#    #+#             */
-/*   Updated: 2020/03/17 10:02:46 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 12:29:33 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include <math.h>
 
 /*
@@ -31,7 +31,8 @@ double	intersect_plane(t_object *pl, t_ray ray, t_vec3f *normal, t_info *info)
 	(void)info;
 	t = vec_dotp(vec_sub(pl->location, ray.origin), pl->dir_vecs.forward) /
 		vec_dotp(ray.direction, pl->dir_vecs.forward);
-	if (t < 0 || float_compare(vec_dotp(ray.direction, pl->dir_vecs.forward), 0))
+	if (t < 0 ||
+			float_compare(vec_dotp(ray.direction, pl->dir_vecs.forward), 0))
 		return (INFINITY);
 	return (t);
 }

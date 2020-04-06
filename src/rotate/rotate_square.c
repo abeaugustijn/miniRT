@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_square.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaugusti </var/spool/mail/abe>             +#+  +:+       +#+        */
+/*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:49:22 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/03/17 15:41:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/06 16:47:02 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <miniRT.h>
+#include <minirt.h>
 #include "../update/update.h"
 
 void	rotate_square(t_object *sq, t_move_dir axis, bool increase,
