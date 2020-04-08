@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT.h                                           :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/04/06 17:05:02 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/08 20:23:54 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@
 # define MOVE_SPEED (1.0)
 # define LIGHT_FACTOR (100.0)
 # define RESIZE_SPEED (1.2)
-# define EPSILON (0.000001)
+# ifndef EPSILON
+#  define EPSILON (0.000001)
+# endif
 
 typedef struct	s_vec4f {
 	double	w;
