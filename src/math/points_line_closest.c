@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 11:23:31 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/04/06 13:47:27 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/07 09:46:10 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ static t_vec3f	points_line_closest_solve(t_vec3f to_solve[3], t_vec3f totals)
 **
 **	@param {t_line} line_a
 **	@param {t_line} line_b
-**	@param {double *} results - should have space for two elements
+**	@param {double []} results - should have space for two elements
 */
 
 void			points_line_closest(t_line line_a, t_line line_b,
-		double *results)
+		double results[])
 {
 	t_vec3f	to_solve[3];
 	t_vec3f	origin_from_to;
