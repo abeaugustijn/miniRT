@@ -6,7 +6,7 @@
 /*   By: aaugusti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 16:30:00 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/04/06 16:42:16 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/07 16:13:37 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static t_rayres	ray_cast_object(t_info *info, t_ray ray)
 		if (dist >= min_distance)
 			continue;
 		normal_closest = vec_is_normal(normal) ? normal : vec_new(0, 0, 0);
+		normal = vec_new(0, 0, 0);
 		closest = current;
 		min_distance = dist;
 	}
