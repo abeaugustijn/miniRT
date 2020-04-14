@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 22:13:56 by abe               #+#    #+#             */
-/*   Updated: 2020/04/06 18:18:14 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/14 12:47:13 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_color	*get_frame(t_info *info)
 	int32_t			i;
 	t_thread_info	*tinfo[NCORES];
 
-	buf = malloc(sizeof(t_color) * info->mapinfo.res.x * info->mapinfo.res.y);
+	buf = malloc(sizeof(t_color) * info->mapinfo.tot_pixels);
 	if (!buf)
 		print_error("Allocation failed in 'get_frame'", info);
 	i = 0;
@@ -71,6 +71,7 @@ t_color	*get_frame(t_info *info)
 					info, buf, free);
 		i++;
 	}
+	i--;
 	while (i >= 0)
 	{
 		if ((pthread_join(threads[i], NULL)))

@@ -6,7 +6,7 @@
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/20 14:03:39 by aaugusti          #+#    #+#              #
-#    Updated: 2020/03/20 14:07:30 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/04/14 12:44:17 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,7 +114,6 @@ SRCS			=	cam/cam_update\
 					parser/parse_check_filename\
 					parser/parse_color\
 					parser/parse_cylinder\
-					parser/parse_disk\
 					parser/parse_double\
 					parser/parse_light\
 					parser/parse_plane\
