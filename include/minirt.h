@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/04/08 21:30:17 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/14 12:41:23 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@
 # include <stdbool.h>
 # include <stdint.h>
 
-# ifdef LINUX
-#  ifndef M_PI
-#   define M_PI (3.141592653589793238)
-#  endif
-#  ifndef M_PI_2
-#   define M_PI_2 (M_PI / 2)
-#  endif
+# ifndef M_PI
+#  define M_PI (3.141592653589793238)
+# endif
+# ifndef M_PI_2
+#  define M_PI_2 (M_PI / 2)
 # endif
 
 # define WINDOW_TITLE "miniRT"
