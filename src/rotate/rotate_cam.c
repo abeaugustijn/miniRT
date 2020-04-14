@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 22:26:19 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/04/08 21:05:10 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/14 09:34:24 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,22 @@
 void	rotate_cam(int keycode, t_info *info)
 {
 	t_move_dir	axis;
-	t_vec3f		direction;
 	double		factor;
 	bool		increase;
 
 	rotate_get_dir(keycode, &axis, &increase);
-	direction = axis == UP ? info->current_cam->dir_vecs.up
-		: info->current_cam->dir_vecs.right;
 	factor = MOVE_SPEED * M_PI / 10.0 * (increase ? 1 : -1);
-	rotate_relative(&info->current_cam->orientation, direction, factor);
-	cam_update(info->current_cam);
+	if (axis == UP)
+	{
+		rotate_relative(&info->current_cam->dir_vecs.forward,
+				info->current_cam->dir_vecs.up, factor);
+		cam_update_forward(info->current_cam);
+	}
+	else if (axis == RIGHT)
+	{
+		rotate_relative(&info->current_cam->dir_vecs.up,
+				info->current_cam->dir_vecs.right, factor);
+		cam_update_up(info->current_cam);
+	}
 	info->mapinfo.rendered = false;
 }

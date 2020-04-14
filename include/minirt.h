@@ -6,7 +6,7 @@
 /*   By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:45:44 by aaugusti          #+#    #+#             */
-/*   Updated: 2020/04/08 20:23:54 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/08 21:30:17 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,7 @@ typedef struct	s_mapinfo {
 	double		ambient_ratio;
 	t_color		ambient_color;
 	t_vec2i		res;
-	t_vec3f		cam_orientation;
-	t_vec3f		cam_pos;
 	uint32_t	tot_pixels;
-	uint8_t		cam_fov;
 }				t_mapinfo;
 
 typedef enum	e_object_type {
@@ -260,6 +257,8 @@ void			*renderer_thread(void *param);
 
 t_vec3f			look_at(t_camera *cam, t_vec3f ray_origin);
 void			cam_update(t_camera *cam);
+void			cam_update_up(t_camera *cam);
+void			cam_update_forward(t_camera *cam);
 void			move_cam(int keycode, t_info *info);
 void			move_obj(int keycode, t_info *info);
 void			rotate_cam(int keycode, t_info *info);
