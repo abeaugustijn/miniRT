@@ -6,7 +6,7 @@
 /*   By: abe <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 18:10:21 by abe               #+#    #+#             */
-/*   Updated: 2020/03/16 22:24:59 by aaugusti         ###   ########.fr       */
+/*   Updated: 2020/04/14 11:40:26 by aaugusti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@
 #  define KEY_NUM_9 (92)
 #  define KEY_NUM_PLUS (69)
 #  define KEY_NUM_MINUS (78)
+#  define KEY_NUM_DOT (42) //TODO
 # endif
 
 # define KEY_MOVE_RIGHT (KEY_NUM_6)
