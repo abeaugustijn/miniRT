@@ -6,7 +6,7 @@
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/20 14:03:39 by aaugusti          #+#    #+#              #
-#    Updated: 2020/04/14 12:44:17 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/04/14 15:06:14 by aaugusti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,7 +158,7 @@ LIB_SRCS		=	lib/libft/libft.a\
 					lib/libvec/libvec.a\
 					lib/libvla/libvla.a\
 
-FLAGS			=	-Wall -Werror -Wextra -DNOLIST --std=c11
+FLAGS			=	-Wall -Werror -Wextra -DNOLIST
 
 # Ability to compile with maximum optimization
 ifeq ($(FAST),1)
@@ -248,6 +248,7 @@ bonus:
 	@BONUS=1 make $(NAME)
 	@touch bonus
 
+bonusre: fclean bonus
 
 # Generic rule for compiling any C-file into an object file
 %.o: %.c
