@@ -6,7 +6,7 @@
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/20 14:03:39 by aaugusti          #+#    #+#              #
-#    Updated: 2020/07/20 14:52:56 by aaugusti      ########   odam.nl          #
+#    Updated: 2020/07/20 15:17:49 by aaugusti      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,7 +167,7 @@ endif
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-LIBS			+=	-lm -lX11 -lXext -lpthread
+LIBS			+=	-lm -lpthread
 FLAGS			+=	-DLINUX
 endif #Linux
 
