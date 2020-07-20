@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:    :+:             #
 #                                                     +:+ +:+         +:+      #
 #    By: aaugusti <aaugusti@student.codam.nl>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/20 14:03:39 by aaugusti          #+#    #+#              #
-#    Updated: 2020/04/14 15:06:14 by aaugusti         ###   ########.fr        #
+#    Updated: 2020/07/20 14:52:56 by aaugusti      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,6 @@ SRCS			=	cam/cam_update\
 					helpers/rayres_inf\
 					helpers/rayres_new\
 					helpers/tocolor\
-					hooks/hook_frame\
-					hooks/hook_key\
-					hooks/hook_mouse\
-					init_mlx\
 					intersect/intersect\
 					intersect/intersect_cylinder\
 					intersect/intersect_disk\
@@ -171,17 +167,9 @@ endif
 UNAME_S			:=	$(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
-LIBS			+=	-Llib/libmlx -lmlx -lm -lX11 -lXext -lpthread
-INCLUDES		+=	-I lib/libmlx/X11
+LIBS			+=	-lm -lX11 -lXext -lpthread
 FLAGS			+=	-DLINUX
-LIB_SRCS		+=	lib/libmlx/libmlx.a
 endif #Linux
-
-ifeq ($(UNAME_S),Darwin)
-INCLUDES		+=	-I lib/libmlx
-LIB_SRCS		+= 	lib/libmlx/libmlx.dylib
-DYLIB			+= libmlx.dylib
-endif #Darwin
 
 
 TARGETS			=	$(OFILES) $(LIB_SRCS)
@@ -208,21 +196,6 @@ endif #Bonus
 clean_bonus:
 	rm -f $(BONUS_RECOMP_O)
 	rm -f bonus
-
-
-# Two rules concerning the compilation of the MiniLibX. They differ on MacOS
-# and Linux.
-ifeq ($(UNAME_S), Linux)
-lib/libmlx/libmlx.a:
-	make -C lib/libmlx
-	cp lib/libmlx/X11/libmlx.a lib/libmlx/libmlx.a
-endif #Linux
-
-ifeq ($(UNAME_S), Darwin)
-lib/libmlx/libmlx.dylib:
-	make -C lib/libmlx
-	cp lib/libmlx/libmlx.dylib .
-endif #Darwin
 
 
 # This compile flag needs to be set when we compile with bonus, so the code
@@ -268,7 +241,6 @@ clean:
 	rm -f $(OFILES) $(BONUS_OFILES) src/main.o
 
 fclean: clean
-	make clean -C lib/libmlx
 	make fclean -C lib/libft
 	make fclean -C lib/libftprintf
 	make fclean -C lib/libgnl

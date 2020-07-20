@@ -6,14 +6,13 @@
 /*   By: abe <marvin@42.fr>                           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/14 20:36:49 by abe           #+#   #+#                  */
-/*   Updated: 2020/04/06 14:23:15 by aaugusti      ########   odam.nl         */
+/*   Updated: 2020/07/20 14:57:22 by aaugusti      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include <libft.h>
 #include <minirt.h>
-#include <mlx.h>
 
 /*
 **	Checks whther a string exist of only digits.
@@ -32,25 +31,6 @@ static bool	isdigit_string(char *string)
 		string += sizeof(char);
 	}
 	return (true);
-}
-
-/*
-**	This is used to scale the resulotion down when it is too large for the
-**	physical display.
-**
-**	@param {t_info *} info
-*/
-
-static void	parse_resolution_check_res(t_info *info)
-{
-	int	x;
-	int	y;
-
-	mlx_get_screen_size(info->mlx_info.mlx, &x, &y);
-	if (info->mapinfo.res.x > x)
-		info->mapinfo.res.x = x;
-	if (info->mapinfo.res.y > y)
-		info->mapinfo.res.y = y;
 }
 
 /*
@@ -76,6 +56,4 @@ void		parse_resolution(char **words, t_info *info)
 		print_error("Invalid resolution", info);
 	info->mapinfo.tot_pixels = info->mapinfo.res.x * info->mapinfo.res.y;
 	info->mapinfo.did_resolution = true;
-	if (!info->mapinfo.do_save)
-		parse_resolution_check_res(info);
 }
